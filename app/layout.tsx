@@ -1,8 +1,13 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, IBM_Plex_Mono } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-mono",
+})
 
 export const metadata: Metadata = {
   title: "Roof Estimator — AI Builder Day 2026",
@@ -11,8 +16,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${inter.variable} ${mono.variable}`}>
+      <body className="font-sans">
         <header style={{ background: "var(--jn-navy)" }} className="px-6 py-4 flex items-center gap-3">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="28" height="28" rx="6" fill="#1B6AC9" />
