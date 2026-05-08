@@ -1,0 +1,15 @@
+{
+  "slug": "122-nw-13th-ave-cape-coral-fl-33993",
+  "address": "122 NW 13th Ave, Cape Coral, FL 33993",
+  "formatted_address": "122 NW 13TH AVE, CAPE CORAL, FL, 33993",
+  "lat": 26.654132281637,
+  "lng": -82.000405337124,
+  "zoom": 19,
+  "size_px": 640,
+  "scale": 1,
+  "effective_px": 640,
+  "meters_per_pixel": 0.2668520567077127,
+  "feet_per_pixel": 0.8754989017289322,
+  "source": "esri-world-imagery (composite)",
+  "fetched_at": "2026-05-08T21:10:53.135Z"
+}

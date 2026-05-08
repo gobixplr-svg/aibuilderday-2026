@@ -22,7 +22,7 @@
 // Exit codes:
 //   0 success, 1 bad usage, 2 pipeline error.
 
-import "dotenv/config"
+import "./lib/env.mjs"
 import { mkdir, writeFile, readFile, copyFile, access } from "fs/promises"
 import { join } from "path"
 import { fetchAerialPipeline } from "./lib/aerial-pipeline.mjs"

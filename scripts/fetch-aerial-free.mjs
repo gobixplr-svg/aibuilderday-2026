@@ -21,7 +21,7 @@
 //   node scripts/fetch-aerial-free.mjs --examples                   (5 example only)
 //   node scripts/fetch-aerial-free.mjs "<address>" --zoom 19
 
-import "dotenv/config"
+import "./lib/env.mjs"
 import { mkdir, writeFile, readFile, access } from "fs/promises"
 import { join } from "path"
 import { slugify } from "./lib/slug.mjs"

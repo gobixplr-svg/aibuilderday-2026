@@ -13,7 +13,7 @@
 //   node scripts/preview-pdf.mjs
 //   node scripts/preview-pdf.mjs --no-aerial   (skip the aerial thumb)
 
-import "dotenv/config"
+import "./lib/env.mjs"
 import { mkdir, readFile, access } from "fs/promises"
 import { join } from "path"
 import { renderEstimatePdf } from "./lib/pdf.mjs"

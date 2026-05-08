@@ -27,11 +27,14 @@ npm-debug.log*
 Thumbs.db
 *.tmp
 
-# Pipeline cache (intermediate API + vision results)
-intermediate/
+# Pipeline cache — committed (build-don't-buy evidence, plus
+# saves teammates re-fetching). Aerial images are public satellite
+# tiles from Esri/Google; geocode results contain only addresses.
+# !intermediate/ is committed; teammates can also npm run fetch-aerial-free
+# to repopulate from scratch.
 
-# Pipeline outputs (populated during calibration + submission run)
-outputs/
+# Pipeline outputs — committed: per-property submission artifacts.
+# !outputs/ is committed.
 
 # Scratch / preview output
 tmp/

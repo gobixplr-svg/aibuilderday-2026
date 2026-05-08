@@ -9,7 +9,7 @@
 //   node scripts/fetch-aerial.mjs "<address>" --no-cache
 //   node scripts/fetch-aerial.mjs "<address>" --zoom 19
 
-import "dotenv/config"
+import "./lib/env.mjs"
 import { fetchAerialPipeline } from "./lib/aerial-pipeline.mjs"
 
 const args = process.argv.slice(2)

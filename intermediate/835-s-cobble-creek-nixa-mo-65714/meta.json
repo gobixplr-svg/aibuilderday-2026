@@ -1,0 +1,15 @@
+{
+  "slug": "835-s-cobble-creek-nixa-mo-65714",
+  "address": "835 S Cobble Creek, Nixa, MO 65714",
+  "formatted_address": "835 S COBBLE CREEK BLVD, NIXA, MO, 65714",
+  "lat": 37.028872767996,
+  "lng": -93.283184060358,
+  "zoom": 19,
+  "size_px": 640,
+  "scale": 1,
+  "effective_px": 640,
+  "meters_per_pixel": 0.23836771990005057,
+  "feet_per_pixel": 0.782046350156882,
+  "source": "esri-world-imagery (composite)",
+  "fetched_at": "2026-05-08T21:10:55.869Z"
+}

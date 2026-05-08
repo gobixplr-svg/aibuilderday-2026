@@ -20,7 +20,7 @@
 //   2 = pipeline error on at least one property
 //   3 = pipeline ran, but at least one property outside ±10% tolerance
 
-import "dotenv/config"
+import "./lib/env.mjs"
 import { mkdir, writeFile, readFile, copyFile, access } from "fs/promises"
 import { join } from "path"
 import { fetchAerialPipeline } from "./lib/aerial-pipeline.mjs"

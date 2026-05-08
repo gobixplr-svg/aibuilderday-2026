@@ -1,0 +1,15 @@
+{
+  "slug": "21106-kenswick-meadows-ct-humble-tx-77338",
+  "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
+  "formatted_address": "21106 KENSWICK MEADOWS CT, HUMBLE, TX, 77338",
+  "lat": 30.019678944854,
+  "lng": -95.312042771943,
+  "zoom": 19,
+  "size_px": 640,
+  "scale": 1,
+  "effective_px": 640,
+  "meters_per_pixel": 0.25852842873151627,
+  "feet_per_pixel": 0.8481904101195078,
+  "source": "esri-world-imagery (composite)",
+  "fetched_at": "2026-05-08T21:10:50.282Z"
+}

@@ -8,7 +8,7 @@
 //   node scripts/fetch-all.mjs
 //   node scripts/fetch-all.mjs --no-cache
 
-import "dotenv/config"
+import "./lib/env.mjs"
 import { spawn } from "child_process"
 
 const EXAMPLES = [

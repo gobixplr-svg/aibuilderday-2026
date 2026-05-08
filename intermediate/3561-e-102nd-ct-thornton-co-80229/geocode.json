@@ -1,0 +1,9 @@
+{
+  "input_address": "3561 E 102nd Ct, Thornton, CO 80229",
+  "formatted_address": "3561 E 102ND CT, THORNTON, CO, 80229",
+  "place_id": "177439162",
+  "lat": 39.881011116266,
+  "lng": -104.945356514851,
+  "location_type": "residential",
+  "source": "census"
+}
