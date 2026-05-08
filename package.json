@@ -11,9 +11,11 @@
     "fetch-aerial": "node scripts/fetch-aerial.mjs",
     "fetch-all": "node scripts/fetch-all.mjs",
     "estimate": "node scripts/estimate.mjs",
-    "calibrate": "node scripts/calibrate.mjs"
+    "calibrate": "node scripts/calibrate.mjs",
+    "preview-pdf": "node scripts/preview-pdf.mjs"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "puppeteer": "^24.43.0"
   }
 }

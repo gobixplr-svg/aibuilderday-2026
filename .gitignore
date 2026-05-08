@@ -29,3 +29,6 @@ Thumbs.db
 
 # Pipeline cache (intermediate API + vision results)
 intermediate/
+
+# Scratch / preview output
+tmp/

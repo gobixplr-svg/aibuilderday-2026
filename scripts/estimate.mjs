@@ -148,7 +148,7 @@ async function run() {
   console.log(`[output] ${estimateJsonPath}`)
 
   const pdfOutPath = join(outDir, "estimate.pdf")
-  await renderEstimatePdf({ estimate: estimateResult, outputPath: pdfOutPath })
+  await renderEstimatePdf({ estimate: estimateResult, outputPath: pdfOutPath, aerialPath })
 
   // Copy aerial into outputs/ so the per-property bundle is self-contained
   const aerialOutPath = join(outDir, "aerial.jpg")
