@@ -14,15 +14,11 @@ The only IP-adjacent language anywhere on the event materials is on a different 
 
 ## What we're doing about it
 
-1. **Email sent to JustBuild** (`hello@justbuild.ing`) requesting written clarification on:
-   - Who owns submission IP (team / sponsor / JustBuild)
-   - Whether prize acceptance transfers ownership or grants a license
-   - Whether bringing pre-existing IP into a submission is permitted, and whether that pre-existing IP remains ours
-   - Whether a participation agreement / ToS exists
+1. **Looking for terms at check-in.** Friday morning, watch for a participation agreement, posted notice at the venue, or a click-wrap in the Luma confirmation. If terms appear, capture them before the build starts.
 
-2. **Holding pre-built product code.** Until the answer is in writing, this repo contains docs only. No proprietary prompts, schemas, or pipeline code from existing projects.
+2. **Demo plans for keeping pre-existing IP visible-but-separate.** When the build starts, anything brought in from outside this hackathon should be clearly labeled as such — both for honesty in judging and to keep the IP boundary visible.
 
-3. **Demo plans for keeping pre-existing IP visible-but-separate.** When the build starts, anything brought in from outside this hackathon must be clearly labeled as such — both for honesty in judging and to keep the IP boundary visible.
+3. **Asking organizers in person if needed.** If no written terms surface and the question matters, ask an organizer directly before the demo and note their answer.
 
 ## Guidance for contributors
 
