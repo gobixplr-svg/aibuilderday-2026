@@ -1,96 +1,150 @@
 # Field Capture — Hackathon Concept Prompt
 
 > Working title. Built for AI Builder Day, May 8–9 2026, JobNimbus $10K bounty track.
+> **Updated at event:** product reframed from two-input (photos + voice) to three-input (photos + description + external context).
 
 ## Problem
 
-Contractor estimates today take 30+ minutes per job because the rep has to leave the site, return to an office, transcribe what they saw, look up materials, and assemble a proposal. Existing AI estimating tools (Roofr, JobNimbus Smart Estimates) start from satellite imagery or a plan PDF — they don't have an answer for the moment a rep is physically standing in front of the work. That moment is where most contracting estimates actually originate, and it's the modality every existing tool is missing.
+Contractor estimates today take 30+ minutes per job because the rep has to leave the site, return to an office, transcribe what they saw, look up materials, and assemble a proposal. Existing AI estimating tools (Roofr, JobNimbus Smart Estimates) start from a *single* signal — satellite imagery for roofs, a plan PDF for new builds. Reality on the ground is messier: an experienced rep weighs photos of the actual condition, a homeowner's description of the history, and external context (parcel data, recent storms, prior permits) to land on a credible number. No tool stitches those signals together.
 
 ## Solution
 
-A field-capture primitive: photos + voice in, structured customer-ready estimate out, in under 60 seconds. The rep pulls out a phone, takes a few pictures, voices a short context note, and a branded estimate PDF renders on the customer's screen before the rep leaves the driveway. The capability is positioned as a *platform primitive* (an SDK / API surface), not a vertical product — JobNimbus or any contractor-CRM can drop it into their own workflow.
+A property-estimate primitive that fuses three input layers:
+
+1. **Photos** — what's there now (live capture or uploaded).
+2. **Description** — what the rep or homeowner says (typed or voice).
+3. **External context** — public/private data about the property (satellite imagery, parcel data, weather/storm history, permit records, JobNimbus historical data when integrated).
+
+In, structured customer-ready estimate out. Address-based — the system pulls external context automatically once the property is identified. Customer-presentable PDF rendered in under 60 seconds.
+
+The capability is positioned as a *platform primitive* — an SDK / API surface — not a vertical product. JobNimbus, AccuLynx, JobTread, or any contractor-CRM can drop it into their workflow. So can insurance adjusters, real estate investors, and solar installers. The verticals are configs.
 
 ## Target User
 
-Two layers:
+**Buyer (the room we're pitching to):** Contractor-CRM platforms that need an AI-native estimate-creation layer but don't want to build vision + multi-source-data pipelines themselves. Tyler Folkman / JobNimbus is the immediate target.
 
-- **End user (in the long run):** A field-going contractor sales rep — roofer, window installer, siding, fenestration — who today either skips small jobs because the estimate isn't worth 30 min back at the office, or loses deals because the customer goes cold between visit and proposal.
-- **Customer (the buyer of the primitive):** Contractor-CRM platforms like JobNimbus, AccuLynx, JobTread who need an AI-native field-capture layer but don't want to build vision pipelines themselves. *This is who Tyler Folkman represents in the room.*
+**End users (downstream):**
+- **Field-going contractor reps** — roofer, window installer, siding, exterior. Today either skip small jobs or lose deals to slow proposals.
+- **Insurance adjusters** — assessing damage claims; need a fast, defensible estimate.
+- **Real estate investors / wholesalers** — pricing rehab work on properties they're considering.
+- **Solar installers, fence/deck builders, painters** — anyone whose business is "estimate from a property visit."
+
+This is broader than "field capture for contractors." The primitive *is* the product.
 
 ## Core Insight
 
-Three converging bets:
+Four converging bets:
 
-1. **The site visit is the missing input modality.** Every AI estimating tool starts from imagery a satellite captured or a plan an architect drew. Reality: most exterior contracting estimates start with a human standing in front of the work. The first tool to nail that moment owns the workflow.
-2. **Speed-to-customer-presentable PDF is the unlock, not just speed-to-data.** A structured JSON in 30 seconds doesn't close a deal. A branded, customer-ready document handed to a homeowner *while you're still on their porch* does. The output layer matters as much as the extraction.
-3. **Vertical-portability is the platform thesis.** A single capture engine that swaps trade-packs (windows / roofing / siding / doors) is more defensible than another point solution. Field capture is a primitive; verticals are configs.
+1. **No single input is enough.** Roofr is satellite-only. SumoQuote is template-only. Reps in the field use photos + judgment + memory. The first tool to fuse photos, description, and external property data is the first tool that works on real properties, not idealized ones.
+2. **External context is free leverage.** Address → satellite imagery, parcel data, recent permits, storm history are all available via public APIs. The estimate that says "your property had a roof permit in 2018 so we're factoring in newer underlayment" feels qualitatively different from one that doesn't.
+3. **Speed-to-customer-presentable PDF is the unlock, not just speed-to-data.** A structured JSON in 30 seconds doesn't close a deal. A branded, customer-ready document handed to a homeowner *while you're still on their porch* does. The output layer matters as much as the extraction.
+4. **Vertical-portability is the platform thesis.** A single capture engine that swaps trade-packs (windows / roofing / siding / doors) is more defensible than another point solution. The same primitive serves contractors, adjusters, and investors.
 
 ## MVP Features (ranked)
 
-1. **Phone-to-PDF capture flow.** A web app the phone can open: take photos, hold-to-talk for voice context, submit. The rep does this in <30 seconds. Critical because this is the demo's killer moment — everything else supports it.
+1. **Phone-to-PDF capture flow.** Web app the phone can open: take photos, type or voice a description, optionally enter an address, submit. The user does this in <30 seconds. This is the demo's killer moment — everything else supports it.
 
-2. **Vision + voice → structured scope extraction.** Claude vision model analyzes photos and combines with transcribed voice context to produce structured items (dimensions, type, condition, count). Includes a small confidence/quality flag per item so reps know what to verify.
+2. **Three-input fusion → structured scope extraction.** Photos + description + external context (when address is provided) feed a single Claude Sonnet call that produces structured items (type, count, dims, condition, confidence). Description is the primary signal; photos verify and add detail; external context grounds and enriches.
 
-3. **Trade-pack matching against a staged catalog (~50–100 SKUs).** Extracted items match against a curated catalog of products + prices. Initial trade pack is **windows** (matches the conference-room demo reality and the team's domain expertise). One catalog table, swappable per trade.
+3. **External context lookup.** Given an address, fetch: aerial/satellite imagery (Google Static Maps or Mapbox), parcel data (county GIS APIs), and at least one of: storm/weather history (NOAA), permit records (Utah-specific feeds where available). Time-budgeted — if a source doesn't return in 5 seconds, drop it.
 
-4. **Customer-ready PDF output.** Branded, presentable estimate document — line items, prices, totals, a polish layer over the raw extraction. Rendered server-side, viewable on any screen, downloadable.
+4. **Trade-pack matching against a staged catalog (~50 SKUs per trade).** Extracted items match against a curated catalog of products + prices. Two trade-packs: **windows** (matches conference-room demo + team's domain expertise) and **roofing** (matches bounty flavor). One catalog table, swappable.
 
-5. **"Two trades, one engine" demo path.** Second trade-pack staged (roofing, since it's the bounty's flavor) so the demo can show the same capture flow producing a different vertical's estimate with a config swap. This is what makes the primitive thesis visible.
+5. **Customer-ready PDF output.** Branded, presentable estimate document — line items, prices, totals, an "informed by" footnote citing which external sources contributed. Rendered server-side, viewable on any screen, downloadable.
+
+6. **"Same primitive, two trades, two property types" demo path.** Three-act demo:
+   - Act 1: live conference-room window capture (proves the live flow)
+   - Act 2: pre-staged real Lehi address with photos + satellite + permit data → window estimate (proves the three-input fusion)
+   - Act 3: same address, swap to roofing trade-pack → roofing estimate (proves vertical portability)
 
 ## Explicitly NOT in v1
 
-- **Real JobNimbus API integration.** Tempting but fragile; not worth the demo risk. Frame as "in production this calls JobNimbus's documented API — today we've staged the catalog."
-- **Photo geometry / measurement-from-image.** Real measurement extraction is its own research problem. Voice provides dimensions; vision validates plausibility. Don't promise pixel-accurate takeoff.
-- **Multi-rep / multi-tenant infra.** No accounts, no roles, no org isolation in the demo. One rep, one device, one demo. Production-architecture-shaped but not built.
-- **CRM sync, email delivery, e-signature, payments.** Real follow-up flow. Out of scope for 24 hours.
-- **Mobile native app.** Web app over phone Safari is fine; the camera/mic APIs work and it lets us iterate fast.
-- **Calibration, scale calibration, AR overlays.** Cool, hard, distracting. Future work.
+- **Real JobNimbus API integration.** Fragile; not worth the demo risk. Frame as "in production this calls JobNimbus's documented API — today we've staged the catalog and the customer history."
+- **Photo geometry / measurement-from-image.** Real measurement extraction is its own research problem. Description provides dimensions; photos verify.
+- **Multi-rep / multi-tenant infra.** No accounts, no roles, no org isolation in the demo.
+- **CRM sync, email delivery, e-signature, payments.** Out of scope.
+- **Mobile native app.** Web app / PWA over phone browser is fine.
+- **Real-time external data writes.** External context is read-only; we pull, we don't push.
+- **Coverage of every external source we cite.** Demo with 2-3 working sources, frame the others as "configurable adapters."
 
 ## Technical Shape
 
-- **Platform:** Web app, mobile-first PWA. Phone Safari/Chrome for capture; presenter screen mirrors the result PDF.
-- **Backend:** Supabase for auth/storage/DB (familiar stack, fast to scaffold). Worker for AI calls if latency requires async (but aiming for synchronous request/response inside the <60s envelope).
-- **Key Integrations:**
-  - **Anthropic Claude (Sonnet)** — vision model for photo analysis, multimodal extraction.
-  - **Whisper or Claude voice** — voice-to-text for the voice context note.
-  - **PDF generation library** (e.g., react-pdf or Puppeteer) for the customer-ready output.
-  - **JobNimbus API (mocked)** — staged catalog standing in for the real call.
-- **Data Model (rough):**
-  - `captures` — one per site visit. Holds raw photos, voice transcript, status, trade-pack used.
-  - `extracted_items` — line items derived from a capture (mark, type, dims, qty, condition, confidence).
-  - `catalog_items` — the trade-pack: SKU, name, unit price, labor hours, trade. Multiple trade packs supported via a `trade` enum.
-  - `estimates` — the rendered output: list of priced line items, totals, brand metadata, PDF storage URL.
+**Architecture (Shape B — async with worker):**
+
+```
+Phone (PWA, mobile-first)
+   │
+   │  upload photos + description + (optional) address
+   ▼
+Cloudflare Pages or Vercel (capture UI)
+   │
+   ▼
+Supabase (Storage + DB)
+   │  ← worker polls jobs every 1-2s
+   ▼
+Local Node worker (exposed via tunnel) OR Railway worker
+   │
+   ├─→ External context fetch (parcel, satellite, permits) [parallel]
+   ├─→ Voice transcription [parallel, if voice used]
+   │
+   └─→ Claude Sonnet vision call (fuses all three inputs)
+   │
+   ├─→ Catalog match
+   └─→ PDF render
+   │
+   ▼
+Result URL written back to Supabase
+   │
+   ▼
+Phone polls job, displays PDF
+Presenter screen polls job, displays PDF on big screen
+```
+
+**Stack:**
+- **Frontend:** Next.js + Tailwind, deployed to Cloudflare Pages or Vercel. Mobile-first PWA.
+- **Backend storage/DB:** Supabase (Storage + Postgres + Realtime if useful).
+- **Worker:** Node.js, runs locally on a team laptop, exposed via `cloudflared tunnel` or `ngrok`. No deploy needed for the most-likely-to-iterate component.
+- **AI:** Anthropic Claude Sonnet (vision + extraction in single call). Whisper or Claude for voice transcription if voice path is used.
+- **PDF:** Puppeteer (server-side) or react-pdf (Node-side) — worker decides based on what gets us a great-looking PDF fastest.
+- **External APIs:** Google Static Maps, county GIS (varies by location), NOAA storms API, Utah permit feeds. Each behind a small adapter so they can fail independently.
+
+**Data model (rough):**
+- `captures` — one per estimate request. Holds photos (Storage refs), description, address, status, trade-pack.
+- `external_context` — JSONB blob of what we pulled per capture (satellite_url, parcel_data, recent_permits, storm_events).
+- `extracted_items` — line items derived from the fused inputs.
+- `catalog_items` — the trade-pack tables. Trade enum: `windows` | `roofing`.
+- `estimates` — the rendered output: priced line items, totals, brand metadata, "informed by" sources, PDF storage URL.
 
 ## User Flow (primary)
 
-1. **Rep opens the web app on phone.** Lands on capture screen — three big buttons: "Take Photos," "Hold to Talk," "Submit."
-2. **Captures 3–5 photos.** Conference-room window for the demo. Real-world: the work area on a job site.
-3. **Holds to talk for ~10 seconds.** "Three windows on the southeast wall, double-hung, looks like 30-year-old units, weather damage on the seals."
-4. **Taps Submit.** UI shows live progress: "Analyzing photos…" → "Matching catalog…" → "Building estimate…" (each step <15s, total <60s).
-5. **Estimate renders on the presenter screen** (and on the phone). Customer-ready PDF: header brand, line items with prices, total, footer. Rep can hand the phone to the homeowner.
-
-**Demo escalation:** rep does the same flow a second time with a roof photo, system loads the *roofing* trade-pack (toggle visible), produces a roofing estimate. "Same engine, different trade. That's the primitive."
+1. **User opens the web app on phone.** Lands on capture screen.
+2. **Optional: enters address** (or skips for live demo without address).
+3. **Captures 3–5 photos** (or selects from library for staged demo).
+4. **Types or voices a short description** — what they see, what's needed.
+5. **Taps Submit.** UI shows live progress: "Pulling property data…" → "Analyzing photos…" → "Matching catalog…" → "Building estimate…" (each <15s, total <60s).
+6. **Estimate renders** on phone and presenter screen. Customer-ready PDF: brand header, line items, prices, total, "informed by" footnote, signature line.
 
 ## Open Questions
 
-- **What's the right voice-input UX on phone?** Hold-to-talk vs tap-to-record vs continuous-while-photographing. Probably hold-to-talk for demo simplicity.
-- **How do we make the "staged catalog" feel real, not toy?** Real product names, real-ish prices pulled from manufacturer spec sheets, branded line items in the PDF. Avoid "Acme Window 1, 2, 3."
-- **Friday twist contingency.** The 1:05pm twist may shift the brief. What's our pivot path if the twist is "must process roof imagery specifically" or "must integrate JobNimbus API for real" or "must produce X format"? Plan for stack-level prep that survives any twist; defer product-specific scaffolding until Friday afternoon.
-- **Where does the conference-room demo's photo input come from for the *roofing* second-trade demo?** Pre-stage a printed photo of a roof? Pull a roof image from the phone's library? Need to commit to one before Saturday morning.
-- **What's the demo narrative arc?** Three minutes is short. Probably: 30s problem framing → 60s phone-to-PDF demo (live) → 30s "now watch this with roofing" → 60s "this is a primitive, here's why JobNimbus needs this" close.
-- **IP/ownership of submission.** Awaiting written response from JustBuild (`hello@justbuild.ing`). Hold any pre-built product code that would create exposure.
+- **Which external data sources actually work in the latency budget?** Spike Friday afternoon with a real Lehi address. Adapters that take >5s get dropped; we ship with whatever responds reliably.
+- **What's the right description-input UX?** Probably "type by default, voice button as accent" — typing is faster on a quiet stage than voice, and voice is unreliable in venue noise. Voice stays in the demo but isn't load-bearing.
+- **How do we make the "staged catalog" feel real, not toy?** Real product names, real-ish prices from manufacturer spec sheets (Marvin/Andersen/Pella for windows; GAF/CertainTeed for roofing). 30-50 SKUs per trade is enough.
+- **Demo property:** which real Lehi address gets pre-staged for Acts 2 and 3? Need to pick Friday evening, capture photos, verify external sources have data on it.
+- **Friday twist contingency.** The 1:05pm twist may shift the brief. The three-input architecture is general enough to absorb most twists; trade-packs are configurable enough to swap focus.
+- **IP/ownership of submission.** No public terms exist; watch for participation language at check-in.
 
 ## Success Criteria
 
 **Demo bar (Saturday 2pm):**
-- Live phone-to-PDF works end-to-end in <60 seconds with no fallback path needed.
-- Output PDF is genuinely customer-presentable — a homeowner could read it and understand the price.
-- "Two trades, one engine" toggle works on a second capture.
+- Live phone-to-PDF works end-to-end in <60 seconds.
+- Output PDF is genuinely customer-presentable.
+- "Three-input fusion" is visible — judges can see external context contributing to the estimate (satellite thumbnail, "permit from 2018" footnote, etc.).
+- "Two trades, one engine" config swap works.
 
 **Strategic bar (Saturday evening):**
-- Tyler Folkman or another senior JobNimbus engineer asks an unprompted follow-up question after the demo.
-- The team walks out with at least one named contact at JobNimbus to follow up with.
+- Tyler Folkman or another senior JobNimbus engineer asks an unprompted follow-up question.
+- The team walks out with at least one named contact at JobNimbus.
 
-**Stretch (post-event):**
+**Stretch:**
 - A meeting on the calendar with JobNimbus the following week.
-- Field Capture is portable enough to slot in as a fourth Crosswing product after the event.
+- Architecture portable enough to slot into NBD Labs / Crosswing as a future product.
