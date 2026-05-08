@@ -1,0 +1,38 @@
+{
+  "tiers": [
+    {
+      "id": "standard",
+      "name": "3-Tab Asphalt Shingle",
+      "description": "Entry-level fiberglass shingle, flat profile, ideal for budget-conscious replacements.",
+      "manufacturer_examples": ["GAF Royal Sovereign", "CertainTeed XT 25"],
+      "warranty_years": 25,
+      "cost_per_square": 110,
+      "labor_hours_per_square": 1.5
+    },
+    {
+      "id": "premium",
+      "name": "Architectural Laminate",
+      "description": "Dimensional laminate with a textured wood-shake look; the most common upgrade in residential re-roofing.",
+      "manufacturer_examples": ["GAF Timberline HDZ", "CertainTeed Landmark", "Owens Corning Duration"],
+      "warranty_years": 30,
+      "cost_per_square": 145,
+      "labor_hours_per_square": 2.0
+    },
+    {
+      "id": "luxury",
+      "name": "Designer / Impact-Resistant",
+      "description": "Heavy-duty laminate or polymer composite; Class 4 impact rating, premium curb appeal.",
+      "manufacturer_examples": ["GAF Camelot II", "CertainTeed Grand Manor", "Malarkey Vista AR"],
+      "warranty_years": 50,
+      "cost_per_square": 220,
+      "labor_hours_per_square": 2.5
+    }
+  ],
+  "accessories": {
+    "underlayment_per_square": 25,
+    "drip_edge_per_lf": 2.50,
+    "ridge_cap_per_lf": 5.00,
+    "ice_water_per_square": 65,
+    "labor_rate_per_hour": 75
+  }
+}
