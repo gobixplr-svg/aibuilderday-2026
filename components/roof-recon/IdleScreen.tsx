@@ -4,9 +4,11 @@ import type { Theme } from "./theme"
 import { GridBG } from "./GridBG"
 
 const QUICK_ADDRESSES = [
-  "1247 Maple Ridge Dr, Boulder, CO",
-  "88 Chestnut St, Asheville, NC",
-  "412 Lakeshore Ave, Madison, WI",
+  "3561 E 102nd Ct, Thornton, CO 80229",
+  "1612 S Canton Ave, Springfield, MO 65802",
+  "6310 Laguna Bay Court, Houston, TX 77041",
+  "3820 E Rosebrier St, Springfield, MO 65809",
+  "1261 20th Street, Newport News, VA 23607",
 ]
 
 type Props = {
