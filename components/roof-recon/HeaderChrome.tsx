@@ -5,9 +5,11 @@ type Props = {
   t: Theme
   themeMode: ThemeMode
   onThemeChange: (mode: ThemeMode) => void
+  debugOpen?: boolean
+  onDebugToggle?: () => void
 }
 
-export function HeaderChrome({ t, themeMode, onThemeChange }: Props) {
+export function HeaderChrome({ t, themeMode, onThemeChange, debugOpen, onDebugToggle }: Props) {
   return (
     <div
       className="relative z-10 flex items-center justify-between px-8 py-5 border-b"
@@ -34,6 +36,25 @@ export function HeaderChrome({ t, themeMode, onThemeChange }: Props) {
           <span>SAT&nbsp;LINK&nbsp;LIVE</span>
         </div>
         <div className="hidden md:block">v0.4.2&nbsp;//&nbsp;HACKATHON</div>
+        {onDebugToggle && (
+          <button
+            onClick={onDebugToggle}
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 9,
+              letterSpacing: "0.15em",
+              padding: "3px 8px",
+              border: `1px solid ${debugOpen ? "rgba(255,165,0,0.6)" : "rgba(255,165,0,0.25)"}`,
+              borderRadius: 4,
+              background: debugOpen ? "rgba(255,165,0,0.12)" : "transparent",
+              color: debugOpen ? "rgba(255,165,0,0.9)" : "rgba(255,165,0,0.45)",
+              cursor: "pointer",
+              transition: "all 0.15s",
+            }}
+          >
+            DBG
+          </button>
+        )}
         <ThemeToggle mode={themeMode} onChange={onThemeChange} t={t} />
       </div>
     </div>

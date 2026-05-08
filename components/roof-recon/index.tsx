@@ -5,6 +5,7 @@ import { HeaderChrome } from "./HeaderChrome"
 import { IdleScreen } from "./IdleScreen"
 import { ProcessingScreen } from "./ProcessingScreen"
 import { ResultsScreen } from "./ResultsScreen"
+import { DebugPanel } from "./DebugPanel"
 
 type ResultData = {
   address: string
@@ -42,6 +43,7 @@ async function defaultMeasure(address: string): Promise<ResultData> {
 export function RoofRecon({ defaultTheme = "dark", accent = "#FF6B2B", onMeasure }: Props) {
   const [mode, setMode] = useState<ThemeMode>(defaultTheme)
   const [state, setState] = useState<AppState>({ phase: "idle" })
+  const [debugOpen, setDebugOpen] = useState(false)
 
   useEffect(() => {
     try {
@@ -81,7 +83,21 @@ export function RoofRecon({ defaultTheme = "dark", accent = "#FF6B2B", onMeasure
         transition: "background 0.25s ease, color 0.25s ease",
       }}
     >
-      <HeaderChrome t={t} themeMode={mode} onThemeChange={handleThemeChange} />
+      <HeaderChrome
+        t={t}
+        themeMode={mode}
+        onThemeChange={handleThemeChange}
+        debugOpen={debugOpen}
+        onDebugToggle={() => setDebugOpen((o) => !o)}
+      />
+      {debugOpen && (
+        <DebugPanel
+          t={t}
+          result={state.phase === "result" ? state.data : null}
+          phase={state.phase}
+          onClose={() => setDebugOpen(false)}
+        />
+      )}
 
       {state.phase === "idle" && (
         <IdleScreen t={t} onSubmit={handleSubmit} />
