@@ -1,296 +1,200 @@
 # Architecture
 
-> Working draft. This locks the shape; specific tech choices inside each box can flex.
+## What we're building
 
-## Stack decision (locked)
-
-**Next.js + Tailwind, mobile-first responsive PWA.** Not Flutter, not Swift, not native iOS.
-
-Reasoning:
-
-- **Browser camera + mic APIs are sufficient.** `<input type="file" capture="environment">` and MediaRecorder give us photo and voice capture on iOS Safari and Android Chrome.
-- **Distribution.** Judges can scan a QR code and try it. Native means TestFlight or sideloading — neither possible at a hackathon.
-- **Iteration speed.** Browser refresh beats build-deploy-test on a phone every time.
-- **Team skill match.** No teammate has stated Swift/Flutter expertise. Web is the universal denominator.
-- **Demo brittleness.** Web app crashes have devtools. Native crashes on stage are silent.
-- **The bounty pivot reduces phone-importance further.** With aerial imagery as the primary input, most of the demo runs on a presenter laptop. Phone-side capture is now Act 2 (rep enrichment), not the main event. Web is even more obviously right.
-
-If this gets relitigated, point at this section.
-
-## Framing: agent orchestra, not "a vision pipeline"
-
-We orchestrate a small set of specialized AI agents across the estimate workflow. Same underlying calls, sharper story — and closer to where JobNimbus is already heading with Scout. The agents in v1:
-
-- **Surveyor** — fuses photos + description + external context into structured scope items
-- **Estimator** — matches scope items to the trade-pack catalog and prices the job
-- **Generator** — renders the branded, customer-ready estimate PDF
-- **Sales** — after the estimate renders, suggests one contextual upsell (e.g. "noticed an old gutter — add gutter replacement?")
-
-Future agents (post-v1, kept visible to show the platform thesis): **Validator** (sanity-checks against historical/benchmark data), **Communicator** (email/SMS the estimate), **Follow-up** (re-engages the customer), **Metric Analyzer** (closes the conversion-rate loop).
-
-The architecture below is what these agents run on.
-
-## Aerial-primary, async pipeline
-
-The Surveyor agent's primary signal is aerial imagery + property metadata. Ground photos and rep description, when present, refine the bid. The architecture supports both flows; the *demo* leads with address-only and adds enrichment in Act 2.
+A measurement-and-estimate pipeline for residential pitched roofs:
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                ENTRY POINT (web, any device)             │
-│  - Address input                                         │
-│  - Trade-pack selector (roofing | windows)               │
-│  - Optional: photos + description (for rep flow)         │
-└─────────────────┬───────────────────────────────────────┘
-                  │ POST /api/captures
-                  │ (any photos uploaded direct to Storage)
-                  ▼
-┌─────────────────────────────────────────────────────────┐
-│        CLOUDFLARE PAGES / VERCEL  (capture UI + API)    │
-│  - /api/captures: create job row, return signed URL     │
-│  - /api/captures/:id: poll status                       │
-│  - /presenter: big-screen view that polls + renders     │
-└─────────────────┬───────────────────────────────────────┘
-                  │
-                  ▼
-┌─────────────────────────────────────────────────────────┐
-│                    SUPABASE                              │
-│  - Storage: photos/                                      │
-│  - DB: captures, external_context, extracted_items,      │
-│        catalog_items, estimates                          │
-└─────────────────┬───────────────────────────────────────┘
-                  │ worker polls every 1-2s
-                  ▼
-┌─────────────────────────────────────────────────────────┐
-│             WORKER (local Node + tunnel)                 │
-│                                                          │
-│   parallel:                                              │
-│   ├── External context fetch (5s timeout per source)    │
-│   │   ├── Google Static Maps (satellite)                │
-│   │   ├── County GIS (parcel data)                      │
-│   │   ├── NOAA (storms)                                 │
-│   │   └── Permit feed (Utah)                            │
-│   │                                                      │
-│   └── Voice transcription (if voice provided)           │
-│                                                          │
-│   then sequential:                                       │
-│   1. Surveyor agent (Claude Sonnet vision):             │
-│      photos + description + external context            │
-│      → structured scope items                           │
-│   2. Estimator agent: items → matched SKUs + pricing    │
-│   3. Generator agent: priced items → branded PDF        │
-│   4. Upload PDF to Storage, write URL to estimates row  │
-│   5. Sales agent (background, after estimate ready):    │
-│      reviews scope + photos → suggests one upsell       │
-│      → writes upsell row, phone polls + displays        │
-└──────────────────────────────────────────────────────────┘
+address → aerial image → footprint + pitch → roof area → priced estimate
+```
+
+Five test properties. Submission is total sqft per address + a quote-ready PDF estimate per address.
+
+## Stack (locked)
+
+- **Next.js + Tailwind** — minimal app, mobile-friendly. Single page form: address in, results out.
+- **Anthropic Claude (Sonnet 4.x)** — vision-based footprint and pitch analysis.
+- **Anthropic Claude (Haiku 4.5)** — fast pre-classification (is this a residential pitched roof?).
+- **Google Static Maps API** — aerial image acquisition (or Mapbox; whichever the spike picks).
+- **Puppeteer or react-pdf** — quote PDF generation.
+- **Supabase** *(optional)* — only if we want to persist results between runs. Not required for submission. CLI-only is fine.
+
+## Pipeline
+
+```
+1. INPUT: address string
+   ↓
+2. GEOCODE: address → lat/lng
+   - Google Geocoding API (or Mapbox Geocoding)
+   ↓
+3. AERIAL ACQUISITION: lat/lng → high-res overhead image
+   - Google Static Maps (zoom 20, satellite, ~640×640 or 2048×2048 with scale=2)
+   - Cache the image locally per address
+   ↓
+4. PITCH ESTIMATION: image → pitch (e.g. 6:12)
+   - Claude vision call: "What is the dominant roof pitch?"
+   - Heuristics: shadow length / direction, edge sharpness, visible elevation cues
+   - Default to 6:12 if low confidence (most common residential)
+   ↓
+5. FOOTPRINT EXTRACTION: image + (optional) parcel polygon → footprint sqft
+   - Claude vision call: "Outline the roof. Estimate footprint area in sqft using the scale bar."
+   - Cross-check with parcel data when available
+   ↓
+6. ROOF AREA: footprint × pitch_multiplier
+   - 4:12 → 1.054, 6:12 → 1.118, 8:12 → 1.202, etc.
+   ↓
+7. LINE ITEMS (best-effort): image → ridge/hip/valley/rake/eave linear-feet
+   - Claude vision call: "Trace each ridge line. Estimate length in feet."
+   - These are extras; total sqft is the primary signal.
+   ↓
+8. ESTIMATE: measurements + materials catalog → priced bid
+   - Three material tiers (3-tab / architectural / premium)
+   - Per-square material cost × roof area / 100
+   - Labor hours × labor rate
+   - Underlayment, drip edge, ridge cap as line items based on linear-feet measurements
+   ↓
+9. PDF: estimate → branded customer-ready PDF
+   - Puppeteer renders an HTML template
+   - Output to outputs/<slug>/estimate.pdf
 ```
 
 ## Why this shape
 
-**Async with worker, not synchronous.** Vercel/CF Pages function timeouts are 60s — the same as our demo budget. A single hiccup blows it. Async + polling gives us:
-- Live progress UI (the "Analyzing photos…" theater)
-- No timeout cliff
-- Easy to debug (job rows are inspectable)
-- Same architecture NBD Labs uses, so the patterns are warm
+**Vision-first, not photogrammetry-first.** We don't have time to build a real photogrammetric pipeline (segment polygon, project to ground plane, integrate area). Claude vision can give us a credible estimate with a clear prompt. We're betting that "Claude looks at a satellite image and reasons about pitch + outline + scale" lands within ±10-15% of the references on most properties.
 
-**Worker runs locally, exposed via tunnel.** Three reasons:
-- Worker is the most-iterated component. Local = instant feedback.
-- No deploy step blocking iteration.
-- One less platform to log into during the event.
-- Tunneled URL works from anywhere — phone connects via the public capture-UI URL, capture UI talks to Supabase, worker pulls from Supabase. No direct phone↔worker connection needed.
+**Calibration loop is the real engineering work.** The 5 example properties have references. We run our pipeline against them, see how far off we are, iterate the prompt until we're consistently in range, then run the test set. That iteration loop is the meaningful engineering.
 
-**External context behind small adapters.** Each source fails independently. If parcel data is slow, we still have satellite + permits. If everything fails, we degrade to photos + description and the demo still works.
+**No commercial measurement APIs.** Build, don't buy. The repo must show how we compute. EagleView's API is off-limits even if we had access.
 
-**Aerial imagery + metadata is the primary AI signal. Ground photos and description, when present, refine.** This shapes the Surveyor agent's prompt:
+**Single command line entry point.** `npm run estimate -- "address"` runs the whole pipeline and writes outputs. Judges can clone, run, see results.
+
+## Data flow per property
 
 ```
-SYSTEM (Surveyor): You are scoping a contractor estimate from
-property signals. {aerial_image} and {parcel_data} are the
-primary signals — read the structure, count features, assess
-condition where visible. {permits} and {storms} ground the
-estimate in property history. If {ground_photos} or
-{description} are present, use them to refine condition and
-catch detail the aerial missed.
-
-USER:
-  Address: 3451 N Triumph Blvd, Lehi UT 84043
-  Trade pack: roofing
-
-  Aerial: [image]
-  Parcel: 6,200 sqft building, built 2019, commercial
-  Permits: roof permit 2019 (original), no roof work since
-  Storms: 2023-08-14 hail event nearby (1.25" reported)
-
-  Ground photos: [optional, 0-5 images]
-  Description: [optional, free text]
-
-  Available SKUs: [50 catalog items]
-
-  Return: structured items with confidence, matched SKUs,
-  rationale citing which signals contributed (e.g. "aerial
-  shows ~32 squares of asphalt shingle in fair condition;
-  storm history suggests inspection-grade vs replacement").
+inputs/
+  (just the address string)
+  ↓
+intermediate/
+  geocode.json      — lat/lng + formatted address
+  aerial.jpg        — the satellite image we analyzed
+  vision-pitch.json — Claude's pitch reasoning + final value
+  vision-area.json  — Claude's footprint + line item reasoning
+  ↓
+outputs/<slug>/
+  aerial.jpg        — copy of the analyzed image
+  measurement.json  — final total_sqft, pitch, line items
+  estimate.pdf      — branded customer-ready PDF
+  notes.md          — anything notable (low confidence, tree cover, etc.)
 ```
 
-The same prompt structure handles both flows — aerial-only (Act 1) and aerial-plus-ground (Act 2). The difference is which fields are filled in.
+## Vision prompts (sketch)
 
-## Sales agent (upsell)
-
-The Sales agent runs *after* the estimate renders, not in the critical latency path. Once the customer sees the estimate, the phone polls for an upsell suggestion. When it arrives (typically 5-15s after the PDF), it appears as a card under the estimate: "Noticed something — want to add this?"
-
+**Pitch prompt:**
 ```
-SYSTEM (Sales): You're a contractor's assistant suggesting one
-relevant upsell based on what was scoped. The tone is helpful
-and observational, not pushy. Pick AT MOST one upsell that
-would feel natural to a homeowner. If nothing fits, return null.
+SYSTEM: You are estimating the roof pitch of a residential
+home from a satellite image. Pitch is expressed as rise:run
+(e.g. 6:12, 8:12). Most US residential roofs are 4:12-12:12.
 
-Upsell options for windows:
-  - Gutter replacement (if gutters visible and aged)
-  - Exterior trim repair (if trim shows wear)
-  - Storm doors (if main door is original)
-  - Solar panel quote (if roof + sun exposure favor it)
+Look for: shadow length relative to building width, visible
+elevation changes at the eaves, peak prominence in the image.
 
-USER:
-  Scope: [structured items]
-  Photos: [same images]
-  External context: [parcel + permits + storms]
+Return JSON: { "pitch": "6:12", "confidence": 0.0-1.0,
+"rationale": "..." }
+```
 
-  Return:
+**Footprint + line items prompt:**
+```
+SYSTEM: You are estimating the roof footprint and line items
+of a residential home from a satellite image.
+
+The image is from Google Static Maps at zoom 20, scale=2.
+At zoom 20, 1 pixel ≈ 0.15m at the equator (adjust for latitude).
+
+Tasks:
+1. Outline the roof footprint. Estimate area in square feet.
+2. Trace the ridge lines. Sum their length in feet.
+3. Trace the hip lines. Sum their length in feet.
+4. Trace the valley lines. Sum their length in feet.
+5. Trace the rake lines (gable edges). Sum their length in feet.
+6. Trace the eave lines. Sum their length in feet.
+
+Return JSON: {
+  "footprint_sqft": number,
+  "line_items": {
+    "ridge": number,
+    "hip": number,
+    "valley": number,
+    "rake": number,
+    "eave": number
+  },
+  "confidence": 0.0-1.0,
+  "rationale": "..."
+}
+```
+
+These are starting points. We iterate against the example properties until calibrated.
+
+## Materials catalog
+
+Three tiers, real-ish prices. Stored as `data/materials.json`:
+
+```json
+{
+  "tiers": [
     {
-      "upsell_id": string | null,
-      "label": string,             // "Add gutter replacement"
-      "rationale": string,         // "noticed worn gutters in photo 2"
-      "estimated_add": number      // dollar amount
+      "id": "standard",
+      "name": "3-Tab Asphalt Shingle",
+      "manufacturer_examples": ["GAF Royal Sovereign", "CertainTeed XT 25"],
+      "warranty_years": 25,
+      "cost_per_square": 110,
+      "labor_hours_per_square": 1.5
+    },
+    {
+      "id": "premium",
+      "name": "Architectural Laminate",
+      "manufacturer_examples": ["GAF Timberline HDZ", "CertainTeed Landmark", "Owens Corning Duration"],
+      "warranty_years": 30,
+      "cost_per_square": 145,
+      "labor_hours_per_square": 2.0
+    },
+    {
+      "id": "luxury",
+      "name": "Designer / Impact-Resistant",
+      "manufacturer_examples": ["GAF Camelot II", "CertainTeed Grand Manor", "Malarkey Vista"],
+      "warranty_years": 50,
+      "cost_per_square": 220,
+      "labor_hours_per_square": 2.5
     }
+  ],
+  "accessories": {
+    "underlayment_per_square": 25,
+    "drip_edge_per_lf": 2.50,
+    "ridge_cap_per_lf": 5.00,
+    "ice_water_per_square": 65,
+    "labor_rate_per_hour": 75
+  }
+}
 ```
 
-**Why background, not blocking:** the upsell is a *delight* moment, not a *demo-blocking* moment. If it takes 20s to land, fine — the estimate is already on screen. If it fails entirely, the demo still works. Costs us nothing on the critical path.
+## Submission shape
 
-**Demo moment:** rep hands phone to homeowner, estimate is showing. A few seconds later: "By the way — noticed the gutters look worn in your second photo. Add gutter replacement for $1,840?" Tap accept, totals update on screen. *That's* the agent-orchestra moment.
+The repo at submission time:
+- Public, working `npm run estimate` for any address
+- `outputs/` populated for all 5 test properties
+- README with stack notes and how-to-run
+- Notes on AI choices and known limitations
 
-## Latency budget
+The five sqft numbers go into the bounty form. PDFs go in `outputs/`.
 
-```
-0s ─────────────────────────────────────────────── 60s ────── 75s
-│
-├─ 0-3s   Phone upload (3 photos to Storage)
-├─ 3-5s   API creates job, returns id
-├─ 5-25s  Worker fetches external context  ┐
-│         + transcribes voice              ├─ parallel
-│         + downloads photos               ┘
-├─ 25-50s Surveyor agent (Sonnet vision) — long pole
-├─ 50-55s Estimator agent (catalog match)
-├─ 55-60s Generator agent (PDF render + upload)
-└─ 60s    Phone displays PDF (estimate complete)
+## What we're NOT building
 
-then off the critical path:
-├─ 60-75s Sales agent (upsell suggestion)
-└─ 75s    Upsell card appears on phone under estimate
-```
+- Field photo capture
+- Voice description
+- Sales upsell agent
+- Multi-trade support (windows etc. — drop entirely)
+- Three-input fusion as a primary feature
+- Permit / storm / parcel data fetching (parcel as cross-check is fine; permits and storms are out)
+- Live phone-to-PDF demo flow
+- Agent orchestra framing as the primary story
 
-**Risk surface:** the Surveyor agent. Sonnet on 3-5 images with a 2K-token system prompt + ~500 tokens of external context can take 15-30s. If the spike (see [`spike-plan.md`](spike-plan.md)) shows >25s, options:
-- Drop to Haiku for vision — faster, less smart, may need second-pass extraction
-- Reduce image count (1-2 instead of 3-5)
-- Resize images before sending (lower resolution = faster)
-- Run two parallel vision calls and merge
-
-The Sales agent runs after the demo's hero moment, so its latency doesn't threaten the <60s bar. Worst case: it lands during the demo's narration and is a happy surprise; best case: it lands while the rep is handing the phone to the homeowner.
-
-## Tech choices (with default + escape hatch)
-
-| Layer | Default | Escape hatch |
-|---|---|---|
-| Capture UI host | Cloudflare Pages | Vercel (warmer for the team) |
-| Phone capture | Browser `<input type="file" capture>` + MediaRecorder | PWA with Service Worker (only if needed) |
-| Storage + DB | Supabase | Local Postgres + S3-compat (only if Supabase has issues) |
-| Worker | Local Node + cloudflared tunnel | Railway deploy |
-| Vision model | Claude Sonnet 4.x | Claude Haiku 4.5 (latency cliff) |
-| Voice transcription | Whisper API | Claude voice / browser SpeechRecognition |
-| PDF render | Puppeteer | react-pdf |
-| External: satellite | Google Static Maps API | Mapbox |
-| External: parcel | Utah County GIS REST | Skip if too slow |
-| External: storms | NOAA Storm Events API | Skip |
-| External: permits | Utah-specific permit feed | Skip |
-
-## Data model
-
-```sql
--- captures: one per estimate request
-captures (
-  id uuid pk,
-  status text,           -- pending | processing | done | error
-  trade_pack text,       -- 'windows' | 'roofing'
-  description text,
-  voice_url text,        -- if voice path used
-  address text,          -- optional
-  photo_urls text[],     -- Storage refs
-  created_at timestamptz,
-  updated_at timestamptz
-)
-
--- external_context: what we pulled per capture
-external_context (
-  capture_id uuid pk,
-  satellite_url text,
-  parcel_data jsonb,
-  recent_permits jsonb,
-  storm_events jsonb,
-  fetched_at timestamptz
-)
-
--- extracted_items: structured items from the AI
-extracted_items (
-  id uuid pk,
-  capture_id uuid fk,
-  item_type text,        -- 'window' | 'door' | 'roof_area' | etc.
-  description text,
-  dimensions jsonb,      -- {w, h, unit}
-  qty int,
-  condition text,
-  confidence numeric,    -- 0-1
-  matched_sku text fk,
-  rationale text         -- which signals contributed
-)
-
--- catalog_items: the staged trade-packs
-catalog_items (
-  sku text pk,
-  trade text,            -- 'windows' | 'roofing'
-  name text,
-  manufacturer text,
-  unit_price numeric,
-  labor_hours numeric,
-  description text
-)
-
--- estimates: rendered output
-estimates (
-  capture_id uuid pk,
-  pdf_url text,
-  total numeric,
-  line_items jsonb,
-  informed_by jsonb,     -- which external sources contributed
-  rendered_at timestamptz
-)
-
--- upsells: Sales agent suggestions, populated after estimate
-upsells (
-  id uuid pk,
-  capture_id uuid fk,
-  upsell_id text,        -- 'gutter' | 'storm_door' | 'solar' | etc.
-  label text,            -- "Add gutter replacement"
-  rationale text,        -- "noticed worn gutters in photo 2"
-  estimated_add numeric, -- dollar amount
-  accepted boolean default false,
-  suggested_at timestamptz
-)
-```
-
-## What "done" looks like
-
-- Phone-to-PDF in <60s on a real network
-- Live progress UI shows the agent orchestra at work ("Surveyor analyzing…", "Estimator pricing…", "Generator rendering…")
-- PDF is branded, customer-presentable, includes "informed by" sources
-- Sales agent surfaces a contextual upsell within ~15s of the estimate landing
-- Same flow works for `windows` and `roofing` trade-packs (toggle visible)
-- Demo is reproducible 5 times in a row without a flake
+These were design directions before the bounty repo clarified the actual brief. They're now out of scope. If anything, we mention some of them as "future" in the README, but they don't get built.

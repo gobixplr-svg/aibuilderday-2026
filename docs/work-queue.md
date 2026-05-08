@@ -1,321 +1,235 @@
 # Work Queue
 
-> Pick a task, put your name on it, mark it claimed in the table below. Don't sit on a long PR — push early, push often. Aim for "scaffold up, no logic yet" merges so others can branch off.
+> Pivoted to match the actual JobNimbus bounty brief: aerial → roof measurement (sqft) + estimate. Five test addresses. Submission by Saturday 1:30 PM via the bounty form. Ground truth in `benchmarks/`.
+>
+> Pick a task, put your name on it. Push early. Update the table.
 
 ## Status legend
 
 - ⚪ Open — unclaimed
 - 🟡 Claimed — has owner, in progress
-- 🟢 Done — merged to main
+- 🟢 Done — merged
 
 ## Task table
 
 | # | Task | Owner | Status | Est | Blockers |
 |---|---|---|---|---|---|
-| 1 | Spike A — vision latency | | ⚪ | 1h | none |
-| 2 | Spike B — external context sources | | ⚪ | 2h | none |
-| 3 | Next.js + Supabase scaffold | | ⚪ | 1.5h | none |
-| 4 | Catalog research & content | | ⚪ | 2h | none |
-| 5 | Brand assets + PDF template | | ⚪ | 2h | none |
-| 6 | Phone capture page | | ⚪ | 2h | #3 |
-| 7 | Worker skeleton | | ⚪ | 2h | #3 |
-| 8 | Presenter view | | ⚪ | 1h | #3 |
-| 9 | Surveyor agent — real prompts | | ⚪ | 3h | #1, #2, #7 |
-| 10 | External context adapters | | ⚪ | 2h | #2, #7 |
-| 11 | Estimator + Generator agents | | ⚪ | 3h | #4, #5, #9 |
-| 12 | Sales upsell agent | | ⚪ | 1.5h | #11 |
+| 1 | Geocoding + aerial acquisition CLI | | ⚪ | 1h | none |
+| 2 | Pitch estimation prompt | | ⚪ | 1.5h | #1 |
+| 3 | Footprint + line items prompt | | ⚪ | 2h | #1 |
+| 4 | Calibration harness against examples | | ⚪ | 1h | #2, #3 |
+| 5 | Materials catalog (3 tiers, real prices) | | ⚪ | 1h | none |
+| 6 | Estimate calculator | | ⚪ | 1h | #5 |
+| 7 | PDF template + renderer | | ⚪ | 2h | #6 |
+| 8 | Single-command CLI runner | | ⚪ | 1h | #1, #4, #7 |
+| 9 | Run pipeline on 5 example properties (calibrate) | | ⚪ | 1h | #8 |
+| 10 | Iterate prompts to hit ±10% on examples | | ⚪ | 2h | #9 |
+| 11 | Run pipeline on 5 test properties | | ⚪ | 1h | #10 |
+| 12 | Final cross-check + form submission | | ⚪ | 0.5h | #11 |
+| 13 | Repo polish (README, code cleanup, demo prep) | | ⚪ | 1h | #11 |
 
-## Suggested first picks (4 people, parallel)
+**Critical path:** 1 → 2/3 (parallel) → 4 → 9 → 10 → 11 → 12 = ~9 hours sequential.
+**Parallel work:** 5 → 6 → 7 (~4 hours, no critical-path conflict).
 
-- **Dan:** #1 (vision latency spike)
-- **Will:** pair on #1, then #7 (worker skeleton)
-- **Eric:** #2 (external context spike), then #3 (scaffold)
-- **Ethan:** #4 (catalog research) — pure parallel, no code dependency
+## Suggested first picks
 
-After ~2 hours: spikes done, scaffold deployed, catalog content ready. Then we converge.
+- **Dan:** #1 (geocoding + aerial), then #2 (pitch prompt)
+- **Will:** #3 (footprint + line items prompt) — pair with Dan on #2 if helpful
+- **Eric:** #5 (materials catalog) → #6 (estimate calc) → #7 (PDF) — full estimate pipeline
+- **Ethan:** help with #5 (catalog research, real prices), then assist with #13 (repo polish)
+
+After ~3 hours: pipeline runs end-to-end on one address. Then it's calibration, calibration, calibration.
 
 ---
 
 ## Tasks (detail)
 
-### 1. Spike A — vision latency
+### 1. Geocoding + aerial acquisition CLI
 
-**Goal:** know whether Claude Sonnet vision can return structured items from a real Surveyor prompt in under 25 seconds, repeatably.
-
-**Steps:**
-- Pull 3 sample aerial images (Google Static Maps screenshots of real Lehi addresses)
-- Run Claude Sonnet 4.x with the Surveyor prompt template from `architecture.md`
-- 5 trial runs per image, measure: API latency, token count, output quality (JSON parses? items sensible?)
-- Test variations: Sonnet vs Haiku, 1024px vs 2048px, with/without parcel context
-- Document chosen settings in `docs/spike-results.md`
-
-**Decision:**
-- Median <20s on Sonnet → proceed with default
-- 20-30s → consider parallel calls or downscale
-- >30s → fall back to Haiku, accept lower fidelity
-
-**Output:** entry in `docs/spike-results.md`
-
----
-
-### 2. Spike B — external context sources
-
-**Goal:** know which external data APIs return useful data on a Lehi address inside the 5-second budget.
-
-**Setup:** pick a real Lehi address. **Recommendation: JobNimbus HQ — 3451 N Triumph Blvd, Lehi UT 84043.** Meta to use it as the demo property too.
-
-**Test each source for: latency, success/fail, data shape, useful for an estimate?**
-
-| Source | Endpoint hint | What we want |
-|---|---|---|
-| Google Static Maps | `maps.googleapis.com/maps/api/staticmap` | Aerial image URL |
-| Mapbox Static | `api.mapbox.com/styles/v1/.../static/...` | Aerial image URL |
-| Utah State GIS | `gis.utah.gov` | Statewide parcel data |
-| Utah County GIS | search county + "parcel REST API" | Parcel polygon, sqft, year built |
-| NOAA Storm Events | `ncei.noaa.gov/access/services/data/v1` | Storms in the area, last 5 years |
-| Lehi/Utah permits | research at event | Recent permits on the address |
-| OpenStreetMap | Overpass API | Building footprint, height |
-
-**Decision:**
-- Top 3 fastest + most useful sources → into the worker as adapters
-- Others → noted as "future" in architecture
-- If <2 sources work → demo de-emphasizes external context, leans on description
-
-**Output:** entry in `docs/spike-results.md`, list of surviving sources
-
----
-
-### 3. Next.js + Supabase scaffold
-
-**Goal:** working Next.js app deployed somewhere, Supabase wired, schema migrated, placeholder home page. Every other task depends on this.
+**Goal:** `node scripts/fetch-aerial.mjs "21106 Kenswick Meadows Ct, Humble, TX 77338"` produces `intermediate/<slug>/geocode.json` and `intermediate/<slug>/aerial.jpg`.
 
 **Steps:**
-- `npx create-next-app@latest app/` with TypeScript + Tailwind v4
-- Install `@supabase/ssr` and `@supabase/supabase-js`
-- Set up Supabase project (free tier is fine for the weekend)
-- Run schema migration from `docs/architecture.md` data model section: `captures`, `external_context`, `extracted_items`, `catalog_items`, `estimates`, `upsells`
-- Configure browser + server Supabase clients (`src/lib/supabase/`)
-- Deploy to Vercel or Cloudflare Pages with a placeholder home page
-- Push environment variables to deployment
-- Commit early — "scaffold up, no logic yet"
+- Sign up for Google Maps API key (or use Mapbox if Google billing is friction)
+- Geocoding API: address → lat/lng + formatted address
+- Static Maps API: lat/lng → satellite image at zoom 20, size 640x640, scale=2 (effectively 1280x1280)
+- Save image as JPEG, save geocode response as JSON
+- Slug = lowercase address with non-alphanumeric → hyphens
 
-**Output:** deployed URL, working Supabase project, all 6 tables present
+**Test:** runs cleanly on all 5 example properties + all 5 test properties.
+
+**Output:** images cached in `intermediate/`, no API hits on re-runs.
 
 ---
 
-### 4. Catalog research & content
+### 2. Pitch estimation prompt
 
-**Goal:** the staged catalog feels real, not toy. 30-50 SKUs per trade pack with real product names and credible prices.
+**Goal:** given `intermediate/<slug>/aerial.jpg`, predict roof pitch (e.g. "6:12") with confidence.
 
-**Roofing pack (~30-50 SKUs):**
-- GAF Timberline HDZ, GAF Timberline UHDZ, CertainTeed Landmark, CertainTeed Landmark Pro, Owens Corning Duration, Owens Corning Oakridge, IKO Cambridge, Atlas Pinnacle Pristine
-- Categories: 3-tab, architectural, designer, premium
-- Per-square pricing (a "square" = 100 sqft of roof)
-- Labor hours per square (1.5-2.5 typical)
-- Underlayment, ridge cap, starter strip, drip edge, ice & water shield as separate line items
+**Steps:**
+- Claude Sonnet vision call with the prompt sketch in `architecture.md`
+- Output: `intermediate/<slug>/vision-pitch.json` with `{ pitch, confidence, rationale }`
+- Test on the 5 example properties — references give us pitch ground truth (4:12, 6:12, 8:12)
 
-**Windows pack (~30-50 SKUs):**
-- Marvin Essential, Marvin Elevate, Marvin Ultimate (casement / double-hung / picture / awning variants)
-- Andersen 400 Series, Andersen 100 Series
-- Pella 250 Series, Pella Reserve
-- Per-unit pricing by size class
-- Labor hours per opening (2-4 typical)
+**Goal accuracy:** within 1 step (e.g. predict 6:12 when truth is 7:12 is OK; predict 4:12 when truth is 8:12 is not).
+
+**Iteration loop:**
+- Run on examples
+- Compare predictions vs reference pitches
+- Adjust prompt
+- Re-run
+
+---
+
+### 3. Footprint + line items prompt
+
+**Goal:** given `intermediate/<slug>/aerial.jpg`, predict footprint sqft + linear-feet for ridge/hip/valley/rake/eave.
+
+**Steps:**
+- Claude Sonnet vision call with the prompt sketch in `architecture.md`
+- Critical: image scale must be communicated — at Google Static Maps zoom 20, scale 2, the meters-per-pixel is roughly `156543.03 × cos(latitude) / 2^20 / 2`. At Houston (29.5°N) ≈ 0.13 m/px ≈ 0.42 ft/px.
+- Provide the scale factor in the prompt
+- Output: `intermediate/<slug>/vision-area.json` with `{ footprint_sqft, line_items: {...}, confidence, rationale }`
+
+**Iteration loop:**
+- Run on examples
+- Footprint × pitch_multiplier should land in [Ref A, Ref B] envelope
+- Linear-feet line items should be plausible (eaves ≥ 100ft for residential typical)
+- Adjust prompt; consider showing the model the scale bar visually
+
+---
+
+### 4. Calibration harness against examples
+
+**Goal:** `npm run calibrate` runs the full pipeline on all 5 example properties and prints a deviation table.
+
+**Output:**
+```
+Property                    | Predicted | Ref A | Ref B | Avg  | Δ%
+21106 Kenswick Meadows Ct   | 2,510     | 2,443 | 2,343 | 2393 | +4.9%
+5914 Copper Lilly Lane      | 4,300     | 4,391 | 4,296 | 4344 | -1.0%
+122 NW 13th Ave             | ...
+```
+
+**Goal:** all 5 within ±10% of reference average. Better is better.
+
+---
+
+### 5. Materials catalog (3 tiers, real prices)
+
+**Goal:** `data/materials.json` populated with the 3-tier structure from `architecture.md`. Real product names, real-ish prices.
 
 **Sources:**
 - Manufacturer spec sheets (public)
-- Contractor pricing forums (Reddit r/roofing, ContractorTalk)
-- Home Depot / Lowes for ballpark prices on common products
-- HomeAdvisor / Angie's List averages
-
-**Format:** JSON file in `docs/reference/catalog-roofing.json` and `docs/reference/catalog-windows.json`. Schema:
-
-```json
-{
-  "sku": "GAF-TIMB-HDZ-CHARCOAL",
-  "trade": "roofing",
-  "name": "GAF Timberline HDZ",
-  "manufacturer": "GAF",
-  "color_or_variant": "Charcoal",
-  "unit": "square",
-  "unit_price": 145.00,
-  "labor_hours_per_unit": 2.0,
-  "description": "Architectural laminate shingle, 30-yr warranty, ..."
-}
-```
-
-**Output:** two JSON files committed to repo, ready to seed `catalog_items` table
+- Home Depot / Lowes for ballpark per-square prices
+- Contractor pricing forums (r/Roofing, ContractorTalk) for labor + accessories
+- Cite each price source as a comment in the JSON or a `sources.md`
 
 ---
 
-### 5. Brand assets + PDF template
+### 6. Estimate calculator
 
-**Goal:** the rendered PDF looks like something a contractor would actually hand a homeowner. 25% of the grade is design — this owns it.
+**Goal:** given a measurement (sqft + line items), produce a priced bid.
 
 **Steps:**
-- Mock a contractor brand. Suggested: **"Apex Roofing & Exteriors"** (broad enough to cover roofing + windows). Generate a wordmark / simple logo. Free options: a clean sans-serif name + small icon, or use a tool like Canva/Figma.
-- Color palette: contractor-credible. Navy + red accent works. Or charcoal + safety orange. Avoid pastels.
-- Typography: bold sans-serif headers, clean readable body. Free: Inter, Manrope, Source Sans 3.
-- PDF template (HTML/CSS for Puppeteer, or react-pdf components):
-  - Header: brand wordmark, "Estimate," date, estimate number
-  - Customer block: name, address, prepared by
-  - Property block: satellite thumbnail (left), property facts (right) — "Built 1994 · 2,400 sqft · Permit on file 2018"
-  - Line items table: SKU, description, qty, unit price, total
-  - Subtotal / tax placeholder / total
-  - "Informed by" footnote: small text citing aerial imagery, parcel data, permits
-  - Signature line + "valid 30 days"
-  - Footer: brand contact info (mocked)
-- Test render at US Letter — make sure it doesn't overflow on 30-line bills
-
-**Output:**
-- Brand assets committed under `docs/brand/` (logo SVG/PNG, palette in `tokens.md`)
-- PDF template committed under `app/src/components/estimate-pdf/` (after #3)
+- `src/lib/estimate.ts` exports `estimate(measurement, materials, options) → BidResult`
+- Computes: material cost (squares × cost/sq), labor (squares × hours × rate), accessories (underlayment, drip edge, ridge cap based on linear-feet)
+- Returns 3 tier variants: standard, premium, luxury
+- Pure function, easy to unit test
 
 ---
 
-### 6. Phone capture page
+### 7. PDF template + renderer
 
-**Goal:** mobile-first capture page where a rep can enter address, optionally add photos + description, and submit.
-
-**Blockers:** #3 (scaffold)
+**Goal:** branded customer-ready estimate PDF.
 
 **Steps:**
-- Route: `/capture` (also accessible as `/`)
-- Form fields:
-  - Address (autocomplete optional, plain text fine)
-  - Trade-pack selector (radio: Roofing / Windows)
-  - Photos: `<input type="file" capture="environment" multiple>` — 0 to 5
-  - Description: textarea + voice button (MediaRecorder)
-- POST `/api/captures`:
-  - Creates a `captures` row (status='pending')
-  - Returns signed URLs for direct-to-Storage photo uploads
-  - Browser uploads photos in parallel
-  - Browser PATCHes `/api/captures/:id` to mark photos uploaded → status='ready'
-- Redirect to `/captures/:id` (status page that polls)
-
-**Mobile-first Tailwind layout. Big buttons. Looks like an app, not a form.**
-
-**Output:** working capture flow, end-to-end from form → DB row + photos in Storage
+- HTML template (Tailwind for styling) — header/customer block/property block with aerial thumbnail/line items table/totals/signature line
+- Puppeteer renders to PDF
+- Three tiers shown side by side OR one tier per page; design choice
+- Output: `outputs/<slug>/estimate.pdf`
 
 ---
 
-### 7. Worker skeleton
+### 8. Single-command CLI runner
 
-**Goal:** local Node worker that polls Supabase for pending jobs, runs stub steps, updates status. Real agents replace stubs in #9-12.
-
-**Blockers:** #3 (scaffold + Supabase tables)
+**Goal:** `npm run estimate -- "address"` runs the entire pipeline and writes `outputs/<slug>/`.
 
 **Steps:**
-- `worker/index.mjs`: poll `captures` where `status='ready'` every 1-2s
-- For each job:
-  - Update status to 'processing'
-  - Run stub steps with sleeps:
-    - "Pulling external context…" (3s sleep, write mock blob to `external_context`)
-    - "Surveyor analyzing…" (5s sleep, write mock items to `extracted_items`)
-    - "Estimator pricing…" (2s sleep, write mock matches)
-    - "Generator rendering…" (2s sleep, write mock PDF URL to `estimates`)
-  - Status to 'done'
-- Sales agent stub: 5s after estimate done, write a mock upsell row
-- Expose worker via `cloudflared tunnel` or `ngrok` (only needed if worker calls back to deployed app, which it shouldn't — worker only reads/writes Supabase)
-- Logs structured for debugging
-
-**Output:** stub worker that processes jobs end-to-end, ready for real agents to drop in
+- `scripts/estimate.mjs` orchestrates: geocode → aerial → pitch → footprint → estimate → PDF
+- Writes all intermediate files for inspection
+- Idempotent: re-running uses cached aerial + cached vision calls if present (with `--no-cache` flag to force refresh)
 
 ---
 
-### 8. Presenter view
+### 9. Run pipeline on 5 example properties (calibrate)
 
-**Goal:** big-screen view that mirrors the latest estimate state. What judges watch on the projector during the demo.
-
-**Blockers:** #3 (scaffold)
+**Goal:** baseline calibration numbers.
 
 **Steps:**
-- Route: `/presenter/[capture_id]`
-- Polls capture + estimate + upsell every 1s
-- Layout:
-  - Header: "AI Builder Day · [trade pack]"
-  - Big progress chips while processing — "✓ Pulling property data" / "⏳ Surveyor analyzing" / "○ Estimator pricing"
-  - When estimate done: PDF embedded inline (iframe to pdf_url, or rendered React)
-  - When upsell appears: card slides in below estimate
-- Auto-fullscreen on mount (or styled to look fullscreen)
-
-**Output:** projector-ready URL that updates live
+- Run `npm run estimate` on all 5 example addresses
+- Record predicted vs reference in `benchmarks/calibration-results.md`
+- Identify which properties are inside ±10%, which are outside
 
 ---
 
-### 9. Surveyor agent — real prompts
+### 10. Iterate prompts to hit ±10% on examples
 
-**Goal:** the AI returns parseable, sensible structured scope items from real aerial + metadata + (optional) ground photos.
-
-**Blockers:** #1 (latency confirmed), #2 (sources confirmed), #7 (worker skeleton to wire into)
+**Goal:** all 5 example properties within ±10% of reference average.
 
 **Steps:**
-- Replace the Surveyor stub in worker with a real Anthropic SDK call
-- Prompt template per `architecture.md` Surveyor section
-- Test with: aerial-only input (Act 1 mode), aerial + ground photos (Act 2 mode)
-- Iterate until JSON parses cleanly and items are credible
-- Test both trade packs (roofing + windows)
-- Confidence flags per item
-- Build a small ground-truth set (3-5 known properties with expected items) to regression-check changes
+- Look at the failing properties; figure out what the model missed
+- Adjust pitch prompt or area prompt accordingly
+- Re-run calibration
+- Repeat until calibrated
 
-**Output:** real Surveyor agent in worker, scoped JSON written to `extracted_items`
+**Time-box:** 2 hours. If we can't hit ±10% in 2 hours, accept what we have and move on.
 
 ---
 
-### 10. External context adapters
+### 11. Run pipeline on 5 test properties
 
-**Goal:** real data from the surviving sources from Spike B, behind small adapters that fail independently.
-
-**Blockers:** #2 (Spike B), #7 (worker skeleton)
+**Goal:** final numbers for submission.
 
 **Steps:**
-- One file per source: `worker/sources/google-maps.mjs`, `worker/sources/utah-gis.mjs`, etc.
-- Each exports an async function `(address) → data | null`
-- 5s timeout per source, swallow errors, return null
-- Worker calls all in parallel, merges what comes back into `external_context` row
-
-**Output:** 2-3 working adapters, real data flowing into `external_context`
+- Run `npm run estimate` on all 5 test addresses
+- Update `benchmarks/test-properties.md` with predicted sqft + pitch
+- Cache the outputs in `outputs/`
 
 ---
 
-### 11. Estimator + Generator agents
+### 12. Final cross-check + form submission
 
-**Goal:** scoped items become a priced bid, rendered as a branded PDF.
-
-**Blockers:** #4 (catalog), #5 (PDF template), #9 (Surveyor produces scope)
+**Goal:** numbers submitted by 1:30 PM.
 
 **Steps:**
-- **Estimator:** for each scope item, match to catalog SKU. Either rule-based (string match + best-fit) or LLM-driven (small Haiku call). Output: priced line items with SKU, qty, unit price, labor.
-- **Generator:** render `estimates` row into a PDF via Puppeteer or react-pdf, using the template from #5. Upload to Supabase Storage. Write `pdf_url` to `estimates`.
-
-**Output:** real PDF generated end-to-end for a real address
+- Re-run example calibration one final time — confirm we haven't regressed
+- Sanity-check test-property numbers against parcel sqft (where pulled) — should be order-of-magnitude reasonable
+- Open form: https://docs.google.com/forms/d/e/1FAIpQLSfTL58Z0rVBgfx9l81lV7GpryhF7kDEuFKCgNG5i-m1RWDyUg/viewform
+- Fill out: team name, members, approach summary (≤200 words), phone (for finalist text), repo URL, 5 sqft numbers, optional best output URL
+- Submit
+- Take a screenshot of confirmation
 
 ---
 
-### 12. Sales upsell agent
+### 13. Repo polish (README, code cleanup, demo prep)
 
-**Goal:** post-estimate, a contextual upsell appears as a card on the phone + presenter view.
-
-**Blockers:** #11
+**Goal:** the public repo is something we'd want judges to see.
 
 **Steps:**
-- After `estimates` row is written, run Sales agent prompt (per `architecture.md`)
-- Inputs: scope items, photos, external context, trade-pack
-- Output: at most one upsell row in `upsells` table
-- Phone + presenter poll the upsells table
-- Card UI: "By the way — noticed [rationale]. Add [label] for $[estimated_add]?" + Accept button
-- On accept: update totals (or mock the update for the demo)
-
-**Pre-stage a baseline upsell rule** (e.g., always offer gutters when description mentions "old" or aerial shows worn gutters) so even a flaky LLM hits it.
-
-**Output:** upsell card appears reliably on the demo
+- README is clear, accurate, runnable
+- No commented-out garbage, no debug logs in committed code
+- License/attribution clean
+- A short demo script for if we make finals (5 min + Q&A)
+- One screenshot or short video of the tool running, embedded in README
 
 ---
 
-## Coordination notes
+## Coordination
 
-- **Push early, push often.** "Scaffold up, no logic yet" commits unblock the team.
-- **Branch per task** if anyone wants to PR. Otherwise main is fine for this scale.
-- **Pick a comms channel** at kickoff. Slack DM, in-person, or GitHub issues — one of them.
-- **Address pick:** JobNimbus HQ recommended. Whoever's outside first, capture 5 ground-level photos for Act 2.
-- **Don't relitigate the stack** unless something concrete fails. Decision rationale is in `architecture.md`.
-- **Update this file** as you claim and complete tasks. The status table is the single source of truth.
+- **Submission deadline:** Saturday 1:30 PM. Hard.
+- **Live finals (if top 5):** 2:00–3:30 PM, on-site at JobNimbus HQ.
+- **Awards:** 4:00 PM.
+- **Status table at the top is the source of truth.** Update as you claim/finish.
+- **The repo is public (slide 8: JN owns submitted IP).** Treat everything in it as code we're handing JN. No NBD Labs prompts, no proprietary patterns.
+- **Build, don't buy.** No commercial measurement APIs (EagleView, Geospan, Hover, Roofr Instant Estimator). Computation must be visible in the repo.
+- **Don't fabricate.** Submitted numbers can be cross-checked.

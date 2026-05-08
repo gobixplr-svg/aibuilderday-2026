@@ -1,46 +1,106 @@
-# AI Builder Day 2026 — Field Capture
+# Aerial Roof Measurement & Auto-Estimating
 
-**Event:** AI Builder Day, May 8–9 2026, Lehi UT (JobNimbus HQ)
-**Track:** JobNimbus $10K bounty — AI pipeline that turns property info into a customer-ready contractor estimate
-**Working title:** Field Capture
+> Submission for the JobNimbus AI Hackathon 2026 ($10K bounty track).
+> AI Builder Day, May 8–9 2026, Lehi UT.
 
-## What we're building
+## What this tool does
 
-A field-capture primitive: photos + voice in, customer-ready estimate PDF out, in under 60 seconds. Positioned as a platform primitive (SDK / API surface) for contractor-CRMs, not a vertical product.
+Address in → roof measurement (total sqft + line items where possible) + quote-ready estimate out.
 
-Full concept in [`docs/concept-prompt.md`](docs/concept-prompt.md).
+The bounty's example/test properties are residential pitched roofs across multiple states (TX, FL, IL, MO, CO, VA). The tool's job is to compute roof measurements from publicly-available aerial imagery without calling commercial measurement APIs (build, don't buy), then turn those measurements into a contractor-ready estimate with material options.
 
-## Status
+## Approach (high-level)
 
-- **Concept:** locked — see `docs/concept-prompt.md`
-- **IP/ownership:** **pending** — awaiting written response from JustBuild. See [`IP_STATUS.md`](IP_STATUS.md) before contributing code.
-- **Team:** forming
-- **Stack:** TBD (likely Next.js + Supabase + Anthropic Claude)
+1. **Aerial acquisition** — pull a high-resolution overhead image of the property from a public source (e.g. Google Static Maps, Mapbox)
+2. **Pitch estimation** — infer the dominant roof pitch from visible cues
+3. **Footprint extraction** — segment the roof footprint from the aerial image
+4. **Roof area** — `roof_area_sqft = footprint_sqft × pitch_multiplier` (per the bounty's hint)
+5. **Line items** — detect and measure ridge / hip / valley / rake / eave linear-feet where possible
+6. **Estimate** — multiply measurements by per-square material costs across 3 tiers (3-tab / architectural / premium), produce a quote PDF
+
+> Stack and AI choices documented in `docs/architecture.md`. Per-property outputs in `outputs/`.
+
+## How to run
+
+```bash
+# install
+npm install
+
+# environment
+cp .env.example .env.local
+# fill in: ANTHROPIC_API_KEY, GOOGLE_MAPS_API_KEY (or MAPBOX_TOKEN)
+
+# run on a single address
+npm run estimate -- "3561 E 102nd Ct, Thornton, CO 80229"
+
+# run on the full bounty test set
+npm run estimate:test-set
+```
+
+Output: a JSON measurement report and a PDF estimate per address, written to `outputs/`.
 
 ## Repo layout
 
 ```
 .
-├── README.md                  ← you are here
-├── IP_STATUS.md               ← read before contributing code
+├── README.md                       ← you are here
+├── benchmarks/                     ← example + test properties from JN's repo
+│   ├── example-properties.md       ← 5 with reference data (calibration)
+│   └── test-properties.md          ← 5 to score on (submission targets)
+├── outputs/                        ← per-property results
+│   ├── 3561-e-102nd-ct/            ← test property 1
+│   │   ├── aerial.jpg
+│   │   ├── measurement.json
+│   │   └── estimate.pdf
+│   └── ...                         ← one folder per property
 ├── docs/
-│   ├── concept-prompt.md      ← the build brief
-│   ├── tasks.md               ← suggested track plan (4 people, 3 tracks)
-│   └── reference/             ← event materials, alternate-track research
-└── .gitignore
+│   ├── architecture.md             ← stack, pipeline, models
+│   └── work-queue.md               ← team task breakdown
+├── src/                            ← Next.js app
+└── scripts/                        ← CLI runners for measurement + estimate
 ```
 
-## For new teammates
+## What's in the estimate
 
-1. Read [`docs/concept-prompt.md`](docs/concept-prompt.md) — the full concept.
-2. Read [`IP_STATUS.md`](IP_STATUS.md) — current status of the IP/ownership question for hackathon submissions.
-3. Ping Dan with questions before committing time.
+The estimate is delivered as a customer-ready PDF with three roofing material tiers:
 
-## Schedule
+| Tier | Material | Per-sq cost | Warranty |
+|---|---|---|---|
+| Standard | 3-tab asphalt | ~$110/sq | 25 yr |
+| Premium | Architectural laminate | ~$145/sq | 30-50 yr |
+| Luxury | Designer / impact-resistant | ~$220/sq | Lifetime |
 
-- **Friday May 8** — Doors 8am, kickoff 9am, **bounty twist 1:05pm**, building begins 1:30pm, building closes 5pm
-- **Saturday May 9** — Building opens 8am, **code freeze 2pm**, judging 2–3:30pm, awards 4pm
+Material catalog (real product names, real-ish prices) is in `data/materials.json`. Sources cited in the catalog.
 
-## Reference materials in this repo
+## Submission targets
 
-- `docs/reference/goed-map-data.csv` and `docs/reference/goed-resources-list.csv` — datasets from the GOED bounty track. We evaluated GOED before settling on JobNimbus; kept here for context if the Friday twist forces a pivot.
+Per `benchmarks/test-properties.md`, the five addresses we submit total sqft for:
+
+1. 3561 E 102nd Ct, Thornton, CO 80229
+2. 1612 S Canton Ave, Springfield, MO 65802
+3. 6310 Laguna Bay Court, Houston, TX 77041
+4. 3820 E Rosebrier St, Springfield, MO 65809
+5. 1261 20th Street, Newport News, VA 23607
+
+Submitted via the form in `https://github.com/jobnimbus/jobnimbus-hackathon-2026/blob/main/SUBMISSION.md` by Saturday 1:30 PM.
+
+## AI choices
+
+- **Claude Sonnet 4.x** for vision-based footprint and pitch analysis
+- **Claude Haiku 4.5** for fast classification (e.g. "is this image showing a roof?")
+- Both behind the Anthropic SDK; switchable via env
+
+## Known limitations
+
+- Pitch estimation is heuristic, not photogrammetric. Expect 1-step pitch error on complex roofs.
+- Line-item linear-feet extraction is best-effort; total sqft is the priority signal.
+- Footprint extraction depends on aerial image quality; obstructed roofs (heavy tree cover) will produce wider tolerance.
+
+## Team
+
+- Dan Elggren · Eric Smith · Will [last] · Ethan [last]
+- AI Builder Day 2026, Lehi UT, JobNimbus track
+
+## License
+
+This work is submitted to the JobNimbus AI Hackathon 2026 under the bounty terms (slide 8: JN owns the IP of submitted work).
