@@ -27,11 +27,13 @@ function formatElapsed(seconds: number): string {
 
 export default function PipelineStatus() {
   const [msgIndex, setMsgIndex] = useState(0)
+  const [msgKey, setMsgKey] = useState(0)
   const [elapsed, setElapsed] = useState(0)
 
   useEffect(() => {
     const msgTimer = setInterval(() => {
       setMsgIndex((i) => (i + 1) % MESSAGES.length)
+      setMsgKey((k) => k + 1)
     }, 3000)
     const elapsedTimer = setInterval(() => {
       setElapsed((s) => s + 1)
@@ -53,9 +55,10 @@ export default function PipelineStatus() {
         }}
       />
 
-      {/* Rotating message */}
+      {/* Rotating message — re-keyed on each change to trigger fade */}
       <p
-        className="text-base font-medium text-center min-h-[1.5rem] transition-opacity"
+        key={msgKey}
+        className="fade-msg text-base font-medium text-center"
         style={{ color: "var(--jn-navy)" }}
       >
         {MESSAGES[msgIndex]}

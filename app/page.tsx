@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       {state === "idle" && (
-        <>
+        <div className="fade-in">
           <h1 className="text-5xl font-black tracking-tight mb-2" style={{ color: "var(--jn-navy)" }}>
             Aerial Roof Estimator
           </h1>
@@ -50,11 +50,11 @@ export default function Home() {
             Enter a property address to get a measurement and quote-ready estimate in seconds.
           </p>
           <AddressForm onSubmit={handleSubmit} />
-        </>
+        </div>
       )}
 
       {state === "running" && (
-        <div className="mt-4">
+        <div className="fade-in mt-4">
           <h2 className="text-xl font-semibold mb-2" style={{ color: "var(--jn-navy)" }}>
             Analyzing property…
           </h2>
@@ -63,7 +63,7 @@ export default function Home() {
       )}
 
       {state === "error" && (
-        <div className="rounded-xl border border-red-200 bg-red-50 p-6 mt-4">
+        <div className="fade-in rounded-xl border border-red-200 bg-red-50 p-6 mt-4">
           <p className="font-semibold text-red-700 mb-1">Pipeline failed</p>
           <p className="text-red-600 text-sm font-mono">{error}</p>
           <button
@@ -77,7 +77,7 @@ export default function Home() {
       )}
 
       {state === "done" && result && (
-        <>
+        <div className="fade-in">
           <ResultsPanel result={result} />
           <button
             onClick={() => setState("idle")}
@@ -86,7 +86,7 @@ export default function Home() {
           >
             ← New estimate
           </button>
-        </>
+        </div>
       )}
     </div>
   )

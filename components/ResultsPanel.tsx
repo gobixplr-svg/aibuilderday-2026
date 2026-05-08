@@ -15,7 +15,7 @@ export default function ResultsPanel({ result }: { result: EstimateResponse }) {
       {/* Measurement card */}
       <div
         className="rounded-xl border p-8 text-center"
-        style={{ borderColor: "var(--jn-border)", background: "white" }}
+        style={{ borderColor: "var(--jn-border)", background: "var(--jn-card)" }}
       >
         <h2 className="text-sm font-semibold mb-6 text-left" style={{ color: "var(--jn-muted)" }}>
           Roof Measurements
@@ -68,7 +68,7 @@ export default function ResultsPanel({ result }: { result: EstimateResponse }) {
               className="rounded-xl border p-5"
               style={{
                 borderColor: i === 1 ? "var(--jn-blue)" : "var(--jn-border)",
-                background: "white",
+                background: "var(--jn-card)",
                 boxShadow: i === 1 ? "0 0 0 2px var(--jn-blue)" : undefined,
               }}
             >
