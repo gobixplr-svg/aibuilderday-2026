@@ -1,0 +1,25 @@
+{
+  "slug": "21106-kenswick-meadows-ct-humble-tx-77338",
+  "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
+  "formatted_address": "21106 KENSWICK MEADOWS CT, HUMBLE, TX, 77338",
+  "lat": 30.019678944854,
+  "lng": -95.312042771943,
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
+  "pitch_confidence": 0.63,
+  "pitch_rationale": "Located in Humble, TX (Houston metro), a Southern climate favoring 4:12–6:12 pitches. Roof shadows extend approximately 10–18 ft from the eave edge, consistent with a moderate pitch for a single-story eave height of ~8–9 ft. Viewed from nadir, the roof planes are broad but the ridge is clearly recessed from the eave footprint, ruling out very shallow (3:12–4:12) or steep (8:12+) pitches. The dominant hip-roof configuration with dark asphalt shingles and no pronounced dormer protrusions is characteristic of 1990s–2000s Texas suburban tract construction, where 6:12 is the most common standard pitch. Shadow definition on the shingle surface is moderate, further supporting a 6:12 estimate.",
+  "pitch_stub": false,
+  "footprint_sqft": 3100,
+  "footprint_confidence": 0.32,
+  "footprint_rationale": "Target identified as the large dark charcoal/gray hip-roofed house at the bottom of the Kenswick Meadows Ct cul-de-sac (lower-center of image). The house is L-shaped: a main rectangular section (~73 px E-W × ~55 px N-S = 61.9 ft × 46.7 ft) plus an attached garage/wing (~30 px × ~35 px = 25.4 ft × 29.7 ft). Net footprint after subtracting the shared-wall overlap and adjusting for roof outline vs. wall footprint discrepancy ≈ 3,100 sq ft. Roof type appears to be an intersecting hip with no visible gable ends (no rakes), yielding a main ridge of ~30 ft, ~130 ft of hip lines (diagonal corner edges from ridge to eave corners), ~20 ft of valley where the wing intersects the main body, and ~155 ft of eave running along the full L-shaped lower perimeter. Confidence is moderate-low due to image resolution limitations and uncertainty in precisely identifying this parcel vs. adjacent homes on the cul-de-sac.",
+  "footprint_stub": false,
+  "line_items": {
+    "ridge": 30,
+    "hip": 130,
+    "valley": 20,
+    "rake": 0,
+    "eave": 155
+  },
+  "roof_area_sqft": 3466,
+  "computed_at": "2026-05-08T22:10:17.516Z"
+}

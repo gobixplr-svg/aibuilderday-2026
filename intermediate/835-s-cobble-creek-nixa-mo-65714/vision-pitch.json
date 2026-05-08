@@ -1,0 +1,6 @@
+{
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
+  "confidence": 0.58,
+  "rationale": "Shadow lengths cast from the eave edges extend approximately 30–40% of the building's plan width, consistent with a moderate 6:12 pitch rather than a shallow (4:12) or steep (8:12+) roof. The visible ridge line is clearly distinguishable and noticeably narrower than the eave footprint, but not dramatically so, placing it in the mid-range slope category. No prominent dormers or sharply elevated peaks are visible in plan view. Regional context supports this estimate: Nixa, MO (southwest Missouri, Ozarks region) overwhelmingly features suburban tract homes built to 6:12–8:12 standards. Combining shadow geometry, ridge-to-eave ratio, and regional norms, 6:12 is the most probable dominant pitch, though 7:12 cannot be ruled out given modest shadow ambiguity."
+}

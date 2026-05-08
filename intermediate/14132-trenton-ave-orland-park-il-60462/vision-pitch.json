@@ -1,0 +1,6 @@
+{
+  "pitch": "5:12",
+  "pitch_multiplier": 1.083,
+  "confidence": 0.62,
+  "rationale": "The Orland Park, IL suburban context (northern climate, 1970s–1990s tract development) strongly suggests a mid-range pitch. Ground shadow lengths cast northward from the eaves measure approximately 6–9 feet at the image scale (1 px = 0.732 ft, calibrated to the 50-ft scale bar), consistent with a 5:12 rise-to-run for typical 8–9 ft eave heights. The roof-to-eave geometry shows ridgelines that are noticeably inset from the eave perimeter but not dramatically so, ruling out very shallow (3:12–4:12) or steep (8:12+) profiles. Hip-roof construction with asphalt shingles is apparent across multiple homes in the neighborhood, further consistent with a standard 5:12 suburban build. Moderate confidence reflects the lack of oblique imagery to directly measure vertical rise."
+}
