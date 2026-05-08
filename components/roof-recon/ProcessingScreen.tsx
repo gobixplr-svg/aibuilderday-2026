@@ -38,7 +38,10 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
   const startRef = useRef(Date.now())
   const [elapsed, setElapsed] = useState(0)
   const [msgIdx, setMsgIdx] = useState(0)
+  const [charIdx, setCharIdx] = useState(0)
+  const [deleting, setDeleting] = useState(false)
 
+  // Elapsed timer
   useEffect(() => {
     const id = setInterval(() => {
       setElapsed(Math.floor((Date.now() - startRef.current) / 1000))
@@ -46,12 +49,29 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
     return () => clearInterval(id)
   }, [])
 
+  // Typewriter effect
   useEffect(() => {
-    const id = setInterval(() => {
-      setMsgIdx((i) => (i + 1) % WITTY_MESSAGES.length)
-    }, 2800)
-    return () => clearInterval(id)
-  }, [])
+    const msg = WITTY_MESSAGES[msgIdx]
+    if (!deleting) {
+      if (charIdx < msg.length) {
+        const id = setTimeout(() => setCharIdx((c) => c + 1), 42)
+        return () => clearTimeout(id)
+      } else {
+        const id = setTimeout(() => setDeleting(true), 1600)
+        return () => clearTimeout(id)
+      }
+    } else {
+      if (charIdx > 0) {
+        const id = setTimeout(() => setCharIdx((c) => c - 1), 18)
+        return () => clearTimeout(id)
+      } else {
+        setMsgIdx((i) => (i + 1) % WITTY_MESSAGES.length)
+        setDeleting(false)
+      }
+    }
+  }, [charIdx, deleting, msgIdx])
+
+  const displayText = WITTY_MESSAGES[msgIdx].slice(0, charIdx)
 
   const progress = Math.min(elapsed / TARGET_SECS, 0.98)
 
@@ -117,14 +137,13 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
             </div>
             <div className="relative mt-2 h-9 overflow-hidden">
               <div
-                key={msgIdx}
                 className="absolute inset-0 text-2xl font-light tracking-tight"
-                style={{ animation: "msgIn 0.55s ease-out", color: t.text }}
+                style={{ color: t.text }}
               >
-                {WITTY_MESSAGES[msgIdx]}
+                {displayText}
                 <span
-                  className="inline-block w-2 h-5 ml-1 align-middle animate-pulse"
-                  style={{ background: t.accent }}
+                  className="inline-block w-2 h-5 ml-0.5 align-middle"
+                  style={{ background: t.accent, opacity: deleting ? 0.5 : 1 }}
                 />
               </div>
             </div>

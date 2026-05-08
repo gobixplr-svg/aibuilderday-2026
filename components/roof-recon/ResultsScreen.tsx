@@ -63,6 +63,8 @@ type ApiTier = {
 type Result = {
   address: string
   sqft: number
+  footprint_sqft?: number | null
+  footprint_confidence?: number | null
   pitch: string
   pitch_confidence: number
   tiers: ApiTier[]
@@ -76,7 +78,7 @@ type Props = {
 }
 
 export function ResultsScreen({ t, result, onReset }: Props) {
-  const { address, sqft, pitch, pitch_confidence, tiers, stub } = result
+  const { address, sqft, footprint_sqft, pitch, pitch_confidence, tiers, stub } = result
   const [revealed, setRevealed] = useState(0)
 
   // Count-up animation
@@ -164,17 +166,12 @@ export function ResultsScreen({ t, result, onReset }: Props) {
               <div className="absolute -bottom-3 -left-3 w-4 h-4 border-b-2 border-l-2" style={{ borderColor: t.accent }} />
             </div>
 
-            <div className="mt-5 max-w-md text-sm leading-relaxed" style={{ color: t.textMuted }}>
-              Measured across <span style={{ color: t.text, fontWeight: 600 }}>3 roof planes</span> including the rear addition.
-              Includes 8% waste factor for hip cuts and starter rows.
-            </div>
-
-            {/* Stats grid */}
+            {/* Stats grid — all real values from pipeline */}
             <div className="mt-8 grid grid-cols-3 gap-px max-w-lg" style={{ background: t.border }}>
               {([
-                ["PITCH",      pitch,                             "≈ 30°"],
-                ["CONFIDENCE", `${Math.round(pitch_confidence * 100)}%`, "high"],
-                ["PLANES",     "3",                               "2 gable, 1 hip"],
+                ["PITCH",      pitch,                                    "roof slope"],
+                ["CONFIDENCE", `${Math.round(pitch_confidence * 100)}%`, "AI estimate"],
+                ["FOOTPRINT",  footprint_sqft ? `${footprint_sqft.toLocaleString()}` : "—", "sq ft base"],
               ] as [string, string, string][]).map(([k, v, sub]) => (
                 <div key={k} className="px-4 py-4" style={{ background: t.bg }}>
                   <div className="text-[9px] font-mono tracking-[0.25em]" style={{ color: t.textSoft }}>{k}</div>

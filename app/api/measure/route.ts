@@ -73,11 +73,13 @@ export async function POST(req: NextRequest) {
   })
 
   return NextResponse.json({
-    address:          address.trim(),
+    address:              address.trim(),
     sqft,
-    pitch:            normalizePitch(measurement.pitch ?? ""),
-    pitch_confidence: measurement.pitch_confidence ?? 0,
+    footprint_sqft:       measurement.footprint_sqft ?? null,
+    footprint_confidence: measurement.footprint_confidence ?? null,
+    pitch:                normalizePitch(measurement.pitch ?? ""),
+    pitch_confidence:     measurement.pitch_confidence ?? 0,
     tiers,
-    stub:             !!(measurement.pitch_stub || measurement.footprint_stub),
+    stub:                 !!(measurement.pitch_stub || measurement.footprint_stub),
   })
 }

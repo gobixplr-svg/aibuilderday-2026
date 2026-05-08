@@ -9,6 +9,8 @@ import { ResultsScreen } from "./ResultsScreen"
 type ResultData = {
   address: string
   sqft: number
+  footprint_sqft?: number | null
+  footprint_confidence?: number | null
   pitch: string
   pitch_confidence: number
   tiers: { name: string; total: number; per_sqft?: number }[]
