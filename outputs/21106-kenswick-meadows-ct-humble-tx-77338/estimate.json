@@ -2,13 +2,13 @@
   "measurement": {
     "slug": "21106-kenswick-meadows-ct-humble-tx-77338",
     "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
-    "formatted_address": "21106 KENSWICK MEADOWS CT, HUMBLE, TX, 77338",
-    "lat": 30.019678944854,
-    "lng": -95.312042771943,
+    "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA",
+    "lat": 30.019412,
+    "lng": -95.311886,
     "pitch": "6:12",
     "pitch_multiplier": 1.118,
-    "pitch_confidence": 0.63,
-    "pitch_rationale": "Located in Humble, TX (Houston metro), a Southern climate favoring 4:12–6:12 pitches. Roof shadows extend approximately 10–18 ft from the eave edge, consistent with a moderate pitch for a single-story eave height of ~8–9 ft. Viewed from nadir, the roof planes are broad but the ridge is clearly recessed from the eave footprint, ruling out very shallow (3:12–4:12) or steep (8:12+) pitches. The dominant hip-roof configuration with dark asphalt shingles and no pronounced dormer protrusions is characteristic of 1990s–2000s Texas suburban tract construction, where 6:12 is the most common standard pitch. Shadow definition on the shingle surface is moderate, further supporting a 6:12 estimate.",
+    "pitch_confidence": 0.72,
+    "pitch_rationale": "The homes in this Humble, TX suburban neighborhood feature predominantly hip-style roofs with moderate visual characteristics consistent with a 6:12 pitch. Ground shadows cast from the eave edges extend roughly 1–1.5× the overhang width, indicating a moderate but not steep slope. The hip roof planes are clearly visible from the near-nadir view but are not dramatically foreshortened (which would indicate steeper pitch) nor nearly flat-looking (which would indicate shallower pitch). The ridge is noticeably inset from the eave perimeter but occupies a moderate proportion of the footprint. Regionally, Houston-area suburban construction from the 2000s–2010s strongly favors 6:12 as the standard design pitch, and all visual cues here align with that estimate.",
     "pitch_stub": false,
     "footprint_sqft": 3100,
     "footprint_confidence": 0.32,
@@ -22,7 +22,7 @@
       "eave": 155
     },
     "roof_area_sqft": 3466,
-    "computed_at": "2026-05-08T22:10:17.516Z"
+    "computed_at": "2026-05-08T22:55:47.555Z"
   },
   "tiers": [
     {
@@ -70,13 +70,13 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T22:10:17.518Z",
+          "generated_at": "2026-05-08T22:55:47.557Z",
           "currency": "USD"
         },
         "inputs": {
           "property": {
             "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
-            "formatted_address": "21106 KENSWICK MEADOWS CT, HUMBLE, TX, 77338"
+            "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA"
           },
           "geometry": {
             "roof_area_sqft": 3466,
@@ -211,13 +211,13 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T22:10:17.518Z",
+          "generated_at": "2026-05-08T22:55:47.557Z",
           "currency": "USD"
         },
         "inputs": {
           "property": {
             "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
-            "formatted_address": "21106 KENSWICK MEADOWS CT, HUMBLE, TX, 77338"
+            "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA"
           },
           "geometry": {
             "roof_area_sqft": 3466,
@@ -352,13 +352,13 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T22:10:17.518Z",
+          "generated_at": "2026-05-08T22:55:47.557Z",
           "currency": "USD"
         },
         "inputs": {
           "property": {
             "address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
-            "formatted_address": "21106 KENSWICK MEADOWS CT, HUMBLE, TX, 77338"
+            "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA"
           },
           "geometry": {
             "roof_area_sqft": 3466,
@@ -449,7 +449,7 @@
       }
     }
   ],
-  "generated_at": "2026-05-08T22:10:17.518Z",
+  "generated_at": "2026-05-08T22:55:47.557Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

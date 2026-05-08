@@ -1,0 +1,457 @@
+{
+  "measurement": {
+    "slug": "5914-copper-lilly-lane-spring-tx-77389",
+    "address": "5914 Copper Lilly Lane, Spring, TX 77389",
+    "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA",
+    "lat": 30.1116839,
+    "lng": -95.50907149999999,
+    "pitch": "6:12",
+    "pitch_multiplier": 1.118,
+    "pitch_confidence": 0.72,
+    "pitch_rationale": "The homes display complex multi-plane hip roofs with moderate shadow lengths extending roughly 5–8 ft from the eave edges (per the 50-ft scale bar), consistent with a 6:12 pitch. The ridge lines are well-inset from the eave perimeter but the visible roof plane widths are broad, ruling out anything steeper than 8:12. The triangular hip-end gables show moderate protrusion from overhead, not the dramatic tapering seen on 9:12+ roofs. Regional context (Spring, TX — Houston suburb) strongly favors 6:12 as the standard pitch for upscale suburban hip-roofed homes in this warm climate with no snow-load requirements. The dark shingle texture shows subtle but not dramatic slope definition from the satellite vantage, further corroborating a moderate 6:12 pitch over steeper alternatives.",
+    "pitch_stub": false,
+    "footprint_sqft": 2258,
+    "footprint_confidence": 0.43,
+    "footprint_rationale": "Target home identified as the large complex hip-roofed residence near the image center (coordinates 30.1117, -95.5091). Bounding box traced from approximately x=435–650 (215 px = 45.6 ft) by y=385–685 (300 px = 63.6 ft), yielding a bounding area of 2,895 sq ft. Applied a 78% fill factor to account for multiple wing cutouts, recesses, and the complex multi-section plan shape, arriving at ~2,258 sq ft footprint. Roof is a fully hipped multi-section design (no gable rakes). Ridge estimated from 4–5 short ridge lines atop each hip section (~190 px total). Hip lines counted at ~14 diagonal edges across all sections (~810 px). Valleys counted at ~5 inward junction lines (~265 px). Eaves traced around the complex lower perimeter (~410 px). Confidence is moderate (0.43) due to the high complexity of the roof geometry and difficulty precisely resolving individual sections at this resolution.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 40,
+      "hip": 172,
+      "valley": 56,
+      "rake": 0,
+      "eave": 87
+    },
+    "roof_area_sqft": 2524,
+    "computed_at": "2026-05-08T22:56:33.129Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (28.27 sq, includes 12% waste)",
+          "amount": 3109.57
+        },
+        {
+          "label": "Tear-off (25.24 sq, 1 layer)",
+          "amount": 883.4
+        },
+        {
+          "label": "Underlayment (26.5 sq)",
+          "amount": 662.55
+        },
+        {
+          "label": "Trim & flashing (drip edge 87 lf, ridge 40 lf, valley 56 lf)",
+          "amount": 1669.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (5.52 sheets, contingency)",
+          "amount": 303.67
+        },
+        {
+          "label": "Labor (25.24 sq @ 2.35 h/sq)",
+          "amount": 5031.42
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 1479.61
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2071.46
+        }
+      ],
+      "subtotal": 15881.18,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T22:56:33.131Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "5914 Copper Lilly Lane, Spring, TX 77389",
+            "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 2524,
+            "ridge_lf": 40,
+            "hip_lf": 172,
+            "valley_lf": 56,
+            "eave_lf": 87,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 2524,
+          "roof_squares": 25.24,
+          "field_squares": 28.27,
+          "underlayment_squares": 26.5,
+          "ice_water_squares": 0,
+          "decking_sheets": 5.52,
+          "ridge_lf": 40,
+          "hip_lf": 172,
+          "valley_lf": 56,
+          "eave_lf": 87,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 3109.57,
+            "underlayment": 662.55,
+            "ice_water": 0,
+            "tearoff": 883.4,
+            "ridge_cap": 200,
+            "hip_cap": 860,
+            "valley_metal": 392,
+            "drip_edge_eave": 217.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 303.67
+          },
+          "direct_material_cost": 7298.69,
+          "labor_hours_base": 48.92,
+          "labor_hours_adjusted": 59.19,
+          "direct_labor_cost": 5031.42,
+          "direct_cost": 12330.11,
+          "overhead": 1479.61,
+          "profit": 2071.46,
+          "grand_total": 15881.18
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (28.27 sq, includes 12% waste)",
+          "amount": 4098.98
+        },
+        {
+          "label": "Tear-off (25.24 sq, 1 layer)",
+          "amount": 883.4
+        },
+        {
+          "label": "Underlayment (26.5 sq)",
+          "amount": 662.55
+        },
+        {
+          "label": "Trim & flashing (drip edge 87 lf, ridge 40 lf, valley 56 lf)",
+          "amount": 1669.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (5.52 sheets, contingency)",
+          "amount": 303.67
+        },
+        {
+          "label": "Labor (25.24 sq @ 2.95 h/sq)",
+          "amount": 6329.39
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 1754.1
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2455.74
+        }
+      ],
+      "subtotal": 18827.32,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T22:56:33.131Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "5914 Copper Lilly Lane, Spring, TX 77389",
+            "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 2524,
+            "ridge_lf": 40,
+            "hip_lf": 172,
+            "valley_lf": 56,
+            "eave_lf": 87,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 2524,
+          "roof_squares": 25.24,
+          "field_squares": 28.27,
+          "underlayment_squares": 26.5,
+          "ice_water_squares": 0,
+          "decking_sheets": 5.52,
+          "ridge_lf": 40,
+          "hip_lf": 172,
+          "valley_lf": 56,
+          "eave_lf": 87,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 4098.98,
+            "underlayment": 662.55,
+            "ice_water": 0,
+            "tearoff": 883.4,
+            "ridge_cap": 200,
+            "hip_cap": 860,
+            "valley_metal": 392,
+            "drip_edge_eave": 217.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 303.67
+          },
+          "direct_material_cost": 8288.09,
+          "labor_hours_base": 61.54,
+          "labor_hours_adjusted": 74.46,
+          "direct_labor_cost": 6329.39,
+          "direct_cost": 14617.48,
+          "overhead": 1754.1,
+          "profit": 2455.74,
+          "grand_total": 18827.32
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (28.27 sq, includes 12% waste)",
+          "amount": 6219.14
+        },
+        {
+          "label": "Tear-off (25.24 sq, 1 layer)",
+          "amount": 883.4
+        },
+        {
+          "label": "Underlayment (26.5 sq)",
+          "amount": 662.55
+        },
+        {
+          "label": "Trim & flashing (drip edge 87 lf, ridge 40 lf, valley 56 lf)",
+          "amount": 1669.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (5.52 sheets, contingency)",
+          "amount": 303.67
+        },
+        {
+          "label": "Labor (25.24 sq @ 3.56 h/sq)",
+          "amount": 7627.36
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2164.27
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3029.98
+        }
+      ],
+      "subtotal": 23229.87,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T22:56:33.131Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "5914 Copper Lilly Lane, Spring, TX 77389",
+            "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 2524,
+            "ridge_lf": 40,
+            "hip_lf": 172,
+            "valley_lf": 56,
+            "eave_lf": 87,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 2524,
+          "roof_squares": 25.24,
+          "field_squares": 28.27,
+          "underlayment_squares": 26.5,
+          "ice_water_squares": 0,
+          "decking_sheets": 5.52,
+          "ridge_lf": 40,
+          "hip_lf": 172,
+          "valley_lf": 56,
+          "eave_lf": 87,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 6219.14,
+            "underlayment": 662.55,
+            "ice_water": 0,
+            "tearoff": 883.4,
+            "ridge_cap": 200,
+            "hip_cap": 860,
+            "valley_metal": 392,
+            "drip_edge_eave": 217.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 303.67
+          },
+          "direct_material_cost": 10408.25,
+          "labor_hours_base": 74.16,
+          "labor_hours_adjusted": 89.73,
+          "direct_labor_cost": 7627.36,
+          "direct_cost": 18035.61,
+          "overhead": 2164.27,
+          "profit": 3029.98,
+          "grand_total": 23229.87
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-08T22:56:33.131Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}
