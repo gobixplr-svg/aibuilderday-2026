@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 2935,
+  "line_items": {
+    "ridge": 49.7,
+    "hip": 121,
+    "valley": 22.4,
+    "rake": 4.9,
+    "eave": 197.1
+  },
+  "confidence": 0.42,
+  "rationale": "Targeted the large southernmost house in the image, identified as 1612 S Canton Ave based on its driveway connection to the diagonal Canton Ave on the left. Bounding box estimated at ~360 px (70.2 ft) wide × ~345 px (67.3 ft) deep = 4,728 sq ft gross. The roof is a complex multi-section hip design with at least two major wings; fill factor estimated at ~62% after tracing L-shaped cutouts and corner setbacks, yielding ~2,935 sq ft plan-view footprint. Ridge lines traced across 3 horizontal peak segments. Hip lines traced at all ~10 exterior corners and section transitions. Two valley lines identified at the junction where the front wing meets the main body. Minimal rake due to predominantly hip construction. Eaves traced around the full plan perimeter following all lower horizontal edges. Confidence is moderate (0.42) due to uncertainty in which of three visible houses corresponds to this specific address, and the complexity of the multi-section hip roof making precise pixel-level tracing difficult from satellite view."
+}

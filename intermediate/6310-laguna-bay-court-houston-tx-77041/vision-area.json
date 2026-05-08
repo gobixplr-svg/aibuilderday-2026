@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 3152,
+  "line_items": {
+    "ridge": 63,
+    "hip": 193,
+    "valley": 57,
+    "rake": 0,
+    "eave": 170
+  },
+  "confidence": 0.32,
+  "rationale": "Subject is the large, multi-section all-hip roofed home in the center of the image, identified by its freeform pool to the east. Bounding box estimated at ~365×290 px (77.5×61.6 ft = 4,775 sq ft plan area). Applied ~66% fill factor to account for the complex re-entrant inter-wing cutouts typical of this multi-pyramid hip roof style, yielding ~3,152 sq ft footprint. Five ridge segments identified atop each main hip section (~295 px total). Approximately 14 diagonal hip edges traced from ridge ends/peaks to eave corners (~910 px). Five valley lines identified at interior intersections of roof planes (~270 px). No rake edges present (all-hip construction). Eave perimeter estimated by tracing lower horizontal edges around the complex plan (~800 px). Confidence is moderate-low due to roof complexity, steep viewing angle, and difficulty distinguishing individual section boundaries."
+}

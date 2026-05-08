@@ -1,0 +1,25 @@
+{
+  "slug": "3820-e-rosebrier-st-springfield-mo-65809",
+  "address": "3820 E Rosebrier St, Springfield, MO 65809",
+  "formatted_address": "3820 E Rosebrier St, Springfield, MO 65809, USA",
+  "lat": 37.1596926,
+  "lng": -93.21594809999999,
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
+  "pitch_confidence": 0.72,
+  "pitch_rationale": "The central home features a complex multi-hip roof with numerous intersecting planes. Ground shadows cast by the eaves extend approximately 10–15 feet (estimated via the 50 ft scale bar), indicating a moderate pitch. The ridgelines on each hip section sit noticeably inward from their respective eave footprints — the roof-to-eave ratio suggests meaningful elevation without being extremely steep. Roof plane surfaces are broadly visible from this near-nadir view, ruling out pitches above ~8:12, while the well-defined shadow articulation between planes and the inward ridge placement rule out pitches below ~5:12. Springfield, MO's Midwest climate and the architectural character of the home are consistent with a 6:12 estimate.",
+  "pitch_stub": false,
+  "footprint_sqft": 3669,
+  "footprint_confidence": 0.4,
+  "footprint_rationale": "Identified the large center house with complex tan/brown hip roof as the subject property. Bounding box estimated at approximately 365 px (E–W) × 455 px (N–S) = 166,075 sq px. Due to the highly stepped, multi-section shape with numerous bump-outs and recesses, a 58% fill factor was applied yielding ~96,323 sq px × 0.038093 = ~3,669 sq ft footprint. No gable ends are visible, confirming a pure hip roof with zero rake edges. Ridge segments were counted across each sub-roof peak (~8 segments). Hip edges were tallied at roughly 4 per sub-section across ~6–7 major intersecting sections. Valley lines were identified at each inward roof intersection (~9 total). Eave perimeter was traced around the entire stepped ground-level outline. Confidence is moderate-low (0.40) due to the extreme roof complexity, oblique viewing angle, and overlapping shadows making precise edge tracing difficult.",
+  "footprint_stub": false,
+  "line_items": {
+    "ridge": 95,
+    "hip": 183,
+    "valley": 78,
+    "rake": 0,
+    "eave": 279
+  },
+  "roof_area_sqft": 4102,
+  "computed_at": "2026-05-08T23:51:33.976Z"
+}

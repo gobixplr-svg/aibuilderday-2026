@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 1950,
+  "footprint_sqft": 2195,
   "line_items": {
-    "ridge": 45,
-    "hip": 115,
-    "valley": 22,
-    "rake": 0,
-    "eave": 165
+    "ridge": 51,
+    "hip": 136,
+    "valley": 32,
+    "rake": 11,
+    "eave": 155
   },
-  "confidence": 0.37,
-  "rationale": "Target home identified as the multi-section hip-roof structure at the base of the cul-de-sac on Kenswick Meadows Ct, occupying approximately pixels (235,555)→(415,885). Roof is a complex hip style with no gable/rake ends visible. Two primary stacking sections were traced: an upper main block (~170×155 px = 36×33 ft ≈ 1,183 sqft) and a lower extension (~140×120 px = 30×25 ft ≈ 754 sqft), minus ~87 sqft for cutouts and alignment, yielding ~1,950 sqft plan-view footprint. Ridge segments counted across 3 runs (~47 px total = ~45 ft). Hip lines estimated at 10 sloped corners averaging ~22 px each (~115 ft). Two to three valley intersections where wings meet (~22 ft). Zero rake lines (fully hipped). Eave perimeter traced around all lower edges (~165 ft). Confidence is moderate-low due to roof complexity, shadow interference on edges, and uncertainty in exact lot/house boundary assignment from satellite view alone."
+  "confidence": 0.42,
+  "rationale": "Target house identified as the multi-section hip-roof home in the lower-left quadrant with direct driveway access from the Kenswick Meadows Ct cul-de-sac (visible at ~px 170–260, 300–520). Two-section L-shaped footprint traced: main body ~232–408 x, 558–722 y (176×164 px = 37.3×34.8 ft) and a rear southeast extension ~302–435 x, 722–872 y (133×150 px = 28.2×31.8 ft). Combined L-shape area: 48,814 sq px × 0.044964 = 2,195 sqft. Roof is predominantly multi-hip with two main ridges (main body ~24 ft, extension ~17 ft, small rear ~10 ft), eight hip lines at all section corners (~136 ft total), two interior valleys where sections meet (~32 ft), minimal gable/rake element on rear addition (~11 ft), and eaves running around the full perimeter bottom edges (~155 ft, adjusted for interior shared walls and hip geometry). Confidence is moderate-low due to difficulty distinguishing exact property boundaries and roof edge types from satellite obliquity."
 }

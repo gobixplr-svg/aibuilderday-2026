@@ -1,0 +1,25 @@
+{
+  "slug": "1612-s-canton-ave-springfield-mo-65802",
+  "address": "1612 S Canton Ave, Springfield, MO 65802",
+  "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA",
+  "lat": 37.1860933,
+  "lng": -93.36959139999999,
+  "pitch": "5:12",
+  "pitch_multiplier": 1.083,
+  "pitch_confidence": 0.65,
+  "pitch_rationale": "All three homes display multi-faceted hip roofs with ridge lines set approximately 30–40% inward from the eave perimeter, consistent with a 5:12 pitch. Ground shadows cast from the eave edges extend roughly 8–12 feet (estimated via the 50 ft scale bar), which aligns with a moderate pitch at Springfield, MO's latitude (~37°N) in summer sun. Differential shading between north- and south-facing roof planes confirms meaningful slope but not a steep one. The regional context (mid-southern US climate, suburban ranch-style construction) further supports a 5:12 estimate, with 6:12 being a plausible alternate if the shadow projection is slightly underestimated.",
+  "pitch_stub": false,
+  "footprint_sqft": 2935,
+  "footprint_confidence": 0.42,
+  "footprint_rationale": "Targeted the large southernmost house in the image, identified as 1612 S Canton Ave based on its driveway connection to the diagonal Canton Ave on the left. Bounding box estimated at ~360 px (70.2 ft) wide × ~345 px (67.3 ft) deep = 4,728 sq ft gross. The roof is a complex multi-section hip design with at least two major wings; fill factor estimated at ~62% after tracing L-shaped cutouts and corner setbacks, yielding ~2,935 sq ft plan-view footprint. Ridge lines traced across 3 horizontal peak segments. Hip lines traced at all ~10 exterior corners and section transitions. Two valley lines identified at the junction where the front wing meets the main body. Minimal rake due to predominantly hip construction. Eaves traced around the full plan perimeter following all lower horizontal edges. Confidence is moderate (0.42) due to uncertainty in which of three visible houses corresponds to this specific address, and the complexity of the multi-section hip roof making precise pixel-level tracing difficult from satellite view.",
+  "footprint_stub": false,
+  "line_items": {
+    "ridge": 49.7,
+    "hip": 121,
+    "valley": 22.4,
+    "rake": 4.9,
+    "eave": 197.1
+  },
+  "roof_area_sqft": 3179,
+  "computed_at": "2026-05-08T23:54:42.246Z"
+}

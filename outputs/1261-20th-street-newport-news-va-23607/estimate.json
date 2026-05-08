@@ -1,0 +1,457 @@
+{
+  "measurement": {
+    "slug": "1261-20th-street-newport-news-va-23607",
+    "address": "1261 20th Street, Newport News, VA 23607",
+    "formatted_address": "1261 20th St, Newport News, VA 23607, USA",
+    "lat": 36.9845554,
+    "lng": -76.4016532,
+    "pitch": "6:12",
+    "pitch_multiplier": 1.118,
+    "pitch_confidence": 0.62,
+    "pitch_rationale": "The dominant structure is a large, complex hip-roofed home with multiple intersecting roof planes. Several cues inform the estimate: (1) Shadow length — ground shadows cast from the eastern and southern eaves are moderate in extent relative to the building footprint (roughly 15–20 ft as measured against the 50-ft scale bar), consistent with a mid-range pitch rather than a shallow ranch or a steep colonial. (2) Roof-to-eave geometry — the diagonal hip lines converge to ridges that are noticeably inset from the perimeter eaves, indicating meaningful vertical rise, but the ridges are still broad relative to the plan area, ruling out steep pitches above 8:12. (3) Plane shading contrast — the lighter (sun-facing) and darker (shadowed) roof panels show moderate tonal differentiation, consistent with a 5:12–7:12 slope. (4) Regional context — Newport News, VA is a mid-Atlantic/coastal-plain climate where 5:12–6:12 is the most common residential pitch. Taken together, a 6:12 pitch best reconciles the moderate shadow projection and visible hip geometry.",
+    "pitch_stub": false,
+    "footprint_sqft": 3600,
+    "footprint_confidence": 0.4,
+    "footprint_rationale": "The main residential roof is a large, complex hip-roof structure with two primary volumes forming an L/cross-shaped plan. Bounding box for the NE body was ~285×215 px and the SW wing ~255×235 px, with ~140×75 px of overlap subtracted, yielding ~110,700 sq px total. Converted at 0.038269 sq ft/sq px gives ~4,237 sq ft; trimmed ~15% for edge irregularities to arrive at ~3,600 sq ft. The roof is predominantly hip-style with no visible gable/rake edges. Ridge lines were traced along the two main peaks (~210 px NE + ~135 px SW). Approximately 10 hip lines were identified at corners/ends, averaging ~130 px each. Three valley junctions were identified where the two volumes intersect. Eave perimeter was estimated from all lower horizontal edges around both sections. Confidence is moderate (0.4) due to roof complexity, oblique shadows, and difficulty precisely delineating volume boundaries from overhead imagery.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 67,
+      "hip": 254,
+      "valley": 50,
+      "rake": 0,
+      "eave": 176
+    },
+    "roof_area_sqft": 4025,
+    "computed_at": "2026-05-08T23:54:55.398Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (45.08 sq, includes 12% waste)",
+          "amount": 4958.8
+        },
+        {
+          "label": "Tear-off (40.25 sq, 1 layer)",
+          "amount": 1408.75
+        },
+        {
+          "label": "Underlayment (42.26 sq)",
+          "amount": 1056.56
+        },
+        {
+          "label": "Trim & flashing (drip edge 176 lf, ridge 67 lf, valley 50 lf)",
+          "amount": 2395
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.8 sheets, contingency)",
+          "amount": 484.26
+        },
+        {
+          "label": "Labor (40.25 sq @ 2.17 h/sq)",
+          "amount": 7421.14
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2207.34
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3090.28
+        }
+      ],
+      "subtotal": 23692.13,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:54:55.401Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1261 20th Street, Newport News, VA 23607",
+            "formatted_address": "1261 20th St, Newport News, VA 23607, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 4025,
+            "ridge_lf": 67,
+            "hip_lf": 254,
+            "valley_lf": 50,
+            "eave_lf": 176,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 4025,
+          "roof_squares": 40.25,
+          "field_squares": 45.08,
+          "underlayment_squares": 42.26,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.8,
+          "ridge_lf": 67,
+          "hip_lf": 254,
+          "valley_lf": 50,
+          "eave_lf": 176,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 4958.8,
+            "underlayment": 1056.56,
+            "ice_water": 0,
+            "tearoff": 1408.75,
+            "ridge_cap": 335,
+            "hip_cap": 1270,
+            "valley_metal": 350,
+            "drip_edge_eave": 440,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 484.26
+          },
+          "direct_material_cost": 10973.37,
+          "labor_hours_base": 72.16,
+          "labor_hours_adjusted": 87.31,
+          "direct_labor_cost": 7421.14,
+          "direct_cost": 18394.51,
+          "overhead": 2207.34,
+          "profit": 3090.28,
+          "grand_total": 23692.13
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (45.08 sq, includes 12% waste)",
+          "amount": 6536.6
+        },
+        {
+          "label": "Tear-off (40.25 sq, 1 layer)",
+          "amount": 1408.75
+        },
+        {
+          "label": "Underlayment (42.26 sq)",
+          "amount": 1056.56
+        },
+        {
+          "label": "Trim & flashing (drip edge 176 lf, ridge 67 lf, valley 50 lf)",
+          "amount": 2395
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.8 sheets, contingency)",
+          "amount": 484.26
+        },
+        {
+          "label": "Labor (40.25 sq @ 2.77 h/sq)",
+          "amount": 9491
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2645.06
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3703.08
+        }
+      ],
+      "subtotal": 28390.31,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:54:55.401Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1261 20th Street, Newport News, VA 23607",
+            "formatted_address": "1261 20th St, Newport News, VA 23607, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 4025,
+            "ridge_lf": 67,
+            "hip_lf": 254,
+            "valley_lf": 50,
+            "eave_lf": 176,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 4025,
+          "roof_squares": 40.25,
+          "field_squares": 45.08,
+          "underlayment_squares": 42.26,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.8,
+          "ridge_lf": 67,
+          "hip_lf": 254,
+          "valley_lf": 50,
+          "eave_lf": 176,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 6536.6,
+            "underlayment": 1056.56,
+            "ice_water": 0,
+            "tearoff": 1408.75,
+            "ridge_cap": 335,
+            "hip_cap": 1270,
+            "valley_metal": 350,
+            "drip_edge_eave": 440,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 484.26
+          },
+          "direct_material_cost": 12551.17,
+          "labor_hours_base": 92.28,
+          "labor_hours_adjusted": 111.66,
+          "direct_labor_cost": 9491,
+          "direct_cost": 22042.17,
+          "overhead": 2645.06,
+          "profit": 3703.08,
+          "grand_total": 28390.31
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (45.08 sq, includes 12% waste)",
+          "amount": 9917.6
+        },
+        {
+          "label": "Tear-off (40.25 sq, 1 layer)",
+          "amount": 1408.75
+        },
+        {
+          "label": "Underlayment (42.26 sq)",
+          "amount": 1056.56
+        },
+        {
+          "label": "Trim & flashing (drip edge 176 lf, ridge 67 lf, valley 50 lf)",
+          "amount": 2395
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.8 sheets, contingency)",
+          "amount": 484.26
+        },
+        {
+          "label": "Labor (40.25 sq @ 3.38 h/sq)",
+          "amount": 11560.85
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 3299.16
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 4618.83
+        }
+      ],
+      "subtotal": 35411.02,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:54:55.401Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1261 20th Street, Newport News, VA 23607",
+            "formatted_address": "1261 20th St, Newport News, VA 23607, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 4025,
+            "ridge_lf": 67,
+            "hip_lf": 254,
+            "valley_lf": 50,
+            "eave_lf": 176,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 4025,
+          "roof_squares": 40.25,
+          "field_squares": 45.08,
+          "underlayment_squares": 42.26,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.8,
+          "ridge_lf": 67,
+          "hip_lf": 254,
+          "valley_lf": 50,
+          "eave_lf": 176,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 9917.6,
+            "underlayment": 1056.56,
+            "ice_water": 0,
+            "tearoff": 1408.75,
+            "ridge_cap": 335,
+            "hip_cap": 1270,
+            "valley_metal": 350,
+            "drip_edge_eave": 440,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 484.26
+          },
+          "direct_material_cost": 15932.17,
+          "labor_hours_base": 112.41,
+          "labor_hours_adjusted": 136.01,
+          "direct_labor_cost": 11560.85,
+          "direct_cost": 27493.02,
+          "overhead": 3299.16,
+          "profit": 4618.83,
+          "grand_total": 35411.02
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-08T23:54:55.401Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}

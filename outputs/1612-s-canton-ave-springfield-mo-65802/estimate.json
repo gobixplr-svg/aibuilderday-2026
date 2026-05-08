@@ -1,0 +1,457 @@
+{
+  "measurement": {
+    "slug": "1612-s-canton-ave-springfield-mo-65802",
+    "address": "1612 S Canton Ave, Springfield, MO 65802",
+    "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA",
+    "lat": 37.1860933,
+    "lng": -93.36959139999999,
+    "pitch": "5:12",
+    "pitch_multiplier": 1.083,
+    "pitch_confidence": 0.65,
+    "pitch_rationale": "All three homes display multi-faceted hip roofs with ridge lines set approximately 30–40% inward from the eave perimeter, consistent with a 5:12 pitch. Ground shadows cast from the eave edges extend roughly 8–12 feet (estimated via the 50 ft scale bar), which aligns with a moderate pitch at Springfield, MO's latitude (~37°N) in summer sun. Differential shading between north- and south-facing roof planes confirms meaningful slope but not a steep one. The regional context (mid-southern US climate, suburban ranch-style construction) further supports a 5:12 estimate, with 6:12 being a plausible alternate if the shadow projection is slightly underestimated.",
+    "pitch_stub": false,
+    "footprint_sqft": 2935,
+    "footprint_confidence": 0.42,
+    "footprint_rationale": "Targeted the large southernmost house in the image, identified as 1612 S Canton Ave based on its driveway connection to the diagonal Canton Ave on the left. Bounding box estimated at ~360 px (70.2 ft) wide × ~345 px (67.3 ft) deep = 4,728 sq ft gross. The roof is a complex multi-section hip design with at least two major wings; fill factor estimated at ~62% after tracing L-shaped cutouts and corner setbacks, yielding ~2,935 sq ft plan-view footprint. Ridge lines traced across 3 horizontal peak segments. Hip lines traced at all ~10 exterior corners and section transitions. Two valley lines identified at the junction where the front wing meets the main body. Minimal rake due to predominantly hip construction. Eaves traced around the full plan perimeter following all lower horizontal edges. Confidence is moderate (0.42) due to uncertainty in which of three visible houses corresponds to this specific address, and the complexity of the multi-section hip roof making precise pixel-level tracing difficult from satellite view.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 49.7,
+      "hip": 121,
+      "valley": 22.4,
+      "rake": 4.9,
+      "eave": 197.1
+    },
+    "roof_area_sqft": 3179,
+    "computed_at": "2026-05-08T23:54:42.246Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (35.6 sq, includes 12% waste)",
+          "amount": 3916.53
+        },
+        {
+          "label": "Tear-off (31.79 sq, 1 layer)",
+          "amount": 1112.65
+        },
+        {
+          "label": "Underlayment (33.38 sq)",
+          "amount": 834.49
+        },
+        {
+          "label": "Trim & flashing (drip edge 197.1 lf, ridge 49.7 lf, valley 22.4 lf)",
+          "amount": 1515.3
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (6.95 sheets, contingency)",
+          "amount": 382.47
+        },
+        {
+          "label": "Labor (31.79 sq @ 2.17 h/sq)",
+          "amount": 5874.48
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 1716.71
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2403.39
+        }
+      ],
+      "subtotal": 18426.03,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:54:42.248Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1612 S Canton Ave, Springfield, MO 65802",
+            "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3179,
+            "ridge_lf": 49.7,
+            "hip_lf": 121,
+            "valley_lf": 22.4,
+            "eave_lf": 197.1,
+            "rake_lf": 4.9,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "5:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3179,
+          "roof_squares": 31.79,
+          "field_squares": 35.6,
+          "underlayment_squares": 33.38,
+          "ice_water_squares": 0,
+          "decking_sheets": 6.95,
+          "ridge_lf": 49.7,
+          "hip_lf": 121,
+          "valley_lf": 22.4,
+          "eave_lf": 197.1,
+          "rake_lf": 4.9,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 3916.53,
+            "underlayment": 834.49,
+            "ice_water": 0,
+            "tearoff": 1112.65,
+            "ridge_cap": 248.5,
+            "hip_cap": 605,
+            "valley_metal": 156.8,
+            "drip_edge_eave": 492.75,
+            "rake_trim": 12.25,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 382.47
+          },
+          "direct_material_cost": 8431.44,
+          "labor_hours_base": 57.12,
+          "labor_hours_adjusted": 69.11,
+          "direct_labor_cost": 5874.48,
+          "direct_cost": 14305.92,
+          "overhead": 1716.71,
+          "profit": 2403.39,
+          "grand_total": 18426.03
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (35.6 sq, includes 12% waste)",
+          "amount": 5162.7
+        },
+        {
+          "label": "Tear-off (31.79 sq, 1 layer)",
+          "amount": 1112.65
+        },
+        {
+          "label": "Underlayment (33.38 sq)",
+          "amount": 834.49
+        },
+        {
+          "label": "Trim & flashing (drip edge 197.1 lf, ridge 49.7 lf, valley 22.4 lf)",
+          "amount": 1515.3
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (6.95 sheets, contingency)",
+          "amount": 382.47
+        },
+        {
+          "label": "Labor (31.79 sq @ 2.78 h/sq)",
+          "amount": 7509.28
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2062.43
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2887.4
+        }
+      ],
+      "subtotal": 22136.72,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:54:42.249Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1612 S Canton Ave, Springfield, MO 65802",
+            "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3179,
+            "ridge_lf": 49.7,
+            "hip_lf": 121,
+            "valley_lf": 22.4,
+            "eave_lf": 197.1,
+            "rake_lf": 4.9,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "5:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3179,
+          "roof_squares": 31.79,
+          "field_squares": 35.6,
+          "underlayment_squares": 33.38,
+          "ice_water_squares": 0,
+          "decking_sheets": 6.95,
+          "ridge_lf": 49.7,
+          "hip_lf": 121,
+          "valley_lf": 22.4,
+          "eave_lf": 197.1,
+          "rake_lf": 4.9,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 5162.7,
+            "underlayment": 834.49,
+            "ice_water": 0,
+            "tearoff": 1112.65,
+            "ridge_cap": 248.5,
+            "hip_cap": 605,
+            "valley_metal": 156.8,
+            "drip_edge_eave": 492.75,
+            "rake_trim": 12.25,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 382.47
+          },
+          "direct_material_cost": 9677.61,
+          "labor_hours_base": 73.01,
+          "labor_hours_adjusted": 88.34,
+          "direct_labor_cost": 7509.28,
+          "direct_cost": 17186.89,
+          "overhead": 2062.43,
+          "profit": 2887.4,
+          "grand_total": 22136.72
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (35.6 sq, includes 12% waste)",
+          "amount": 7833.06
+        },
+        {
+          "label": "Tear-off (31.79 sq, 1 layer)",
+          "amount": 1112.65
+        },
+        {
+          "label": "Underlayment (33.38 sq)",
+          "amount": 834.49
+        },
+        {
+          "label": "Trim & flashing (drip edge 197.1 lf, ridge 49.7 lf, valley 22.4 lf)",
+          "amount": 1515.3
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (6.95 sheets, contingency)",
+          "amount": 382.47
+        },
+        {
+          "label": "Labor (31.79 sq @ 3.38 h/sq)",
+          "amount": 9144.08
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2579.05
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3610.66
+        }
+      ],
+      "subtotal": 27681.76,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:54:42.249Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1612 S Canton Ave, Springfield, MO 65802",
+            "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3179,
+            "ridge_lf": 49.7,
+            "hip_lf": 121,
+            "valley_lf": 22.4,
+            "eave_lf": 197.1,
+            "rake_lf": 4.9,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "5:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3179,
+          "roof_squares": 31.79,
+          "field_squares": 35.6,
+          "underlayment_squares": 33.38,
+          "ice_water_squares": 0,
+          "decking_sheets": 6.95,
+          "ridge_lf": 49.7,
+          "hip_lf": 121,
+          "valley_lf": 22.4,
+          "eave_lf": 197.1,
+          "rake_lf": 4.9,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 7833.06,
+            "underlayment": 834.49,
+            "ice_water": 0,
+            "tearoff": 1112.65,
+            "ridge_cap": 248.5,
+            "hip_cap": 605,
+            "valley_metal": 156.8,
+            "drip_edge_eave": 492.75,
+            "rake_trim": 12.25,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 382.47
+          },
+          "direct_material_cost": 12347.97,
+          "labor_hours_base": 88.91,
+          "labor_hours_adjusted": 107.58,
+          "direct_labor_cost": 9144.08,
+          "direct_cost": 21492.05,
+          "overhead": 2579.05,
+          "profit": 3610.66,
+          "grand_total": 27681.76
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-08T23:54:42.249Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "pitch": "6:12",
   "pitch_multiplier": 1.118,
-  "confidence": 0.78,
-  "rationale": "The homes at this Humble, TX address display classic hip/pyramid roof forms common to Houston-area suburban construction. Shadow lengths cast from the eave edges onto the surrounding lawn measure approximately 20–30% of building width, consistent with a moderate 6:12 pitch rather than the shorter shadows of a 4:12 or the longer shadows of an 8:12. The ridge peaks are visibly elevated above the eave plane with well-defined slope faces, and the ridge-to-eave geometry shows the ridge sitting noticeably inward but not dramatically compressed — both hallmarks of a 6:12 slope. Regional norms for early-2000s Texas suburban tract housing strongly support 6:12 as the dominant pitch, and no steeply protruding dormers or unusually compressed roof planes are present to suggest deviation from this standard."
+  "confidence": 0.72,
+  "rationale": "The homes at this Humble, TX address display classic southern-suburban hip roofs. Shadow lengths cast by eaves onto the ground are moderate relative to the 50-ft scale bar — neither long enough to indicate steep (≥8:12) nor negligible enough to suggest shallow (≤4:12) pitch, aligning best with 6:12. The ridge lines on the hip roofs sit visibly inside but not dramatically compressed within the eave perimeter, consistent with a 6:12 rise-to-run ratio. Shingle texture is moderately discernible from nadir, further corroborating a mid-range pitch. Regional context (Houston-area suburban construction, warm humid climate, hip-roof predominance) strongly supports the 5:12–7:12 band, with 6:12 being the most common standard in this market."
 }

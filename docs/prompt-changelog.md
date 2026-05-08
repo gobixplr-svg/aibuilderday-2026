@@ -94,6 +94,59 @@ No prompts changed → no accuracy delta expected. Cached `vision-pitch.json` / 
 
 ---
 
+## PLOG-003 · effort dropped to medium + full test-set floor (Dan, 2026-05-08)
+
+**Files:** `scripts/lib/claude.mjs`
+**Commit:** `630c073` (Will, effort change), this commit (PLOG entry + locked floor)
+
+### Trigger
+Two things merged into this entry:
+
+1. Will dropped `effort: high → medium` in `630c073` to keep wall-clock manageable. Change was real and accuracy-affecting but not logged at the time. Backfilling here so the PLOG reflects reality.
+2. Need a full submission-floor lock before attempting a footprint-prompt iteration (PLOG-004 candidate). With ~13 hours to deadline we cannot afford an iteration that regresses below the current state without realizing it.
+
+### Change
+- `scripts/lib/claude.mjs` line 33: `effort = "high"` → `effort = "medium"`
+- No prompt text changed.
+
+### Result — examples (calibration set, has reference data)
+
+| # | Address | Pred sqft | Ref avg | Δ% | Pred pitch | Truth |
+|---|---|---|---|---|---|---|
+| 1 | Kenswick TX | 2180 | 2393 | **−8.9% ✓** | 6:12 ✓ | 6:12 |
+| 2 | Copper Lily TX | 2467 | 4344 | **−43.2% ✗** | 6:12 ✗ | 8:12 |
+| 3 | Cape Coral FL | 3057 | 2884 | **+6.0% ✓** | 4:12 ✗ | 6:12 |
+| 4 | Orland Park IL | 2469 | 2963 | **−16.7% ✗** | 5:12 ✗ | 4:12 |
+| 5 | Nixa MO | (latest re-run, see outputs/) | 3044 | | | 8:12 |
+
+**2/5 within ±10% on examples.** Property 1 regressed from −1.9% (PLOG-001 high-effort) to −8.9% — `effort: medium` is the cause.
+
+### Result — test set (submission targets, no reference data)
+
+These are the numbers we'll submit if no further iteration improves on them:
+
+| # | Address | Pred sqft | Pred pitch |
+|---|---|---|---|
+| 1 | 3561 E 102nd Ct, Thornton CO 80229 | **1,650** | 6:12 |
+| 2 | 1612 S Canton Ave, Springfield MO 65802 | **3,179** | 5:12 |
+| 3 | 6310 Laguna Bay Court, Houston TX 77041 | **3,414** | 5:12 |
+| 4 | 3820 E Rosebrier St, Springfield MO 65809 | **4,102** | 6:12 |
+| 5 | 1261 20th Street, Newport News VA 23607 | **4,025** | 6:12 |
+
+Output artifacts (PDFs, JSON) committed under `outputs/<slug>/` for each.
+
+### Observations
+- **Submission-floor established.** If everything else fails after this, we submit these 5 numbers and move on.
+- **Footprint under-trace is consistent across both example and test sets.** Properties 1 and 5 of the test set look conservative against typical residential averages. Worth one focused prompt iteration aimed at the under-trace.
+- **Pitch is still noisy** (only 1/5 correct on examples, mostly off by one step). But pitch errors swing a measurement only ~5-15%; footprint errors swing it 17-43%. Footprint is the higher-leverage fix.
+- **Cost-of-iteration math:** at ~3 min wall-clock per property and 5 properties per calibration, an iteration cycle is ~3-15 min depending on parallelization. Budget two full cycles before submission deadline.
+
+### Next iterations (candidates)
+- **PLOG-004 candidate** — footprint prompt: shift bias from "trace what's certain" to "include attached structures, dormers, garage extensions; assume contiguous roof unless clearly separated by gap or different material." Possibly add an explicit "do not be conservative — under-tracing is more costly than over-tracing for our use case" instruction.
+- **PLOG-005 candidate** — wider field-of-view fallback when confidence < 0.5. Pull a zoom-19 (4× wider) aerial alongside the zoom-20 and use both in the prompt.
+
+---
+
 ## Template for new entries
 
 ```

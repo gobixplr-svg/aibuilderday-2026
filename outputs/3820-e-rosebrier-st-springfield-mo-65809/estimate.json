@@ -1,0 +1,457 @@
+{
+  "measurement": {
+    "slug": "3820-e-rosebrier-st-springfield-mo-65809",
+    "address": "3820 E Rosebrier St, Springfield, MO 65809",
+    "formatted_address": "3820 E Rosebrier St, Springfield, MO 65809, USA",
+    "lat": 37.1596926,
+    "lng": -93.21594809999999,
+    "pitch": "6:12",
+    "pitch_multiplier": 1.118,
+    "pitch_confidence": 0.72,
+    "pitch_rationale": "The central home features a complex multi-hip roof with numerous intersecting planes. Ground shadows cast by the eaves extend approximately 10–15 feet (estimated via the 50 ft scale bar), indicating a moderate pitch. The ridgelines on each hip section sit noticeably inward from their respective eave footprints — the roof-to-eave ratio suggests meaningful elevation without being extremely steep. Roof plane surfaces are broadly visible from this near-nadir view, ruling out pitches above ~8:12, while the well-defined shadow articulation between planes and the inward ridge placement rule out pitches below ~5:12. Springfield, MO's Midwest climate and the architectural character of the home are consistent with a 6:12 estimate.",
+    "pitch_stub": false,
+    "footprint_sqft": 3669,
+    "footprint_confidence": 0.4,
+    "footprint_rationale": "Identified the large center house with complex tan/brown hip roof as the subject property. Bounding box estimated at approximately 365 px (E–W) × 455 px (N–S) = 166,075 sq px. Due to the highly stepped, multi-section shape with numerous bump-outs and recesses, a 58% fill factor was applied yielding ~96,323 sq px × 0.038093 = ~3,669 sq ft footprint. No gable ends are visible, confirming a pure hip roof with zero rake edges. Ridge segments were counted across each sub-roof peak (~8 segments). Hip edges were tallied at roughly 4 per sub-section across ~6–7 major intersecting sections. Valley lines were identified at each inward roof intersection (~9 total). Eave perimeter was traced around the entire stepped ground-level outline. Confidence is moderate-low (0.40) due to the extreme roof complexity, oblique viewing angle, and overlapping shadows making precise edge tracing difficult.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 95,
+      "hip": 183,
+      "valley": 78,
+      "rake": 0,
+      "eave": 279
+    },
+    "roof_area_sqft": 4102,
+    "computed_at": "2026-05-08T23:51:33.976Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (45.94 sq, includes 12% waste)",
+          "amount": 5053.66
+        },
+        {
+          "label": "Tear-off (41.02 sq, 1 layer)",
+          "amount": 1435.7
+        },
+        {
+          "label": "Underlayment (43.07 sq)",
+          "amount": 1076.78
+        },
+        {
+          "label": "Trim & flashing (drip edge 279 lf, ridge 95 lf, valley 78 lf)",
+          "amount": 2633.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.97 sheets, contingency)",
+          "amount": 493.52
+        },
+        {
+          "label": "Labor (41.02 sq @ 2.25 h/sq)",
+          "amount": 7827.91
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2302.93
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3224.1
+        }
+      ],
+      "subtotal": 24718.1,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:51:33.981Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "3820 E Rosebrier St, Springfield, MO 65809",
+            "formatted_address": "3820 E Rosebrier St, Springfield, MO 65809, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 4102,
+            "ridge_lf": 95,
+            "hip_lf": 183,
+            "valley_lf": 78,
+            "eave_lf": 279,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 4102,
+          "roof_squares": 41.02,
+          "field_squares": 45.94,
+          "underlayment_squares": 43.07,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.97,
+          "ridge_lf": 95,
+          "hip_lf": 183,
+          "valley_lf": 78,
+          "eave_lf": 279,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 5053.66,
+            "underlayment": 1076.78,
+            "ice_water": 0,
+            "tearoff": 1435.7,
+            "ridge_cap": 475,
+            "hip_cap": 915,
+            "valley_metal": 546,
+            "drip_edge_eave": 697.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 493.52
+          },
+          "direct_material_cost": 11363.16,
+          "labor_hours_base": 76.11,
+          "labor_hours_adjusted": 92.09,
+          "direct_labor_cost": 7827.91,
+          "direct_cost": 19191.07,
+          "overhead": 2302.93,
+          "profit": 3224.1,
+          "grand_total": 24718.1
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (45.94 sq, includes 12% waste)",
+          "amount": 6661.65
+        },
+        {
+          "label": "Tear-off (41.02 sq, 1 layer)",
+          "amount": 1435.7
+        },
+        {
+          "label": "Underlayment (43.07 sq)",
+          "amount": 1076.78
+        },
+        {
+          "label": "Trim & flashing (drip edge 279 lf, ridge 95 lf, valley 78 lf)",
+          "amount": 2633.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.97 sheets, contingency)",
+          "amount": 493.52
+        },
+        {
+          "label": "Labor (41.02 sq @ 2.85 h/sq)",
+          "amount": 9937.37
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2749.02
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3848.63
+        }
+      ],
+      "subtotal": 29506.16,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:51:33.981Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "3820 E Rosebrier St, Springfield, MO 65809",
+            "formatted_address": "3820 E Rosebrier St, Springfield, MO 65809, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 4102,
+            "ridge_lf": 95,
+            "hip_lf": 183,
+            "valley_lf": 78,
+            "eave_lf": 279,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 4102,
+          "roof_squares": 41.02,
+          "field_squares": 45.94,
+          "underlayment_squares": 43.07,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.97,
+          "ridge_lf": 95,
+          "hip_lf": 183,
+          "valley_lf": 78,
+          "eave_lf": 279,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 6661.65,
+            "underlayment": 1076.78,
+            "ice_water": 0,
+            "tearoff": 1435.7,
+            "ridge_cap": 475,
+            "hip_cap": 915,
+            "valley_metal": 546,
+            "drip_edge_eave": 697.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 493.52
+          },
+          "direct_material_cost": 12971.14,
+          "labor_hours_base": 96.62,
+          "labor_hours_adjusted": 116.91,
+          "direct_labor_cost": 9937.37,
+          "direct_cost": 22908.51,
+          "overhead": 2749.02,
+          "profit": 3848.63,
+          "grand_total": 29506.16
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (45.94 sq, includes 12% waste)",
+          "amount": 10107.33
+        },
+        {
+          "label": "Tear-off (41.02 sq, 1 layer)",
+          "amount": 1435.7
+        },
+        {
+          "label": "Underlayment (43.07 sq)",
+          "amount": 1076.78
+        },
+        {
+          "label": "Trim & flashing (drip edge 279 lf, ridge 95 lf, valley 78 lf)",
+          "amount": 2633.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.97 sheets, contingency)",
+          "amount": 493.52
+        },
+        {
+          "label": "Labor (41.02 sq @ 3.46 h/sq)",
+          "amount": 12046.82
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 3415.64
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 4781.89
+        }
+      ],
+      "subtotal": 36661.18,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T23:51:33.981Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "3820 E Rosebrier St, Springfield, MO 65809",
+            "formatted_address": "3820 E Rosebrier St, Springfield, MO 65809, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 4102,
+            "ridge_lf": 95,
+            "hip_lf": 183,
+            "valley_lf": 78,
+            "eave_lf": 279,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 4102,
+          "roof_squares": 41.02,
+          "field_squares": 45.94,
+          "underlayment_squares": 43.07,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.97,
+          "ridge_lf": 95,
+          "hip_lf": 183,
+          "valley_lf": 78,
+          "eave_lf": 279,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 10107.33,
+            "underlayment": 1076.78,
+            "ice_water": 0,
+            "tearoff": 1435.7,
+            "ridge_cap": 475,
+            "hip_cap": 915,
+            "valley_metal": 546,
+            "drip_edge_eave": 697.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 493.52
+          },
+          "direct_material_cost": 16416.82,
+          "labor_hours_base": 117.13,
+          "labor_hours_adjusted": 141.73,
+          "direct_labor_cost": 12046.82,
+          "direct_cost": 28463.65,
+          "overhead": 3415.64,
+          "profit": 4781.89,
+          "grand_total": 36661.18
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-08T23:51:33.981Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}
