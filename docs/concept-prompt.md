@@ -5,6 +5,8 @@
 > - Reframed from two-input (photos + voice) to three-input (photos + description + external context).
 > - Reframed from "vision pipeline" to **agent orchestra** — Surveyor + Estimator + Generator + Sales, with future agents visible to show platform thesis.
 > - Added Sales upsell agent as a post-estimate delight moment.
+> - **Bounty clarification (Friday morning):** JobNimbus said in the brief presentation they want **aerial imagery → bid**. Aerial is now the primary input; ground photos and description enrich.
+> - **Stack locked:** Next.js + Tailwind, mobile-first responsive PWA. Not Flutter, not native. Reasoning in `docs/architecture.md`.
 
 ## Problem
 
@@ -12,13 +14,15 @@ Contractor estimates today take 30+ minutes per job because the rep has to leave
 
 ## Solution
 
-A property-estimate primitive that fuses three input layers:
+A property-estimate primitive: **address in, customer-ready bid out, in under 60 seconds.** Aerial imagery is the primary signal; ground-level photos and rep description enrich the bid when available.
 
-1. **Photos** — what's there now (live capture or uploaded).
-2. **Description** — what the rep or homeowner says (typed or voice).
-3. **External context** — public/private data about the property (satellite imagery, parcel data, weather/storm history, permit records, JobNimbus historical data when integrated).
+Three input layers, ordered by primacy:
 
-In, structured customer-ready estimate out. Address-based — the system pulls external context automatically once the property is identified. Customer-presentable PDF rendered in under 60 seconds.
+1. **Aerial imagery + property metadata** *(primary)* — satellite/aerial imagery, parcel data, permit history, recent storms. Pulled automatically from the address. This is what JobNimbus asked for — bid from aerial.
+2. **Ground photos** *(enrichment)* — uploaded or captured by a rep on site. Add detail the satellite can't see (window condition, trim wear, gutter age).
+3. **Description** *(enrichment)* — typed or voice context from the rep or homeowner. Adds intent, history, scope clarification.
+
+The bid is rendered as a customer-presentable PDF in under 60 seconds — even with just an address. Add photos and description, and the bid sharpens.
 
 The capability is positioned as a *platform primitive* — an SDK / API surface — not a vertical product. JobNimbus, AccuLynx, JobTread, or any contractor-CRM can drop it into their workflow. So can insurance adjusters, real estate investors, and solar installers. The verticals are configs.
 
@@ -38,10 +42,10 @@ This is broader than "field capture for contractors." The primitive *is* the pro
 
 Four converging bets:
 
-1. **No single input is enough.** Roofr is satellite-only. SumoQuote is template-only. Reps in the field use photos + judgment + memory. The first tool to fuse photos, description, and external property data is the first tool that works on real properties, not idealized ones.
-2. **External context is free leverage.** Address → satellite imagery, parcel data, recent permits, storm history are all available via public APIs. The estimate that says "your property had a roof permit in 2018 so we're factoring in newer underlayment" feels qualitatively different from one that doesn't.
+1. **Aerial alone is necessary but not sufficient.** Roofr proves aerial-to-bid works for roofing. But aerial misses condition (worn shingles vs new), context (the homeowner's history with the property), and edge cases the satellite can't see. The system that grades up from aerial-only to aerial-plus-ground-plus-context is the system that wins both office estimates *and* on-site estimates.
+2. **External context is free leverage.** Parcel data, permits, storm history are all available via public APIs in seconds. A bid that cites "roof permit on file from 2018" or "hailstorm August 2023" is qualitatively more credible than one that doesn't.
 3. **Speed-to-customer-presentable PDF is the unlock, not just speed-to-data.** A structured JSON in 30 seconds doesn't close a deal. A branded, customer-ready document handed to a homeowner *while you're still on their porch* does. The output layer matters as much as the extraction.
-4. **Vertical-portability is the platform thesis.** A single capture engine that swaps trade-packs (windows / roofing / siding / doors) is more defensible than another point solution. The same primitive serves contractors, adjusters, and investors.
+4. **Vertical-portability is the platform thesis.** A single estimate engine that swaps trade-packs (windows / roofing / siding / doors) is more defensible than another point solution. The same primitive serves contractors, adjusters, and investors.
 
 ## Agent orchestra
 
@@ -61,20 +65,23 @@ Same architecture, sharper story — and aligned with where JobNimbus is already
 
 ## MVP Features (ranked)
 
-1. **Phone-to-PDF capture flow.** Web app the phone can open: take photos, type or voice a description, optionally enter an address, submit. The user does this in <30 seconds. This is the demo's killer moment — everything else supports it.
+1. **Address-to-bid flow.** Type an address. System pulls aerial imagery, parcel data, permits, storms. Surveyor analyzes the aerial. Estimator prices. Generator renders the PDF. Bid lands in under 60 seconds. This is the JobNimbus brief, executed literally.
 
-2. **Surveyor agent → structured scope.** Photos + description + external context (when address is provided) feed a single Claude Sonnet call producing structured items (type, count, dims, condition, confidence). Description is the primary signal; photos verify and add detail; external context grounds and enriches.
+2. **Surveyor agent → structured scope.** Aerial imagery + property metadata (+ optional photos and description) feed a single Claude Sonnet call producing structured items (type, count, dims, condition, confidence). Aerial is the primary signal; metadata grounds; photos and description refine.
 
 3. **External context lookup.** Given an address, fetch: aerial/satellite imagery (Google Static Maps or Mapbox), parcel data (county GIS APIs), and at least one of: storm/weather history (NOAA), permit records (Utah-specific feeds where available). Time-budgeted — if a source doesn't return in 5 seconds, drop it.
 
-4. **Estimator + Generator → customer-ready PDF.** Estimator matches items to a staged trade-pack catalog (~50 SKUs per trade). Generator renders a branded estimate PDF — line items, prices, totals, "informed by" footnote citing which external sources contributed. Two trade-packs: **windows** and **roofing**.
+4. **Optional ground-level enrichment.** When a rep is on site, they can add photos and a description through a phone-friendly capture page. The bid refines with detail the aerial couldn't provide. Differentiates us from aerial-only competitors.
 
-5. **Sales agent upsell (post-estimate).** Once the estimate is on screen, a background Sales agent reviews scope + photos + context and suggests one contextual upsell. Surfaces as a card under the estimate ~10-15s after the PDF lands. Tap accept → totals update. This is the agent-orchestra demo moment.
+5. **Estimator + Generator → customer-ready PDF.** Estimator matches items to a staged trade-pack catalog (~50 SKUs per trade). Generator renders a branded estimate PDF — line items, prices, totals, "informed by" footnote citing which external sources contributed. Two trade-packs: **roofing** (matches bounty) and **windows** (proves portability).
 
-6. **"Same primitive, two trades, two property types" demo path.** Three-act demo:
-   - Act 1: live conference-room window capture (proves the live flow)
-   - Act 2: pre-staged real Lehi address with photos + satellite + permit data → window estimate + Sales upsell (proves the three-input fusion + agent orchestra)
-   - Act 3: same address, swap to roofing trade-pack → roofing estimate (proves vertical portability)
+6. **Sales agent upsell (post-estimate).** Once the estimate is on screen, a background Sales agent reviews scope + imagery + context and suggests one contextual upsell. Surfaces as a card under the estimate ~10-15s after the PDF lands. Tap accept → totals update. This is the agent-orchestra demo moment.
+
+7. **Three-act demo path.**
+   - **Act 1 (the brief):** type a real Lehi address → aerial + parcel + permits → roofing bid. *No phone, no photos.* This is what JobNimbus asked for.
+   - **Act 2 (the differentiator):** add ground photos and a rep description for the same address → bid refines with detail the satellite couldn't see. *This is what no other team will have.*
+   - **Act 3 (the platform):** swap trade-pack to windows on the same address → window bid. Same engine, different vertical.
+   - **Sales agent fires** somewhere in Act 1 or 2 to surface the upsell moment.
 
 ## Explicitly NOT in v1
 
@@ -136,12 +143,17 @@ Presenter screen polls job, displays PDF on big screen
 
 ## User Flow (primary)
 
-1. **User opens the web app on phone.** Lands on capture screen.
-2. **Optional: enters address** (or skips for live demo without address).
-3. **Captures 3–5 photos** (or selects from library for staged demo).
-4. **Types or voices a short description** — what they see, what's needed.
-5. **Taps Submit.** UI shows live progress: "Pulling property data…" → "Analyzing photos…" → "Matching catalog…" → "Building estimate…" (each <15s, total <60s).
-6. **Estimate renders** on phone and presenter screen. Customer-ready PDF: brand header, line items, prices, total, "informed by" footnote, signature line.
+**Office estimator flow (the brief):**
+
+1. User types an address on a laptop or phone.
+2. Selects trade-pack (roofing or windows).
+3. Taps Estimate. UI shows live progress: "Pulling aerial…" → "Reading parcel + permits…" → "Surveyor analyzing…" → "Estimator pricing…" → "Generator rendering…" (total <60s).
+4. Bid renders on screen. Customer-ready PDF: brand header, satellite thumbnail, line items, prices, total, "informed by" footnote, signature line.
+5. Sales agent surfaces a contextual upsell card 10-15s later.
+
+**Field rep flow (the differentiator):**
+
+Same as above, with an extra step: rep opens the same app on a phone, finds the existing bid (or starts fresh from address), adds 2-3 photos and a description. Bid refines.
 
 ## Open Questions
 

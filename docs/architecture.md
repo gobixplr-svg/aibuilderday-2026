@@ -2,6 +2,21 @@
 
 > Working draft. This locks the shape; specific tech choices inside each box can flex.
 
+## Stack decision (locked)
+
+**Next.js + Tailwind, mobile-first responsive PWA.** Not Flutter, not Swift, not native iOS.
+
+Reasoning:
+
+- **Browser camera + mic APIs are sufficient.** `<input type="file" capture="environment">` and MediaRecorder give us photo and voice capture on iOS Safari and Android Chrome.
+- **Distribution.** Judges can scan a QR code and try it. Native means TestFlight or sideloading — neither possible at a hackathon.
+- **Iteration speed.** Browser refresh beats build-deploy-test on a phone every time.
+- **Team skill match.** No teammate has stated Swift/Flutter expertise. Web is the universal denominator.
+- **Demo brittleness.** Web app crashes have devtools. Native crashes on stage are silent.
+- **The bounty pivot reduces phone-importance further.** With aerial imagery as the primary input, most of the demo runs on a presenter laptop. Phone-side capture is now Act 2 (rep enrichment), not the main event. Web is even more obviously right.
+
+If this gets relitigated, point at this section.
+
 ## Framing: agent orchestra, not "a vision pipeline"
 
 We orchestrate a small set of specialized AI agents across the estimate workflow. Same underlying calls, sharper story — and closer to where JobNimbus is already heading with Scout. The agents in v1:
@@ -15,17 +30,19 @@ Future agents (post-v1, kept visible to show the platform thesis): **Validator**
 
 The architecture below is what these agents run on.
 
-## Three-input fusion, async pipeline
+## Aerial-primary, async pipeline
+
+The Surveyor agent's primary signal is aerial imagery + property metadata. Ground photos and rep description, when present, refine the bid. The architecture supports both flows; the *demo* leads with address-only and adds enrichment in Act 2.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                     PHONE (PWA)                          │
-│  - Camera capture                                        │
-│  - Text/voice description                                │
-│  - Optional address                                      │
+│                ENTRY POINT (web, any device)             │
+│  - Address input                                         │
+│  - Trade-pack selector (roofing | windows)               │
+│  - Optional: photos + description (for rep flow)         │
 └─────────────────┬───────────────────────────────────────┘
                   │ POST /api/captures
-                  │ (photos uploaded direct to Storage via signed URL)
+                  │ (any photos uploaded direct to Storage)
                   ▼
 ┌─────────────────────────────────────────────────────────┐
 │        CLOUDFLARE PAGES / VERCEL  (capture UI + API)    │
@@ -84,33 +101,38 @@ The architecture below is what these agents run on.
 
 **External context behind small adapters.** Each source fails independently. If parcel data is slow, we still have satellite + permits. If everything fails, we degrade to photos + description and the demo still works.
 
-**Description is the primary AI signal, photos verify, external context grounds.** This shapes the Surveyor agent's prompt:
+**Aerial imagery + metadata is the primary AI signal. Ground photos and description, when present, refine.** This shapes the Surveyor agent's prompt:
 
 ```
-SYSTEM (Surveyor): You are extracting a contractor estimate
-scope from multiple property signals. The {description} is
-the primary ground truth (rep or homeowner observation).
-The {photos} verify and add detail. The {external_context}
-grounds the estimate in property reality.
+SYSTEM (Surveyor): You are scoping a contractor estimate from
+property signals. {aerial_image} and {parcel_data} are the
+primary signals — read the structure, count features, assess
+condition where visible. {permits} and {storms} ground the
+estimate in property history. If {ground_photos} or
+{description} are present, use them to refine condition and
+catch detail the aerial missed.
 
 USER:
-  Description: "Three windows on the southeast wall, double-hung,
-  weather damage on seals, original install ~1995."
+  Address: 3451 N Triumph Blvd, Lehi UT 84043
+  Trade pack: roofing
 
-  Photos: [3 images]
+  Aerial: [image]
+  Parcel: 6,200 sqft building, built 2019, commercial
+  Permits: roof permit 2019 (original), no roof work since
+  Storms: 2023-08-14 hail event nearby (1.25" reported)
 
-  External context:
-    - Satellite: [image]
-    - Parcel: 2,400 sqft, built 1994, single-family
-    - Permits: roof permit 2018, no window permits on file
-    - Storm: hailstorm Aug 2023
+  Ground photos: [optional, 0-5 images]
+  Description: [optional, free text]
 
-  Trade pack: windows
   Available SKUs: [50 catalog items]
 
   Return: structured items with confidence, matched SKUs,
-  rationale citing which signals contributed.
+  rationale citing which signals contributed (e.g. "aerial
+  shows ~32 squares of asphalt shingle in fair condition;
+  storm history suggests inspection-grade vs replacement").
 ```
+
+The same prompt structure handles both flows — aerial-only (Act 1) and aerial-plus-ground (Act 2). The difference is which fields are filled in.
 
 ## Sales agent (upsell)
 
