@@ -4,7 +4,6 @@ import { useState } from "react"
 import AddressForm from "@/components/AddressForm"
 import PipelineStatus from "@/components/PipelineStatus"
 import ResultsPanel from "@/components/ResultsPanel"
-import RoofIllustration from "@/components/RoofIllustration"
 import type { EstimateResponse } from "@/types"
 
 type AppState = "idle" | "running" | "done" | "error"
@@ -44,7 +43,6 @@ export default function Home() {
     <div className="max-w-3xl mx-auto px-4 py-10">
       {state === "idle" && (
         <div className="fade-in">
-          <RoofIllustration />
           <h1 className="text-5xl font-black tracking-tight mb-2" style={{ color: "var(--jn-navy)" }}>
             Aerial Roof Estimator
           </h1>
