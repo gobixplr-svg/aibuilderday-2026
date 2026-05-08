@@ -1,0 +1,25 @@
+{
+  "slug": "122-nw-13th-ave-cape-coral-fl-33993",
+  "address": "122 NW 13th Ave, Cape Coral, FL 33993",
+  "formatted_address": "122 NW 13th Ave, Cape Coral, FL 33993, USA",
+  "lat": 26.6551943,
+  "lng": -82.0006137,
+  "pitch": "4:12",
+  "pitch_multiplier": 1.054,
+  "pitch_confidence": 0.7,
+  "pitch_rationale": "The subject property (blue-tarped hip roof, upper structure) is located in Cape Coral, southwest Florida, where building codes and climate strongly favor low-pitch hip roofs (4:12–6:12). Visual cues support 4:12: the northward eave shadow is short relative to the ~40–45 ft building width (per the 50-ft scale bar), indicating limited vertical rise. The hip roof planes converge gradually and the ridge remains relatively wide in plan view, consistent with a shallow pitch. The neighboring gray-shingled hip roof (lower structure) reinforces the neighborhood norm of low-profile Florida construction. No dormers, steep gable protrusions, or long dramatic shadows suggestive of 6:12+ are present.",
+  "pitch_stub": false,
+  "footprint_sqft": 2900,
+  "footprint_confidence": 0.4,
+  "footprint_rationale": "The target structure is the blue-tarped house in the upper-center of the image (122 NW 13th Ave). Blue tarps indicate post-hurricane storm damage. Bounding box traced from approximately x:422–680, y:385–645 pixels (258 px E-W × 260 px N-S = 67,080 sq px). A setback/notch in the upper-right quadrant (tree shadow and roof step visible) was subtracted (~7,000 sq px), yielding ~60,080 sq px × 0.047905 = ~2,878 sq ft, rounded to 2,900 sq ft. The roof is a complex hip style (typical for SW Florida hurricane zones) — no rake edges visible. Two joined hip-roof sections produce a main E-W ridge (~95 px) over the north body, a shorter secondary ridge (~65 px) over the south wing, and an internal valley (~2 lines × ~85 px each) where the two sections meet. Six exterior hip lines (~85 px avg each) run from ridge ends to all perimeter corners. Eave measured around the full perimeter (~960 px total). Confidence limited to 0.40 because the blue tarps obscure actual ridge/hip/valley line locations and the irregular L-shape boundary is difficult to trace precisely from this resolution.",
+  "footprint_stub": false,
+  "line_items": {
+    "ridge": 35,
+    "hip": 112,
+    "valley": 37,
+    "rake": 0,
+    "eave": 210
+  },
+  "roof_area_sqft": 3057,
+  "computed_at": "2026-05-08T23:01:06.345Z"
+}
