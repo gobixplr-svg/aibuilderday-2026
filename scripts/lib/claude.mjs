@@ -31,7 +31,7 @@ export async function runVisionCall({
   imagePath,
   tool,
   effort = "high",
-  maxTokens = 8192,
+  maxTokens = 16000,
 }) {
   const imageData = (await readFile(imagePath)).toString("base64")
 
