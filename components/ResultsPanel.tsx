@@ -5,41 +5,53 @@ export default function ResultsPanel({ result }: { result: EstimateResponse }) {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Measurement summary */}
+      {/* Stub warning */}
+      {estimate.stub && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          ⚠️ Stub data — pitch and footprint are synthetic until vision prompts land (tasks #2 &amp; #3)
+        </div>
+      )}
+
+      {/* Measurement card */}
       <div
-        className="rounded-xl border p-6"
+        className="rounded-xl border p-8 text-center"
         style={{ borderColor: "var(--jn-border)", background: "white" }}
       >
-        <h2 className="text-lg font-semibold mb-4" style={{ color: "var(--jn-navy)" }}>
+        <h2 className="text-sm font-semibold mb-6 text-left" style={{ color: "var(--jn-muted)" }}>
           Roof Measurements
         </h2>
-        <div className="grid grid-cols-3 gap-4 text-center">
-          <div>
-            <div className="text-3xl font-bold" style={{ color: "var(--jn-blue)" }}>
-              {measurement.roof_area_sqft.toLocaleString()}
-            </div>
-            <div className="text-xs mt-1" style={{ color: "var(--jn-muted)" }}>
-              Total sq ft
-            </div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold" style={{ color: "var(--jn-navy)" }}>
-              {measurement.pitch}
-            </div>
-            <div className="text-xs mt-1" style={{ color: "var(--jn-muted)" }}>
-              Roof pitch
-            </div>
-          </div>
-          <div>
-            <div className="text-3xl font-bold" style={{ color: "var(--jn-navy)" }}>
-              {Math.round(measurement.pitch_confidence * 100)}%
-            </div>
-            <div className="text-xs mt-1" style={{ color: "var(--jn-muted)" }}>
-              Confidence
-            </div>
-          </div>
+
+        {/* Hero sqft */}
+        <div
+          className="text-8xl font-black leading-none"
+          style={{ color: "var(--jn-blue)" }}
+        >
+          {measurement.roof_area_sqft.toLocaleString()}
         </div>
-        <p className="text-xs mt-4 pt-4 border-t" style={{ borderColor: "var(--jn-border)", color: "var(--jn-muted)" }}>
+        <div
+          className="text-xs font-semibold tracking-widest uppercase mt-2 mb-6"
+          style={{ color: "var(--jn-muted)" }}
+        >
+          sq ft
+        </div>
+
+        {/* Secondary stats */}
+        <div className="flex justify-center gap-3">
+          <span
+            className="rounded-full border px-3 py-1 text-xs"
+            style={{ borderColor: "var(--jn-border)", color: "var(--jn-text)" }}
+          >
+            Pitch {measurement.pitch}
+          </span>
+          <span
+            className="rounded-full border px-3 py-1 text-xs"
+            style={{ borderColor: "var(--jn-border)", color: "var(--jn-text)" }}
+          >
+            {Math.round(measurement.pitch_confidence * 100)}% confidence
+          </span>
+        </div>
+
+        <p className="text-xs mt-6 pt-4 border-t" style={{ borderColor: "var(--jn-border)", color: "var(--jn-muted)" }}>
           {measurement.formatted_address}
         </p>
       </div>
@@ -91,7 +103,7 @@ export default function ResultsPanel({ result }: { result: EstimateResponse }) {
         </div>
       </div>
 
-      {/* PDF download (shown when available) */}
+      {/* PDF download */}
       {result.pdfPath && (
         <a
           href={`/api/pdf?slug=${result.slug}`}

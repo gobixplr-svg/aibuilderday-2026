@@ -10,19 +10,13 @@ type AppState = "idle" | "running" | "done" | "error"
 
 export default function Home() {
   const [state, setState] = useState<AppState>("idle")
-  const [step, setStep] = useState(0)
   const [result, setResult] = useState<EstimateResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   async function handleSubmit(address: string) {
     setState("running")
-    setStep(0)
     setResult(null)
     setError(null)
-
-    const stepInterval = setInterval(() => {
-      setStep((s) => (s < 5 ? s + 1 : s))
-    }, 4000)
 
     try {
       const res = await fetch("/api/estimate", {
@@ -30,7 +24,6 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ address }),
       })
-      clearInterval(stepInterval)
 
       if (!res.ok) {
         const err = await res.json().catch(() => ({ error: "Unknown error" }))
@@ -38,11 +31,9 @@ export default function Home() {
       }
 
       const data: EstimateResponse = await res.json()
-      setStep(6)
       setResult(data)
       setState("done")
     } catch (err) {
-      clearInterval(stepInterval)
       setError(err instanceof Error ? err.message : "Unknown error")
       setState("error")
     }
@@ -52,10 +43,10 @@ export default function Home() {
     <div className="max-w-3xl mx-auto px-4 py-10">
       {state === "idle" && (
         <>
-          <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--jn-navy)" }}>
+          <h1 className="text-5xl font-black tracking-tight mb-2" style={{ color: "var(--jn-navy)" }}>
             Aerial Roof Estimator
           </h1>
-          <p className="mb-8" style={{ color: "var(--jn-muted)" }}>
+          <p className="text-sm mb-8" style={{ color: "var(--jn-muted)" }}>
             Enter a property address to get a measurement and quote-ready estimate in seconds.
           </p>
           <AddressForm onSubmit={handleSubmit} />
@@ -64,10 +55,10 @@ export default function Home() {
 
       {state === "running" && (
         <div className="mt-4">
-          <h2 className="text-xl font-semibold mb-6" style={{ color: "var(--jn-navy)" }}>
+          <h2 className="text-xl font-semibold mb-2" style={{ color: "var(--jn-navy)" }}>
             Analyzing property…
           </h2>
-          <PipelineStatus currentStep={step} />
+          <PipelineStatus />
         </div>
       )}
 
