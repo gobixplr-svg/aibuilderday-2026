@@ -12,6 +12,7 @@
     "build": "next build",
     "start": "next start",
     "fetch-aerial": "node scripts/fetch-aerial.mjs",
+    "fetch-aerial-free": "node scripts/fetch-aerial-free.mjs",
     "fetch-all": "node scripts/fetch-all.mjs",
     "estimate": "node scripts/estimate.mjs",
     "calibrate": "node scripts/calibrate.mjs",
