@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --jn-blue: #1b6ac9;
+  --jn-navy: #0d1f3c;
+  --jn-orange: #ff6b2b;
+  --jn-surface: #f5f8ff;
+  --jn-border: #e2e8f0;
+  --jn-text: #1a2332;
+  --jn-muted: #64748b;
+}
+
+body {
+  background: var(--jn-surface);
+  color: var(--jn-text);
+  font-family: "Inter", sans-serif;
+}

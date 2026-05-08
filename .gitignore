@@ -29,3 +29,6 @@ Thumbs.db
 
 # Pipeline cache (intermediate API + vision results)
 intermediate/
+
+# Pipeline outputs (populated during calibration + submission run)
+outputs/
