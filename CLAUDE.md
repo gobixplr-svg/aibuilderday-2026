@@ -58,10 +58,19 @@ Add to `.env.local` (gitignored):
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...
-GOOGLE_MAPS_API_KEY=AIza...
+GOOGLE_MAPS_API_KEY=AIza...   # optional — only needed for the real Google fetcher
 ```
 
 Don't commit `.env.local`. Don't commit API keys ever.
+
+### Shared keys for the team
+
+- **Anthropic key:** one shared team key with a hard spending cap. **Get it from Dan** (sent via the team chat — never via this repo, email, or any public channel). Paste into your own `.env.local`. The key is rotated/revoked after Saturday submission.
+- **Google Maps key:** optional. If you don't have one, run `npm run fetch-aerial-free -- --all` instead — it pulls free imagery from Census Geocoder + Esri World Imagery for the bounty test set. Same `intermediate/<slug>/` output schema, no key needed.
+
+### What to do if you accidentally commit a key
+
+Tell Dan immediately. The shared Anthropic key gets rotated, the leaked one revoked. Don't try to "fix it with a force push" — git history persists in clones, and Anthropic's key scanner will revoke a public-repo key on its own anyway.
 
 ## Address slug convention
 
