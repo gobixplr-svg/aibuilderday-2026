@@ -6,20 +6,20 @@
   "lng": -95.311886,
   "pitch": "6:12",
   "pitch_multiplier": 1.118,
-  "pitch_confidence": 0.72,
-  "pitch_rationale": "The homes in this Humble, TX neighborhood (Houston metro, Gulf Coast climate) display classic multi-hip roof forms with short-to-moderate ridgelines relative to overall footprint, consistent with a 6:12 pitch. Ground shadows cast from the eaves are modest in length — not long enough to suggest steep pitches (8:12+), but clearly present, ruling out very shallow slopes (3:12–4:12). The visible roof plane area from the nadir (overhead) view is moderate, indicating a mid-range slope. Shingle texture is visible with mild shadow relief across the planes. Regional norms for suburban Houston-area construction of this style and era strongly favor 5:12–7:12 hip roofs, with 6:12 being the most prevalent standard pitch, making it the best single estimate given all converging visual cues.",
+  "pitch_confidence": 0.78,
+  "pitch_rationale": "The homes at this Humble, TX address display classic hip/pyramid roof forms common to Houston-area suburban construction. Shadow lengths cast from the eave edges onto the surrounding lawn measure approximately 20–30% of building width, consistent with a moderate 6:12 pitch rather than the shorter shadows of a 4:12 or the longer shadows of an 8:12. The ridge peaks are visibly elevated above the eave plane with well-defined slope faces, and the ridge-to-eave geometry shows the ridge sitting noticeably inward but not dramatically compressed — both hallmarks of a 6:12 slope. Regional norms for early-2000s Texas suburban tract housing strongly support 6:12 as the dominant pitch, and no steeply protruding dormers or unusually compressed roof planes are present to suggest deviation from this standard.",
   "pitch_stub": false,
-  "footprint_sqft": 2250,
-  "footprint_confidence": 0.42,
-  "footprint_rationale": "Subject home identified as the large multi-section hip-roofed structure at the base of the Kenswick Meadows Ct cul-de-sac (upper-left quadrant), with driveway curving from the cul-de-sac circle. Bounding box traced at approximately x:235–420 px, y:545–875 px (185 px wide × 330 px tall = ~39 ft × ~70 ft). The plan is L-shaped with two main hip-roof sections; an 82% fill factor applied to the gross rectangle gives ~2,250 sq ft. Roof is an all-hip style (no rake/gable ends): two principal ridges plus a connector ridge totaling ~55 ft, approximately eight hip lines at corners totaling ~102 ft, two interior valleys where sections meet totaling ~19 ft, and continuous eave lines around the full perimeter totaling ~187 ft. Confidence is moderate-low due to the oblique angle of some roof sections, partial shadowing, and uncertainty in pinpointing the exact lot boundary of 21106 among similarly styled neighboring homes on the cul-de-sac.",
+  "footprint_sqft": 1950,
+  "footprint_confidence": 0.37,
+  "footprint_rationale": "Target home identified as the multi-section hip-roof structure at the base of the cul-de-sac on Kenswick Meadows Ct, occupying approximately pixels (235,555)→(415,885). Roof is a complex hip style with no gable/rake ends visible. Two primary stacking sections were traced: an upper main block (~170×155 px = 36×33 ft ≈ 1,183 sqft) and a lower extension (~140×120 px = 30×25 ft ≈ 754 sqft), minus ~87 sqft for cutouts and alignment, yielding ~1,950 sqft plan-view footprint. Ridge segments counted across 3 runs (~47 px total = ~45 ft). Hip lines estimated at 10 sloped corners averaging ~22 px each (~115 ft). Two to three valley intersections where wings meet (~22 ft). Zero rake lines (fully hipped). Eave perimeter traced around all lower edges (~165 ft). Confidence is moderate-low due to roof complexity, shadow interference on edges, and uncertainty in exact lot/house boundary assignment from satellite view alone.",
   "footprint_stub": false,
   "line_items": {
-    "ridge": 55,
-    "hip": 102,
-    "valley": 19,
+    "ridge": 45,
+    "hip": 115,
+    "valley": 22,
     "rake": 0,
-    "eave": 187
+    "eave": 165
   },
-  "roof_area_sqft": 2516,
-  "computed_at": "2026-05-08T22:39:52.817Z"
+  "roof_area_sqft": 2180,
+  "computed_at": "2026-05-08T23:06:27.939Z"
 }

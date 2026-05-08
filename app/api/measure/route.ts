@@ -11,7 +11,7 @@ function slugify(address: string): string {
 
 function runPipeline(address: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    const proc = spawn("node", ["scripts/estimate.mjs", address], {
+    const proc = spawn("node", ["scripts/estimate.mjs", address, "--no-cache"], {
       cwd: process.cwd(),
       env: { ...process.env },
     })

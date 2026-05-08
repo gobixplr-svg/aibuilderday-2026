@@ -1,6 +1,6 @@
 {
   "pitch": "4:12",
   "pitch_multiplier": 1.054,
-  "confidence": 0.7,
-  "rationale": "The subject property (blue-tarped hip roof, upper structure) is located in Cape Coral, southwest Florida, where building codes and climate strongly favor low-pitch hip roofs (4:12–6:12). Visual cues support 4:12: the northward eave shadow is short relative to the ~40–45 ft building width (per the 50-ft scale bar), indicating limited vertical rise. The hip roof planes converge gradually and the ridge remains relatively wide in plan view, consistent with a shallow pitch. The neighboring gray-shingled hip roof (lower structure) reinforces the neighborhood norm of low-profile Florida construction. No dormers, steep gable protrusions, or long dramatic shadows suggestive of 6:12+ are present."
+  "confidence": 0.78,
+  "rationale": "The subject home (center, covered in blue emergency tarps) is located in Cape Coral, FL — a region where 4:12 is the dominant residential pitch due to hurricane building codes and climate norms. The blue tarps lie very flat against the roof planes with minimal draping, indicating a shallow slope. Ground shadows cast from the eave edges are short relative to the building's plan footprint, consistent with a low rise:run ratio. The hip roof geometry shows a wide eave perimeter with the ridge sitting close to the center, and no dormers or steep gable protrusions are visible. The neighboring gray-shingle hip roof to the south similarly shows minimal vertical prominence, corroborating the shallow regional pitch norm. All cues point to a 4:12 pitch, typical for SW Florida construction."
 }

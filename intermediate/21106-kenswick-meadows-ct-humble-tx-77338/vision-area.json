@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2250,
+  "footprint_sqft": 1950,
   "line_items": {
-    "ridge": 55,
-    "hip": 102,
-    "valley": 19,
+    "ridge": 45,
+    "hip": 115,
+    "valley": 22,
     "rake": 0,
-    "eave": 187
+    "eave": 165
   },
-  "confidence": 0.42,
-  "rationale": "Subject home identified as the large multi-section hip-roofed structure at the base of the Kenswick Meadows Ct cul-de-sac (upper-left quadrant), with driveway curving from the cul-de-sac circle. Bounding box traced at approximately x:235–420 px, y:545–875 px (185 px wide × 330 px tall = ~39 ft × ~70 ft). The plan is L-shaped with two main hip-roof sections; an 82% fill factor applied to the gross rectangle gives ~2,250 sq ft. Roof is an all-hip style (no rake/gable ends): two principal ridges plus a connector ridge totaling ~55 ft, approximately eight hip lines at corners totaling ~102 ft, two interior valleys where sections meet totaling ~19 ft, and continuous eave lines around the full perimeter totaling ~187 ft. Confidence is moderate-low due to the oblique angle of some roof sections, partial shadowing, and uncertainty in pinpointing the exact lot boundary of 21106 among similarly styled neighboring homes on the cul-de-sac."
+  "confidence": 0.37,
+  "rationale": "Target home identified as the multi-section hip-roof structure at the base of the cul-de-sac on Kenswick Meadows Ct, occupying approximately pixels (235,555)→(415,885). Roof is a complex hip style with no gable/rake ends visible. Two primary stacking sections were traced: an upper main block (~170×155 px = 36×33 ft ≈ 1,183 sqft) and a lower extension (~140×120 px = 30×25 ft ≈ 754 sqft), minus ~87 sqft for cutouts and alignment, yielding ~1,950 sqft plan-view footprint. Ridge segments counted across 3 runs (~47 px total = ~45 ft). Hip lines estimated at 10 sloped corners averaging ~22 px each (~115 ft). Two to three valley intersections where wings meet (~22 ft). Zero rake lines (fully hipped). Eave perimeter traced around all lower edges (~165 ft). Confidence is moderate-low due to roof complexity, shadow interference on edges, and uncertainty in exact lot/house boundary assignment from satellite view alone."
 }
