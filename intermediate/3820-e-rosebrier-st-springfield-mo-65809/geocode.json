@@ -1,9 +1,8 @@
 {
   "input_address": "3820 E Rosebrier St, Springfield, MO 65809",
-  "formatted_address": "3820 E ROSEBRIAR ST, SPRINGFIELD, MO, 65809",
-  "place_id": "618765250",
-  "lat": 37.15990742769,
-  "lng": -93.216217684854,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "3820 E Rosebrier St, Springfield, MO 65809, USA",
+  "place_id": "ChIJ5RT5-4J7z4cR_jwWIprEcBw",
+  "lat": 37.1596926,
+  "lng": -93.21594809999999,
+  "location_type": "ROOFTOP"
 }

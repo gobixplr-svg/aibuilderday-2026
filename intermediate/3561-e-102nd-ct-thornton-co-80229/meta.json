@@ -1,15 +1,14 @@
 {
   "slug": "3561-e-102nd-ct-thornton-co-80229",
   "address": "3561 E 102nd Ct, Thornton, CO 80229",
-  "formatted_address": "3561 E 102ND CT, THORNTON, CO, 80229",
-  "lat": 39.881011116266,
-  "lng": -104.945356514851,
-  "zoom": 19,
+  "formatted_address": "3561 E 102nd Ct, Thornton, CO 80229, USA",
+  "lat": 39.8811632,
+  "lng": -104.9453839,
+  "zoom": 20,
   "size_px": 640,
-  "scale": 1,
-  "effective_px": 640,
-  "meters_per_pixel": 0.22912527657421072,
-  "feet_per_pixel": 0.7517233723957335,
-  "source": "esri-world-imagery (composite)",
-  "fetched_at": "2026-05-08T21:11:32.719Z"
+  "scale": 2,
+  "effective_px": 1280,
+  "meters_per_pixel": 0.057281192099300354,
+  "feet_per_pixel": 0.18793042628706857,
+  "fetched_at": "2026-05-08T22:01:33.337Z"
 }

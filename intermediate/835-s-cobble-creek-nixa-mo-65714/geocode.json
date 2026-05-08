@@ -1,9 +1,8 @@
 {
   "input_address": "835 S Cobble Creek, Nixa, MO 65714",
-  "formatted_address": "835 S COBBLE CREEK BLVD, NIXA, MO, 65714",
-  "place_id": "227928872",
-  "lat": 37.028872767996,
-  "lng": -93.283184060358,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "835 S Cobble Creek Blvd, Nixa, MO 65714, USA",
+  "place_id": "ChIJFXKCzUhuz4cR-CAo9lPnuKQ",
+  "lat": 37.028963,
+  "lng": -93.2833319,
+  "location_type": "ROOFTOP"
 }

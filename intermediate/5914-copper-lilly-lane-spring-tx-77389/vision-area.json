@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 2258,
+  "line_items": {
+    "ridge": 40,
+    "hip": 172,
+    "valley": 56,
+    "rake": 0,
+    "eave": 87
+  },
+  "confidence": 0.43,
+  "rationale": "Target home identified as the large complex hip-roofed residence near the image center (coordinates 30.1117, -95.5091). Bounding box traced from approximately x=435–650 (215 px = 45.6 ft) by y=385–685 (300 px = 63.6 ft), yielding a bounding area of 2,895 sq ft. Applied a 78% fill factor to account for multiple wing cutouts, recesses, and the complex multi-section plan shape, arriving at ~2,258 sq ft footprint. Roof is a fully hipped multi-section design (no gable rakes). Ridge estimated from 4–5 short ridge lines atop each hip section (~190 px total). Hip lines counted at ~14 diagonal edges across all sections (~810 px). Valleys counted at ~5 inward junction lines (~265 px). Eaves traced around the complex lower perimeter (~410 px). Confidence is moderate (0.43) due to the high complexity of the roof geometry and difficulty precisely resolving individual sections at this resolution."
+}

@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 2280,
+  "line_items": {
+    "ridge": 20,
+    "hip": 118,
+    "valley": 18,
+    "rake": 0,
+    "eave": 183
+  },
+  "confidence": 0.5,
+  "rationale": "Focused on the middle house centered in the image fronting Trenton Ave. Traced the bounding box as approximately (378,432) to (698,650) in pixel space — 320×218 px = 58.6×39.9 ft. The plan shape is not a perfect rectangle; I estimated the main body as 300×200 px and a south-front wing projection at 90×90 px, yielding a combined footprint of ~68,100 sq px × 0.033504 = ~2,282 sq ft (rounded to 2,280). The roof is a full hip roof (no gable ends, no rakes). The main rectangular hip section (~55×36.6 ft) produces a ridge of ~18 ft, four hips totaling ~104 ft (each ~26 ft in plan view), and eaves around the full perimeter of ~183 ft. The south wing creates valleys (~18 ft) where it ties into the main body and adds additional hip lines (~15 ft), bringing total hips to ~118 ft. Confidence is moderate (0.50) due to the difficulty of precisely tracing irregular roof edges at this satellite resolution and partial tree coverage."
+}

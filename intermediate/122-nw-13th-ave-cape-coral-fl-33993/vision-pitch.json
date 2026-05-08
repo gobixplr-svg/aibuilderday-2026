@@ -1,6 +1,6 @@
 {
   "pitch": "4:12",
   "pitch_multiplier": 1.054,
-  "confidence": 0.78,
-  "rationale": "All homes in this Cape Coral, FL neighborhood display classic hip roof geometry with no dormers, steep gables, or architectural peaks. Shadow lengths cast from the eaves measure approximately 4–7 feet against a ~45-foot building width (using the 50 ft scale bar), consistent with a shallow pitch. Viewed from directly above, the roof surfaces appear very broad relative to their footprints with centrally positioned, low-prominence ridges — a strong indicator of 4:12 geometry. Regional norms for SW Florida strongly reinforce this estimate: hip roofs at 4:12 are the dominant residential pitch in Cape Coral due to hurricane wind-load code requirements and tile roofing minimums."
+  "confidence": 0.7,
+  "rationale": "The subject property (blue-tarped hip roof, upper structure) is located in Cape Coral, southwest Florida, where building codes and climate strongly favor low-pitch hip roofs (4:12–6:12). Visual cues support 4:12: the northward eave shadow is short relative to the ~40–45 ft building width (per the 50-ft scale bar), indicating limited vertical rise. The hip roof planes converge gradually and the ridge remains relatively wide in plan view, consistent with a shallow pitch. The neighboring gray-shingled hip roof (lower structure) reinforces the neighborhood norm of low-profile Florida construction. No dormers, steep gable protrusions, or long dramatic shadows suggestive of 6:12+ are present."
 }

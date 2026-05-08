@@ -1,15 +1,14 @@
 {
   "slug": "14132-trenton-ave-orland-park-il-60462",
   "address": "14132 Trenton Ave, Orland Park, IL 60462",
-  "formatted_address": "14132 TRENTON AVE, ORLAND PARK, IL, 60462",
-  "lat": 41.633549606419,
-  "lng": -87.842886343405,
-  "zoom": 19,
+  "formatted_address": "14132 Trenton Ave, Orland Park, IL 60462, USA",
+  "lat": 41.63322670000001,
+  "lng": -87.8431279,
+  "zoom": 20,
   "size_px": 640,
-  "scale": 1,
-  "effective_px": 640,
-  "meters_per_pixel": 0.22316303956090108,
-  "feet_per_pixel": 0.7321622267129867,
-  "source": "esri-world-imagery (composite)",
-  "fetched_at": "2026-05-08T21:10:54.464Z"
+  "scale": 2,
+  "effective_px": 1280,
+  "meters_per_pixel": 0.05579103937784834,
+  "feet_per_pixel": 0.18304147363241993,
+  "fetched_at": "2026-05-08T22:01:32.101Z"
 }

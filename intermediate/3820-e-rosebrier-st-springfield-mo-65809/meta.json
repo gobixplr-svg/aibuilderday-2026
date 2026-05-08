@@ -1,15 +1,14 @@
 {
   "slug": "3820-e-rosebrier-st-springfield-mo-65809",
   "address": "3820 E Rosebrier St, Springfield, MO 65809",
-  "formatted_address": "3820 E ROSEBRIAR ST, SPRINGFIELD, MO, 65809",
-  "lat": 37.15990742769,
-  "lng": -93.216217684854,
-  "zoom": 19,
+  "formatted_address": "3820 E Rosebrier St, Springfield, MO 65809, USA",
+  "lat": 37.1596926,
+  "lng": -93.21594809999999,
+  "zoom": 20,
   "size_px": 640,
-  "scale": 1,
-  "effective_px": 640,
-  "meters_per_pixel": 0.23795587078176575,
-  "feet_per_pixel": 0.7806951390956484,
-  "source": "esri-world-imagery (composite)",
-  "fetched_at": "2026-05-08T21:11:37.462Z"
+  "scale": 2,
+  "effective_px": 1280,
+  "meters_per_pixel": 0.059489136754029205,
+  "feet_per_pixel": 0.19517433942808918,
+  "fetched_at": "2026-05-08T22:01:35.374Z"
 }

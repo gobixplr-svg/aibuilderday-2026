@@ -1,15 +1,14 @@
 {
   "slug": "1612-s-canton-ave-springfield-mo-65802",
   "address": "1612 S Canton Ave, Springfield, MO 65802",
-  "formatted_address": "1612 S CANTON AVE, SPRINGFIELD, MO, 65802",
-  "lat": 37.186015473096,
-  "lng": -93.369810225266,
-  "zoom": 19,
+  "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA",
+  "lat": 37.1860933,
+  "lng": -93.36959139999999,
+  "zoom": 20,
   "size_px": 640,
-  "scale": 1,
-  "effective_px": 640,
-  "meters_per_pixel": 0.23787366300242574,
-  "feet_per_pixel": 0.7804254285248785,
-  "source": "esri-world-imagery (composite)",
-  "fetched_at": "2026-05-08T21:11:34.220Z"
+  "scale": 2,
+  "effective_px": 1280,
+  "meters_per_pixel": 0.05946835446772615,
+  "feet_per_pixel": 0.19510615607189466,
+  "fetched_at": "2026-05-08T22:01:33.875Z"
 }

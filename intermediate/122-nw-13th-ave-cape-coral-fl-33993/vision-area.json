@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 2900,
+  "line_items": {
+    "ridge": 35,
+    "hip": 112,
+    "valley": 37,
+    "rake": 0,
+    "eave": 210
+  },
+  "confidence": 0.4,
+  "rationale": "The target structure is the blue-tarped house in the upper-center of the image (122 NW 13th Ave). Blue tarps indicate post-hurricane storm damage. Bounding box traced from approximately x:422–680, y:385–645 pixels (258 px E-W × 260 px N-S = 67,080 sq px). A setback/notch in the upper-right quadrant (tree shadow and roof step visible) was subtracted (~7,000 sq px), yielding ~60,080 sq px × 0.047905 = ~2,878 sq ft, rounded to 2,900 sq ft. The roof is a complex hip style (typical for SW Florida hurricane zones) — no rake edges visible. Two joined hip-roof sections produce a main E-W ridge (~95 px) over the north body, a shorter secondary ridge (~65 px) over the south wing, and an internal valley (~2 lines × ~85 px each) where the two sections meet. Six exterior hip lines (~85 px avg each) run from ridge ends to all perimeter corners. Eave measured around the full perimeter (~960 px total). Confidence limited to 0.40 because the blue tarps obscure actual ridge/hip/valley line locations and the irregular L-shape boundary is difficult to trace precisely from this resolution."
+}

@@ -1,9 +1,8 @@
 {
   "input_address": "1612 S Canton Ave, Springfield, MO 65802",
-  "formatted_address": "1612 S CANTON AVE, SPRINGFIELD, MO, 65802",
-  "place_id": "76708887",
-  "lat": 37.186015473096,
-  "lng": -93.369810225266,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA",
+  "place_id": "ChIJu1bDTR9hz4cReoYch_5LjVc",
+  "lat": 37.1860933,
+  "lng": -93.36959139999999,
+  "location_type": "ROOFTOP"
 }

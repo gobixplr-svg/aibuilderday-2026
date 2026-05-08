@@ -1,9 +1,8 @@
 {
   "input_address": "1261 20th Street, Newport News, VA 23607",
-  "formatted_address": "1261 20TH ST, NEWPORT NEWS, VA, 23607",
-  "place_id": "103746851",
-  "lat": 36.984102259487,
-  "lng": -76.402359756188,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "1261 20th St, Newport News, VA 23607, USA",
+  "place_id": "ChIJXUyHdPmcuokRFi47xKZ_H8c",
+  "lat": 36.9845554,
+  "lng": -76.4016532,
+  "location_type": "ROOFTOP"
 }

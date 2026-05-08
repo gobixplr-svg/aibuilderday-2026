@@ -1,15 +1,14 @@
 {
   "slug": "5914-copper-lilly-lane-spring-tx-77389",
   "address": "5914 Copper Lilly Lane, Spring, TX 77389",
-  "formatted_address": "5914 COPPER LILY LN, SPRING, TX, 77389",
-  "lat": 30.111487252122,
-  "lng": -95.508674732699,
-  "zoom": 19,
+  "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA",
+  "lat": 30.1116839,
+  "lng": -95.50907149999999,
+  "zoom": 20,
   "size_px": 640,
-  "scale": 1,
-  "effective_px": 640,
-  "meters_per_pixel": 0.2582887370181184,
-  "feet_per_pixel": 0.8474040199585235,
-  "source": "esri-world-imagery (composite)",
-  "fetched_at": "2026-05-08T21:10:51.758Z"
+  "scale": 2,
+  "effective_px": 1280,
+  "meters_per_pixel": 0.06457205572522368,
+  "feet_per_pixel": 0.21185058330554285,
+  "fetched_at": "2026-05-08T22:01:30.492Z"
 }

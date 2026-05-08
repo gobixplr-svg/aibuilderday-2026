@@ -1,9 +1,8 @@
 {
   "input_address": "21106 Kenswick Meadows Ct, Humble, TX 77338",
-  "formatted_address": "21106 KENSWICK MEADOWS CT, HUMBLE, TX, 77338",
-  "place_id": "624798386",
-  "lat": 30.019678944854,
-  "lng": -95.312042771943,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA",
+  "place_id": "ChIJyWMqEp20QIYRj6D3ED2buRI",
+  "lat": 30.019412,
+  "lng": -95.311886,
+  "location_type": "ROOFTOP"
 }

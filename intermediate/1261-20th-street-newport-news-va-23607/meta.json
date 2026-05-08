@@ -1,15 +1,14 @@
 {
   "slug": "1261-20th-street-newport-news-va-23607",
   "address": "1261 20th Street, Newport News, VA 23607",
-  "formatted_address": "1261 20TH ST, NEWPORT NEWS, VA, 23607",
-  "lat": 36.984102259487,
-  "lng": -76.402359756188,
-  "zoom": 19,
+  "formatted_address": "1261 20th St, Newport News, VA 23607, USA",
+  "lat": 36.9845554,
+  "lng": -76.4016532,
+  "zoom": 20,
   "size_px": 640,
-  "scale": 1,
-  "effective_px": 640,
-  "meters_per_pixel": 0.23850815041441467,
-  "feet_per_pixel": 0.7825070802056282,
-  "source": "esri-world-imagery (composite)",
-  "fetched_at": "2026-05-08T21:11:39.091Z"
+  "scale": 2,
+  "effective_px": 1280,
+  "meters_per_pixel": 0.059626682447368524,
+  "feet_per_pixel": 0.19562560484062455,
+  "fetched_at": "2026-05-08T22:01:36.331Z"
 }

@@ -1,9 +1,8 @@
 {
   "input_address": "5914 Copper Lilly Lane, Spring, TX 77389",
-  "formatted_address": "5914 COPPER LILY LN, SPRING, TX, 77389",
-  "place_id": "656052328",
-  "lat": 30.111487252122,
-  "lng": -95.508674732699,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA",
+  "place_id": "ChIJBS3-HrgzR4YR6MaiKl7iWHM",
+  "lat": 30.1116839,
+  "lng": -95.50907149999999,
+  "location_type": "ROOFTOP"
 }

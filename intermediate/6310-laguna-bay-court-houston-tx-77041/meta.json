@@ -1,15 +1,14 @@
 {
   "slug": "6310-laguna-bay-court-houston-tx-77041",
   "address": "6310 Laguna Bay Court, Houston, TX 77041",
-  "formatted_address": "6310 LAGUNA BAY CT, HOUSTON, TX, 77041",
-  "lat": 29.859913159587,
-  "lng": -95.590638007334,
-  "zoom": 19,
+  "formatted_address": "6310 Laguna Bay Ct, Houston, TX 77041, USA",
+  "lat": 29.8603157,
+  "lng": -95.59039589999999,
+  "zoom": 20,
   "size_px": 640,
-  "scale": 1,
-  "effective_px": 640,
-  "meters_per_pixel": 0.25894395977795576,
-  "feet_per_pixel": 0.8495537009979084,
-  "source": "esri-world-imagery (composite)",
-  "fetched_at": "2026-05-08T21:11:35.712Z"
+  "scale": 2,
+  "effective_px": 1280,
+  "meters_per_pixel": 0.06473572883720508,
+  "feet_per_pixel": 0.2123875685982559,
+  "fetched_at": "2026-05-08T22:01:34.603Z"
 }

@@ -1,9 +1,8 @@
 {
   "input_address": "6310 Laguna Bay Court, Houston, TX 77041",
-  "formatted_address": "6310 LAGUNA BAY CT, HOUSTON, TX, 77041",
-  "place_id": "96575254",
-  "lat": 29.859913159587,
-  "lng": -95.590638007334,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "6310 Laguna Bay Ct, Houston, TX 77041, USA",
+  "place_id": "ChIJ3SIZ3nbQQIYRb44p_Nh_7yA",
+  "lat": 29.8603157,
+  "lng": -95.59039589999999,
+  "location_type": "ROOFTOP"
 }

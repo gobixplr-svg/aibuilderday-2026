@@ -1,9 +1,8 @@
 {
   "input_address": "122 NW 13th Ave, Cape Coral, FL 33993",
-  "formatted_address": "122 NW 13TH AVE, CAPE CORAL, FL, 33993",
-  "place_id": "118087468",
-  "lat": 26.654132281637,
-  "lng": -82.000405337124,
-  "location_type": "residential",
-  "source": "census"
+  "formatted_address": "122 NW 13th Ave, Cape Coral, FL 33993, USA",
+  "place_id": "ChIJQU88w3xG24gRnsNysAsEj58",
+  "lat": 26.6551943,
+  "lng": -82.0006137,
+  "location_type": "ROOFTOP"
 }
