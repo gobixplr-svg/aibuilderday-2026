@@ -26,3 +26,6 @@ npm-debug.log*
 # OS / temp
 Thumbs.db
 *.tmp
+
+# Pipeline cache (intermediate API + vision results)
+intermediate/

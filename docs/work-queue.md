@@ -14,11 +14,12 @@
 
 | # | Task | Owner | Status | Est | Blockers |
 |---|---|---|---|---|---|
-| 1 | Geocoding + aerial acquisition CLI | | ⚪ | 1h | none |
+| 0 | Next.js scaffold (`src/`) | Ethan | 🟡 | 1.5h | none |
+| 1 | Geocoding + aerial acquisition CLI | Dan | 🟢 | 1h | none |
 | 2 | Pitch estimation prompt | | ⚪ | 1.5h | #1 |
 | 3 | Footprint + line items prompt | | ⚪ | 2h | #1 |
 | 4 | Calibration harness against examples | | ⚪ | 1h | #2, #3 |
-| 5 | Materials catalog (3 tiers, real prices) | | ⚪ | 1h | none |
+| 5 | Materials catalog (3 tiers, real prices) | Ethan | 🟡 | 1h | none |
 | 6 | Estimate calculator | | ⚪ | 1h | #5 |
 | 7 | PDF template + renderer | | ⚪ | 2h | #6 |
 | 8 | Single-command CLI runner | | ⚪ | 1h | #1, #4, #7 |

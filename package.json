@@ -1,0 +1,19 @@
+{
+  "name": "aibuilderday-2026",
+  "version": "0.1.0",
+  "description": "AI Builder Day 2026 — JobNimbus bounty: aerial roof measurement + auto-estimating",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "fetch-aerial": "node scripts/fetch-aerial.mjs",
+    "fetch-all": "node scripts/fetch-all.mjs",
+    "estimate": "node scripts/estimate.mjs",
+    "calibrate": "node scripts/calibrate.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
