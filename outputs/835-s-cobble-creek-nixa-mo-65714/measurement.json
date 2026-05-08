@@ -6,20 +6,20 @@
   "lng": -93.2833319,
   "pitch": "6:12",
   "pitch_multiplier": 1.118,
-  "pitch_confidence": 0.58,
-  "pitch_rationale": "Shadow lengths cast from the eave edges extend approximately 30–40% of the building's plan width, consistent with a moderate 6:12 pitch rather than a shallow (4:12) or steep (8:12+) roof. The visible ridge line is clearly distinguishable and noticeably narrower than the eave footprint, but not dramatically so, placing it in the mid-range slope category. No prominent dormers or sharply elevated peaks are visible in plan view. Regional context supports this estimate: Nixa, MO (southwest Missouri, Ozarks region) overwhelmingly features suburban tract homes built to 6:12–8:12 standards. Combining shadow geometry, ridge-to-eave ratio, and regional norms, 6:12 is the most probable dominant pitch, though 7:12 cannot be ruled out given modest shadow ambiguity.",
+  "pitch_confidence": 0.72,
+  "pitch_rationale": "The primary residence displays a complex multi-section hip roof with clearly visible but moderately proportioned ridge lines. Shadow projections beyond the eaves, referenced against the 50 ft scale bar, extend approximately 6–9 feet — consistent with a 6:12 pitch at typical midday sun angles for Missouri. The visible roof planes occupy a balanced portion of the aerial view (neither flat nor dramatically steep), and the ridge-to-eave width ratio shows the ridges are meaningfully shorter than the eave footprint but not dramatically so. The hip returns and intersecting planes show characteristic moderate-slope geometry. Regional context (Nixa, MO suburban construction) strongly supports a 5:12–7:12 range, and the aggregate of shadow length, ridge prominence, and roof plane visibility converges on 6:12 as the most probable dominant pitch.",
   "pitch_stub": false,
-  "footprint_sqft": 2080,
-  "footprint_confidence": 0.42,
-  "footprint_rationale": "Target identified as the centrally-located gray-shingle hip-roofed house in the image (lat/lng 37.0290, -93.2833, Nixa MO). The roof is oriented with its long axis running roughly NW–SE at ~30° off north. Bounding box estimated as follows: Main body from approximately pixel (395,450) to (635,660) → 240 px wide × 210 px deep; a southwest-facing front wing/addition from approx (390,635) to (558,722) → 168 px wide × 87 px deep. Main body footprint (trapezoidal hip, ~85% of bounding box): 240×210×0.85 = 42,840 sq px. Wing footprint: 168×87×0.85 = 12,407 sq px. Combined minus small interior seam (~1,200 sq px): ≈54,047 sq px × 0.038225 sq ft/sq px ≈ 2,066 sq ft → rounded to 2,080 sq ft. This falls comfortably within the 1,500–4,000 sq ft sanity range. The roof appears to be a fully hipped configuration (no exposed gable rakes visible), so Rake = 0. Ridge lines are short due to near-square proportions: main ridge ≈120 px = 23 ft; wing ridge ≈80 px = 15 ft → total 38 ft. Hip lines: 4 hips on main body each ≈92 px = 18 ft (×4 = 72 ft); 2–3 hips on wing each ≈65 px = 12.7 ft (×2 = 22 ft) → total 94 ft. Valleys occur at the two re-entrant junctions where the wing meets the main body: 2 valleys × ~56 px = 22 ft. Eave equals the outer perimeter of the combined T-shaped footprint: back (N) 240 px, sides 2×210 px, wing steps 2×36 px, wing sides 2×87 px, wing front 168 px ≈ 1,074 px − minor interior connection 180 px = 894 px × 0.1955 ft/px ≈ 174 ft. Confidence is moderate-low due to tree occlusion of roof edges and uncertainty in precisely which structure corresponds to the given address.",
+  "footprint_sqft": 2462,
+  "footprint_confidence": 0.44,
+  "footprint_rationale": "Identified the central gray multi-section hip-roofed home as the subject property at 835 S Cobble Creek. Bounding box established at approximately 280×295 pixels (54.7 ft × 57.7 ft). Applied a 78% fill factor to account for the irregular shape with multiple wing projections and tree obscurement, yielding ~64,400 sq px × 0.038225 = 2,462 sq ft. Ridge lines identified on the main body and 2 wing sections (~175 px total). Hip lines traced at approximately 8 corners across sections (~570 px). Valleys estimated at 4–5 junction points where wings meet the main roof (~200 px). Rake edges minimal as this is predominantly a hip-style roof (~40 px). Eave lines traced around the full lower perimeter including all wing sections (~730 px). Confidence is moderate-low due to partial tree coverage over roof edges and oblique satellite viewing angle making precise tracing difficult.",
   "footprint_stub": false,
   "line_items": {
-    "ridge": 38,
-    "hip": 94,
-    "valley": 22,
-    "rake": 0,
-    "eave": 174
+    "ridge": 34,
+    "hip": 111,
+    "valley": 39,
+    "rake": 8,
+    "eave": 143
   },
-  "roof_area_sqft": 2325,
-  "computed_at": "2026-05-08T22:58:11.121Z"
+  "roof_area_sqft": 2753,
+  "computed_at": "2026-05-08T23:10:43.367Z"
 }
