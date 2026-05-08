@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 3100,
+  "footprint_sqft": 2250,
   "line_items": {
-    "ridge": 30,
-    "hip": 130,
-    "valley": 20,
+    "ridge": 55,
+    "hip": 102,
+    "valley": 19,
     "rake": 0,
-    "eave": 155
+    "eave": 187
   },
-  "confidence": 0.32,
-  "rationale": "Target identified as the large dark charcoal/gray hip-roofed house at the bottom of the Kenswick Meadows Ct cul-de-sac (lower-center of image). The house is L-shaped: a main rectangular section (~73 px E-W × ~55 px N-S = 61.9 ft × 46.7 ft) plus an attached garage/wing (~30 px × ~35 px = 25.4 ft × 29.7 ft). Net footprint after subtracting the shared-wall overlap and adjusting for roof outline vs. wall footprint discrepancy ≈ 3,100 sq ft. Roof type appears to be an intersecting hip with no visible gable ends (no rakes), yielding a main ridge of ~30 ft, ~130 ft of hip lines (diagonal corner edges from ridge to eave corners), ~20 ft of valley where the wing intersects the main body, and ~155 ft of eave running along the full L-shaped lower perimeter. Confidence is moderate-low due to image resolution limitations and uncertainty in precisely identifying this parcel vs. adjacent homes on the cul-de-sac."
+  "confidence": 0.42,
+  "rationale": "Subject home identified as the large multi-section hip-roofed structure at the base of the Kenswick Meadows Ct cul-de-sac (upper-left quadrant), with driveway curving from the cul-de-sac circle. Bounding box traced at approximately x:235–420 px, y:545–875 px (185 px wide × 330 px tall = ~39 ft × ~70 ft). The plan is L-shaped with two main hip-roof sections; an 82% fill factor applied to the gross rectangle gives ~2,250 sq ft. Roof is an all-hip style (no rake/gable ends): two principal ridges plus a connector ridge totaling ~55 ft, approximately eight hip lines at corners totaling ~102 ft, two interior valleys where sections meet totaling ~19 ft, and continuous eave lines around the full perimeter totaling ~187 ft. Confidence is moderate-low due to the oblique angle of some roof sections, partial shadowing, and uncertainty in pinpointing the exact lot boundary of 21106 among similarly styled neighboring homes on the cul-de-sac."
 }
