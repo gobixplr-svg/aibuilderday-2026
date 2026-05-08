@@ -1,0 +1,25 @@
+{
+  "slug": "3561-e-102nd-ct-thornton-co-80229",
+  "address": "3561 E 102nd Ct, Thornton, CO 80229",
+  "formatted_address": "3561 E 102nd Ct, Thornton, CO 80229, USA",
+  "lat": 39.8811632,
+  "lng": -104.9453839,
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
+  "pitch_confidence": 0.62,
+  "pitch_rationale": "The hip-style roofs across this Thornton, CO townhome complex display moderately long eave-to-ground shadows for the autumn sun angle at ~39.9°N latitude, consistent with a 6:12 pitch. The ridge lines sit clearly inward from the eave footprint but the visible roof plane area is still substantial, indicating a mid-range pitch rather than a shallow or very steep one. The hip triangular faces at each building corner show moderate vertical prominence, and internal valley/ridge shadow relief confirms meaningful elevation between intersecting roof planes. The Colorado Front Range climate and standard production-townhome construction practices strongly favor 5:12–7:12; the shadow geometry and roof-plane proportions most closely match 6:12 among the available choices.",
+  "pitch_stub": false,
+  "footprint_sqft": 1476,
+  "footprint_confidence": 0.35,
+  "footprint_rationale": "Target is a 4-unit attached townhome at 3561 E 102nd Ct in a multi-building complex in Thornton, CO. I identified the center building in the middle row as the most likely candidate. Bounding box estimated at ~200 px (E-W) × ~220 px (N-S), yielding a gross area of 44,000 sq px × 0.035318 = 1,554 sq ft, reduced ~5% for corner notches/cutouts to ~1,476 sq ft. The roof is a complex multi-section hip style (confirmed by absence of rake edges and visible hip lines at all four outer corners plus inner step-down hips where unit sections meet). Four short ridge segments (~60 px each) run along the peak of each unit's roof plane. Eight hip lines (4 outer + 4 inner) estimated at ~45 px each. Four valleys where adjacent unit sections meet estimated at ~25 px each. Eaves span the full perimeter (~158 ft). No rake edges (pure hip roof). Confidence is moderate-low because exact unit boundary within the shared building roof is uncertain, and tree shadows obscure some edge details.",
+  "footprint_stub": false,
+  "line_items": {
+    "ridge": 45,
+    "hip": 67.6,
+    "valley": 18.8,
+    "rake": 0,
+    "eave": 157.8
+  },
+  "roof_area_sqft": 1650,
+  "computed_at": "2026-05-08T22:54:17.274Z"
+}
