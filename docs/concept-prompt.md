@@ -1,7 +1,10 @@
 # Field Capture — Hackathon Concept Prompt
 
 > Working title. Built for AI Builder Day, May 8–9 2026, JobNimbus $10K bounty track.
-> **Updated at event:** product reframed from two-input (photos + voice) to three-input (photos + description + external context).
+> **Updated at event:**
+> - Reframed from two-input (photos + voice) to three-input (photos + description + external context).
+> - Reframed from "vision pipeline" to **agent orchestra** — Surveyor + Estimator + Generator + Sales, with future agents visible to show platform thesis.
+> - Added Sales upsell agent as a post-estimate delight moment.
 
 ## Problem
 
@@ -40,21 +43,37 @@ Four converging bets:
 3. **Speed-to-customer-presentable PDF is the unlock, not just speed-to-data.** A structured JSON in 30 seconds doesn't close a deal. A branded, customer-ready document handed to a homeowner *while you're still on their porch* does. The output layer matters as much as the extraction.
 4. **Vertical-portability is the platform thesis.** A single capture engine that swaps trade-packs (windows / roofing / siding / doors) is more defensible than another point solution. The same primitive serves contractors, adjusters, and investors.
 
+## Agent orchestra
+
+We orchestrate four specialized AI agents in v1, with two more visible as "future agents" to show the platform thesis:
+
+**v1 (shipping Saturday):**
+- **Surveyor** — fuses photos + description + external context into structured scope
+- **Estimator** — matches scope to trade-pack catalog and prices the job
+- **Generator** — renders the branded customer-ready PDF
+- **Sales** — after the estimate lands, suggests one contextual upsell (e.g. "noticed worn gutters — add replacement?")
+
+**Future (named, not built):**
+- **Validator** — sanity-checks against historical/benchmark pricing
+- **Communicator** — emails/texts the estimate, schedules follow-up
+
+Same architecture, sharper story — and aligned with where JobNimbus is already going with Scout.
+
 ## MVP Features (ranked)
 
 1. **Phone-to-PDF capture flow.** Web app the phone can open: take photos, type or voice a description, optionally enter an address, submit. The user does this in <30 seconds. This is the demo's killer moment — everything else supports it.
 
-2. **Three-input fusion → structured scope extraction.** Photos + description + external context (when address is provided) feed a single Claude Sonnet call that produces structured items (type, count, dims, condition, confidence). Description is the primary signal; photos verify and add detail; external context grounds and enriches.
+2. **Surveyor agent → structured scope.** Photos + description + external context (when address is provided) feed a single Claude Sonnet call producing structured items (type, count, dims, condition, confidence). Description is the primary signal; photos verify and add detail; external context grounds and enriches.
 
 3. **External context lookup.** Given an address, fetch: aerial/satellite imagery (Google Static Maps or Mapbox), parcel data (county GIS APIs), and at least one of: storm/weather history (NOAA), permit records (Utah-specific feeds where available). Time-budgeted — if a source doesn't return in 5 seconds, drop it.
 
-4. **Trade-pack matching against a staged catalog (~50 SKUs per trade).** Extracted items match against a curated catalog of products + prices. Two trade-packs: **windows** (matches conference-room demo + team's domain expertise) and **roofing** (matches bounty flavor). One catalog table, swappable.
+4. **Estimator + Generator → customer-ready PDF.** Estimator matches items to a staged trade-pack catalog (~50 SKUs per trade). Generator renders a branded estimate PDF — line items, prices, totals, "informed by" footnote citing which external sources contributed. Two trade-packs: **windows** and **roofing**.
 
-5. **Customer-ready PDF output.** Branded, presentable estimate document — line items, prices, totals, an "informed by" footnote citing which external sources contributed. Rendered server-side, viewable on any screen, downloadable.
+5. **Sales agent upsell (post-estimate).** Once the estimate is on screen, a background Sales agent reviews scope + photos + context and suggests one contextual upsell. Surfaces as a card under the estimate ~10-15s after the PDF lands. Tap accept → totals update. This is the agent-orchestra demo moment.
 
 6. **"Same primitive, two trades, two property types" demo path.** Three-act demo:
    - Act 1: live conference-room window capture (proves the live flow)
-   - Act 2: pre-staged real Lehi address with photos + satellite + permit data → window estimate (proves the three-input fusion)
+   - Act 2: pre-staged real Lehi address with photos + satellite + permit data → window estimate + Sales upsell (proves the three-input fusion + agent orchestra)
    - Act 3: same address, swap to roofing trade-pack → roofing estimate (proves vertical portability)
 
 ## Explicitly NOT in v1
@@ -139,6 +158,7 @@ Presenter screen polls job, displays PDF on big screen
 - Live phone-to-PDF works end-to-end in <60 seconds.
 - Output PDF is genuinely customer-presentable.
 - "Three-input fusion" is visible — judges can see external context contributing to the estimate (satellite thumbnail, "permit from 2018" footnote, etc.).
+- Sales agent surfaces a contextual upsell within ~15s of the estimate, with a rationale ("noticed worn gutters in photo 2").
 - "Two trades, one engine" config swap works.
 
 **Strategic bar (Saturday evening):**
