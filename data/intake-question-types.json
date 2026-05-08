@@ -1,0 +1,152 @@
+{
+  "version": "2026-05-08",
+  "purpose": "Track critical customer-facing reroof intake question types.",
+  "minimum_required_for_final_quote": [
+    "roof_age_years",
+    "prior_leaks_or_repairs",
+    "target_lifespan_years",
+    "material_preference",
+    "budget_range",
+    "schedule_window",
+    "warranty_priority"
+  ],
+  "categories": [
+    {
+      "id": "roof_history_condition",
+      "label": "Roof History & Existing Condition",
+      "questions": [
+        {
+          "id": "roof_age_years",
+          "question": "How old is the current roof?",
+          "required": true
+        },
+        {
+          "id": "prior_leaks_or_repairs",
+          "question": "Have you had leaks or repairs, and where?",
+          "required": true
+        },
+        {
+          "id": "known_decking_issues",
+          "question": "Any known sheathing/decking damage?",
+          "required": false
+        },
+        {
+          "id": "inspection_requested",
+          "question": "Do you want a formal pre-job inspection first?",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "goals_expectations",
+      "label": "Goals & Expectations",
+      "questions": [
+        {
+          "id": "target_lifespan_years",
+          "question": "How long do you want the new roof to last?",
+          "required": true
+        },
+        {
+          "id": "aesthetic_preferences",
+          "question": "Any style/color preferences or reference photos?",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "climate_exposure",
+      "label": "Climate & Exposure",
+      "questions": [
+        {
+          "id": "primary_weather_risk",
+          "question": "Which weather risk matters most: wind, hail, heat, snow, rain?",
+          "required": false
+        },
+        {
+          "id": "storm_claim_history",
+          "question": "Any prior storm claims or recurring weather issues?",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "materials_system",
+      "label": "Materials & System",
+      "questions": [
+        {
+          "id": "material_preference",
+          "question": "What roofing material are you considering?",
+          "required": true
+        },
+        {
+          "id": "ventilation_moisture_issues",
+          "question": "Any attic ventilation or moisture concerns?",
+          "required": false
+        },
+        {
+          "id": "underlayment_preference",
+          "question": "Any underlayment/flashing quality preference?",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "logistics",
+      "label": "Project Logistics",
+      "questions": [
+        {
+          "id": "schedule_window",
+          "question": "What start/completion window are you targeting?",
+          "required": true
+        },
+        {
+          "id": "hoa_or_access_constraints",
+          "question": "Any HOA, access, driveway, gate, or landscaping constraints?",
+          "required": false
+        },
+        {
+          "id": "occupancy_constraints",
+          "question": "Any kids/pets/work-from-home considerations during install?",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "budget_decision",
+      "label": "Budget & Decision Process",
+      "questions": [
+        {
+          "id": "budget_range",
+          "question": "What budget range are you targeting?",
+          "required": true
+        },
+        {
+          "id": "financing_needed",
+          "question": "Will you need financing options?",
+          "required": false
+        },
+        {
+          "id": "decision_timeline",
+          "question": "When do you expect to make a contractor decision?",
+          "required": false
+        }
+      ]
+    },
+    {
+      "id": "documentation_warranty",
+      "label": "Documentation & Warranty",
+      "questions": [
+        {
+          "id": "warranty_priority",
+          "question": "Which warranty matters most: manufacturer, workmanship, extended?",
+          "required": true
+        },
+        {
+          "id": "past_work_examples_requested",
+          "question": "Do you want examples of similar completed projects?",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

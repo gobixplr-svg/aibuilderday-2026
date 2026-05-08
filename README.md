@@ -30,14 +30,14 @@ npm install
 cp .env.example .env.local
 # fill in: ANTHROPIC_API_KEY, GOOGLE_MAPS_API_KEY (or MAPBOX_TOKEN)
 
-# run on a single address
-npm run estimate -- "3561 E 102nd Ct, Thornton, CO 80229"
+# run estimator engine (sample input + default pricing)
+npm run estimate
 
-# run on the full bounty test set
-npm run estimate:test-set
+# run estimator engine with explicit files
+npm run estimate -- --input data/estimate-input.sample.json --pricing data/estimate-pricing-defaults.json --out outputs/estimate-output.sample.json
 ```
 
-Output: a JSON measurement report and a PDF estimate per address, written to `outputs/`.
+Current output: JSON estimate breakdown written to `outputs/`. PDF generation remains a planned step.
 
 ## Repo layout
 
@@ -71,6 +71,10 @@ The estimate is delivered as a customer-ready PDF with three roofing material ti
 | Luxury | Designer / impact-resistant | ~$220/sq | Lifetime |
 
 Material catalog (real product names, real-ish prices) is in `data/materials.json`. Sources cited in the catalog.
+
+Customer discovery/intake question taxonomy (for homeowner-facing workflows) is tracked in:
+- `docs/customer-intake-questions.md`
+- `data/intake-question-types.json`
 
 ## Submission targets
 

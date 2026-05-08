@@ -1,0 +1,69 @@
+{
+  "version": "2026-05-08",
+  "currency": "USD",
+  "field_waste_pct": 0.12,
+  "underlayment_waste_pct": 0.05,
+  "ice_water_waste_pct": 0.05,
+  "decking_allowance_pct": 0.07,
+  "decking_sheet_sqft": 32,
+  "costs": {
+    "field_cost_per_square": 145,
+    "underlayment_cost_per_square": 25,
+    "ice_water_cost_per_square": 65,
+    "tearoff_cost_per_square_per_layer": 35,
+    "ridge_cap_cost_per_lf": 5,
+    "hip_cap_cost_per_lf": 5,
+    "valley_metal_cost_per_lf": 7,
+    "drip_edge_cost_per_lf": 2.5,
+    "rake_trim_cost_per_lf": 2.5,
+    "sidewall_flashing_cost_per_lf": 6,
+    "step_flashing_cost_each": 4,
+    "penetration_boot_cost_each": 28,
+    "skylight_flashing_cost_each": 140,
+    "chimney_flashing_cost_each": 220,
+    "box_vent_cost_each": 55,
+    "exhaust_vent_cost_each": 45,
+    "access_hatch_flash_cost_each": 180,
+    "decking_sheet_cost_each": 55
+  },
+  "labor": {
+    "base_hours_per_square": 2.2,
+    "ridge_hours_per_100_lf": 4,
+    "valley_hours_per_100_lf": 6,
+    "flashing_hours_per_100_lf": 5,
+    "count_item_hours_each": {
+      "penetration": 0.3,
+      "skylight": 1.8,
+      "chimney": 2.5,
+      "box_vent": 0.35,
+      "exhaust_vent": 0.35,
+      "access_hatch": 1.2
+    },
+    "labor_rate_per_hour": 85
+  },
+  "multipliers": {
+    "pitch_band": {
+      "4:12_and_under": 1,
+      "5_to_7": 1.1,
+      "8_to_10": 1.22,
+      "10_plus": 1.35
+    },
+    "stories": {
+      "1": 1,
+      "2": 1.12,
+      "3": 1.25
+    },
+    "access": {
+      "easy": 1,
+      "moderate": 1.08,
+      "difficult": 1.18
+    },
+    "complexity": {
+      "simple": 1,
+      "moderate": 1.1,
+      "complex": 1.22
+    },
+    "overhead_pct": 0.12,
+    "profit_pct": 0.15
+  }
+}

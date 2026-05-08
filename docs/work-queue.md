@@ -28,6 +28,7 @@
 | 11 | Run pipeline on 5 test properties | | ⚪ | 1h | #10 |
 | 12 | Final cross-check + form submission | | ⚪ | 0.5h | #11 |
 | 13 | Repo polish (README, code cleanup, demo prep) | | ⚪ | 1h | #11 |
+| 14 | Customer intake question taxonomy + tracking schema | | ⚪ | 0.5h | none |
 
 **Critical path:** 1 → 2/3 (parallel) → 4 → 9 → 10 → 11 → 12 = ~9 hours sequential.
 **Parallel work:** 5 → 6 → 7 (~4 hours, no critical-path conflict).
@@ -222,6 +223,21 @@ Property                    | Predicted | Ref A | Ref B | Avg  | Δ%
 - License/attribution clean
 - A short demo script for if we make finals (5 min + Q&A)
 - One screenshot or short video of the tool running, embedded in README
+
+---
+
+### 14. Customer intake question taxonomy + tracking schema
+
+**Goal:** track critical roofer-to-homeowner discovery questions in a reusable format for app/CLI estimate flows.
+
+**Steps:**
+- Create a canonical taxonomy doc: `docs/customer-intake-questions.md`
+- Create machine-readable schema: `data/intake-question-types.json`
+- Mark minimum required fields for `final` vs `preliminary` estimates
+- Add an estimate-note convention to flag missing intake fields
+
+**Output:**
+- Intake question categories and required fields are explicit and versioned in-repo.
 
 ---
 

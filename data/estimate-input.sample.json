@@ -1,0 +1,30 @@
+{
+  "property": {
+    "address": "21106 Kenswick Meadows Ct, Humble, TX 77338"
+  },
+  "geometry": {
+    "roof_area_sqft": 2443,
+    "ridge_lf": 110,
+    "hip_lf": 35,
+    "valley_lf": 40,
+    "eave_lf": 187,
+    "rake_lf": 101,
+    "sidewall_lf": 24
+  },
+  "counts": {
+    "penetrations": 5,
+    "skylights": 0,
+    "chimneys": 1,
+    "box_vents": 4,
+    "exhaust_vents": 2,
+    "access_hatches": 1
+  },
+  "conditions": {
+    "pitch": "6:12",
+    "stories": 2,
+    "tearoff_layers": 1,
+    "access_difficulty": "moderate",
+    "complexity": "moderate",
+    "climate_requires_ice_water": false
+  }
+}
