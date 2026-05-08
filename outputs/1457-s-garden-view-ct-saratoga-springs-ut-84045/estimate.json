@@ -1,0 +1,457 @@
+{
+  "measurement": {
+    "slug": "1457-s-garden-view-ct-saratoga-springs-ut-84045",
+    "address": "1457 S Garden View Ct, Saratoga Springs, UT 84045",
+    "formatted_address": "1457 Garden View Ct, Saratoga Springs, UT 84045, USA",
+    "lat": 40.3354075,
+    "lng": -111.9187365,
+    "pitch": "6:12",
+    "pitch_multiplier": 1.118,
+    "pitch_confidence": 0.62,
+    "pitch_rationale": "The primary home at this Saratoga Springs, UT address displays moderate shadow casting from its eave lines — shadows are clearly defined but not elongated enough to indicate a steep 8:12+ pitch. The ridge-to-eave geometry shows the ridge set well inward from the building perimeter, consistent with a mid-range slope. Multiple hip and gable roof planes are distinctly visible from satellite, suggesting meaningful vertical rise without being dramatically steep. The complex hip/gable combination roof style and northern Utah climate (snow load requirements) both support a 6:12 dominant pitch, which is the most common standard in Wasatch Front suburban construction. Confidence is moderate as image contrast and tree shadows partially obscure some eave edges.",
+    "pitch_stub": false,
+    "footprint_sqft": 2450,
+    "footprint_confidence": 0.38,
+    "footprint_rationale": "Target identified as the large central house in the mid-frame. Bounding box traced at approximately x:360–630, y:440–795 (270×355 px). The roof is L/T-shaped with a complex hip-dominant layout. Applied ~15% cutout reduction for the upper-left recess and internal shadow areas where overhanging trees partially obscure edges. Two main ridge runs (~225 px total), six hip corners at an average of ~70 px each, two to three valley intersections where roof wings join (~135 px), two to three gable rakes (~100 px), and a multi-segment eave perimeter totaling ~620 px. Scale: 1 px = 0.1867 ft; 1 sq px = 0.034849 sq ft. Confidence is moderate-low (0.38) due to heavy tree shadow coverage partially obscuring roof edges, possible misidentification of attached vs. detached structure, and image resolution limitations.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 42,
+      "hip": 78,
+      "valley": 25,
+      "rake": 19,
+      "eave": 116
+    },
+    "roof_area_sqft": 2739,
+    "computed_at": "2026-05-08T22:46:20.689Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (30.68 sq, includes 12% waste)",
+          "amount": 3374.45
+        },
+        {
+          "label": "Tear-off (27.39 sq, 1 layer)",
+          "amount": 958.65
+        },
+        {
+          "label": "Underlayment (28.76 sq)",
+          "amount": 718.99
+        },
+        {
+          "label": "Trim & flashing (drip edge 116 lf, ridge 42 lf, valley 25 lf)",
+          "amount": 1112.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (5.99 sheets, contingency)",
+          "amount": 329.54
+        },
+        {
+          "label": "Labor (27.39 sq @ 2.22 h/sq)",
+          "amount": 5180.04
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 1481.3
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2073.82
+        }
+      ],
+      "subtotal": 15899.28,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T22:46:20.691Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1457 S Garden View Ct, Saratoga Springs, UT 84045",
+            "formatted_address": "1457 Garden View Ct, Saratoga Springs, UT 84045, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 2739,
+            "ridge_lf": 42,
+            "hip_lf": 78,
+            "valley_lf": 25,
+            "eave_lf": 116,
+            "rake_lf": 19,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 2739,
+          "roof_squares": 27.39,
+          "field_squares": 30.68,
+          "underlayment_squares": 28.76,
+          "ice_water_squares": 0,
+          "decking_sheets": 5.99,
+          "ridge_lf": 42,
+          "hip_lf": 78,
+          "valley_lf": 25,
+          "eave_lf": 116,
+          "rake_lf": 19,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 3374.45,
+            "underlayment": 718.99,
+            "ice_water": 0,
+            "tearoff": 958.65,
+            "ridge_cap": 210,
+            "hip_cap": 390,
+            "valley_metal": 175,
+            "drip_edge_eave": 290,
+            "rake_trim": 47.5,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 329.54
+          },
+          "direct_material_cost": 7164.12,
+          "labor_hours_base": 50.37,
+          "labor_hours_adjusted": 60.94,
+          "direct_labor_cost": 5180.04,
+          "direct_cost": 12344.16,
+          "overhead": 1481.3,
+          "profit": 2073.82,
+          "grand_total": 15899.28
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (30.68 sq, includes 12% waste)",
+          "amount": 4448.14
+        },
+        {
+          "label": "Tear-off (27.39 sq, 1 layer)",
+          "amount": 958.65
+        },
+        {
+          "label": "Underlayment (28.76 sq)",
+          "amount": 718.99
+        },
+        {
+          "label": "Trim & flashing (drip edge 116 lf, ridge 42 lf, valley 25 lf)",
+          "amount": 1112.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (5.99 sheets, contingency)",
+          "amount": 329.54
+        },
+        {
+          "label": "Labor (27.39 sq @ 2.83 h/sq)",
+          "amount": 6588.57
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 1779.17
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2490.83
+        }
+      ],
+      "subtotal": 19096.38,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T22:46:20.692Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1457 S Garden View Ct, Saratoga Springs, UT 84045",
+            "formatted_address": "1457 Garden View Ct, Saratoga Springs, UT 84045, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 2739,
+            "ridge_lf": 42,
+            "hip_lf": 78,
+            "valley_lf": 25,
+            "eave_lf": 116,
+            "rake_lf": 19,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 2739,
+          "roof_squares": 27.39,
+          "field_squares": 30.68,
+          "underlayment_squares": 28.76,
+          "ice_water_squares": 0,
+          "decking_sheets": 5.99,
+          "ridge_lf": 42,
+          "hip_lf": 78,
+          "valley_lf": 25,
+          "eave_lf": 116,
+          "rake_lf": 19,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 4448.14,
+            "underlayment": 718.99,
+            "ice_water": 0,
+            "tearoff": 958.65,
+            "ridge_cap": 210,
+            "hip_cap": 390,
+            "valley_metal": 175,
+            "drip_edge_eave": 290,
+            "rake_trim": 47.5,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 329.54
+          },
+          "direct_material_cost": 8237.81,
+          "labor_hours_base": 64.06,
+          "labor_hours_adjusted": 77.51,
+          "direct_labor_cost": 6588.57,
+          "direct_cost": 14826.38,
+          "overhead": 1779.17,
+          "profit": 2490.83,
+          "grand_total": 19096.38
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (30.68 sq, includes 12% waste)",
+          "amount": 6748.9
+        },
+        {
+          "label": "Tear-off (27.39 sq, 1 layer)",
+          "amount": 958.65
+        },
+        {
+          "label": "Underlayment (28.76 sq)",
+          "amount": 718.99
+        },
+        {
+          "label": "Trim & flashing (drip edge 116 lf, ridge 42 lf, valley 25 lf)",
+          "amount": 1112.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (5.99 sheets, contingency)",
+          "amount": 329.54
+        },
+        {
+          "label": "Labor (27.39 sq @ 3.43 h/sq)",
+          "amount": 7997.1
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2224.28
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3113.99
+        }
+      ],
+      "subtotal": 23873.94,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-08T22:46:20.692Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "1457 S Garden View Ct, Saratoga Springs, UT 84045",
+            "formatted_address": "1457 Garden View Ct, Saratoga Springs, UT 84045, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 2739,
+            "ridge_lf": 42,
+            "hip_lf": 78,
+            "valley_lf": 25,
+            "eave_lf": 116,
+            "rake_lf": 19,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 2739,
+          "roof_squares": 27.39,
+          "field_squares": 30.68,
+          "underlayment_squares": 28.76,
+          "ice_water_squares": 0,
+          "decking_sheets": 5.99,
+          "ridge_lf": 42,
+          "hip_lf": 78,
+          "valley_lf": 25,
+          "eave_lf": 116,
+          "rake_lf": 19,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 6748.9,
+            "underlayment": 718.99,
+            "ice_water": 0,
+            "tearoff": 958.65,
+            "ridge_cap": 210,
+            "hip_cap": 390,
+            "valley_metal": 175,
+            "drip_edge_eave": 290,
+            "rake_trim": 47.5,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 329.54
+          },
+          "direct_material_cost": 10538.57,
+          "labor_hours_base": 77.76,
+          "labor_hours_adjusted": 94.08,
+          "direct_labor_cost": 7997.1,
+          "direct_cost": 18535.67,
+          "overhead": 2224.28,
+          "profit": 3113.99,
+          "grand_total": 23873.94
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-08T22:46:20.692Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}

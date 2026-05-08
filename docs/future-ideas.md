@@ -2,12 +2,18 @@
 
 Use this file to track stretch work that is not on the critical path.
 
+## Finding leads
+- Find storms in an area to identify homes that an agent could automatically create quotes for that area and send postcards with estimates for root repairs OR for full roof replacement
+- Send quotes in the language of the contractor (eg. Spanish)
+
 ## Product / UX
 
 - Add interactive roof overlay preview in the UI (show detected ridges/valleys/eaves on aerial image).
 - Add confidence badges per estimate section (pitch, area, line items, pricing confidence).
 - Add "customer-ready" estimate variants (concise one-page vs detailed line-item report).
 - Add quick "what changed" diff when re-running estimate for the same property.
+- If a house image is not online (user preference to not allow others to see picture) and allow for upload of picture or a more clear image
+
 
 ## Estimation Engine
 

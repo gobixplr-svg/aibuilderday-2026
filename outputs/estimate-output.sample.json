@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "version": "0.1.0",
+    "generated_at": "2026-05-08T21:20:43.693Z",
+    "currency": "USD"
+  },
+  "inputs": {
+    "property": {
+      "address": "21106 Kenswick Meadows Ct, Humble, TX 77338"
+    },
+    "geometry": {
+      "roof_area_sqft": 2443,
+      "ridge_lf": 110,
+      "hip_lf": 35,
+      "valley_lf": 40,
+      "eave_lf": 187,
+      "rake_lf": 101,
+      "sidewall_lf": 24
+    },
+    "counts": {
+      "penetrations": 5,
+      "skylights": 0,
+      "chimneys": 1,
+      "box_vents": 4,
+      "exhaust_vents": 2,
+      "access_hatches": 1
+    },
+    "conditions": {
+      "pitch": "6:12",
+      "stories": 2,
+      "tearoff_layers": 1,
+      "access_difficulty": "moderate",
+      "complexity": "moderate",
+      "climate_requires_ice_water": false
+    }
+  },
+  "quantities": {
+    "roof_area_sqft": 2443,
+    "roof_squares": 24.43,
+    "field_squares": 27.36,
+    "underlayment_squares": 25.65,
+    "ice_water_squares": 0,
+    "decking_sheets": 5.34,
+    "ridge_lf": 110,
+    "hip_lf": 35,
+    "valley_lf": 40,
+    "eave_lf": 187,
+    "rake_lf": 101,
+    "sidewall_lf": 24,
+    "step_flashing_count": 24,
+    "penetrations": 5,
+    "skylights": 0,
+    "chimneys": 1,
+    "box_vents": 4,
+    "exhaust_vents": 2,
+    "access_hatches": 1
+  },
+  "multipliers": {
+    "pitch": 1.1,
+    "stories": 1.12,
+    "access": 1.08,
+    "complexity": 1.1,
+    "labor_difficulty_total": 1.464,
+    "overhead_pct": 0.12,
+    "profit_pct": 0.15
+  },
+  "costs": {
+    "materials": {
+      "field": 3967.43,
+      "underlayment": 641.29,
+      "ice_water": 0,
+      "tearoff": 855.05,
+      "ridge_cap": 550,
+      "hip_cap": 175,
+      "valley_metal": 280,
+      "drip_edge_eave": 467.5,
+      "rake_trim": 252.5,
+      "sidewall_flashing": 144,
+      "step_flashing": 96,
+      "penetration_boots": 140,
+      "skylight_flashing": 0,
+      "chimney_flashing": 220,
+      "box_vents": 220,
+      "exhaust_vents": 90,
+      "access_hatches": 180,
+      "decking_sheets": 293.92
+    },
+    "direct_material_cost": 8572.69,
+    "labor_hours_base": 69.05,
+    "labor_hours_adjusted": 101.06,
+    "direct_labor_cost": 8589.83,
+    "direct_cost": 17162.52,
+    "overhead": 2059.5,
+    "profit": 2883.3,
+    "grand_total": 22105.33
+  }
+}
