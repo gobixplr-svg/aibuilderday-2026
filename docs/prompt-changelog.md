@@ -72,6 +72,28 @@ First end-to-end calibration run on real Google Static Maps imagery (zoom 20, sc
 
 ---
 
+## PLOG-002 · parallelize pitch + footprint within one property (Will, 2026-05-08)
+
+**Files:** `scripts/estimate.mjs`
+**Commit:** _this commit_
+
+### Trigger
+PLOG-001 flagged wall-clock cost as the blocker on iteration: single property ≈ 3:41, full 5-property calibration ≈ 18 min. Pitch and footprint are two independent Claude vision calls against the same aerial — no reason for them to run sequentially.
+
+### Change (orchestration only — no prompts touched)
+- `scripts/estimate.mjs` now produces `aerial-annotated.jpg` once, then runs `estimatePitch` and `estimateFootprint` concurrently via `Promise.all`. Cache-or-compute logic is wrapped in a small `loadOrCompute(path, label, fn)` helper so each branch still respects `--no-cache`.
+- Annotation hoisted out of the per-call lazy guard to avoid a race: cold cache + parallel previously had both helpers fire `annotateAerial` on the same output path concurrently. Now annotation happens once before the parallel block; the existing `fileExists` guards inside `pitch.mjs` / `footprint.mjs` make their inner annotation calls no-ops.
+- Logging: `--- Step 2/6 ---` + `--- Step 3/6 ---` collapsed into `--- Steps 2-3/6: Pitch + footprint (parallel) ---`. `[pitch]` / `[footprint]` line prefixes still disambiguate interleaved output.
+
+### Result
+No prompts changed → no accuracy delta expected. Cached `vision-pitch.json` / `vision-area.json` are byte-identical when caches are kept, so `roof_area_sqft` is unchanged. Timing impact is the goal: vision stage wall-time goes from ~`pitch + footprint` to ~`max(pitch, footprint)`, expected ~40-50% faster per property end-to-end. Numbers TBD on next calibration run.
+
+### Observations
+- Annotation race is the kind of bug parallelization easily hides — worth keeping the pre-annotate step even if a future combined call eliminates the parallel fan-out.
+- Next obvious step if this isn't enough: cross-property fan-out in `calibrate.mjs` / a future `estimate-all.mjs`. Or fold pitch + footprint into a single combined vision call (one round-trip, one image-read) — bigger change, would belong in its own PLOG.
+
+---
+
 ## Template for new entries
 
 ```

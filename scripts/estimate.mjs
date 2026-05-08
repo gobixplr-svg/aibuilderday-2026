@@ -30,6 +30,7 @@ import { estimatePitch, pitchMultiplier } from "./lib/pitch.mjs"
 import { estimateFootprint } from "./lib/footprint.mjs"
 import { loadMaterials, buildEstimate } from "./lib/estimate.mjs"
 import { renderEstimatePdf } from "./lib/pdf.mjs"
+import { annotateAerial } from "./lib/scale-bar.mjs"
 
 const args = process.argv.slice(2)
 if (args.length === 0 || args[0].startsWith("--")) {
@@ -58,42 +59,54 @@ async function run() {
   console.log(`--- Step 1/6: Geocode + aerial ---`)
   const { slug, dir, geo, meta, aerialPath } = await fetchAerialPipeline({ address, noCache })
 
-  // 2. Pitch
-  console.log(`\n--- Step 2/6: Pitch estimation ---`)
-  const pitchPath = join(dir, "vision-pitch.json")
-  let pitch
-  if (!noCache && (await exists(pitchPath))) {
-    console.log(`[pitch] cache hit`)
-    pitch = JSON.parse(await readFile(pitchPath, "utf-8"))
-  } else {
-    pitch = await estimatePitch({
-      aerialPath,
-      lat: geo.lat,
-      lng: geo.lng,
-      slug,
-      scale: meta.feet_per_pixel,
-    })
-    await writeFile(pitchPath, JSON.stringify(pitch, null, 2))
-  }
-  console.log(`[pitch] ${pitch.pitch} (confidence ${pitch.confidence})${pitch.stub ? " [STUB]" : ""}`)
+  // 2-3. Pitch + footprint (parallel)
+  console.log(`\n--- Steps 2-3/6: Pitch + footprint (parallel) ---`)
 
-  // 3. Footprint + line items
-  console.log(`\n--- Step 3/6: Footprint + line items ---`)
-  const areaPath = join(dir, "vision-area.json")
-  let area
-  if (!noCache && (await exists(areaPath))) {
-    console.log(`[footprint] cache hit`)
-    area = JSON.parse(await readFile(areaPath, "utf-8"))
-  } else {
-    area = await estimateFootprint({
-      aerialPath,
-      lat: geo.lat,
-      lng: geo.lng,
-      slug,
-      scale: meta.feet_per_pixel,
+  const annotatedPath = join(dir, "aerial-annotated.jpg")
+  if (!(await exists(annotatedPath))) {
+    console.log(`[annotate] writing scale bar`)
+    await annotateAerial({
+      inputPath: aerialPath,
+      outputPath: annotatedPath,
+      feetPerPixel: meta.feet_per_pixel,
     })
-    await writeFile(areaPath, JSON.stringify(area, null, 2))
   }
+
+  const pitchPath = join(dir, "vision-pitch.json")
+  const areaPath = join(dir, "vision-area.json")
+
+  async function loadOrCompute(path, label, compute) {
+    if (!noCache && (await exists(path))) {
+      console.log(`[${label}] cache hit`)
+      return JSON.parse(await readFile(path, "utf-8"))
+    }
+    const result = await compute()
+    await writeFile(path, JSON.stringify(result, null, 2))
+    return result
+  }
+
+  const [pitch, area] = await Promise.all([
+    loadOrCompute(pitchPath, "pitch", () =>
+      estimatePitch({
+        aerialPath,
+        lat: geo.lat,
+        lng: geo.lng,
+        slug,
+        scale: meta.feet_per_pixel,
+      }),
+    ),
+    loadOrCompute(areaPath, "footprint", () =>
+      estimateFootprint({
+        aerialPath,
+        lat: geo.lat,
+        lng: geo.lng,
+        slug,
+        scale: meta.feet_per_pixel,
+      }),
+    ),
+  ])
+
+  console.log(`[pitch] ${pitch.pitch} (confidence ${pitch.confidence})${pitch.stub ? " [STUB]" : ""}`)
   console.log(`[footprint] ${area.footprint_sqft} sqft (confidence ${area.confidence})${area.stub ? " [STUB]" : ""}`)
   console.log(`[footprint] line items: ${JSON.stringify(area.line_items)}`)
 
