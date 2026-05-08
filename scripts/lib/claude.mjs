@@ -30,7 +30,8 @@ export async function runVisionCall({
   userText,
   imagePath,
   tool,
-  effort = "high",
+  effort = "medium",
+  // Extended thinking + tool_use needs headroom; 8k was truncating footprint calls.
   maxTokens = 16000,
 }) {
   const imageData = (await readFile(imagePath)).toString("base64")

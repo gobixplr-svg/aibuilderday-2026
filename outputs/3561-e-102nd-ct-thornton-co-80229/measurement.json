@@ -4,22 +4,22 @@
   "formatted_address": "3561 E 102nd Ct, Thornton, CO 80229, USA",
   "lat": 39.8811632,
   "lng": -104.9453839,
-  "pitch": "5:12",
-  "pitch_multiplier": 1.083,
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
   "pitch_confidence": 0.62,
-  "pitch_rationale": "The image shows a row of identical hip-roofed residential/townhouse buildings in Thornton, CO (Denver suburb). Several visual cues were assessed: (1) Shadow length — the north-side ground shadows cast by the eaves are pronounced but not extreme; using the 50-ft scale bar (≈266 px), the building footprints measure roughly 35–45 ft in the N–S direction, and shadows extend approximately 10–18 ft beyond the eave line, consistent with a moderate solar altitude and a moderate roof pitch in the 5:12–6:12 range. (2) Roof-plane visibility — from directly overhead, the four hip planes are clearly visible and cover a moderate portion of the building footprint; very steep roofs (≥8:12) would show markedly wider, more dominant planes, while shallow roofs (≤4:12) would show very little plane width — these fall in between, pointing to ~5:12. (3) Ridge-to-eave geometry — the hip ridges converge toward a relatively short central point/ridge, and the triangular hip ends are moderately prominent, consistent with a 5:12 pitch. (4) Regional context — Thornton, CO multifamily/townhouse construction commonly uses 5:12–6:12 for adequate snow-shed without extreme structural cost. Taken together, 5:12 is the best single estimate, with 6:12 as a close alternative.",
+  "pitch_rationale": "The hip-style roofs across this Thornton, CO townhome complex display moderately long eave-to-ground shadows for the autumn sun angle at ~39.9°N latitude, consistent with a 6:12 pitch. The ridge lines sit clearly inward from the eave footprint but the visible roof plane area is still substantial, indicating a mid-range pitch rather than a shallow or very steep one. The hip triangular faces at each building corner show moderate vertical prominence, and internal valley/ridge shadow relief confirms meaningful elevation between intersecting roof planes. The Colorado Front Range climate and standard production-townhome construction practices strongly favor 5:12–7:12; the shadow geometry and roof-plane proportions most closely match 6:12 among the available choices.",
   "pitch_stub": false,
-  "footprint_sqft": 1820,
-  "footprint_confidence": 0.38,
-  "footprint_rationale": "Targeted the right-center building in the middle row of three identical multi-unit townhouse clusters, which aligns with the E 102nd Ct cul-de-sac visible in the lower right. Bounding box traced at approximately x:710–950, y:445–665 (240×220 px). Using the stated scale of 1 px = 0.1879 ft, this yields roughly 43.2 ft E–W × 41.3 ft N–S = 1,785 sq ft gross. Minor front-face projections and step-backs are folded into the net estimate of 1,820 sq ft. The roof is a pure hip style (no gable/rake edges visible); the distinctive '4'-shadow on each building is cast by the hip ridge lines onto the lower roof planes. One main ridge (~135 px) runs E–W at the peak; four hip lines (~110 px each) descend diagonally to the building corners; two short valley lines (~50 px each) appear at the south-side bump-out junctions. Eave runs the full perimeter of all four sides. Confidence is moderate-low due to tree canopy partially obscuring corners, uncertainty in exact unit vs. building address boundary, and potential pixel-boundary estimation error of ±10%.",
+  "footprint_sqft": 1476,
+  "footprint_confidence": 0.35,
+  "footprint_rationale": "Target is a 4-unit attached townhome at 3561 E 102nd Ct in a multi-building complex in Thornton, CO. I identified the center building in the middle row as the most likely candidate. Bounding box estimated at ~200 px (E-W) × ~220 px (N-S), yielding a gross area of 44,000 sq px × 0.035318 = 1,554 sq ft, reduced ~5% for corner notches/cutouts to ~1,476 sq ft. The roof is a complex multi-section hip style (confirmed by absence of rake edges and visible hip lines at all four outer corners plus inner step-down hips where unit sections meet). Four short ridge segments (~60 px each) run along the peak of each unit's roof plane. Eight hip lines (4 outer + 4 inner) estimated at ~45 px each. Four valleys where adjacent unit sections meet estimated at ~25 px each. Eaves span the full perimeter (~158 ft). No rake edges (pure hip roof). Confidence is moderate-low because exact unit boundary within the shared building roof is uncertain, and tree shadows obscure some edge details.",
   "footprint_stub": false,
   "line_items": {
-    "ridge": 25,
-    "hip": 83,
-    "valley": 19,
+    "ridge": 45,
+    "hip": 67.6,
+    "valley": 18.8,
     "rake": 0,
-    "eave": 160
+    "eave": 157.8
   },
-  "roof_area_sqft": 1971,
-  "computed_at": "2026-05-08T22:54:18.630Z"
+  "roof_area_sqft": 1650,
+  "computed_at": "2026-05-08T22:54:17.274Z"
 }

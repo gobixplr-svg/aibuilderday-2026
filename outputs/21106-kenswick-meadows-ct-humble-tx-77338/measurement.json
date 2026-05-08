@@ -7,19 +7,19 @@
   "pitch": "6:12",
   "pitch_multiplier": 1.118,
   "pitch_confidence": 0.72,
-  "pitch_rationale": "The homes in this Humble, TX suburban neighborhood feature predominantly hip-style roofs with moderate visual characteristics consistent with a 6:12 pitch. Ground shadows cast from the eave edges extend roughly 1–1.5× the overhang width, indicating a moderate but not steep slope. The hip roof planes are clearly visible from the near-nadir view but are not dramatically foreshortened (which would indicate steeper pitch) nor nearly flat-looking (which would indicate shallower pitch). The ridge is noticeably inset from the eave perimeter but occupies a moderate proportion of the footprint. Regionally, Houston-area suburban construction from the 2000s–2010s strongly favors 6:12 as the standard design pitch, and all visual cues here align with that estimate.",
+  "pitch_rationale": "The homes in this Humble, TX neighborhood (Houston metro, Gulf Coast climate) display classic multi-hip roof forms with short-to-moderate ridgelines relative to overall footprint, consistent with a 6:12 pitch. Ground shadows cast from the eaves are modest in length — not long enough to suggest steep pitches (8:12+), but clearly present, ruling out very shallow slopes (3:12–4:12). The visible roof plane area from the nadir (overhead) view is moderate, indicating a mid-range slope. Shingle texture is visible with mild shadow relief across the planes. Regional norms for suburban Houston-area construction of this style and era strongly favor 5:12–7:12 hip roofs, with 6:12 being the most prevalent standard pitch, making it the best single estimate given all converging visual cues.",
   "pitch_stub": false,
-  "footprint_sqft": 3100,
-  "footprint_confidence": 0.32,
-  "footprint_rationale": "Target identified as the large dark charcoal/gray hip-roofed house at the bottom of the Kenswick Meadows Ct cul-de-sac (lower-center of image). The house is L-shaped: a main rectangular section (~73 px E-W × ~55 px N-S = 61.9 ft × 46.7 ft) plus an attached garage/wing (~30 px × ~35 px = 25.4 ft × 29.7 ft). Net footprint after subtracting the shared-wall overlap and adjusting for roof outline vs. wall footprint discrepancy ≈ 3,100 sq ft. Roof type appears to be an intersecting hip with no visible gable ends (no rakes), yielding a main ridge of ~30 ft, ~130 ft of hip lines (diagonal corner edges from ridge to eave corners), ~20 ft of valley where the wing intersects the main body, and ~155 ft of eave running along the full L-shaped lower perimeter. Confidence is moderate-low due to image resolution limitations and uncertainty in precisely identifying this parcel vs. adjacent homes on the cul-de-sac.",
+  "footprint_sqft": 2250,
+  "footprint_confidence": 0.42,
+  "footprint_rationale": "Subject home identified as the large multi-section hip-roofed structure at the base of the Kenswick Meadows Ct cul-de-sac (upper-left quadrant), with driveway curving from the cul-de-sac circle. Bounding box traced at approximately x:235–420 px, y:545–875 px (185 px wide × 330 px tall = ~39 ft × ~70 ft). The plan is L-shaped with two main hip-roof sections; an 82% fill factor applied to the gross rectangle gives ~2,250 sq ft. Roof is an all-hip style (no rake/gable ends): two principal ridges plus a connector ridge totaling ~55 ft, approximately eight hip lines at corners totaling ~102 ft, two interior valleys where sections meet totaling ~19 ft, and continuous eave lines around the full perimeter totaling ~187 ft. Confidence is moderate-low due to the oblique angle of some roof sections, partial shadowing, and uncertainty in pinpointing the exact lot boundary of 21106 among similarly styled neighboring homes on the cul-de-sac.",
   "footprint_stub": false,
   "line_items": {
-    "ridge": 30,
-    "hip": 130,
-    "valley": 20,
+    "ridge": 55,
+    "hip": 102,
+    "valley": 19,
     "rake": 0,
-    "eave": 155
+    "eave": 187
   },
-  "roof_area_sqft": 3466,
-  "computed_at": "2026-05-08T22:55:47.555Z"
+  "roof_area_sqft": 2516,
+  "computed_at": "2026-05-08T22:39:52.817Z"
 }
