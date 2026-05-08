@@ -25,6 +25,7 @@ Full concept in [`docs/concept-prompt.md`](docs/concept-prompt.md).
 ├── IP_STATUS.md               ← read before contributing code
 ├── docs/
 │   ├── concept-prompt.md      ← the build brief
+│   ├── tasks.md               ← suggested track plan (4 people, 3 tracks)
 │   └── reference/             ← event materials, alternate-track research
 └── .gitignore
 ```
