@@ -20,8 +20,8 @@
 | 3 | Footprint + line items prompt | Will | 🟡 | 2h | #1 |
 | 4 | Calibration harness against examples | Dan | 🟢 | 1h | #2, #3 |
 | 5 | Materials catalog (3 tiers, real prices) | Ethan | 🟢 | 1h | none |
-| 6 | Estimate calculator | | ⚪ | 1h | #5 |
-| 7 | PDF template + renderer | | ⚪ | 2h | #6 |
+| 6 | Estimate calculator | Eric | 🟡 | 1h | #5 |
+| 7 | PDF template + renderer | Dan | 🟢 | 2h | #6 |
 | 8 | Single-command CLI runner | Dan | 🟢 | 1h | #1, #4, #7 |
 | 9 | Run pipeline on 5 example properties (calibrate) | | ⚪ | 1h | #8 |
 | 10 | Iterate prompts to hit ±10% on examples | | ⚪ | 2h | #9 |

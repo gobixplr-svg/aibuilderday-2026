@@ -32,3 +32,6 @@ intermediate/
 
 # Pipeline outputs (populated during calibration + submission run)
 outputs/
+
+# Scratch / preview output
+tmp/
