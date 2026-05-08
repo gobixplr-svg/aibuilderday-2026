@@ -83,6 +83,7 @@ export async function estimateFootprint({ aerialPath, lat, lng, slug, scale }) {
     userText: `Analyze this satellite image of ${slug}. Lat/lng: ${lat.toFixed(4)}, ${lng.toFixed(4)}.`,
     imagePath: annotatedPath,
     tool: FOOTPRINT_TOOL,
+    maxTokens: 16384,
   })
 
   console.log(

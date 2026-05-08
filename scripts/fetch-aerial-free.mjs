@@ -26,10 +26,7 @@ import { mkdir, writeFile, readFile, access } from "fs/promises"
 import { join } from "path"
 import { slugify } from "./lib/slug.mjs"
 import { metersPerPixel, feetPerPixel } from "./lib/aerial.mjs"
-
-const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
-const CENSUS_URL = "https://geocoding.geo.census.gov/geocoder/locations/onelineaddress"
-const ESRI_TILE_URL = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile"
+import { geocodeFree, fetchEsriComposite } from "./lib/aerial-free.mjs"
 
 const EXAMPLES = [
   "21106 Kenswick Meadows Ct, Humble, TX 77338",
@@ -54,136 +51,6 @@ async function exists(p) {
   } catch {
     return false
   }
-}
-
-// Census Bureau Geocoder — free, no auth, US-only, excellent residential
-// coverage. Tries this first because Nominatim misses many US residential
-// streets, especially in newer subdivisions.
-async function geocodeCensus(address) {
-  const url = `${CENSUS_URL}?address=${encodeURIComponent(address)}&benchmark=Public_AR_Current&format=json`
-  const res = await fetch(url)
-  if (!res.ok) throw new Error(`[geocode-census] HTTP ${res.status}`)
-  const body = await res.json()
-  const match = body?.result?.addressMatches?.[0]
-  if (!match) throw new Error(`[geocode-census] no results`)
-  return {
-    input_address: address,
-    formatted_address: match.matchedAddress,
-    place_id: String(match.tigerLine?.tigerLineId || ""),
-    lat: Number(match.coordinates.y),
-    lng: Number(match.coordinates.x),
-    location_type: "residential",
-    source: "census",
-  }
-}
-
-async function geocodeNominatim(address) {
-  const url = `${NOMINATIM_URL}?format=json&limit=1&q=${encodeURIComponent(address)}`
-  const res = await fetch(url, {
-    headers: { "User-Agent": "AIBuilderDay2026/0.1 (hackathon stand-in)" },
-  })
-  if (!res.ok) throw new Error(`[geocode-nominatim] HTTP ${res.status}`)
-  const arr = await res.json()
-  if (!arr.length) throw new Error(`[geocode-nominatim] no results`)
-  const top = arr[0]
-  return {
-    input_address: address,
-    formatted_address: top.display_name,
-    place_id: String(top.place_id),
-    lat: Number(top.lat),
-    lng: Number(top.lon),
-    location_type: top.osm_type,
-    source: "nominatim",
-  }
-}
-
-// Try Census first, fall back to Nominatim. Both are free + no-auth.
-async function geocodeFree(address) {
-  try {
-    return await geocodeCensus(address)
-  } catch (censusErr) {
-    console.log(`[geocode] Census missed: ${censusErr.message}; trying Nominatim`)
-    try {
-      return await geocodeNominatim(address)
-    } catch (nomErr) {
-      throw new Error(`Census + Nominatim both failed: ${censusErr.message} / ${nomErr.message}`)
-    }
-  }
-}
-
-// Web Mercator tile coordinates
-function lngToTileX(lng, z) {
-  return ((lng + 180) / 360) * Math.pow(2, z)
-}
-function latToTileY(lat, z) {
-  const rad = (lat * Math.PI) / 180
-  return ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * Math.pow(2, z)
-}
-
-// Compose a 2x2 grid of 256px tiles into one ~512px image, then crop to
-// 640x640 around the address center. Uses sharp if available; falls back
-// to single-tile fetch otherwise (lower fidelity but still demos).
-async function fetchEsriComposite({ lat, lng, zoom = 19 }) {
-  const txF = lngToTileX(lng, zoom)
-  const tyF = latToTileY(lat, zoom)
-  // 4x4 = 1024px area centered on the point; we'll center-crop to ~640.
-  const TILES = 4
-  const baseX = Math.floor(txF) - Math.floor(TILES / 2)
-  const baseY = Math.floor(tyF) - Math.floor(TILES / 2)
-
-  let sharp
-  try {
-    sharp = (await import("sharp")).default
-  } catch {
-    // Fallback: just fetch the central tile
-    const tx = Math.floor(txF)
-    const ty = Math.floor(tyF)
-    const url = `${ESRI_TILE_URL}/${zoom}/${ty}/${tx}`
-    const res = await fetch(url)
-    if (!res.ok) throw new Error(`[aerial] HTTP ${res.status}`)
-    const buf = Buffer.from(await res.arrayBuffer())
-    return { buffer: buf, width: 256, height: 256, zoom, tileMode: "single" }
-  }
-
-  // Fetch all tiles in parallel
-  const tiles = []
-  for (let dy = 0; dy < TILES; dy++) {
-    for (let dx = 0; dx < TILES; dx++) {
-      const tx = baseX + dx
-      const ty = baseY + dy
-      tiles.push({ dx, dy, url: `${ESRI_TILE_URL}/${zoom}/${ty}/${tx}` })
-    }
-  }
-  const fetched = await Promise.all(
-    tiles.map(async (t) => {
-      const res = await fetch(t.url)
-      if (!res.ok) throw new Error(`[aerial] tile ${t.url} → HTTP ${res.status}`)
-      return { ...t, buffer: Buffer.from(await res.arrayBuffer()) }
-    })
-  )
-
-  // Composite tiles into a TILES*256 px square
-  const fullSize = TILES * 256
-  const composite = await sharp({
-    create: { width: fullSize, height: fullSize, channels: 3, background: { r: 0, g: 0, b: 0 } },
-  })
-    .composite(fetched.map((f) => ({ input: f.buffer, top: f.dy * 256, left: f.dx * 256 })))
-    .jpeg({ quality: 92 })
-    .toBuffer()
-
-  // The address point inside the composite
-  const pxInComposite = {
-    x: (txF - baseX) * 256,
-    y: (tyF - baseY) * 256,
-  }
-
-  // Crop a 640x640 window centered on the point (clamped to bounds)
-  const TARGET = 640
-  const left = Math.max(0, Math.min(fullSize - TARGET, Math.round(pxInComposite.x - TARGET / 2)))
-  const top = Math.max(0, Math.min(fullSize - TARGET, Math.round(pxInComposite.y - TARGET / 2)))
-  const cropped = await sharp(composite).extract({ left, top, width: TARGET, height: TARGET }).jpeg({ quality: 92 }).toBuffer()
-
-  return { buffer: cropped, width: TARGET, height: TARGET, zoom, tileMode: "composite" }
 }
 
 async function fetchOne(address, { zoom = 19, noCache = false } = {}) {
