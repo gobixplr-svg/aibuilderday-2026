@@ -109,7 +109,8 @@ npm run calibrate
 node scripts/fence-sweep.mjs
 
 # launch the web UI (Next.js, optional)
-npm run dev      # → http://localhost:3000
+npm run dev                          # → http://localhost:3000
+                                     # → http://localhost:3000/pitch (one-page pitch artifact)
 ```
 
 Outputs land in `outputs/<slug>/`. Intermediate vision/Solar caches in `intermediate/<slug>/` (committed for "build don't buy" auditability).
