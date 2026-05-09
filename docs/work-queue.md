@@ -14,7 +14,7 @@
 
 | # | Task | Owner | Status | Est | Blockers |
 |---|---|---|---|---|---|
-| 0 | Next.js scaffold (`src/`) | Ethan | 🟢 | 1.5h | none |
+| 0 | Next.js scaffold (`app/` + `components/`) | Ethan | 🟢 | 1.5h | none |
 | 1 | Geocoding + aerial acquisition CLI | Dan | 🟢 | 1h | none |
 | 2 | Pitch estimation prompt | Will | 🟢 | 1.5h | #1 |
 | 3 | Footprint + line items prompt | Will | 🟢 | 2h | #1 |
