@@ -39,6 +39,13 @@ async function runPipeline(address: string): Promise<void> {
         resolve()
         return
       }
+      // Geocode failure (bad address, no results) — fail fast with same UX as /api/geocode.
+      if (/\[geocode\]|API status ZERO_RESULTS|no results for address/i.test(stderr)) {
+        const err: PipelineError = new Error("Incorrect address. Please try again.")
+        err.code = "INVALID_ADDRESS"
+        reject(err)
+        return
+      }
       // Pattern-match the NO_ROOF_DETECTED signal that scripts/lib/claude.mjs
       // emits when Claude refuses to call the tool because the image doesn't
       // show a residential pitched roof. Per CLAUDE.md hard rule #2, we'd
@@ -77,7 +84,8 @@ export async function POST(req: NextRequest) {
     // the request was well-formed, we just couldn't act on it. Distinguishes
     // from 500 (real bug) so the UI can present a friendly message instead
     // of raw pipeline internals.
-    const status = e?.code === "NO_ROOF_DETECTED" ? 422 : 500
+    const status =
+      e?.code === "NO_ROOF_DETECTED" || e?.code === "INVALID_ADDRESS" ? 422 : 500
     return NextResponse.json(
       { error: e?.message ?? "Pipeline failed", code: e?.code },
       { status }

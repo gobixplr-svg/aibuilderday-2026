@@ -16,7 +16,8 @@
     "fetch-all": "node scripts/fetch-all.mjs",
     "estimate": "node scripts/estimate.mjs",
     "calibrate": "node scripts/calibrate.mjs",
-    "preview-pdf": "node scripts/preview-pdf.mjs"
+    "preview-pdf": "node scripts/preview-pdf.mjs",
+    "test:geocode": "node scripts/test-geocode-invalid-address.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.65.0",

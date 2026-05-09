@@ -91,6 +91,7 @@ export function IdleScreen({ t, onSubmit }: Props) {
               value={addr}
               onChange={(e) => setAddr(e.target.value)}
               placeholder="Enter property address…"
+              maxLength={500}
               className="flex-1 bg-transparent px-5 py-5 text-lg outline-none font-medium tracking-tight"
               style={{ color: t.text }}
             />

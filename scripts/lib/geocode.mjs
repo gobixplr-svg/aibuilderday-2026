@@ -1,9 +1,17 @@
 // Geocoding via Google Maps Geocoding API.
 // Input: address string. Output: { lat, lng, formatted_address, place_id }.
 
+import {
+  assertGeocodeInputLength,
+  isAcceptablePropertyGeocodeResult,
+  isPreciseGeocodeResult,
+} from "./geocode-quality.mjs"
+
 const GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode/json"
 
 export async function geocode(address) {
+  assertGeocodeInputLength(address)
+
   const apiKey = process.env.GOOGLE_MAPS_API_KEY
   if (!apiKey) {
     throw new Error("GOOGLE_MAPS_API_KEY missing in environment (.env.local)")
@@ -23,6 +31,19 @@ export async function geocode(address) {
   const top = body.results[0]
   if (!top) {
     throw new Error(`[geocode] no results for address: ${address}`)
+  }
+
+  if (!isAcceptablePropertyGeocodeResult(top)) {
+    const t = top.geometry?.location_type ?? "unknown"
+    const typeStr = (top.types ?? []).join(", ") || "(none)"
+    if (!isPreciseGeocodeResult(top)) {
+      throw new Error(
+        `[geocode] address resolved only to an imprecise location (${t}); need ROOFTOP or RANGE_INTERPOLATED. Check the street address.`,
+      )
+    }
+    throw new Error(
+      `[geocode] address must include a street-level location, not only city or ZIP (result types: ${typeStr}). Enter a full street address.`,
+    )
   }
 
   return {
