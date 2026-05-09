@@ -8,15 +8,41 @@ import { slugify } from "@/app/lib/slug"
 // run roughly half the time and the UI showed an error on real success.
 export const maxDuration = 300
 
+type PipelineError = Error & { code?: string }
+
 function runPipeline(address: string): Promise<void> {
   return new Promise((resolve, reject) => {
     const proc = spawn("node", ["scripts/estimate.mjs", address, "--no-cache"], {
       cwd: process.cwd(),
       env: { ...process.env },
     })
+
+    // Capture stderr so we can distinguish "address didn't resolve to a
+    // residential roof" (a user-friendly 422) from real pipeline errors.
+    let stderr = ""
+    proc.stderr?.on("data", (chunk) => { stderr += chunk.toString() })
+    // Also tee stderr to our own stderr so the dev console still shows it.
+    proc.stderr?.pipe(process.stderr)
+    proc.stdout?.pipe(process.stdout)
+
     proc.on("close", (code) => {
-      if (code === 0) resolve()
-      else reject(new Error(`Pipeline exited with code ${code}`))
+      if (code === 0) {
+        resolve()
+        return
+      }
+      // Pattern-match the NO_ROOF_DETECTED signal that scripts/lib/claude.mjs
+      // emits when Claude refuses to call the tool because the image doesn't
+      // show a residential pitched roof. Per CLAUDE.md hard rule #2, we'd
+      // rather refuse than fabricate a measurement.
+      if (/NO_ROOF_DETECTED|No residential roof detected/i.test(stderr)) {
+        const err: PipelineError = new Error(
+          "We couldn't find a residential roof at that address. The address may have geocoded to a commercial street, parking lot, or empty parcel. Try a more specific address (e.g. include the unit or check the street name)."
+        )
+        err.code = "NO_ROOF_DETECTED"
+        reject(err)
+        return
+      }
+      reject(new Error(`Pipeline exited with code ${code}`))
     })
     proc.on("error", reject)
   })
@@ -37,9 +63,15 @@ export async function POST(req: NextRequest) {
   try {
     await runPipeline(address.trim())
   } catch (err) {
+    const e = err as PipelineError
+    // 422 (Unprocessable Entity) for "we couldn't find a roof" — semantically
+    // the request was well-formed, we just couldn't act on it. Distinguishes
+    // from 500 (real bug) so the UI can present a friendly message instead
+    // of raw pipeline internals.
+    const status = e?.code === "NO_ROOF_DETECTED" ? 422 : 500
     return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Pipeline failed" },
-      { status: 500 }
+      { error: e?.message ?? "Pipeline failed", code: e?.code },
+      { status }
     )
   }
 

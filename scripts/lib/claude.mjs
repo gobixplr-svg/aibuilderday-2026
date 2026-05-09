@@ -71,7 +71,22 @@ export async function runVisionCall({
   const toolUseBlock = response.content.find((b) => b.type === "tool_use")
   if (!toolUseBlock) {
     const textBlock = response.content.find((b) => b.type === "text")
-    const detail = textBlock ? `Got text: ${textBlock.text.slice(0, 200)}` : "No text block either."
+    const text = textBlock?.text ?? ""
+    const detail = text ? `Got text: ${text.slice(0, 200)}` : "No text block either."
+
+    // Claude refusing to call the tool is correct behavior when the image
+    // doesn't show a residential pitched roof (commercial property,
+    // RANGE_INTERPOLATED geocode that landed on a parking lot, etc).
+    // Surface as a typed condition so the API route can return a friendly
+    // 422 instead of a 500 with a stack trace. Per CLAUDE.md hard rule #2,
+    // we'd rather refuse than fabricate.
+    const looksLikeNoRoof = /no\s+(residential\s+)?roof|cannot\s+(call|measure|identify|see)|not\s+a\s+residential|not\s+a\s+(pitched\s+)?roof|empty\s+lot|parking\s+lot|commercial\s+(building|property)|no\s+building/i.test(text)
+    if (looksLikeNoRoof) {
+      const err = new Error(`No residential roof detected at this address. The model said: "${text.slice(0, 240).trim()}"`)
+      err.code = "NO_ROOF_DETECTED"
+      throw err
+    }
+
     throw new Error(
       `[claude] No tool_use block in response. stop_reason=${response.stop_reason}. ${detail}`,
     )

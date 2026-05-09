@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2450,
+  "footprint_sqft": 2400,
   "line_items": {
-    "ridge": 38,
-    "hip": 121,
-    "valley": 16,
+    "ridge": 35,
+    "hip": 95,
+    "valley": 18,
     "rake": 0,
-    "eave": 148
+    "eave": 155
   },
-  "confidence": 0.4,
-  "rationale": "Subject home is under active construction. The orange bounding box spans approximately 253 × 272 pixels (53.6 ft × 57.7 ft = 3,093 sq ft bounding area). The visible roof consists of two interconnected hip-roof sections — a smaller upper/front section (~25×22 ft) and a larger main section (~48×35 ft) — connected at a valley junction. No gable ends are present (pure hip geometry, rake = 0). A fill factor of ~0.80 was applied to the bounding rectangle to account for the hip roof shape and areas where decking/framing is exposed but not yet fully covered. Final footprint: ~2,450 sq ft. Confidence is low (0.40) because active construction makes it difficult to distinguish finished roof plane from unfinished deck, and portions of the structure may not yet have roofing materials in place."
+  "confidence": 0.42,
+  "rationale": "The subject home (centered on the orange reticle, bounded by the orange dashed box) appears to be under active construction. The bounding box measures approximately 255 × 268 pixels (54.1 ft × 56.8 ft), yielding a plan-view bounding area of ~3,074 sq ft. The roof is a complex hip style with multiple planes visible; the upper-left portion shows a completed darker hip section with discernible ridge/hip lines, while the lower-central area shows lighter exposed decking consistent with active framing. A fill factor of ~78% was applied to account for the hip corners tapering inward. No attached garage or separate structure is clearly connected within the box. Ridge (~2 segments, ~35 ft), hip lines (~6 edges from peaks to corners, ~95 ft total), valleys (~2 inward junctions, ~18 ft), no rakes (hip roof), and perimeter eaves (~155 ft) were estimated by tracing visible roof-plane edges in pixel coordinates and converting at 0.212 ft/px. Confidence is reduced due to the construction state partially obscuring roof structure and the unusual orientation of the home relative to north."
 }
