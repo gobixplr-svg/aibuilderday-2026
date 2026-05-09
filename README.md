@@ -64,7 +64,7 @@ Reference numbers are pulled from the EagleView/Geospan ground truth in [the bou
 | # | Property | Predicted | Ref avg | Δ% | Source |
 |---|---|---:|---:|---:|---|
 | 1 | 21106 Kenswick Meadows Ct, Humble TX | 2,389 | 2,393 | **−0.2%** ✓ | Solar-fenced |
-| 2 | 5914 Copper Lily Ln, Spring TX | 4,369 | 4,344 | **+0.6%** ✓ | Solar-fenced |
+| 2 | 5914 Copper Lilly Lane, Spring TX | 4,369 | 4,344 | **+0.6%** ✓ | Solar-fenced |
 | 3 | 122 NW 13th Ave, Cape Coral FL | 2,924 | 2,884 | **+1.4%** ✓ | Solar-fenced |
 | 4 | 14132 Trenton Ave, Orland Park IL | 3,170 | 2,963 | **+7.0%** ✓ | Solar-fenced |
 | 5 | 835 S Cobble Creek, Nixa MO | 3,287 | 3,044 | **+8.0%** ✓ | Vision |
