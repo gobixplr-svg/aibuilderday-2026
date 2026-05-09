@@ -113,19 +113,21 @@ export function ResultsScreen({ t, result, onReset }: Props) {
       <GridBG t={t} />
       <div className="relative z-10 flex-1 px-6 lg:px-12 py-10 lg:py-14 max-w-[1280px] mx-auto w-full">
 
-        {/* Stub warning */}
+        {/* Stub warning — square corners + left accent stripe to match the
+            rest of the recon vocabulary instead of breaking it with a rounded
+            amber pill. */}
         {stub && (
           <div
-            className="mb-6 px-4 py-3 text-sm font-mono"
+            className="mb-6 px-4 py-3 text-sm font-mono flex items-center gap-3"
             style={{
-              background: "#FFFBEB",
-              border: "1px solid #FCD34D",
-              borderRadius: 10,
-              color: "#92400E",
+              background: t.mode === "dark" ? "rgba(252,211,77,0.08)" : "#FFFBEB",
+              borderLeft: "3px solid #FCD34D",
+              color: t.mode === "dark" ? "#FCD34D" : "#92400E",
               letterSpacing: "0.02em",
             }}
           >
-            ⚠️ Stub data — pitch and footprint are synthetic until vision prompts land
+            <span>⚠</span>
+            <span>STUB DATA — pitch and footprint are synthetic until vision prompts land</span>
           </div>
         )}
 
@@ -221,57 +223,82 @@ export function ResultsScreen({ t, result, onReset }: Props) {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {mergedTiers.map((ti) => {
+        {/* Estimate options — horizontal rows in the recon voice, not SaaS
+            pricing cards. Each option is a bracketed row with the option
+            number on the left, spec stack in the middle, and the price column
+            on the right. Premium (the recommended option) gets an accent
+            left rail + a "RECOMMENDED" mono tag. No card-scale, no glow
+            shadow — those broke the rest of the page's tactical aesthetic. */}
+        <div className="border-t border-b" style={{ borderColor: t.border }}>
+          {mergedTiers.map((ti, idx) => {
             const featured = ti.key === "premium"
-            const cardBg       = featured ? t.panelStrong : t.panel
-            const cardText     = featured ? "#FFFFFF" : t.text
-            const cardMuted    = featured ? "rgba(255,255,255,0.55)" : t.textMuted
-            const cardSoft     = featured ? "rgba(255,255,255,0.4)" : t.textSoft
+            const optionNum = String(idx + 1).padStart(2, "0")
             return (
               <div
                 key={ti.key}
-                className={`relative flex flex-col p-6 transition-transform ${featured ? "md:-translate-y-3 md:scale-[1.03]" : ""}`}
+                className="relative grid grid-cols-[auto_1fr_auto] gap-6 lg:gap-10 items-start py-6 lg:py-7 px-4 lg:px-6 border-b last:border-b-0"
                 style={{
-                  background: cardBg,
-                  border: featured ? `1.5px solid ${t.accent}` : `1px solid ${t.border}`,
-                  boxShadow: featured
-                    ? `0 30px 60px -30px ${t.accent}66`
-                    : t.mode === "light" ? "0 1px 2px rgba(13,31,60,0.04)" : "none",
+                  borderColor: t.border,
+                  background: featured ? (t.mode === "dark" ? "rgba(255,107,43,0.04)" : "rgba(255,107,43,0.03)") : "transparent",
                 }}
               >
+                {/* Accent rail on featured row */}
                 {featured && (
                   <div
-                    className="absolute -top-3 left-6 px-2 py-1 text-[10px] font-mono tracking-[0.2em]"
-                    style={{ background: t.accent, color: t.accentInk }}
-                  >
-                    RECOMMENDED
-                  </div>
+                    className="absolute left-0 top-0 bottom-0 w-[3px]"
+                    style={{ background: t.accent }}
+                  />
                 )}
-                <div className="flex items-baseline justify-between">
-                  <div className="text-lg font-semibold tracking-tight" style={{ color: cardText }}>{ti.name}</div>
-                  <div className="text-[10px] font-mono tracking-wider" style={{ color: cardSoft }}>{ti.warranty}</div>
-                </div>
-                <div className="text-[12px] mt-0.5" style={{ color: cardMuted }}>{ti.tag}</div>
 
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span className="text-[14px] font-mono" style={{ color: cardSoft }}>$</span>
-                  <span className="text-5xl font-extrabold tracking-[-0.03em] tabular-nums" style={{ color: cardText }}>
-                    {ti.price.toLocaleString()}
-                  </span>
-                </div>
-                <div className="text-[11px] font-mono mt-1" style={{ color: cardSoft }}>
-                  ${ti.perSqft.toFixed(2)} / sq ft&nbsp;·&nbsp;{sqft.toLocaleString()} sq ft
+                {/* Left column: option number + tier label */}
+                <div className="flex flex-col gap-1 min-w-[140px] lg:min-w-[200px]">
+                  <div
+                    className="font-mono text-[10px] tracking-[0.3em]"
+                    style={{ color: featured ? t.accent : t.textSoft }}
+                  >
+                    OPTION&nbsp;{optionNum}
+                    {featured && <span className="ml-2">·&nbsp;RECOMMENDED</span>}
+                  </div>
+                  <div className="text-2xl font-semibold tracking-tight" style={{ color: t.text }}>
+                    {ti.name}
+                  </div>
+                  <div className="text-[12px]" style={{ color: t.textMuted }}>{ti.tag}</div>
+                  <div className="font-mono text-[10px] tracking-wider mt-1" style={{ color: t.textSoft }}>
+                    {ti.warranty.toUpperCase()}&nbsp;WARRANTY
+                  </div>
                 </div>
 
-                <ul className="mt-6 space-y-2 text-sm flex-1" style={{ color: cardMuted }}>
+                {/* Middle column: spec bullets */}
+                <ul className="space-y-1.5 text-sm pt-1" style={{ color: t.textMuted }}>
                   {ti.bullets.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span className="mt-1.5 w-1.5 h-1.5 shrink-0" style={{ background: featured ? t.accent : t.blue }} />
+                    <li key={b} className="flex gap-2.5">
+                      <span
+                        className="mt-2 w-1.5 h-1.5 shrink-0"
+                        style={{ background: featured ? t.accent : t.blue }}
+                      />
                       <span>{b}</span>
                     </li>
                   ))}
                 </ul>
+
+                {/* Right column: price */}
+                <div className="text-right min-w-[140px] lg:min-w-[180px]">
+                  <div className="flex items-baseline justify-end gap-1">
+                    <span className="text-[14px] font-mono" style={{ color: t.textSoft }}>$</span>
+                    <span
+                      className="text-4xl lg:text-5xl font-extrabold tracking-[-0.03em] tabular-nums leading-none"
+                      style={{ color: t.text }}
+                    >
+                      {ti.price.toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="font-mono text-[10px] tracking-wider mt-2" style={{ color: t.textSoft }}>
+                    ${ti.perSqft.toFixed(2)}&nbsp;/&nbsp;SQ&nbsp;FT
+                  </div>
+                  <div className="font-mono text-[10px] tracking-wider" style={{ color: t.textSoft }}>
+                    {sqft.toLocaleString()}&nbsp;SQ&nbsp;FT
+                  </div>
+                </div>
               </div>
             )
           })}

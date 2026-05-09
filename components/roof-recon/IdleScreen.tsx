@@ -122,22 +122,17 @@ export function IdleScreen({ t, onSubmit }: Props) {
           </div>
         </form>
 
-        {/* Feature grid */}
-        <div
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-px w-full max-w-3xl"
-          style={{ background: t.border }}
-        >
-          {([
-            ["01", "PIXEL-PERFECT", "Sub-foot accuracy from 1m sat imagery."],
-            ["02", "PITCH-AWARE",   "Detects slope from shadow geometry."],
-            ["03", "ESTIMATE-READY","Three priced tiers, one click to PDF."],
-          ] as [string, string, string][]).map(([n, title, desc]) => (
-            <div key={n} className="px-5 py-5" style={{ background: t.bg }}>
-              <div className="text-[10px] font-mono tracking-[0.25em]" style={{ color: t.accent }}>{n}</div>
-              <div className="mt-2 text-sm font-semibold tracking-tight" style={{ color: t.text }}>{title}</div>
-              <div className="mt-1 text-xs leading-relaxed" style={{ color: t.textMuted }}>{desc}</div>
-            </div>
-          ))}
+        {/* Capability ticker — single line, mono caps, recon voice. Replaces
+            the earlier 3-up icon-card grid that read as generic AI-template. */}
+        <div className="mt-12 w-full max-w-3xl flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-mono text-[11px] tracking-[0.25em]" style={{ color: t.textSoft }}>
+          <span style={{ color: t.accent }}>01</span>
+          <span style={{ color: t.text }}>PIXEL-PERFECT</span>
+          <span aria-hidden style={{ color: t.borderSoft }}>·</span>
+          <span style={{ color: t.accent }}>02</span>
+          <span style={{ color: t.text }}>PITCH-AWARE</span>
+          <span aria-hidden style={{ color: t.borderSoft }}>·</span>
+          <span style={{ color: t.accent }}>03</span>
+          <span style={{ color: t.text }}>ESTIMATE-READY</span>
         </div>
       </div>
     </div>
