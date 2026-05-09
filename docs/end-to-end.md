@@ -150,29 +150,85 @@ Calibration on 5 example properties (PLOG-006, fence threshold 12%): **5/5 withi
 - ✅ Subject identification fixed via Solar API marker overlay (the actual root cause of the under-trace).
 - ✅ PLOG entries 1-5 logged. Effort change is documented in PLOG-003.
 
-## Open items going into the next session
+## Saturday morning playbook (in order — no thinking required)
 
-### Submission paperwork
+> All quality + UI work shipped overnight. What's left is paperwork and a Loom video. Target submit time: 1:00 PM (30-min buffer). Hard deadline 1:30 PM.
 
-- [ ] **Team members for the form (max 3):** Dan, Will, Eric. Ethan can't attend Saturday.
-- [ ] **Approach summary (≤200 words)** drafted in a doc (haven't done this yet).
-- [ ] **Phone number** for the finalist text at 2:00 PM.
-- [ ] **README update** to describe the Solar fence approach (the current README is a few iterations old).
-- [ ] **Form submission itself** by Saturday 1:30 PM.
+### Step 1 — Pre-submission verification (~10 min, ~9:00 AM)
 
-### Quality / accuracy
+- [ ] Open https://github.com/gobixplr-svg/aibuilderday-2026 in a fresh incognito window. Verify README renders cleanly, JUDGES.md is at repo root, the Kenswick annotated aerial loads in the README hero.
+- [ ] Re-run `npm run calibrate` locally. Verify the output ends with `5/5 within ±10%` and `✓ all properties in tolerance`. (If it doesn't — STOP and debug. The PLOG-006 floor is the floor.)
+- [ ] Open the Google Form once *without* submitting to confirm what fields it actually asks for. Note whether "Edit after submit" is on (probably is by default).
 
-- [ ] **Fence threshold sensitivity.** Currently 15% (4/5 in tolerance). Worth one more sweep with fresh runs to see if Kenswick (the only example miss) responds differently with a refresh. Could also try 12% to see if Kenswick flips.
-- [ ] **Pitch is still 1/5 on examples.** Doesn't matter when fence triggers (Solar's number is already slope-corrected) but matters for vision-fed properties (Houston, Rosebrier).
-- [ ] **Properties 4 & 5 in test set are very large.** No reference data — could be over-trace. Worth eyeballing the annotated aerials before submission.
+### Step 2 — Approach summary (~30 min, ~9:30 AM)
 
-### Demo readiness (only if we make finalist round)
+Draft the ≤200-word summary. Lift directly from the README and JUDGES.md — no new prose required. Suggested skeleton:
 
-- [ ] **Roof Recon's processing screen progress bar lies.** Hardcoded to 50s; real runs are 90-220s. Either fix or remove timed steps.
-- [ ] **Demo script** — 5-minute narrative for finalist round.
-- [ ] **`/api/measure` 120s timeout** vs typical 3-4 min runtime. Bump to 300s.
-- [ ] **Two API routes** (`/api/measure` + `/api/estimate`) — one is legacy, should be deleted.
+> Roof Recon takes a property address and produces a roof measurement (sqft + line items) and a 3-tier priced estimate PDF in ~3 minutes. The cost wedge: ~$0.20 per measurement vs $15–87 for incumbents.
+>
+> The pipeline is: Google Geocode → Static Maps zoom 20 → Google Solar API for the subject building's polygon → annotate the aerial with an orange SUBJECT box → Claude Sonnet 4.6 vision (parallel calls for pitch and footprint) → roof_area = footprint × pitch_multiplier → Solar fence (use Solar's slope-corrected segment area when vision disagrees by >12%) → Eric's pure-function estimate engine → branded PDF.
+>
+> The novel piece is the Solar fence. Naive "address → vision LLM" fails on dense suburbs because the model can't tell which of 9 visible houses is the subject. Solar API's buildingInsights gives us the subject polygon for the marker AND a slope-corrected sanity rail. Result: 5/5 example properties in tolerance, 3.4% mean error.
+>
+> Iteration logged in docs/prompt-changelog.md (PLOG-001 through PLOG-007, including reverts).
 
-### Repo hygiene
+Trim to ≤200 words. Save to `docs/submission-summary.md` so it's in the repo.
 
-- [ ] **Saratoga Springs UT** in `outputs/` is non-bounty (Eric spot-check). Delete before submission.
+### Step 3 — Loom video (~20 min, ~10:30 AM)
+
+Why before submission: Google Forms doesn't reliably let you edit after submit. Get the URL first, submit once.
+
+- [ ] Loom desktop app (loom.com → install if not already)
+- [ ] macOS: enable Focus mode (no notifications), close Slack/email
+- [ ] Browser: zoom Cmd+ to 125%, hide bookmarks bar (Cmd+Shift+B)
+- [ ] Open http://localhost:3000 (run `npm run dev` first if needed)
+- [ ] One 10-second test recording to check audio level
+
+**Demo script (~75–90 seconds, narrated live):**
+
+1. (0:00–0:10) Idle screen visible. *"Roof Recon. Address in, roof measurement and a priced estimate out, in about three minutes. Built for the JobNimbus AI Builder Day bounty."*
+2. (0:10–0:20) Click into address field, paste `3561 E 102nd Ct, Thornton, CO 80229`, click Scan roof. *"This is one of the five test properties. We'll watch it run end to end."*
+3. (0:20–0:50) Processing screen shows. Aerial swaps in at ~5s. *"That orange box is the Google Solar API telling us which house is the subject — without it, the model picks one of nine visible roofs and gets it wrong."* Progress bar moves. *"While we wait, two parallel Claude vision calls compute pitch and footprint."*
+4. (0:50–1:15) Results appear. *"2,081 square feet, fenced by Solar because vision and Solar disagreed by more than twelve percent. Three priced tiers — Standard, Premium, Luxury — pulled from a real materials catalog with cited prices."*
+5. (1:15–1:30) Click PDF download. *"And the contractor-ready PDF. The whole repo is public. Five out of five example properties calibrate within ten percent. Code, prompt changelog, and per-property output are all in the repo."*
+
+If the live run takes too long, do two takes: idle → submit (cut), processing → results (cut), splice with Loom's trim. Aim for one continuous take if possible.
+
+- [ ] Stop recording. Loom auto-uploads. Copy the share URL.
+
+### Step 4 — Submit the form (~10 min, ~11:00 AM)
+
+Form: https://docs.google.com/forms/d/e/1FAIpQLSfTL58Z0rVBgfx9l81lV7GpryhF7kDEuFKCgNG5i-m1RWDyUg/viewform
+
+Fields, in order:
+
+1. **Team name + members:** Dan Elggren, Will Sandburg, Eric Smith. (Form caps at 3. Ethan credited in README but absent Saturday.)
+2. **Approach summary** — paste from `docs/submission-summary.md`
+3. **Phone number** — Dan's, since he's lead and on-site
+4. **GitHub repo URL** — `https://github.com/gobixplr-svg/aibuilderday-2026`
+5. **5 test sqft numbers** (in form's order — verify against `benchmark-measurements.md`):
+   - 3561 E 102nd Ct, Thornton CO → **2,081**
+   - 1612 S Canton Ave, Springfield MO → **2,757**
+   - 6310 Laguna Bay Court, Houston TX → **4,315**
+   - 3820 E Rosebrier St, Springfield MO → **6,015**
+   - 1261 20th Street, Newport News VA → **6,118**
+6. **Optional: best example output URL** — pick one of these at form-fill time based on what feels strongest in the moment:
+   - **Thornton CO test PDF** (test property, Solar-fenced, smallest/cleanest of the test set):
+     `https://github.com/gobixplr-svg/aibuilderday-2026/blob/main/outputs/3561-e-102nd-ct-thornton-co-80229/estimate.pdf`
+   - **Kenswick TX example PDF** (has ground truth — judges can verify the −0.2% accuracy directly):
+     `https://github.com/gobixplr-svg/aibuilderday-2026/blob/main/outputs/21106-kenswick-meadows-ct-humble-tx-77338/estimate.pdf`
+   - **Whole portfolio** (lets judges browse all 10):
+     `https://github.com/gobixplr-svg/aibuilderday-2026/tree/main/outputs`
+7. **Optional: demo video URL** — Loom URL from Step 3
+
+Hit Submit. Screenshot the confirmation. Done.
+
+### Step 5 — Stand by for finalist text (2:00 PM)
+
+If we make top 5: live demo 2:00–3:30 PM at JN HQ in Lehi. Bring the laptop with the dev server already running on a known-good cached property.
+
+### What's NOT on this list (deliberately)
+
+- More accuracy iteration. PLOG-007 already showed pitch reworks regress more than they help. Floor is locked.
+- Repo polish beyond what's already in. Diminishing returns vs. paperwork risk.
+- Code changes. Anything that breaks the calibration on submission morning is a self-inflicted disaster.
