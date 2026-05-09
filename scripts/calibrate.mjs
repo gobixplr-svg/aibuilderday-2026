@@ -99,9 +99,30 @@ async function predict(address) {
   if (!mult) {
     throw new Error(`no pitch multiplier for "${pitch.pitch}"`)
   }
-  const roof_area_sqft = Math.round(area.footprint_sqft * mult)
+  const visionRoofArea = Math.round(area.footprint_sqft * mult)
 
-  return { slug, pitch, area, roof_area_sqft, stub: !!(pitch.stub || area.stub) }
+  // Apply Solar API fence — mirror the production logic in scripts/estimate.mjs
+  // so calibration numbers reflect what would actually be submitted.
+  const FENCE_THRESHOLD_PCT = 15
+  const insightsPath = join(dir, "solar-insights.json")
+  let solarRoofArea = null
+  let fenceTriggered = false
+  if (await exists(insightsPath)) {
+    try {
+      const ins = JSON.parse(await readFile(insightsPath, "utf-8"))
+      const segments = ins?.solarPotential?.roofSegmentStats ?? []
+      let segM2 = 0
+      for (const seg of segments) segM2 += seg?.stats?.areaMeters2 ?? 0
+      if (segM2 > 0) solarRoofArea = Math.round(segM2 * 10.7639)
+      if (solarRoofArea) {
+        const deltaPct = Math.abs(visionRoofArea - solarRoofArea) / solarRoofArea * 100
+        if (deltaPct > FENCE_THRESHOLD_PCT) fenceTriggered = true
+      }
+    } catch {}
+  }
+  const roof_area_sqft = fenceTriggered ? solarRoofArea : visionRoofArea
+
+  return { slug, pitch, area, visionRoofArea, solarRoofArea, fenceTriggered, roof_area_sqft, stub: !!(pitch.stub || area.stub) }
 }
 
 function pct(predicted, target) {
@@ -135,7 +156,11 @@ async function run() {
       const inTolerance = Math.abs(deviation) <= TOLERANCE_PCT
       const pitchHit = pred.pitch.pitch === ref.ref_a.pitch
       results.push({ ref, pred, refAvg, deviation, inEnvelope, inTolerance, pitchHit })
-      console.log(`  predicted: ${pred.roof_area_sqft} sqft, ${pred.pitch.pitch}${pred.stub ? " [STUB]" : ""}`)
+      const sourceTag = pred.fenceTriggered ? " [SOLAR-FENCED]" : pred.solarRoofArea ? " [vision]" : ""
+      console.log(`  predicted: ${pred.roof_area_sqft} sqft, ${pred.pitch.pitch}${pred.stub ? " [STUB]" : ""}${sourceTag}`)
+      if (pred.solarRoofArea && !pred.fenceTriggered) {
+        console.log(`  (vision: ${pred.visionRoofArea}, solar: ${pred.solarRoofArea}, Δ ${(Math.abs(pred.visionRoofArea - pred.solarRoofArea) / pred.solarRoofArea * 100).toFixed(1)}% — fence not triggered)`)
+      }
       console.log(`  ref avg:   ${refAvg.toFixed(0)} sqft (A: ${ref.ref_a.sqft}, B: ${ref.ref_b.sqft})`)
       console.log(`  delta:     ${fmtPct(deviation)} ${inTolerance ? "✓" : "✗"}`)
       console.log(`  pitch:     ${ref.ref_a.pitch} ${pitchHit ? "✓" : "✗"}`)

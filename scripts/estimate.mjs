@@ -110,14 +110,72 @@ async function run() {
   console.log(`[footprint] ${area.footprint_sqft} sqft (confidence ${area.confidence})${area.stub ? " [STUB]" : ""}`)
   console.log(`[footprint] line items: ${JSON.stringify(area.line_items)}`)
 
-  // 4. Compute roof_area_sqft
+  // 4. Compute roof_area_sqft, then apply Solar API sanity fence.
+  //
+  // Fence rationale (PLOG-005): on dense suburban images Claude sometimes
+  // under-traces the subject roof even when correctly identified by the
+  // bounding-box marker. Solar API's roofSegmentStats provides slope-
+  // corrected per-segment areas — summing them gives an independent
+  // estimate of total roof area that matches EagleView-style references.
+  //
+  // Vision-pipeline raw values are still preserved in vision-area.json
+  // for auditability. measurement.json captures the final value, the
+  // source ("vision" or "solar-fence"), and the fence-trigger reason.
   console.log(`\n--- Step 4/6: Roof area ---`)
   const mult = pitch.pitch_multiplier ?? pitchMultiplier(pitch.pitch)
   if (!mult) {
     throw new Error(`[area] no pitch multiplier for "${pitch.pitch}"`)
   }
-  const roof_area_sqft = Math.round(area.footprint_sqft * mult)
-  console.log(`[area] ${area.footprint_sqft} sqft × ${mult} (${pitch.pitch}) = ${roof_area_sqft} sqft`)
+
+  const visionFootprint = area.footprint_sqft
+  const visionRoofArea = Math.round(visionFootprint * mult)
+  console.log(`[area] vision: ${visionFootprint} sqft footprint × ${mult} (${pitch.pitch}) = ${visionRoofArea} sqft roof area`)
+
+  // Try to load Solar's slope-corrected roof area for cross-check.
+  // Solar exposes:
+  //   - buildingStats.areaMeters2  → plan-view footprint (matches our footprint)
+  //   - sum(roofSegmentStats[].stats.areaMeters2) → slope-corrected roof area (matches refs)
+  // We compare vision roof area to Solar roof area (both in the same units).
+  const FENCE_THRESHOLD_PCT = 15
+  const insightsPath = join("intermediate", slug, "solar-insights.json")
+  let solarFootprint = null
+  let solarRoofArea = null
+  let solarFenceTriggered = false
+  let fenceReason = null
+  if (await exists(insightsPath)) {
+    try {
+      const ins = JSON.parse(await readFile(insightsPath, "utf-8"))
+      const fpM2 = ins?.solarPotential?.buildingStats?.areaMeters2
+      if (fpM2) solarFootprint = Math.round(fpM2 * 10.7639)
+      const segments = ins?.solarPotential?.roofSegmentStats ?? []
+      let segM2 = 0
+      for (const seg of segments) segM2 += seg?.stats?.areaMeters2 ?? 0
+      if (segM2 > 0) solarRoofArea = Math.round(segM2 * 10.7639)
+      if (solarRoofArea) {
+        const deltaPct = Math.abs(visionRoofArea - solarRoofArea) / solarRoofArea * 100
+        console.log(`[area] solar:  ${solarFootprint} sqft footprint, ${solarRoofArea} sqft roof area (sum of ${segments.length} segments). Vision Δ: ${deltaPct.toFixed(1)}%`)
+        if (deltaPct > FENCE_THRESHOLD_PCT) {
+          solarFenceTriggered = true
+          fenceReason = `vision roof area ${visionRoofArea} differs from solar ${solarRoofArea} by ${deltaPct.toFixed(1)}% (>${FENCE_THRESHOLD_PCT}%)`
+          console.log(`[area] ⚠ FENCE: ${fenceReason} — using solar`)
+        }
+      }
+    } catch (err) {
+      console.log(`[area] solar fence unavailable: ${err.message.slice(0, 100)}`)
+    }
+  }
+
+  // If fence triggered, use Solar's slope-corrected number directly
+  // (it's already roof area; no pitch multiplication).
+  const roof_area_sqft = solarFenceTriggered ? solarRoofArea : visionRoofArea
+  const finalFootprint = solarFenceTriggered
+    ? (solarFootprint ?? Math.round(roof_area_sqft / mult))
+    : visionFootprint
+  if (solarFenceTriggered) {
+    console.log(`[area] FINAL: ${roof_area_sqft} sqft (solar-fenced)`)
+  } else {
+    console.log(`[area] FINAL: ${roof_area_sqft} sqft (vision)`)
+  }
 
   const measurement = {
     slug,
@@ -130,12 +188,19 @@ async function run() {
     pitch_confidence: pitch.confidence,
     pitch_rationale: pitch.rationale,
     pitch_stub: !!pitch.stub,
-    footprint_sqft: area.footprint_sqft,
+    footprint_sqft: finalFootprint,
     footprint_confidence: area.confidence,
     footprint_rationale: area.rationale,
     footprint_stub: !!area.stub,
     line_items: area.line_items,
     roof_area_sqft,
+    roof_area_source: solarFenceTriggered ? "solar-fence" : "vision",
+    vision_footprint_sqft: visionFootprint,
+    vision_roof_area_sqft: visionRoofArea,
+    solar_footprint_sqft: solarFootprint,
+    solar_roof_area_sqft: solarRoofArea,
+    fence_triggered: solarFenceTriggered,
+    fence_reason: fenceReason,
     computed_at: new Date().toISOString(),
   }
 

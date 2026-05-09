@@ -207,15 +207,17 @@ export function ResultsScreen({ t, result, onReset }: Props) {
               Three options. One roof.
             </h2>
           </div>
-          <button
-            className="hidden md:flex items-center gap-2 px-5 py-3 font-semibold text-sm tracking-tight"
+          <a
+            href={`/api/pdf?address=${encodeURIComponent(address)}`}
+            download
+            className="hidden md:flex items-center gap-2 px-5 py-3 font-semibold text-sm tracking-tight transition-opacity hover:opacity-90"
             style={{ background: t.accent, color: t.accentInk }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M12 4 v 12 m -5 -5 l 5 5 l 5 -5 M 4 20 h 16" />
             </svg>
             Download estimate PDF
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
