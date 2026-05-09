@@ -5,20 +5,12 @@
   --font-mono: var(--font-mono), ui-monospace;
 }
 
-:root {
-  --jn-blue: #1b6ac9;
-  --jn-navy: #0d1f3c;
-  --jn-orange: #ff6b2b;
-  --jn-surface: #f5f8ff;
-  --jn-card: #fafcff;
-  --jn-border: #e2e8f0;
-  --jn-text: #1a2332;
-  --jn-muted: #64748b;
-}
-
+/* Body defaults match the RoofRecon dark theme so there's no light flash on
+   first paint before the React tree mounts. The recon UI sets its own bg/color
+   on its root element; these are just the sub-canvas. */
 body {
-  background: var(--jn-surface);
-  color: var(--jn-text);
+  background: #0D1F3C;
+  color: #FFFFFF;
   font-family: var(--font-inter), sans-serif;
 }
 

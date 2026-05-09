@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from "next/server"
 import { spawn } from "child_process"
 import { readFile } from "fs/promises"
 import { join } from "path"
+import { slugify } from "@/app/lib/slug"
 
-export const maxDuration = 120
-
-function slugify(address: string): string {
-  return address.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
-}
+// 300s: real pipeline runs land at 90-220s; 120s timed out on a successful
+// run roughly half the time and the UI showed an error on real success.
+export const maxDuration = 300
 
 function runPipeline(address: string): Promise<void> {
   return new Promise((resolve, reject) => {

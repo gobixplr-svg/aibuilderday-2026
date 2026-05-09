@@ -4,6 +4,7 @@ import type { Theme } from "./theme"
 import { GridBG } from "./GridBG"
 import { Reticle } from "./Reticle"
 import { SatelliteFrame } from "./SatelliteFrame"
+import { slugify } from "@/app/lib/slug"
 
 type TierData = {
   key: "standard" | "premium" | "luxury"
@@ -134,7 +135,7 @@ export function ResultsScreen({ t, result, onReset }: Props) {
             <span className="px-2 py-1 border" style={{ borderColor: t.border, color: t.success }}>
               ● SCAN&nbsp;COMPLETE
             </span>
-            <span>RPT-2026-0508-A47</span>
+            <span className="uppercase">RPT/{slugify(address).slice(0, 24)}</span>
             <span className="hidden md:inline">{address}</span>
           </div>
           <button
@@ -271,33 +272,27 @@ export function ResultsScreen({ t, result, onReset }: Props) {
                     </li>
                   ))}
                 </ul>
-
-                <button
-                  className="mt-6 w-full py-3 text-sm font-semibold tracking-tight border transition-colors"
-                  style={{
-                    background: featured ? t.accent : "transparent",
-                    color: featured ? t.accentInk : cardText,
-                    borderColor: featured ? t.accent : t.border,
-                  }}
-                >
-                  {featured ? "Select Premium →" : `Select ${ti.name}`}
-                </button>
               </div>
             )
           })}
         </div>
 
-        {/* Footer */}
+        {/* Footer — mobile-only PDF download since the desktop button is in the
+            tier-row header. Removed non-functional CTAs (SHARE LINK / EMAIL /
+            SEND TO CRM) — those were cosmetic, clicking them did nothing. */}
         <div
           className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-6 border-t font-mono text-[10px] tracking-wider"
           style={{ borderColor: t.border, color: t.textSoft }}
         >
           <div>ESTIMATE&nbsp;VALID&nbsp;30&nbsp;DAYS&nbsp;·&nbsp;LOCAL&nbsp;LABOR&nbsp;RATES&nbsp;APPLIED</div>
-          <div className="flex gap-4">
-            <button>SHARE&nbsp;LINK</button>
-            <button>EMAIL&nbsp;HOMEOWNER</button>
-            <button>SEND&nbsp;TO&nbsp;CRM</button>
-          </div>
+          <a
+            href={`/api/pdf?address=${encodeURIComponent(address)}`}
+            download
+            className="md:hidden font-mono text-[10px] tracking-[0.2em] underline-offset-2 hover:no-underline"
+            style={{ color: t.accent }}
+          >
+            ↓ DOWNLOAD&nbsp;PDF
+          </a>
         </div>
       </div>
     </div>

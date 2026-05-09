@@ -31,6 +31,7 @@ import { estimateFootprint } from "./lib/footprint.mjs"
 import { loadMaterials, buildEstimate } from "./lib/estimate.mjs"
 import { renderEstimatePdf } from "./lib/pdf.mjs"
 import { annotateAerial } from "./lib/scale-bar.mjs"
+import { FENCE_THRESHOLD_PCT, applyFence } from "./lib/fence.mjs"
 
 const args = process.argv.slice(2)
 if (args.length === 0 || args[0].startsWith("--")) {
@@ -135,8 +136,8 @@ async function run() {
   // Solar exposes:
   //   - buildingStats.areaMeters2  → plan-view footprint (matches our footprint)
   //   - sum(roofSegmentStats[].stats.areaMeters2) → slope-corrected roof area (matches refs)
-  // We compare vision roof area to Solar roof area (both in the same units).
-  const FENCE_THRESHOLD_PCT = 12
+  // We compare vision roof area to Solar roof area (both in the same units)
+  // via the shared applyFence() helper in scripts/lib/fence.mjs.
   const insightsPath = join("intermediate", slug, "solar-insights.json")
   let solarFootprint = null
   let solarRoofArea = null
@@ -152,16 +153,20 @@ async function run() {
       for (const seg of segments) segM2 += seg?.stats?.areaMeters2 ?? 0
       if (segM2 > 0) solarRoofArea = Math.round(segM2 * 10.7639)
       if (solarRoofArea) {
-        const deltaPct = Math.abs(visionRoofArea - solarRoofArea) / solarRoofArea * 100
+        const { fenced, deltaPct } = applyFence(visionRoofArea, solarRoofArea)
         console.log(`[area] solar:  ${solarFootprint} sqft footprint, ${solarRoofArea} sqft roof area (sum of ${segments.length} segments). Vision Δ: ${deltaPct.toFixed(1)}%`)
-        if (deltaPct > FENCE_THRESHOLD_PCT) {
+        if (fenced) {
           solarFenceTriggered = true
           fenceReason = `vision roof area ${visionRoofArea} differs from solar ${solarRoofArea} by ${deltaPct.toFixed(1)}% (>${FENCE_THRESHOLD_PCT}%)`
           console.log(`[area] ⚠ FENCE: ${fenceReason} — using solar`)
         }
       }
     } catch (err) {
-      console.log(`[area] solar fence unavailable: ${err.message.slice(0, 100)}`)
+      // Distinguish "Solar wasn't reachable" (legitimate fallback) from
+      // "Solar response was malformed and the fence math threw" (bug).
+      // Surface the stack so a Saturday-morning re-run that silently loses
+      // the fence is at least visible in CI logs.
+      console.error(`[area] solar fence error (vision number will be submitted unfenced):`, err)
     }
   }
 

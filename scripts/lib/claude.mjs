@@ -23,6 +23,11 @@ export const MODEL = "claude-sonnet-4-6"
 const client = new Anthropic({
   // ANTHROPIC_API_KEY is read from env automatically.
   maxRetries: 4, // SDK retries 429/5xx with exponential backoff
+  // Per-request cap: an Anthropic outage during the Saturday 1:30 PM
+  // submission run shouldn't pin a single property for 10 min × 4 retries
+  // (the SDK default). 3 minutes is generous for adaptive thinking +
+  // tool-use round-trip and still leaves headroom for retries.
+  timeout: 180_000,
 })
 
 export async function runVisionCall({

@@ -192,7 +192,7 @@ function engineResultToTier(tier, result) {
   // Decking allowance
   if (m.decking_sheets > 0) {
     lines.push({
-      label: `Decking allowance (${q.decking_sheets} sheets, ${(100 * (m.decking_sheets / c.direct_material_cost) || 0).toFixed(0) ? "" : ""}contingency)`,
+      label: `Decking allowance (${q.decking_sheets} sheets, contingency)`,
       amount: m.decking_sheets,
     })
   }

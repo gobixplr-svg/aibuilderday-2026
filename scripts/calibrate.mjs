@@ -28,6 +28,7 @@ import { estimatePitch, pitchMultiplier } from "./lib/pitch.mjs"
 import { estimateFootprint } from "./lib/footprint.mjs"
 import { loadMaterials, buildEstimate } from "./lib/estimate.mjs"
 import { slugify } from "./lib/slug.mjs"
+import { applyFence } from "./lib/fence.mjs"
 
 const TOLERANCE_PCT = 10 // ±10% target
 
@@ -101,12 +102,10 @@ async function predict(address) {
   }
   const visionRoofArea = Math.round(area.footprint_sqft * mult)
 
-  // Apply Solar API fence — mirror the production logic in scripts/estimate.mjs
-  // so calibration numbers reflect what would actually be submitted.
-  const FENCE_THRESHOLD_PCT = 12
+  // Apply Solar API fence via shared scripts/lib/fence.mjs so calibration
+  // numbers reflect what would actually be submitted.
   const insightsPath = join(dir, "solar-insights.json")
   let solarRoofArea = null
-  let fenceTriggered = false
   if (await exists(insightsPath)) {
     try {
       const ins = JSON.parse(await readFile(insightsPath, "utf-8"))
@@ -114,13 +113,11 @@ async function predict(address) {
       let segM2 = 0
       for (const seg of segments) segM2 += seg?.stats?.areaMeters2 ?? 0
       if (segM2 > 0) solarRoofArea = Math.round(segM2 * 10.7639)
-      if (solarRoofArea) {
-        const deltaPct = Math.abs(visionRoofArea - solarRoofArea) / solarRoofArea * 100
-        if (deltaPct > FENCE_THRESHOLD_PCT) fenceTriggered = true
-      }
-    } catch {}
+    } catch (err) {
+      console.warn(`[calibrate] solar fence unavailable for ${slug}: ${err.message.slice(0, 100)}`)
+    }
   }
-  const roof_area_sqft = fenceTriggered ? solarRoofArea : visionRoofArea
+  const { final: roof_area_sqft, fenced: fenceTriggered } = applyFence(visionRoofArea, solarRoofArea)
 
   return { slug, pitch, area, visionRoofArea, solarRoofArea, fenceTriggered, roof_area_sqft, stub: !!(pitch.stub || area.stub) }
 }

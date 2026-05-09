@@ -90,7 +90,12 @@ export async function estimateFootprint({ aerialPath, lat, lng, slug, scale }) {
       const txt = await readFile(insightsPath, "utf-8")
       buildingInsights = JSON.parse(txt)
       console.log(`[footprint] solar insights cache hit`)
-    } catch {}
+    } catch (err) {
+      // Cache file exists but is unreadable/corrupt (truncated write, manual edit).
+      // Don't silently fall through — that would disable the Solar fence without
+      // any warning and silently change the submission number. Refetch instead.
+      console.warn(`[footprint] solar insights cache corrupt (${err.message.slice(0, 80)}); refetching`)
+    }
   }
   if (!buildingInsights) {
     try {
@@ -99,6 +104,10 @@ export async function estimateFootprint({ aerialPath, lat, lng, slug, scale }) {
       await writeFile(insightsPath, JSON.stringify(buildingInsights, null, 2))
       console.log(`[footprint] solar insights fetched (subject disambiguation enabled)`)
     } catch (err) {
+      // Solar API is genuinely unavailable for this address (no coverage,
+      // 404 even at LOW quality, API key disabled). This is a legitimate
+      // fallback path — pipeline still produces a measurement, just without
+      // subject disambiguation or the fence sanity check.
       console.log(`[footprint] solar insights unavailable (${err.message.slice(0, 80)}); falling back to scale-bar only`)
     }
   }

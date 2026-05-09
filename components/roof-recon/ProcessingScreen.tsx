@@ -4,6 +4,7 @@ import type { Theme } from "./theme"
 import { GridBG } from "./GridBG"
 import { Reticle } from "./Reticle"
 import { SatelliteFrame } from "./SatelliteFrame"
+import { slugify } from "@/app/lib/slug"
 
 const WITTY_MESSAGES = [
   "Arguing with the satellite dish…",
@@ -18,15 +19,24 @@ const WITTY_MESSAGES = [
   "Computing slope, hip, and valley…",
 ]
 
-const PIPELINE = [
-  { label: "Locating address",          at: 0  },
-  { label: "Fetching satellite tile",   at: 4  },
-  { label: "Segmenting roof footprint", at: 12 },
-  { label: "Estimating pitch & area",   at: 24 },
-  { label: "Generating 3-tier estimate",at: 38 },
+// Sequenced phase labels. The pipeline doesn't expose per-step progress to
+// the client (it's a single spawn that resolves at the end), so phases are
+// driven by elapsed time + the aerial-poll signal, not by real step events.
+// Phases 1-2 are time-anchored (we know the aerial polls back within ~5-10s);
+// phases 3-5 are tied to the asymptotic progress curve.
+const PHASES = [
+  { label: "Locating address",          startAt: 0  },
+  { label: "Fetching satellite tile",   startAt: 3  },
+  { label: "Identifying subject roof",  startAt: 12 },
+  { label: "Estimating pitch & area",   startAt: 30 },
+  { label: "Generating 3-tier estimate",startAt: 90 },
 ]
 
-const TARGET_SECS = 50
+// Asymptotic progress: pipeline is 90-220s but mostly clusters around 120s.
+// 1 - exp(-elapsed/TAU) with TAU=70 reaches ~75% at 100s, ~86% at 140s,
+// ~93% at 180s. Caps at 95% so the bar visibly completes when results land.
+const TAU = 70
+const PROGRESS_CAP = 0.95
 
 type Props = {
   t: Theme
@@ -40,6 +50,7 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
   const [msgIdx, setMsgIdx] = useState(0)
   const [charIdx, setCharIdx] = useState(0)
   const [deleting, setDeleting] = useState(false)
+  const [aerialUrl, setAerialUrl] = useState<string | null>(null)
 
   // Elapsed timer
   useEffect(() => {
@@ -48,6 +59,38 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
     }, 200)
     return () => clearInterval(id)
   }, [])
+
+  // Poll for the cached aerial. Once /api/aerial returns 200 we have the
+  // real fetched satellite tile and stop polling.
+  useEffect(() => {
+    let cancelled = false
+    const slug = slugify(address)
+    const url = `/api/aerial?address=${encodeURIComponent(address)}`
+    const tick = async () => {
+      if (cancelled || aerialUrl) return
+      try {
+        const res = await fetch(url, { cache: "no-store" })
+        if (!cancelled && res.ok) {
+          // Cache-bust to force the <img> to render the just-arrived bitmap.
+          setAerialUrl(`${url}&_=${Date.now()}`)
+        }
+      } catch {
+        // Network blip — try again next tick.
+      }
+    }
+    // First check at 2s, then every 2s up to 20s. After that the aerial is
+    // either present or the fetch genuinely failed; either way nothing useful
+    // happens by polling further during the vision phase.
+    const id = setInterval(tick, 2000)
+    const first = setTimeout(tick, 1000)
+    const stop = setTimeout(() => clearInterval(id), 25_000)
+    return () => {
+      cancelled = true
+      clearInterval(id)
+      clearTimeout(first)
+      clearTimeout(stop)
+    }
+  }, [address, aerialUrl])
 
   // Typewriter effect
   useEffect(() => {
@@ -72,8 +115,22 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
   }, [charIdx, deleting, msgIdx])
 
   const displayText = WITTY_MESSAGES[msgIdx].slice(0, charIdx)
+  const progress = Math.min(1 - Math.exp(-elapsed / TAU), PROGRESS_CAP)
 
-  const progress = Math.min(elapsed / TARGET_SECS, 0.98)
+  // Treat the aerial-poll arrival as the signal that phase 2 ("Fetching
+  // satellite tile") completed, regardless of the time-based start. Phases
+  // 3+ remain time-driven since we have no per-step signal from the API.
+  const phaseStarted = (i: number) => {
+    if (i === 1) return aerialUrl !== null || elapsed >= PHASES[1].startAt
+    return elapsed >= PHASES[i].startAt
+  }
+  const phaseDone = (i: number) => {
+    if (i === 0) return aerialUrl !== null || elapsed >= PHASES[1].startAt
+    if (i === 1) return aerialUrl !== null && elapsed >= PHASES[2].startAt
+    return PHASES[i + 1] ? elapsed >= PHASES[i + 1].startAt : false
+  }
+
+  const shortAddress = address.split(",")[0].toUpperCase()
 
   return (
     <div className="relative flex-1 flex flex-col">
@@ -83,29 +140,30 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
         {/* Left: satellite view */}
         <div className="relative p-8 lg:p-12 flex flex-col">
           <div className="text-[10px] font-mono tracking-[0.3em] mb-3" style={{ color: t.textSoft }}>
-            LIVE&nbsp;FEED&nbsp;//&nbsp;{address.split(",")[0].toUpperCase()}
+            RECON&nbsp;BUFFER&nbsp;//&nbsp;{shortAddress}
           </div>
 
           <div className="relative flex-1 min-h-[360px] border" style={{ borderColor: t.border }}>
-            <SatelliteFrame scanning accent={t.accent} />
+            <SatelliteFrame scanning accent={t.accent} imageUrl={aerialUrl} />
             <div className="absolute inset-0 grid place-items-center">
               <Reticle size={260} scanning color={t.accent} />
             </div>
-            {/* HUD overlays */}
+            {/* HUD overlays. Static labels only — no fake coords, no fake frame
+                counter. The actual aerial source is Google Static Maps zoom 20
+                with scale=2 (effective 1280px), which IS ~0.06m/px — those
+                figures are honest. */}
             <div className="absolute top-3 left-3 font-mono text-[10px] tracking-wider text-white/70 leading-snug">
-              <div>ZOOM: 21x</div>
-              <div>RES: 0.3m/px</div>
-            </div>
-            <div className="absolute top-3 right-3 font-mono text-[10px] tracking-wider text-right text-white/70 leading-snug">
-              <div>40.01498°N</div>
-              <div>-105.27053°W</div>
+              <div>SOURCE: GOOGLE&nbsp;STATIC&nbsp;MAPS</div>
+              <div>ZOOM 20 / 0.06m/px</div>
             </div>
             <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between font-mono text-[10px] tracking-wider text-white/60">
-              <div>FRAME&nbsp;0427&nbsp;/&nbsp;0500</div>
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: t.accent }} />
-                CAPTURING
-              </div>
+              <div>{aerialUrl ? "TILE LOCKED" : "AWAITING TILE…"}</div>
+              {aerialUrl && (
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: t.accent }} />
+                  ANALYZING
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -126,7 +184,7 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
               {String(elapsed % 60).padStart(2, "0")}
             </div>
             <div className="font-mono text-[10px] tracking-[0.25em] leading-tight" style={{ color: t.textSoft }}>
-              ELAPSED<br />~50s&nbsp;EST
+              ELAPSED<br />LIVE&nbsp;RUN
             </div>
           </div>
 
@@ -149,7 +207,10 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
             </div>
           </div>
 
-          {/* Progress bar */}
+          {/* Progress bar (asymptotic — see TAU constant). The displayed
+              percentage is a wall-clock proxy, not a real per-step progress
+              signal; it caps at PROGRESS_CAP so the bar visibly completes
+              when results land. */}
           <div className="mb-8">
             <div
               className="flex justify-between items-center mb-2 font-mono text-[10px] tracking-wider"
@@ -166,13 +227,15 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
             </div>
           </div>
 
-          {/* Pipeline steps */}
+          {/* Pipeline steps. No fake T+Ns timestamps — those promised a
+              schedule we don't actually keep. Just sequential lighting. */}
           <div className="space-y-3">
-            {PIPELINE.map((step, i) => {
-              const active = elapsed >= step.at && (PIPELINE[i + 1] ? elapsed < PIPELINE[i + 1].at : true)
-              const done   = PIPELINE[i + 1] ? elapsed >= PIPELINE[i + 1].at : false
+            {PHASES.map((phase, i) => {
+              const started = phaseStarted(i)
+              const done = phaseDone(i)
+              const active = started && !done
               return (
-                <div key={step.label} className="flex items-center gap-4 font-mono text-[12px]">
+                <div key={phase.label} className="flex items-center gap-4 font-mono text-[12px]">
                   <div className="w-6 flex justify-center">
                     {done ? (
                       <span style={{ color: t.success }}>✓</span>
@@ -182,17 +245,12 @@ export function ProcessingScreen({ t, address, onAbort }: Props) {
                       <span style={{ color: t.textFaint }}>○</span>
                     )}
                   </div>
-                  <div className="flex-1 flex justify-between items-center">
-                    <span style={{
-                      color: done ? t.textSoft : active ? t.text : t.textDim,
-                      textDecoration: done ? "line-through" : "none",
-                    }}>
-                      {step.label}
-                    </span>
-                    <span className="tabular-nums tracking-wider" style={{ color: t.textDim }}>
-                      T+{String(step.at).padStart(2, "0")}s
-                    </span>
-                  </div>
+                  <span style={{
+                    color: done ? t.textSoft : active ? t.text : t.textDim,
+                    textDecoration: done ? "line-through" : "none",
+                  }}>
+                    {phase.label}
+                  </span>
                 </div>
               )
             })}

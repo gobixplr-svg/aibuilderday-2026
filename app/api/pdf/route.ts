@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { readFile } from "fs/promises"
 import { join } from "path"
-
-function slugify(address: string): string {
-  return address.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
-}
+import { slugify } from "@/app/lib/slug"
 
 export async function GET(req: NextRequest) {
   const address = req.nextUrl.searchParams.get("address")
@@ -28,9 +25,19 @@ export async function GET(req: NextRequest) {
       },
     })
   } catch (err) {
+    // ENOENT (no such file) is a real 404 — pipeline hasn't run for this address.
+    // Anything else (EACCES, EISDIR, EMFILE) is a server bug; surface it as 500.
+    const code = (err as NodeJS.ErrnoException)?.code
+    if (code === "ENOENT") {
+      return NextResponse.json(
+        { error: `PDF not found for address: ${address}. Run the pipeline first.` },
+        { status: 404 }
+      )
+    }
+    console.error(`[pdf] readFile failed for ${pdfPath}:`, err)
     return NextResponse.json(
-      { error: `PDF not found for address: ${address}. Run the pipeline first.` },
-      { status: 404 }
+      { error: "Failed to read PDF" },
+      { status: 500 }
     )
   }
 }

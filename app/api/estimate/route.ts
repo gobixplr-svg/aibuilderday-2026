@@ -2,12 +2,10 @@ import { NextRequest, NextResponse } from "next/server"
 import { spawn } from "child_process"
 import { readFile, access } from "fs/promises"
 import { join } from "path"
+import { slugify } from "@/app/lib/slug"
 
-export const maxDuration = 120
-
-function slugify(address: string): string {
-  return address.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
-}
+// 300s: see /api/measure for rationale.
+export const maxDuration = 300
 
 async function fileExists(p: string): Promise<boolean> {
   try {

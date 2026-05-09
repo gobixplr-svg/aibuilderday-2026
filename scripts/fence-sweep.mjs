@@ -17,6 +17,7 @@
 import { readFile, access } from "fs/promises"
 import { join } from "path"
 import { pitchMultiplier } from "./lib/pitch.mjs"
+import { applyFence } from "./lib/fence.mjs"
 
 const THRESHOLDS = [10, 12, 15, 18, 20]
 
@@ -79,11 +80,8 @@ async function loadProperty(slug) {
   }
 }
 
-function applyFence(prop, thresholdPct) {
-  if (prop.solarRoofArea && prop.deltaPct > thresholdPct) {
-    return { final: prop.solarRoofArea, fenced: true }
-  }
-  return { final: prop.visionRoofArea, fenced: false }
+function applyFenceAtThreshold(prop, thresholdPct) {
+  return applyFence(prop.visionRoofArea, prop.solarRoofArea, thresholdPct)
 }
 
 function pad(s, n) { return String(s).padEnd(n) }
@@ -128,7 +126,7 @@ async function main() {
     if (e.error) continue
     const row = [pad(e.label, 22), rpad(e.refAvg, 6)]
     for (const t of THRESHOLDS) {
-      const { final, fenced } = applyFence(e, t)
+      const { final, fenced } = applyFenceAtThreshold(e, t)
       const deltaPct = (final - e.refAvg) / e.refAvg * 100
       const inTol = Math.abs(deltaPct) <= 10
       if (inTol) tally[t].hits++
@@ -165,7 +163,7 @@ async function main() {
     if (tp.error) continue
     const row = [pad(tp.label, 22)]
     for (const t of THRESHOLDS) {
-      const { final, fenced } = applyFence(tp, t)
+      const { final, fenced } = applyFenceAtThreshold(tp, t)
       const tag = fenced ? "S" : "V"
       row.push(rpad(`${final} ${tag}`, 13))
     }
