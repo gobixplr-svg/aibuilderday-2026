@@ -6,8 +6,25 @@
 
 A measurement-and-estimate pipeline for residential pitched roofs. Address in → roof measurement (total sqft + line items) + quote-ready estimate PDF out. Five test addresses to submit total sqft for, by Saturday May 9 at 1:30 PM.
 
+**Current pipeline (PLOG-005):**
+1. Geocode (Google) → lat/lng
+2. Fetch aerial (Google Static Maps zoom 20, 1280px)
+3. **Solar API `buildingInsights`** — gets the subject building's polygon
+4. Annotate aerial: scale bar + N arrow + **orange bounding box + reticle** at the subject home
+5. Parallel Claude Sonnet vision calls: pitch (4:12–12:12 enum) + footprint (sqft + line items)
+6. Compute roof area = footprint × pitch_multiplier
+7. **Solar fence:** if vision roof area differs from Solar's slope-corrected segment area by >15%, use Solar's number
+8. Eric's estimate engine produces 3 priced tiers
+9. Puppeteer renders branded PDF
+
+**Calibration result (5 example properties):** 4/5 within ±10%, avg error 6.3%.
+
+**Team:** Dan (lead), Will (vision prompts), Eric (estimate engine). Ethan built the frontend + materials catalog but won't be on-site Saturday.
+
 Brief: [jobnimbus/jobnimbus-hackathon-2026](https://github.com/jobnimbus/jobnimbus-hackathon-2026)
 Full architecture: [docs/architecture.md](docs/architecture.md)
+End-to-end + submission state: [docs/end-to-end.md](docs/end-to-end.md)
+Prompt iteration log: [docs/prompt-changelog.md](docs/prompt-changelog.md)
 Active task list: [docs/work-queue.md](docs/work-queue.md)
 
 ## Hard rules (no exceptions)
@@ -58,7 +75,7 @@ Add to `.env.local` (gitignored):
 
 ```
 ANTHROPIC_API_KEY=sk-ant-...
-GOOGLE_MAPS_API_KEY=AIza...   # optional — only needed for the real Google fetcher
+GOOGLE_MAPS_API_KEY=AIza...   # required: Geocoding + Maps Static + Solar API
 ```
 
 Don't commit `.env.local`. Don't commit API keys ever.
@@ -66,7 +83,7 @@ Don't commit `.env.local`. Don't commit API keys ever.
 ### Shared keys for the team
 
 - **Anthropic key:** one shared team key with a hard spending cap. **Get it from Dan** (sent via the team chat — never via this repo, email, or any public channel). Paste into your own `.env.local`. The key is rotated/revoked after Saturday submission.
-- **Google Maps key:** optional. If you don't have one, run `npm run fetch-aerial-free -- --all` instead — it pulls free imagery from Census Geocoder + Esri World Imagery for the bounty test set. Same `intermediate/<slug>/` output schema, no key needed.
+- **Google Maps key:** required. Must have **Geocoding API**, **Maps Static API**, and **Solar API** enabled. The Solar API is what disambiguates which house in dense neighborhoods is the subject — without it the pipeline falls back to vision-only and accuracy drops from 4/5 to 2/5 in tolerance. Free fallback (`npm run fetch-aerial-free`) exists but skips the Solar fence.
 
 ### What to do if you accidentally commit a key
 

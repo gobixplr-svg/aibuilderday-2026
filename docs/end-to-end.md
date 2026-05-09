@@ -131,39 +131,48 @@ The repo is doing triple duty. Knowing which audience you're optimizing for chan
 - [ ] PDF download path from the UI (right now PDF lives in outputs/, not exposed in UI)
 - [ ] Error states tested (bad address, API timeout, etc.)
 
-## Where end-to-end is breaking right now
+## Current submission set (PLOG-005, ready to submit)
 
-### Bug-class issues
+| # | Property | Final sqft | Source | Pitch |
+|---|---|---|---|---|
+| 1 | 3561 E 102nd Ct, Thornton CO 80229 | **2,081** | Solar-fenced | 6:12 |
+| 2 | 1612 S Canton Ave, Springfield MO 65802 | **2,757** | Solar-fenced | 5:12 |
+| 3 | 6310 Laguna Bay Court, Houston TX 77041 | **4,315** | Vision | 5:12 |
+| 4 | 3820 E Rosebrier St, Springfield MO 65809 | **6,015** | Vision | 6:12 |
+| 5 | 1261 20th Street, Newport News VA 23607 | **6,118** | Solar-fenced | 6:12 |
 
-1. **`/api/measure` 120s timeout vs ~3:41 actual pipeline runtime.** Will dropped `effort: high → medium` to help, but this is brittle. A complex roof on demo day may exceed 120s. **Fix candidate:** raise to 300s, or stream progress via SSE so the UI doesn't time out.
-2. **Two API routes** (`/api/estimate` legacy + `/api/measure` current). One should be deleted to avoid confusion when judges grep the repo.
-3. **Roof Recon's processing screen has fake-looking pipeline steps** (`PIPELINE` array at lines 22-28). The `at: N seconds` timing assumes 50s total, but real runs are 90-220s. **The progress bar lies.** Either pull real status from the API or remove the timed steps.
+Calibration on 5 example properties: **4/5 within ±10%, 6.3% avg error.** Worst miss is +14.5% on Kenswick (vision, fence didn't trigger because vision/Solar agree at 14.7%).
 
-### Accuracy issues
+## Status of original concerns (resolved during this session)
 
-4. **2 of 5 example properties in tolerance.** Submitting now means three known-bad numbers in the form. PLOG-001 baseline accuracy was actually better than current (Property 1: −1.9% on `effort: high` → −8.9% on `medium`). The dropped effort wasn't logged in the PLOG.
-5. **Pitch model unreliable.** 1 of 5 correct. Pitch-multiplier errors compound footprint errors.
-6. **Footprint chronically under-traces.** −16% to −43% on 4 of 5 examples.
+- ✅ All 5 test properties have full pipeline output committed in `outputs/<slug>/`.
+- ✅ PDF download wired in UI (`/api/pdf?address=<addr>` route + button).
+- ✅ Subject identification fixed via Solar API marker overlay (the actual root cause of the under-trace).
+- ✅ PLOG entries 1-5 logged. Effort change is documented in PLOG-003.
 
-### Process issues
+## Open items going into the next session
 
-7. **5 of 10 JobNimbus properties haven't run end-to-end.** All have aerials cached, but only Thornton CO of the 5 *test* properties has measurement.json. **This is the biggest single gap.**
-8. **One non-JobNimbus property** (Saratoga Springs UT) shows up in outputs/. Probably Eric spot-checking. Should be deleted before submission so judges don't wonder why we ran an extra address.
-9. **PLOG entries inconsistent.** PLOG-002 logged. The `effort: high → medium` change wasn't.
+### Submission paperwork
 
-## What I'd prioritize between now and 1:30 PM tomorrow
+- [ ] **Team members for the form (max 3):** Dan, Will, Eric. Ethan can't attend Saturday.
+- [ ] **Approach summary (≤200 words)** drafted in a doc (haven't done this yet).
+- [ ] **Phone number** for the finalist text at 2:00 PM.
+- [ ] **README update** to describe the Solar fence approach (the current README is a few iterations old).
+- [ ] **Form submission itself** by Saturday 1:30 PM.
 
-In order:
+### Quality / accuracy
 
-1. **Run the 4 missing test properties end-to-end.** Without these, we have no submission. Fast and obvious.
-2. **Decide: submit current numbers, or try one more prompt iteration?** Current numbers will likely score "OK" — we're 2 of 5 in tolerance on examples. One more prompt iteration could move that to 4 of 5, but eats hours and risks breaking what works. Time-box this to 90 minutes.
-3. **Tighten the demo script** for the live finals slot. Pick a single test property (probably Thornton CO since it's already run), rehearse a 5-minute narrative.
-4. **Clean the repo for the AI scoring agent.** README walkthrough + remove stray Saratoga property.
-5. **Pick the 3 form members.** Awkward but the form caps it.
+- [ ] **Fence threshold sensitivity.** Currently 15% (4/5 in tolerance). Worth one more sweep with fresh runs to see if Kenswick (the only example miss) responds differently with a refresh. Could also try 12% to see if Kenswick flips.
+- [ ] **Pitch is still 1/5 on examples.** Doesn't matter when fence triggers (Solar's number is already slope-corrected) but matters for vision-fed properties (Houston, Rosebrier).
+- [ ] **Properties 4 & 5 in test set are very large.** No reference data — could be over-trace. Worth eyeballing the annotated aerials before submission.
 
-## What we DON'T need to do
+### Demo readiness (only if we make finalist round)
 
-- **Win the live finals** — we're optimizing for advancing to top 5 (form score) first, then for a credible demo if we get there. Getting greedy on demo polish before the form is filled is the wrong order.
-- **Add JobNimbus API integration** — out of scope; not something the bounty asks for.
-- **More UI polish** — Roof Recon already looks distinctive enough to be memorable.
-- **Calibrate every variation of prompts** — diminishing returns. One focused iteration is worth more than five small ones.
+- [ ] **Roof Recon's processing screen progress bar lies.** Hardcoded to 50s; real runs are 90-220s. Either fix or remove timed steps.
+- [ ] **Demo script** — 5-minute narrative for finalist round.
+- [ ] **`/api/measure` 120s timeout** vs typical 3-4 min runtime. Bump to 300s.
+- [ ] **Two API routes** (`/api/measure` + `/api/estimate`) — one is legacy, should be deleted.
+
+### Repo hygiene
+
+- [ ] **Saratoga Springs UT** in `outputs/` is non-bounty (Eric spot-check). Delete before submission.

@@ -16,19 +16,22 @@
 |---|---|---|---|---|---|
 | 0 | Next.js scaffold (`src/`) | Ethan | 🟢 | 1.5h | none |
 | 1 | Geocoding + aerial acquisition CLI | Dan | 🟢 | 1h | none |
-| 2 | Pitch estimation prompt | Will | 🟡 | 1.5h | #1 |
-| 3 | Footprint + line items prompt | Will | 🟡 | 2h | #1 |
+| 2 | Pitch estimation prompt | Will | 🟢 | 1.5h | #1 |
+| 3 | Footprint + line items prompt | Will | 🟢 | 2h | #1 |
 | 4 | Calibration harness against examples | Dan | 🟢 | 1h | #2, #3 |
 | 5 | Materials catalog (3 tiers, real prices) | Ethan | 🟢 | 1h | none |
-| 6 | Estimate calculator | Eric | 🟡 | 1h | #5 |
+| 6 | Estimate calculator | Eric | 🟢 | 1h | #5 |
 | 7 | PDF template + renderer | Dan | 🟢 | 2h | #6 |
 | 8 | Single-command CLI runner | Dan | 🟢 | 1h | #1, #4, #7 |
-| 9 | Run pipeline on 5 example properties (calibrate) | | ⚪ | 1h | #8 |
-| 10 | Iterate prompts to hit ±10% on examples | | ⚪ | 2h | #9 |
-| 11 | Run pipeline on 5 test properties | | ⚪ | 1h | #10 |
+| 9 | Run pipeline on 5 example properties (calibrate) | Dan | 🟢 | 1h | #8 |
+| 10 | Iterate prompts (PLOG-005 Solar fence) | Dan | 🟢 | 2h | #9 |
+| 11 | Run pipeline on 5 test properties (Solar-fenced) | Dan | 🟢 | 1h | #10 |
 | 12 | Final cross-check + form submission | | ⚪ | 0.5h | #11 |
 | 13 | Repo polish (README, code cleanup, demo prep) | | ⚪ | 1h | #11 |
 | 14 | Customer intake question taxonomy + tracking schema | | ⚪ | 0.5h | none |
+| 15 | Solar fence threshold tuning / second prompt iteration | | ⚪ | 1-2h | none |
+| 16 | PDF download via API route from Roof Recon UI | Dan | 🟢 | 0.5h | none |
+| 17 | Demo script + rehearsal (for finalist round) | | ⚪ | 1h | none |
 
 **Critical path:** 1 → 2/3 (parallel) → 4 → 9 → 10 → 11 → 12 = ~9 hours sequential.
 **Parallel work:** 5 → 6 → 7 (~4 hours, no critical-path conflict).
