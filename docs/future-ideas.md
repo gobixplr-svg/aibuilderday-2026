@@ -17,6 +17,8 @@ Use this file to track stretch work that is not on the critical path.
 - Add "customer-ready" estimate variants (concise one-page vs detailed line-item report).
 - Add quick "what changed" diff when re-running estimate for the same property.
 - If a house image is not online (user preference to not allow others to see picture) and allow for upload of picture or a more clear image
+- Make sure tablet and mobile sizes still work well (audit responsive breakpoints across all screens).
+- Audit the UI/output structure for AI-readability — semantic markup, structured JSON exports, machine-friendly summaries so downstream agents can parse results cleanly.
 
 
 ## Estimation Engine
@@ -25,6 +27,7 @@ Use this file to track stretch work that is not on the critical path.
 - Add financing scenarios (cash vs financed monthly payment options).
 - Add optional permit/disposal/tax modules as switchable line items.
 - Add calibration profile support (global or pitch-banded correction multipliers).
+- Show exact material quantities needed for the project (shingles bundles, underlayment rolls, ridge cap, nails, flashing, etc.) with per-material cost breakdown alongside totals.
 
 ## Measurement Accuracy
 
@@ -32,6 +35,7 @@ Use this file to track stretch work that is not on the critical path.
 - Add tree-cover/occlusion detection and automatic low-confidence warnings.
 - Add basic geometry sanity checks (ridge/eave ratio constraints, impossible line-item guards).
 - Add parcel-footprint cross-check when publicly available parcel data is easy to fetch.
+- Fix the confidence meter — calibrate it against ground-truth error so the displayed % actually reflects expected accuracy. Currently reads conservatively low; should show realistic (higher) confidence when error is small, and degrade meaningfully as error grows.
 
 ## Pipeline / Automation
 
@@ -45,7 +49,7 @@ Use this file to track stretch work that is not on the critical path.
 - Add branded PDF theme options and stronger visual hierarchy.
 - Add short GIF/video capture script for README/demo assets.
 - Add one-click "submission package" export (outputs + summary + key numbers).
-- Google Street View on the proposal cover (~20 min of work). PDF cover shows the customer's actual house with the new roof color rendered in. Every other team's PDF will have a stock photo — ours makes the customer cry. Judges will not forget this.
+- Google Street View on the proposal cover. A PDF cover shows the customer's actual house with the new roof color rendered in.
 
 ## Operational
 
