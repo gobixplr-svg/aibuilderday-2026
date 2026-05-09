@@ -40,5 +40,5 @@
   "solar_roof_area_sqft": 2081,
   "fence_triggered": true,
   "fence_reason": "vision roof area 1763 differs from solar 2081 by 15.3% (>12%)",
-  "computed_at": "2026-05-09T13:04:38.448Z"
+  "computed_at": "2026-05-09T14:51:38.300Z"
 }
