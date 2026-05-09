@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2600,
+  "footprint_sqft": 2150,
   "line_items": {
-    "ridge": 20,
-    "hip": 70,
-    "valley": 18,
+    "ridge": 33,
+    "hip": 102,
+    "valley": 19,
     "rake": 5,
-    "eave": 130
+    "eave": 165
   },
-  "confidence": 0.32,
-  "rationale": "Subject home is identified within the orange dashed bounding box centered at approximately (530, 625) in image pixel coordinates. The bounding box spans roughly 261 × 268 pixels (55.3 ft × 56.8 ft), yielding a bounding box area of ~3,146 sq ft. The roof consists of two attached sections: (1) an upper darker-shingled complex hip roof section forming the main house body, and (2) a lower lighter-toned flat or low-slope section (likely garage or addition). The structure appears to be under active construction with lumber staging visible around it. The roof polygon was traced as a roughly rectangular shape (~230 × 250 px) oriented slightly off-axis, filling approximately 83% of the bounding box, yielding ~2,600 sq ft footprint. Ridge lines are short due to a nearly square plan. Six hip lines were identified at the corners and bump-out transitions. Two valley intersections were counted where roof planes meet inward. Rake edges are minimal (mostly hip roof). Eave lines trace the lower perimeter of both roof sections. Confidence is reduced due to ongoing construction obscuring some edge definitions and uncertainty over the flat-roof section's final pitch."
+  "confidence": 0.42,
+  "rationale": "The subject home is inside an orange bounding box spanning approximately 255 px (W) × 268 px (H), equal to ~54.1 ft × 56.8 ft. The house is rotated ~35° off north. The roof has two identifiable sections: (1) a primary multi-plane hip-roofed section occupying the northern ~60% of the box (~210 × 175 px, 82% fill ≈ 1,357 sq ft) and (2) a lighter-toned attached addition or flat-roof section in the southern ~40% (~175 × 110 px, 88% fill ≈ 763 sq ft). Combined polygon estimate: ~2,120 sq ft; bounding-box × 72% fill gives ~2,213 sq ft — within 4%, so ~2,150 sq ft adopted. Edge estimates: two ridge sections totaling ~155 px (~33 ft); six hip lines averaging ~80 px each (~102 ft total); one to two valley lines where sections meet (~90 px, ~19 ft); minimal rake edges given hip construction (~25 px, ~5 ft); and perimeter eave lines (~780 px, ~165 ft). Confidence is moderate due to the diagonal roof orientation, possible active construction on the southern section, and shadow obscuring some lower eave lines."
 }

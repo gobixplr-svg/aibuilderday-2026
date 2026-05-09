@@ -39,5 +39,5 @@ Thumbs.db
 # Scratch / preview output
 tmp/
 
-# Agent worktrees (created locally by Claude Code; never committed)
-.claude/worktrees/
+# Superpowers brainstorm session (ephemeral working files)
+.superpowers/

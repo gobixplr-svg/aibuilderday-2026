@@ -1,20 +1,27 @@
 {
-  "overall_condition": "fair",
+  "overall_condition": "concerning",
   "findings": [
     {
-      "category": "discoloration_staining",
-      "description": "The entire main roof slope within the bounding box is a uniformly light off-white/pale gray color, starkly different from the dark charcoal-gray shingles on every neighboring home visible in the image. The contrast is sharp and consistent across the full slope surface.",
-      "location_description": "Primary south-facing roof slope, full extent visible within the orange bounding box",
-      "severity": "low",
-      "confidence": 0.8
+      "category": "other",
+      "description": "The entire roof surface within the bounding box is a bright white/light gray color — starkly different from every surrounding home's dark gray asphalt shingle roofs. This is consistent with a flat or very low-slope membrane roofing system (e.g., TPO or modified bitumen) rather than traditional pitched shingles.",
+      "location_description": "Entire subject roof surface",
+      "severity": "medium",
+      "confidence": 0.9
     },
     {
       "category": "debris",
-      "description": "Multiple stacks of lumber/construction material are visible lying flat on the ground immediately adjacent to and around the roof perimeter — tan/yellow linear objects arranged in loose piles on the east and south sides of the structure.",
-      "location_description": "Ground-level perimeter on the east and south sides of the subject structure",
+      "description": "Multiple small dark circular/dot-shaped objects are scattered across the light roof surface at irregular intervals — at least 6–8 visible items distributed across the field of the roof.",
+      "location_description": "Scattered across the central and south portions of the flat roof",
       "severity": "low",
-      "confidence": 0.9
+      "confidence": 0.75
+    },
+    {
+      "category": "debris",
+      "description": "Large quantities of stacked lumber and construction materials are visibly piled along the east and south perimeter of the subject property, directly adjacent to the structure.",
+      "location_description": "East and south perimeter of subject property, at roof/ground level",
+      "severity": "medium",
+      "confidence": 0.95
     }
   ],
-  "rationale": "The subject roof within the orange bounding box is in fair overall condition. The most notable visible characteristic is the dramatically lighter roof color — an off-white to pale gray — compared to the uniformly dark charcoal shingles on all surrounding homes. This indicates either a recent roof replacement with lighter-colored shingles, or a different roofing material (e.g., light-colored asphalt, TPO, or similar). The surface texture appears relatively uniform with no visible dark gaps, moss patches, or tarps. Additionally, significant construction debris (lumber stacks) is visible on the ground around the property perimeter, consistent with an active roofing or renovation project. Small dark dots on the roof surface are consistent with standard HVAC/mechanical units and vents, not a condition concern. No structural sag, missing material in chunks, biological growth, or tarps are visible. The lighter roof color alone does not constitute damage but warrants a closer in-person look to confirm material type and installation quality."
+  "rationale": "The subject roof within the orange bounding box is unmistakably different from all neighboring homes, which uniformly feature dark gray pitched asphalt shingle roofs. The subject roof presents a very bright white/light gray flat or very low-slope surface — characteristic of a membrane roofing system (TPO, EPDM, or modified bitumen). Multiple small dark objects are scattered across the roof at irregular intervals, which are visible at this resolution and warrant a closer look. Most notably, large piles of lumber and construction materials are stacked around the building's perimeter, strongly indicating this property is either under active construction or undergoing a major renovation/re-roof. Because the roofing system type and completion status cannot be fully determined from aerial imagery, and given the active construction context, this roof is rated 'concerning' and an in-person inspection is essential to confirm roofing material, installation stage, and any existing condition issues."
 }
