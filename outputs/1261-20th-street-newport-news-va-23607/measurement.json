@@ -27,6 +27,6 @@
   "solar_footprint_sqft": 6668,
   "solar_roof_area_sqft": 6118,
   "fence_triggered": true,
-  "fence_reason": "vision roof area 7109 differs from solar 6118 by 16.2% (>15%)",
-  "computed_at": "2026-05-09T00:36:45.848Z"
+  "fence_reason": "vision roof area 7109 differs from solar 6118 by 16.2% (>12%)",
+  "computed_at": "2026-05-09T00:50:38.780Z"
 }

@@ -131,7 +131,7 @@ The repo is doing triple duty. Knowing which audience you're optimizing for chan
 - [ ] PDF download path from the UI (right now PDF lives in outputs/, not exposed in UI)
 - [ ] Error states tested (bad address, API timeout, etc.)
 
-## Current submission set (PLOG-005, ready to submit)
+## Current submission set (PLOG-006, ready to submit)
 
 | # | Property | Final sqft | Source | Pitch |
 |---|---|---|---|---|
@@ -141,7 +141,7 @@ The repo is doing triple duty. Knowing which audience you're optimizing for chan
 | 4 | 3820 E Rosebrier St, Springfield MO 65809 | **6,015** | Vision | 6:12 |
 | 5 | 1261 20th Street, Newport News VA 23607 | **6,118** | Solar-fenced | 6:12 |
 
-Calibration on 5 example properties: **4/5 within ±10%, 6.3% avg error.** Worst miss is +14.5% on Kenswick (vision, fence didn't trigger because vision/Solar agree at 14.7%).
+Calibration on 5 example properties (PLOG-006, fence threshold 12%): **5/5 within ±10%, 3.4% avg error.** Worst case is Nixa at +8.0%. Test set numbers unchanged from PLOG-005 — the threshold tightening only flipped one example property (Kenswick, +14.5% → −0.2%) without touching any submission number.
 
 ## Status of original concerns (resolved during this session)
 

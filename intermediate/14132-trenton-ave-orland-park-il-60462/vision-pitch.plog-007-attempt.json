@@ -1,0 +1,6 @@
+{
+  "pitch": "4:12",
+  "pitch_multiplier": 1.054,
+  "confidence": 0.55,
+  "rationale": "The west-eave ground shadow measures approximately 8 ft against a building width of 47 ft (N-S, perpendicular to the E-W ridge), yielding shadow_ratio = 8 / 23.5 = 0.34, which maps directly to 4:12 (the 4:12 benchmark is 0.33). The ridge_to_eave_ratio of ≈0.08 is extremely low, but this is primarily a consequence of the nearly-square footprint of the home (ridge length ≈ long dim − short dim ≈ 60 − 47 = 13 ft), not necessarily evidence of steep pitch. Because the shadow ratio is the primary geometric signal and falls squarely at 0.34 ≈ 4:12, and because the ridge-to-eave ratio artifact does not credibly override a well-measured shadow, 4:12 is the best-supported estimate. Confidence is moderate at 0.55 due to the relatively short, partially obscured west shadow and the near-square footprint limiting secondary cue usefulness."
+}

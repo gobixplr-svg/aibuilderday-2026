@@ -1,6 +1,6 @@
 {
   "pitch": "6:12",
   "pitch_multiplier": 1.118,
-  "confidence": 0.72,
-  "rationale": "The homes at this Spring, TX property display classic Texas suburban hip-roof construction. Shadow lengths cast from eave edges onto the ground are moderate — neither the short stubs of a 4:12 nor the elongated projections of an 8:12+ roof — pointing to a mid-range slope. The ratio of visible roof surface (nadir eave-to-ridge distance) to overall building footprint is consistent with a 6:12 pitch: the ridge lines are clearly defined but occupy a meaningful fraction of the plan width, ruling out very shallow (4:12) or steep (8:12+) slopes. Valley and hip intersection shadows show well-defined but not dramatic depth, further corroborating a 6:12 estimate. The southern Texas climate and architectural style of the neighborhood (multi-plane hip roofs on large suburban homes) are also strongly associated with 6:12 as the dominant pitch in this region."
+  "confidence": 0.78,
+  "rationale": "The subject property displays a complex multi-hip/pyramid roofline with ridges visibly inset from the eave footprint but retaining substantial visible roof-plane width, consistent with a moderate 6:12 pitch rather than a shallow 4:12 or steep 8:12+. Shadow depth in the interior valleys and along the leeward hip faces is well-defined but not exaggerated, placing the slope in the 6:12–7:12 range. Shingle texture is clearly legible from nadir without significant foreshortening. The surrounding neighborhood homes — sharing identical architectural style and shadow patterns — further corroborate a 6:12 estimate, which is the dominant pitch for estate-style hip-roof construction in the Houston/Spring, TX region, where builders balance curb appeal with wind-load considerations."
 }

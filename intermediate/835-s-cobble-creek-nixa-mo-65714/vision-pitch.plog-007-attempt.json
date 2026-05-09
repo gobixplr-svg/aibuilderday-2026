@@ -1,0 +1,6 @@
+{
+  "pitch": "4:12",
+  "pitch_multiplier": 1.054,
+  "confidence": 0.47,
+  "rationale": "The shadow cast northward from the subject home's eave measures approximately 4.3 ft, against a short-axis building width of ~41 ft, yielding shadow_ratio ≈ 0.21. In isolation that would suggest a 3:12 pitch, but a high sun elevation angle at image capture time commonly compresses ground shadows well below the true pitch ratio. The secondary cue — the hip roof's ridge-to-eave ratio of ~0.56 — firmly falls in the 4:12–5:12 band (ratios ≥0.5 indicate shallow-to-moderate pitch). Reconciling both cues, the ridge-to-eave evidence and the likelihood that compressed shadows understate the true pitch converge on 4:12 as the best-supported enum value. Confidence is moderate (0.47) due to limited shadow depth and complex multi-plane roof geometry that makes clean eave-shadow separation difficult."
+}

@@ -103,7 +103,7 @@ async function predict(address) {
 
   // Apply Solar API fence — mirror the production logic in scripts/estimate.mjs
   // so calibration numbers reflect what would actually be submitted.
-  const FENCE_THRESHOLD_PCT = 15
+  const FENCE_THRESHOLD_PCT = 12
   const insightsPath = join(dir, "solar-insights.json")
   let solarRoofArea = null
   let fenceTriggered = false

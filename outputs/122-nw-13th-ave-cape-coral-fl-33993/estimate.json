@@ -7,22 +7,29 @@
     "lng": -82.0006137,
     "pitch": "4:12",
     "pitch_multiplier": 1.054,
-    "pitch_confidence": 0.7,
-    "pitch_rationale": "The subject property (blue-tarped hip roof, upper structure) is located in Cape Coral, southwest Florida, where building codes and climate strongly favor low-pitch hip roofs (4:12–6:12). Visual cues support 4:12: the northward eave shadow is short relative to the ~40–45 ft building width (per the 50-ft scale bar), indicating limited vertical rise. The hip roof planes converge gradually and the ridge remains relatively wide in plan view, consistent with a shallow pitch. The neighboring gray-shingled hip roof (lower structure) reinforces the neighborhood norm of low-profile Florida construction. No dormers, steep gable protrusions, or long dramatic shadows suggestive of 6:12+ are present.",
+    "pitch_confidence": 0.78,
+    "pitch_rationale": "The subject home (center, covered in blue emergency tarps) is located in Cape Coral, FL — a region where 4:12 is the dominant residential pitch due to hurricane building codes and climate norms. The blue tarps lie very flat against the roof planes with minimal draping, indicating a shallow slope. Ground shadows cast from the eave edges are short relative to the building's plan footprint, consistent with a low rise:run ratio. The hip roof geometry shows a wide eave perimeter with the ridge sitting close to the center, and no dormers or steep gable protrusions are visible. The neighboring gray-shingle hip roof to the south similarly shows minimal vertical prominence, corroborating the shallow regional pitch norm. All cues point to a 4:12 pitch, typical for SW Florida construction.",
     "pitch_stub": false,
-    "footprint_sqft": 2900,
-    "footprint_confidence": 0.4,
-    "footprint_rationale": "The target structure is the blue-tarped house in the upper-center of the image (122 NW 13th Ave). Blue tarps indicate post-hurricane storm damage. Bounding box traced from approximately x:422–680, y:385–645 pixels (258 px E-W × 260 px N-S = 67,080 sq px). A setback/notch in the upper-right quadrant (tree shadow and roof step visible) was subtracted (~7,000 sq px), yielding ~60,080 sq px × 0.047905 = ~2,878 sq ft, rounded to 2,900 sq ft. The roof is a complex hip style (typical for SW Florida hurricane zones) — no rake edges visible. Two joined hip-roof sections produce a main E-W ridge (~95 px) over the north body, a shorter secondary ridge (~65 px) over the south wing, and an internal valley (~2 lines × ~85 px each) where the two sections meet. Six exterior hip lines (~85 px avg each) run from ridge ends to all perimeter corners. Eave measured around the full perimeter (~960 px total). Confidence limited to 0.40 because the blue tarps obscure actual ridge/hip/valley line locations and the irregular L-shape boundary is difficult to trace precisely from this resolution.",
+    "footprint_sqft": 3020,
+    "footprint_confidence": 0.42,
+    "footprint_rationale": "The subject roof is fully covered with blue tarps, which clearly delineate the roof boundary. The orange bounding box measures approximately 260 px × 245 px (56.9 ft × 53.6 ft). The roof is L-shaped with a main section (~42.7 ft × 25.2 ft) in the upper-left and an attached wing/garage (~51.4 ft × 28.4 ft) in the lower-right, with a rectangular notch (~14.2 ft × 25.2 ft) cut from the upper-right corner. L-shape fill factor ~75% of the 3,050 sq ft bounding rectangle yields ~2,290 sq ft, confirmed by direct polygon summation at ~2,330 sq ft; settled on 2,300 sq ft. The roof is a fully-hipped style (no visible gable ends or rake edges). Two interior valley lines form at the L-junction where the two hip sections meet. Ridge segments estimated from visible tarp ridge lines. Eave perimeter traced around the full outer L-shape boundary. Confidence is moderate-low (0.42) due to the tarp obscuring fine structural details and the complex L-shaped geometry making precise corner locations difficult to pin down.",
     "footprint_stub": false,
     "line_items": {
-      "ridge": 35,
-      "hip": 112,
-      "valley": 37,
+      "ridge": 38,
+      "hip": 68,
+      "valley": 30,
       "rake": 0,
-      "eave": 210
+      "eave": 185
     },
-    "roof_area_sqft": 3057,
-    "computed_at": "2026-05-08T23:01:06.345Z"
+    "roof_area_sqft": 2924,
+    "roof_area_source": "solar-fence",
+    "vision_footprint_sqft": 2300,
+    "vision_roof_area_sqft": 2424,
+    "solar_footprint_sqft": 3020,
+    "solar_roof_area_sqft": 2924,
+    "fence_triggered": true,
+    "fence_reason": "vision roof area 2424 differs from solar 2924 by 17.1% (>12%)",
+    "computed_at": "2026-05-09T00:49:59.186Z"
   },
   "tiers": [
     {
@@ -30,47 +37,47 @@
       "tier_name": "3-Tab Asphalt Shingle",
       "lines": [
         {
-          "label": "3-Tab Asphalt Shingle (34.24 sq, includes 12% waste)",
-          "amount": 3766.22
+          "label": "3-Tab Asphalt Shingle (32.75 sq, includes 12% waste)",
+          "amount": 3602.37
         },
         {
-          "label": "Tear-off (30.57 sq, 1 layer)",
-          "amount": 1069.95
+          "label": "Tear-off (29.24 sq, 1 layer)",
+          "amount": 1023.4
         },
         {
-          "label": "Underlayment (32.1 sq)",
-          "amount": 802.46
+          "label": "Underlayment (30.7 sq)",
+          "amount": 767.55
         },
         {
-          "label": "Trim & flashing (drip edge 210 lf, ridge 35 lf, valley 37 lf)",
-          "amount": 1519
+          "label": "Trim & flashing (drip edge 185 lf, ridge 38 lf, valley 30 lf)",
+          "amount": 1202.5
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (6.69 sheets, contingency)",
-          "amount": 367.8
+          "label": "Decking allowance (6.4 sheets, contingency)",
+          "amount": 351.79
         },
         {
-          "label": "Labor (30.57 sq @ 2.00 h/sq)",
-          "amount": 5196.26
+          "label": "Labor (29.24 sq @ 2.00 h/sq)",
+          "amount": 4981.68
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1607
+          "amount": 1511.92
         },
         {
           "label": "Profit (15%)",
-          "amount": 2249.8
+          "amount": 2116.68
         }
       ],
-      "subtotal": 17248.5,
+      "subtotal": 16227.89,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T23:01:06.346Z",
+          "generated_at": "2026-05-09T00:49:59.187Z",
           "currency": "USD"
         },
         "inputs": {
@@ -79,11 +86,11 @@
             "formatted_address": "122 NW 13th Ave, Cape Coral, FL 33993, USA"
           },
           "geometry": {
-            "roof_area_sqft": 3057,
-            "ridge_lf": 35,
-            "hip_lf": 112,
-            "valley_lf": 37,
-            "eave_lf": 210,
+            "roof_area_sqft": 2924,
+            "ridge_lf": 38,
+            "hip_lf": 68,
+            "valley_lf": 30,
+            "eave_lf": 185,
             "rake_lf": 0,
             "sidewall_lf": 0
           },
@@ -105,16 +112,16 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 3057,
-          "roof_squares": 30.57,
-          "field_squares": 34.24,
-          "underlayment_squares": 32.1,
+          "roof_area_sqft": 2924,
+          "roof_squares": 29.24,
+          "field_squares": 32.75,
+          "underlayment_squares": 30.7,
           "ice_water_squares": 0,
-          "decking_sheets": 6.69,
-          "ridge_lf": 35,
-          "hip_lf": 112,
-          "valley_lf": 37,
-          "eave_lf": 210,
+          "decking_sheets": 6.4,
+          "ridge_lf": 38,
+          "hip_lf": 68,
+          "valley_lf": 30,
+          "eave_lf": 185,
           "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
@@ -136,14 +143,14 @@
         },
         "costs": {
           "materials": {
-            "field": 3766.22,
-            "underlayment": 802.46,
+            "field": 3602.37,
+            "underlayment": 767.55,
             "ice_water": 0,
-            "tearoff": 1069.95,
-            "ridge_cap": 175,
-            "hip_cap": 560,
-            "valley_metal": 259,
-            "drip_edge_eave": 525,
+            "tearoff": 1023.4,
+            "ridge_cap": 190,
+            "hip_cap": 340,
+            "valley_metal": 210,
+            "drip_edge_eave": 462.5,
             "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
@@ -153,16 +160,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 367.8
+            "decking_sheets": 351.79
           },
-          "direct_material_cost": 8195.43,
-          "labor_hours_base": 55.58,
-          "labor_hours_adjusted": 61.13,
-          "direct_labor_cost": 5196.26,
-          "direct_cost": 13391.69,
-          "overhead": 1607,
-          "profit": 2249.8,
-          "grand_total": 17248.5
+          "direct_material_cost": 7617.61,
+          "labor_hours_base": 53.28,
+          "labor_hours_adjusted": 58.61,
+          "direct_labor_cost": 4981.68,
+          "direct_cost": 12599.29,
+          "overhead": 1511.92,
+          "profit": 2116.68,
+          "grand_total": 16227.89
         }
       }
     },
@@ -171,47 +178,47 @@
       "tier_name": "Architectural Laminate",
       "lines": [
         {
-          "label": "Architectural Laminate (34.24 sq, includes 12% waste)",
-          "amount": 4964.57
+          "label": "Architectural Laminate (32.75 sq, includes 12% waste)",
+          "amount": 4748.58
         },
         {
-          "label": "Tear-off (30.57 sq, 1 layer)",
-          "amount": 1069.95
+          "label": "Tear-off (29.24 sq, 1 layer)",
+          "amount": 1023.4
         },
         {
-          "label": "Underlayment (32.1 sq)",
-          "amount": 802.46
+          "label": "Underlayment (30.7 sq)",
+          "amount": 767.55
         },
         {
-          "label": "Trim & flashing (drip edge 210 lf, ridge 35 lf, valley 37 lf)",
-          "amount": 1519
+          "label": "Trim & flashing (drip edge 185 lf, ridge 38 lf, valley 30 lf)",
+          "amount": 1202.5
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (6.69 sheets, contingency)",
-          "amount": 367.8
+          "label": "Decking allowance (6.4 sheets, contingency)",
+          "amount": 351.79
         },
         {
-          "label": "Labor (30.57 sq @ 2.55 h/sq)",
-          "amount": 6625.41
+          "label": "Labor (29.24 sq @ 2.55 h/sq)",
+          "amount": 6348.65
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1922.3
+          "amount": 1813.5
         },
         {
           "label": "Profit (15%)",
-          "amount": 2691.22
+          "amount": 2538.89
         }
       ],
-      "subtotal": 20632.71,
+      "subtotal": 19464.86,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T23:01:06.347Z",
+          "generated_at": "2026-05-09T00:49:59.188Z",
           "currency": "USD"
         },
         "inputs": {
@@ -220,11 +227,11 @@
             "formatted_address": "122 NW 13th Ave, Cape Coral, FL 33993, USA"
           },
           "geometry": {
-            "roof_area_sqft": 3057,
-            "ridge_lf": 35,
-            "hip_lf": 112,
-            "valley_lf": 37,
-            "eave_lf": 210,
+            "roof_area_sqft": 2924,
+            "ridge_lf": 38,
+            "hip_lf": 68,
+            "valley_lf": 30,
+            "eave_lf": 185,
             "rake_lf": 0,
             "sidewall_lf": 0
           },
@@ -246,16 +253,16 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 3057,
-          "roof_squares": 30.57,
-          "field_squares": 34.24,
-          "underlayment_squares": 32.1,
+          "roof_area_sqft": 2924,
+          "roof_squares": 29.24,
+          "field_squares": 32.75,
+          "underlayment_squares": 30.7,
           "ice_water_squares": 0,
-          "decking_sheets": 6.69,
-          "ridge_lf": 35,
-          "hip_lf": 112,
-          "valley_lf": 37,
-          "eave_lf": 210,
+          "decking_sheets": 6.4,
+          "ridge_lf": 38,
+          "hip_lf": 68,
+          "valley_lf": 30,
+          "eave_lf": 185,
           "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
@@ -277,14 +284,14 @@
         },
         "costs": {
           "materials": {
-            "field": 4964.57,
-            "underlayment": 802.46,
+            "field": 4748.58,
+            "underlayment": 767.55,
             "ice_water": 0,
-            "tearoff": 1069.95,
-            "ridge_cap": 175,
-            "hip_cap": 560,
-            "valley_metal": 259,
-            "drip_edge_eave": 525,
+            "tearoff": 1023.4,
+            "ridge_cap": 190,
+            "hip_cap": 340,
+            "valley_metal": 210,
+            "drip_edge_eave": 462.5,
             "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
@@ -294,16 +301,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 367.8
+            "decking_sheets": 351.79
           },
-          "direct_material_cost": 9393.78,
-          "labor_hours_base": 70.86,
-          "labor_hours_adjusted": 77.95,
-          "direct_labor_cost": 6625.41,
-          "direct_cost": 16019.19,
-          "overhead": 1922.3,
-          "profit": 2691.22,
-          "grand_total": 20632.71
+          "direct_material_cost": 8763.82,
+          "labor_hours_base": 67.9,
+          "labor_hours_adjusted": 74.69,
+          "direct_labor_cost": 6348.65,
+          "direct_cost": 15112.47,
+          "overhead": 1813.5,
+          "profit": 2538.89,
+          "grand_total": 19464.86
         }
       }
     },
@@ -312,47 +319,47 @@
       "tier_name": "Designer / Impact-Resistant",
       "lines": [
         {
-          "label": "Designer / Impact-Resistant (34.24 sq, includes 12% waste)",
-          "amount": 7532.45
+          "label": "Designer / Impact-Resistant (32.75 sq, includes 12% waste)",
+          "amount": 7204.74
         },
         {
-          "label": "Tear-off (30.57 sq, 1 layer)",
-          "amount": 1069.95
+          "label": "Tear-off (29.24 sq, 1 layer)",
+          "amount": 1023.4
         },
         {
-          "label": "Underlayment (32.1 sq)",
-          "amount": 802.46
+          "label": "Underlayment (30.7 sq)",
+          "amount": 767.55
         },
         {
-          "label": "Trim & flashing (drip edge 210 lf, ridge 35 lf, valley 37 lf)",
-          "amount": 1519
+          "label": "Trim & flashing (drip edge 185 lf, ridge 38 lf, valley 30 lf)",
+          "amount": 1202.5
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (6.69 sheets, contingency)",
-          "amount": 367.8
+          "label": "Decking allowance (6.4 sheets, contingency)",
+          "amount": 351.79
         },
         {
-          "label": "Labor (30.57 sq @ 3.10 h/sq)",
-          "amount": 8054.56
+          "label": "Labor (29.24 sq @ 3.10 h/sq)",
+          "amount": 7715.62
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2401.95
+          "amount": 2272.27
         },
         {
           "label": "Profit (15%)",
-          "amount": 3362.72
+          "amount": 3181.18
         }
       ],
-      "subtotal": 25780.88,
+      "subtotal": 24389.05,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T23:01:06.347Z",
+          "generated_at": "2026-05-09T00:49:59.188Z",
           "currency": "USD"
         },
         "inputs": {
@@ -361,11 +368,11 @@
             "formatted_address": "122 NW 13th Ave, Cape Coral, FL 33993, USA"
           },
           "geometry": {
-            "roof_area_sqft": 3057,
-            "ridge_lf": 35,
-            "hip_lf": 112,
-            "valley_lf": 37,
-            "eave_lf": 210,
+            "roof_area_sqft": 2924,
+            "ridge_lf": 38,
+            "hip_lf": 68,
+            "valley_lf": 30,
+            "eave_lf": 185,
             "rake_lf": 0,
             "sidewall_lf": 0
           },
@@ -387,16 +394,16 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 3057,
-          "roof_squares": 30.57,
-          "field_squares": 34.24,
-          "underlayment_squares": 32.1,
+          "roof_area_sqft": 2924,
+          "roof_squares": 29.24,
+          "field_squares": 32.75,
+          "underlayment_squares": 30.7,
           "ice_water_squares": 0,
-          "decking_sheets": 6.69,
-          "ridge_lf": 35,
-          "hip_lf": 112,
-          "valley_lf": 37,
-          "eave_lf": 210,
+          "decking_sheets": 6.4,
+          "ridge_lf": 38,
+          "hip_lf": 68,
+          "valley_lf": 30,
+          "eave_lf": 185,
           "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
@@ -418,14 +425,14 @@
         },
         "costs": {
           "materials": {
-            "field": 7532.45,
-            "underlayment": 802.46,
+            "field": 7204.74,
+            "underlayment": 767.55,
             "ice_water": 0,
-            "tearoff": 1069.95,
-            "ridge_cap": 175,
-            "hip_cap": 560,
-            "valley_metal": 259,
-            "drip_edge_eave": 525,
+            "tearoff": 1023.4,
+            "ridge_cap": 190,
+            "hip_cap": 340,
+            "valley_metal": 210,
+            "drip_edge_eave": 462.5,
             "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
@@ -435,21 +442,21 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 367.8
+            "decking_sheets": 351.79
           },
-          "direct_material_cost": 11961.66,
-          "labor_hours_base": 86.15,
-          "labor_hours_adjusted": 94.76,
-          "direct_labor_cost": 8054.56,
-          "direct_cost": 20016.21,
-          "overhead": 2401.95,
-          "profit": 3362.72,
-          "grand_total": 25780.88
+          "direct_material_cost": 11219.98,
+          "labor_hours_base": 82.52,
+          "labor_hours_adjusted": 90.77,
+          "direct_labor_cost": 7715.62,
+          "direct_cost": 18935.6,
+          "overhead": 2272.27,
+          "profit": 3181.18,
+          "grand_total": 24389.05
         }
       }
     }
   ],
-  "generated_at": "2026-05-08T23:01:06.347Z",
+  "generated_at": "2026-05-09T00:49:59.188Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

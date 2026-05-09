@@ -10,19 +10,26 @@
     "pitch_confidence": 0.72,
     "pitch_rationale": "The homes at this Humble, TX address display classic southern-suburban hip roofs. Shadow lengths cast by eaves onto the ground are moderate relative to the 50-ft scale bar — neither long enough to indicate steep (≥8:12) nor negligible enough to suggest shallow (≤4:12) pitch, aligning best with 6:12. The ridge lines on the hip roofs sit visibly inside but not dramatically compressed within the eave perimeter, consistent with a 6:12 rise-to-run ratio. Shingle texture is moderately discernible from nadir, further corroborating a mid-range pitch. Regional context (Houston-area suburban construction, warm humid climate, hip-roof predominance) strongly supports the 5:12–7:12 band, with 6:12 being the most common standard in this market.",
     "pitch_stub": false,
-    "footprint_sqft": 2195,
-    "footprint_confidence": 0.42,
-    "footprint_rationale": "Target house identified as the multi-section hip-roof home in the lower-left quadrant with direct driveway access from the Kenswick Meadows Ct cul-de-sac (visible at ~px 170–260, 300–520). Two-section L-shaped footprint traced: main body ~232–408 x, 558–722 y (176×164 px = 37.3×34.8 ft) and a rear southeast extension ~302–435 x, 722–872 y (133×150 px = 28.2×31.8 ft). Combined L-shape area: 48,814 sq px × 0.044964 = 2,195 sqft. Roof is predominantly multi-hip with two main ridges (main body ~24 ft, extension ~17 ft, small rear ~10 ft), eight hip lines at all section corners (~136 ft total), two interior valleys where sections meet (~32 ft), minimal gable/rake element on rear addition (~11 ft), and eaves running around the full perimeter bottom edges (~155 ft, adjusted for interior shared walls and hip geometry). Confidence is moderate-low due to difficulty distinguishing exact property boundaries and roof edge types from satellite obliquity.",
+    "footprint_sqft": 2539,
+    "footprint_confidence": 0.4,
+    "footprint_rationale": "Subject home is under active construction. The orange bounding box spans approximately 253 × 272 pixels (53.6 ft × 57.7 ft = 3,093 sq ft bounding area). The visible roof consists of two interconnected hip-roof sections — a smaller upper/front section (~25×22 ft) and a larger main section (~48×35 ft) — connected at a valley junction. No gable ends are present (pure hip geometry, rake = 0). A fill factor of ~0.80 was applied to the bounding rectangle to account for the hip roof shape and areas where decking/framing is exposed but not yet fully covered. Final footprint: ~2,450 sq ft. Confidence is low (0.40) because active construction makes it difficult to distinguish finished roof plane from unfinished deck, and portions of the structure may not yet have roofing materials in place.",
     "footprint_stub": false,
     "line_items": {
-      "ridge": 51,
-      "hip": 136,
-      "valley": 32,
-      "rake": 11,
-      "eave": 155
+      "ridge": 38,
+      "hip": 121,
+      "valley": 16,
+      "rake": 0,
+      "eave": 148
     },
-    "roof_area_sqft": 2454,
-    "computed_at": "2026-05-08T23:54:20.083Z"
+    "roof_area_sqft": 2389,
+    "roof_area_source": "solar-fence",
+    "vision_footprint_sqft": 2450,
+    "vision_roof_area_sqft": 2739,
+    "solar_footprint_sqft": 2539,
+    "solar_roof_area_sqft": 2389,
+    "fence_triggered": true,
+    "fence_reason": "vision roof area 2739 differs from solar 2389 by 14.7% (>12%)",
+    "computed_at": "2026-05-09T00:49:55.152Z"
   },
   "tiers": [
     {
@@ -30,47 +37,47 @@
       "tier_name": "3-Tab Asphalt Shingle",
       "lines": [
         {
-          "label": "3-Tab Asphalt Shingle (27.48 sq, includes 12% waste)",
-          "amount": 3023.33
+          "label": "3-Tab Asphalt Shingle (26.76 sq, includes 12% waste)",
+          "amount": 2943.25
         },
         {
-          "label": "Tear-off (24.54 sq, 1 layer)",
-          "amount": 858.9
+          "label": "Tear-off (23.89 sq, 1 layer)",
+          "amount": 836.15
         },
         {
-          "label": "Underlayment (25.77 sq)",
-          "amount": 644.17
+          "label": "Underlayment (25.08 sq)",
+          "amount": 627.11
         },
         {
-          "label": "Trim & flashing (drip edge 155 lf, ridge 51 lf, valley 32 lf)",
-          "amount": 1574
+          "label": "Trim & flashing (drip edge 148 lf, ridge 38 lf, valley 16 lf)",
+          "amount": 1277
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (5.37 sheets, contingency)",
-          "amount": 295.25
+          "label": "Decking allowance (5.23 sheets, contingency)",
+          "amount": 287.43
         },
         {
-          "label": "Labor (24.54 sq @ 2.31 h/sq)",
-          "amount": 4820.58
+          "label": "Labor (23.89 sq @ 2.25 h/sq)",
+          "amount": 4568.08
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1426.35
+          "amount": 1345.08
         },
         {
           "label": "Profit (15%)",
-          "amount": 1996.89
+          "amount": 1883.12
         }
       ],
-      "subtotal": 15309.46,
+      "subtotal": 14437.22,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T23:54:20.089Z",
+          "generated_at": "2026-05-09T00:49:55.153Z",
           "currency": "USD"
         },
         "inputs": {
@@ -79,12 +86,12 @@
             "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2454,
-            "ridge_lf": 51,
-            "hip_lf": 136,
-            "valley_lf": 32,
-            "eave_lf": 155,
-            "rake_lf": 11,
+            "roof_area_sqft": 2389,
+            "ridge_lf": 38,
+            "hip_lf": 121,
+            "valley_lf": 16,
+            "eave_lf": 148,
+            "rake_lf": 0,
             "sidewall_lf": 0
           },
           "counts": {
@@ -105,17 +112,17 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2454,
-          "roof_squares": 24.54,
-          "field_squares": 27.48,
-          "underlayment_squares": 25.77,
+          "roof_area_sqft": 2389,
+          "roof_squares": 23.89,
+          "field_squares": 26.76,
+          "underlayment_squares": 25.08,
           "ice_water_squares": 0,
-          "decking_sheets": 5.37,
-          "ridge_lf": 51,
-          "hip_lf": 136,
-          "valley_lf": 32,
-          "eave_lf": 155,
-          "rake_lf": 11,
+          "decking_sheets": 5.23,
+          "ridge_lf": 38,
+          "hip_lf": 121,
+          "valley_lf": 16,
+          "eave_lf": 148,
+          "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
           "penetrations": 5,
@@ -136,15 +143,15 @@
         },
         "costs": {
           "materials": {
-            "field": 3023.33,
-            "underlayment": 644.17,
+            "field": 2943.25,
+            "underlayment": 627.11,
             "ice_water": 0,
-            "tearoff": 858.9,
-            "ridge_cap": 255,
-            "hip_cap": 680,
-            "valley_metal": 224,
-            "drip_edge_eave": 387.5,
-            "rake_trim": 27.5,
+            "tearoff": 836.15,
+            "ridge_cap": 190,
+            "hip_cap": 605,
+            "valley_metal": 112,
+            "drip_edge_eave": 370,
+            "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
             "penetration_boots": 140,
@@ -153,16 +160,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 295.25
+            "decking_sheets": 287.43
           },
-          "direct_material_cost": 7065.65,
-          "labor_hours_base": 46.87,
-          "labor_hours_adjusted": 56.71,
-          "direct_labor_cost": 4820.58,
-          "direct_cost": 11886.23,
-          "overhead": 1426.35,
-          "profit": 1996.89,
-          "grand_total": 15309.46
+          "direct_material_cost": 6640.94,
+          "labor_hours_base": 44.42,
+          "labor_hours_adjusted": 53.74,
+          "direct_labor_cost": 4568.08,
+          "direct_cost": 11209.02,
+          "overhead": 1345.08,
+          "profit": 1883.12,
+          "grand_total": 14437.22
         }
       }
     },
@@ -171,47 +178,47 @@
       "tier_name": "Architectural Laminate",
       "lines": [
         {
-          "label": "Architectural Laminate (27.48 sq, includes 12% waste)",
-          "amount": 3985.3
+          "label": "Architectural Laminate (26.76 sq, includes 12% waste)",
+          "amount": 3879.74
         },
         {
-          "label": "Tear-off (24.54 sq, 1 layer)",
-          "amount": 858.9
+          "label": "Tear-off (23.89 sq, 1 layer)",
+          "amount": 836.15
         },
         {
-          "label": "Underlayment (25.77 sq)",
-          "amount": 644.17
+          "label": "Underlayment (25.08 sq)",
+          "amount": 627.11
         },
         {
-          "label": "Trim & flashing (drip edge 155 lf, ridge 51 lf, valley 32 lf)",
-          "amount": 1574
+          "label": "Trim & flashing (drip edge 148 lf, ridge 38 lf, valley 16 lf)",
+          "amount": 1277
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (5.37 sheets, contingency)",
-          "amount": 295.25
+          "label": "Decking allowance (5.23 sheets, contingency)",
+          "amount": 287.43
         },
         {
-          "label": "Labor (24.54 sq @ 2.92 h/sq)",
-          "amount": 6082.55
+          "label": "Labor (23.89 sq @ 2.85 h/sq)",
+          "amount": 5796.63
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1693.22
+          "amount": 1604.89
         },
         {
           "label": "Profit (15%)",
-          "amount": 2370.51
+          "amount": 2246.84
         }
       ],
-      "subtotal": 18173.89,
+      "subtotal": 17225.78,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T23:54:20.089Z",
+          "generated_at": "2026-05-09T00:49:55.153Z",
           "currency": "USD"
         },
         "inputs": {
@@ -220,12 +227,12 @@
             "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2454,
-            "ridge_lf": 51,
-            "hip_lf": 136,
-            "valley_lf": 32,
-            "eave_lf": 155,
-            "rake_lf": 11,
+            "roof_area_sqft": 2389,
+            "ridge_lf": 38,
+            "hip_lf": 121,
+            "valley_lf": 16,
+            "eave_lf": 148,
+            "rake_lf": 0,
             "sidewall_lf": 0
           },
           "counts": {
@@ -246,17 +253,17 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2454,
-          "roof_squares": 24.54,
-          "field_squares": 27.48,
-          "underlayment_squares": 25.77,
+          "roof_area_sqft": 2389,
+          "roof_squares": 23.89,
+          "field_squares": 26.76,
+          "underlayment_squares": 25.08,
           "ice_water_squares": 0,
-          "decking_sheets": 5.37,
-          "ridge_lf": 51,
-          "hip_lf": 136,
-          "valley_lf": 32,
-          "eave_lf": 155,
-          "rake_lf": 11,
+          "decking_sheets": 5.23,
+          "ridge_lf": 38,
+          "hip_lf": 121,
+          "valley_lf": 16,
+          "eave_lf": 148,
+          "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
           "penetrations": 5,
@@ -277,15 +284,15 @@
         },
         "costs": {
           "materials": {
-            "field": 3985.3,
-            "underlayment": 644.17,
+            "field": 3879.74,
+            "underlayment": 627.11,
             "ice_water": 0,
-            "tearoff": 858.9,
-            "ridge_cap": 255,
-            "hip_cap": 680,
-            "valley_metal": 224,
-            "drip_edge_eave": 387.5,
-            "rake_trim": 27.5,
+            "tearoff": 836.15,
+            "ridge_cap": 190,
+            "hip_cap": 605,
+            "valley_metal": 112,
+            "drip_edge_eave": 370,
+            "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
             "penetration_boots": 140,
@@ -294,16 +301,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 295.25
+            "decking_sheets": 287.43
           },
-          "direct_material_cost": 8027.62,
-          "labor_hours_base": 59.14,
-          "labor_hours_adjusted": 71.56,
-          "direct_labor_cost": 6082.55,
-          "direct_cost": 14110.17,
-          "overhead": 1693.22,
-          "profit": 2370.51,
-          "grand_total": 18173.89
+          "direct_material_cost": 7577.43,
+          "labor_hours_base": 56.36,
+          "labor_hours_adjusted": 68.2,
+          "direct_labor_cost": 5796.63,
+          "direct_cost": 13374.05,
+          "overhead": 1604.89,
+          "profit": 2246.84,
+          "grand_total": 17225.78
         }
       }
     },
@@ -312,47 +319,47 @@
       "tier_name": "Designer / Impact-Resistant",
       "lines": [
         {
-          "label": "Designer / Impact-Resistant (27.48 sq, includes 12% waste)",
-          "amount": 6046.66
+          "label": "Designer / Impact-Resistant (26.76 sq, includes 12% waste)",
+          "amount": 5886.5
         },
         {
-          "label": "Tear-off (24.54 sq, 1 layer)",
-          "amount": 858.9
+          "label": "Tear-off (23.89 sq, 1 layer)",
+          "amount": 836.15
         },
         {
-          "label": "Underlayment (25.77 sq)",
-          "amount": 644.17
+          "label": "Underlayment (25.08 sq)",
+          "amount": 627.11
         },
         {
-          "label": "Trim & flashing (drip edge 155 lf, ridge 51 lf, valley 32 lf)",
-          "amount": 1574
+          "label": "Trim & flashing (drip edge 148 lf, ridge 38 lf, valley 16 lf)",
+          "amount": 1277
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (5.37 sheets, contingency)",
-          "amount": 295.25
+          "label": "Decking allowance (5.23 sheets, contingency)",
+          "amount": 287.43
         },
         {
-          "label": "Labor (24.54 sq @ 3.52 h/sq)",
-          "amount": 7344.52
+          "label": "Labor (23.89 sq @ 3.46 h/sq)",
+          "amount": 7025.17
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2092.02
+          "amount": 1993.12
         },
         {
           "label": "Profit (15%)",
-          "amount": 2928.83
+          "amount": 2790.37
         }
       ],
-      "subtotal": 22454.34,
+      "subtotal": 21392.85,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-08T23:54:20.089Z",
+          "generated_at": "2026-05-09T00:49:55.153Z",
           "currency": "USD"
         },
         "inputs": {
@@ -361,12 +368,12 @@
             "formatted_address": "21106 Kenswick Meadows Ct, Humble, TX 77338, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2454,
-            "ridge_lf": 51,
-            "hip_lf": 136,
-            "valley_lf": 32,
-            "eave_lf": 155,
-            "rake_lf": 11,
+            "roof_area_sqft": 2389,
+            "ridge_lf": 38,
+            "hip_lf": 121,
+            "valley_lf": 16,
+            "eave_lf": 148,
+            "rake_lf": 0,
             "sidewall_lf": 0
           },
           "counts": {
@@ -387,17 +394,17 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2454,
-          "roof_squares": 24.54,
-          "field_squares": 27.48,
-          "underlayment_squares": 25.77,
+          "roof_area_sqft": 2389,
+          "roof_squares": 23.89,
+          "field_squares": 26.76,
+          "underlayment_squares": 25.08,
           "ice_water_squares": 0,
-          "decking_sheets": 5.37,
-          "ridge_lf": 51,
-          "hip_lf": 136,
-          "valley_lf": 32,
-          "eave_lf": 155,
-          "rake_lf": 11,
+          "decking_sheets": 5.23,
+          "ridge_lf": 38,
+          "hip_lf": 121,
+          "valley_lf": 16,
+          "eave_lf": 148,
+          "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
           "penetrations": 5,
@@ -418,15 +425,15 @@
         },
         "costs": {
           "materials": {
-            "field": 6046.66,
-            "underlayment": 644.17,
+            "field": 5886.5,
+            "underlayment": 627.11,
             "ice_water": 0,
-            "tearoff": 858.9,
-            "ridge_cap": 255,
-            "hip_cap": 680,
-            "valley_metal": 224,
-            "drip_edge_eave": 387.5,
-            "rake_trim": 27.5,
+            "tearoff": 836.15,
+            "ridge_cap": 190,
+            "hip_cap": 605,
+            "valley_metal": 112,
+            "drip_edge_eave": 370,
+            "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
             "penetration_boots": 140,
@@ -435,21 +442,21 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 295.25
+            "decking_sheets": 287.43
           },
-          "direct_material_cost": 10088.98,
-          "labor_hours_base": 71.41,
-          "labor_hours_adjusted": 86.41,
-          "direct_labor_cost": 7344.52,
-          "direct_cost": 17433.5,
-          "overhead": 2092.02,
-          "profit": 2928.83,
-          "grand_total": 22454.34
+          "direct_material_cost": 9584.19,
+          "labor_hours_base": 68.31,
+          "labor_hours_adjusted": 82.65,
+          "direct_labor_cost": 7025.17,
+          "direct_cost": 16609.35,
+          "overhead": 1993.12,
+          "profit": 2790.37,
+          "grand_total": 21392.85
         }
       }
     }
   ],
-  "generated_at": "2026-05-08T23:54:20.090Z",
+  "generated_at": "2026-05-09T00:49:55.153Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

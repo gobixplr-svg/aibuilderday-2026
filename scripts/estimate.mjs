@@ -136,7 +136,7 @@ async function run() {
   //   - buildingStats.areaMeters2  → plan-view footprint (matches our footprint)
   //   - sum(roofSegmentStats[].stats.areaMeters2) → slope-corrected roof area (matches refs)
   // We compare vision roof area to Solar roof area (both in the same units).
-  const FENCE_THRESHOLD_PCT = 15
+  const FENCE_THRESHOLD_PCT = 12
   const insightsPath = join("intermediate", slug, "solar-insights.json")
   let solarFootprint = null
   let solarRoofArea = null

@@ -1,0 +1,464 @@
+{
+  "measurement": {
+    "slug": "14132-trenton-ave-orland-park-il-60462",
+    "address": "14132 Trenton Ave, Orland Park, IL 60462",
+    "formatted_address": "14132 Trenton Ave, Orland Park, IL 60462, USA",
+    "lat": 41.63322670000001,
+    "lng": -87.8431279,
+    "pitch": "5:12",
+    "pitch_multiplier": 1.083,
+    "pitch_confidence": 0.62,
+    "pitch_rationale": "The Orland Park, IL suburban context (northern climate, 1970s–1990s tract development) strongly suggests a mid-range pitch. Ground shadow lengths cast northward from the eaves measure approximately 6–9 feet at the image scale (1 px = 0.732 ft, calibrated to the 50-ft scale bar), consistent with a 5:12 rise-to-run for typical 8–9 ft eave heights. The roof-to-eave geometry shows ridgelines that are noticeably inset from the eave perimeter but not dramatically so, ruling out very shallow (3:12–4:12) or steep (8:12+) profiles. Hip-roof construction with asphalt shingles is apparent across multiple homes in the neighborhood, further consistent with a standard 5:12 suburban build. Moderate confidence reflects the lack of oblique imagery to directly measure vertical rise.",
+    "pitch_stub": false,
+    "footprint_sqft": 3349,
+    "footprint_confidence": 0.44,
+    "footprint_rationale": "Subject home is a single-story ranch with a full hip roof (no gable ends, rake = 0). The plan is L-shaped: a main rectangular body (~280 px E-W × 205 px N-S = ~51 × 38 ft) plus a NE-projecting section (~185 px × 140 px = ~34 × 26 ft), likely an attached garage. Eave polygon traced at 8 vertices using the orange bounding box as reference (box spans ~347 × 275 px = 63.5 × 50.3 ft). Shoelace formula on the pixel polygon yields ~73,100 sq px × 0.033504 = 2,449 sq ft (~77% of bounding box, consistent with L-shape hip fill). Eaves summed around the full exterior perimeter (~222 ft). Ridges estimated from visible centerline peaks: ~15 ft main body + ~10 ft NE section. Hip lines estimated from 45° plan geometry: 4 corners on main body (~26.5 ft each) + 2 exposed corners on NE section (~18 ft each) = ~106 + 36 ft, rounded to 105 ft total. Valley where NE section meets main body estimated at ~26 ft. White vehicle visible at north end is parked in driveway and excluded. Confidence is moderate due to tree shadow and oblique view partially obscuring some eave corners.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 25,
+      "hip": 105,
+      "valley": 26,
+      "rake": 0,
+      "eave": 222
+    },
+    "roof_area_sqft": 3170,
+    "roof_area_source": "solar-fence",
+    "vision_footprint_sqft": 2450,
+    "vision_roof_area_sqft": 2653,
+    "solar_footprint_sqft": 3349,
+    "solar_roof_area_sqft": 3170,
+    "fence_triggered": true,
+    "fence_reason": "vision roof area 2653 differs from solar 3170 by 16.3% (>12%)",
+    "computed_at": "2026-05-09T00:50:00.884Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (35.5 sq, includes 12% waste)",
+          "amount": 3905.44
+        },
+        {
+          "label": "Tear-off (31.7 sq, 1 layer)",
+          "amount": 1109.5
+        },
+        {
+          "label": "Underlayment (33.29 sq)",
+          "amount": 832.13
+        },
+        {
+          "label": "Trim & flashing (drip edge 222 lf, ridge 25 lf, valley 26 lf)",
+          "amount": 1387
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (6.93 sheets, contingency)",
+          "amount": 381.39
+        },
+        {
+          "label": "Labor (31.7 sq @ 2.15 h/sq)",
+          "amount": 5781.2
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 1688
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2363.2
+        }
+      ],
+      "subtotal": 18117.85,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T00:50:00.885Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "14132 Trenton Ave, Orland Park, IL 60462",
+            "formatted_address": "14132 Trenton Ave, Orland Park, IL 60462, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3170,
+            "ridge_lf": 25,
+            "hip_lf": 105,
+            "valley_lf": 26,
+            "eave_lf": 222,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "5:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3170,
+          "roof_squares": 31.7,
+          "field_squares": 35.5,
+          "underlayment_squares": 33.29,
+          "ice_water_squares": 0,
+          "decking_sheets": 6.93,
+          "ridge_lf": 25,
+          "hip_lf": 105,
+          "valley_lf": 26,
+          "eave_lf": 222,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 3905.44,
+            "underlayment": 832.13,
+            "ice_water": 0,
+            "tearoff": 1109.5,
+            "ridge_cap": 125,
+            "hip_cap": 525,
+            "valley_metal": 182,
+            "drip_edge_eave": 555,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 381.39
+          },
+          "direct_material_cost": 8285.46,
+          "labor_hours_base": 56.21,
+          "labor_hours_adjusted": 68.01,
+          "direct_labor_cost": 5781.2,
+          "direct_cost": 14066.65,
+          "overhead": 1688,
+          "profit": 2363.2,
+          "grand_total": 18117.85
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (35.5 sq, includes 12% waste)",
+          "amount": 5148.08
+        },
+        {
+          "label": "Tear-off (31.7 sq, 1 layer)",
+          "amount": 1109.5
+        },
+        {
+          "label": "Underlayment (33.29 sq)",
+          "amount": 832.13
+        },
+        {
+          "label": "Trim & flashing (drip edge 222 lf, ridge 25 lf, valley 26 lf)",
+          "amount": 1387
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (6.93 sheets, contingency)",
+          "amount": 381.39
+        },
+        {
+          "label": "Labor (31.7 sq @ 2.75 h/sq)",
+          "amount": 7411.37
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2032.74
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2845.83
+        }
+      ],
+      "subtotal": 21818.03,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T00:50:00.885Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "14132 Trenton Ave, Orland Park, IL 60462",
+            "formatted_address": "14132 Trenton Ave, Orland Park, IL 60462, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3170,
+            "ridge_lf": 25,
+            "hip_lf": 105,
+            "valley_lf": 26,
+            "eave_lf": 222,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "5:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3170,
+          "roof_squares": 31.7,
+          "field_squares": 35.5,
+          "underlayment_squares": 33.29,
+          "ice_water_squares": 0,
+          "decking_sheets": 6.93,
+          "ridge_lf": 25,
+          "hip_lf": 105,
+          "valley_lf": 26,
+          "eave_lf": 222,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 5148.08,
+            "underlayment": 832.13,
+            "ice_water": 0,
+            "tearoff": 1109.5,
+            "ridge_cap": 125,
+            "hip_cap": 525,
+            "valley_metal": 182,
+            "drip_edge_eave": 555,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 381.39
+          },
+          "direct_material_cost": 9528.1,
+          "labor_hours_base": 72.06,
+          "labor_hours_adjusted": 87.19,
+          "direct_labor_cost": 7411.37,
+          "direct_cost": 16939.47,
+          "overhead": 2032.74,
+          "profit": 2845.83,
+          "grand_total": 21818.03
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (35.5 sq, includes 12% waste)",
+          "amount": 7810.88
+        },
+        {
+          "label": "Tear-off (31.7 sq, 1 layer)",
+          "amount": 1109.5
+        },
+        {
+          "label": "Underlayment (33.29 sq)",
+          "amount": 832.13
+        },
+        {
+          "label": "Trim & flashing (drip edge 222 lf, ridge 25 lf, valley 26 lf)",
+          "amount": 1387
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (6.93 sheets, contingency)",
+          "amount": 381.39
+        },
+        {
+          "label": "Labor (31.7 sq @ 3.36 h/sq)",
+          "amount": 9041.54
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2547.89
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3567.05
+        }
+      ],
+      "subtotal": 27347.38,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T00:50:00.885Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "14132 Trenton Ave, Orland Park, IL 60462",
+            "formatted_address": "14132 Trenton Ave, Orland Park, IL 60462, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3170,
+            "ridge_lf": 25,
+            "hip_lf": 105,
+            "valley_lf": 26,
+            "eave_lf": 222,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "5:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3170,
+          "roof_squares": 31.7,
+          "field_squares": 35.5,
+          "underlayment_squares": 33.29,
+          "ice_water_squares": 0,
+          "decking_sheets": 6.93,
+          "ridge_lf": 25,
+          "hip_lf": 105,
+          "valley_lf": 26,
+          "eave_lf": 222,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 7810.88,
+            "underlayment": 832.13,
+            "ice_water": 0,
+            "tearoff": 1109.5,
+            "ridge_cap": 125,
+            "hip_cap": 525,
+            "valley_metal": 182,
+            "drip_edge_eave": 555,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 381.39
+          },
+          "direct_material_cost": 12190.9,
+          "labor_hours_base": 87.91,
+          "labor_hours_adjusted": 106.37,
+          "direct_labor_cost": 9041.54,
+          "direct_cost": 21232.44,
+          "overhead": 2547.89,
+          "profit": 3567.05,
+          "grand_total": 27347.38
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-09T00:50:00.885Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}

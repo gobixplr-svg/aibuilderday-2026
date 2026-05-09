@@ -1,0 +1,6 @@
+{
+  "pitch": "4:12",
+  "pitch_multiplier": 1.054,
+  "confidence": 0.42,
+  "rationale": "The subject home is covered by a blue tarp, which eliminates shingle-texture cues but preserves the plan-view hip geometry. Shadow analysis is unreliable: only ~3 ft of eave shadow is visible on the south side (shadow_ratio ≈ 0.16), but this near-zero value is a product of high solar elevation at capture time rather than a true indicator of a nearly flat roof, so it cannot be used as the primary cue. The ridge-to-eave ratio is therefore the governing measurement: the main hip-roof section has a long-axis eave span of ~55 ft and a visible plan-view ridge of ~22 ft, yielding a ratio of ~0.40. Per the diagnostic mapping, 0.40 sits at the moderate boundary (5:12–6:12 range), but it is on the high side of 0.4, trending toward shallower pitch. Additionally, the very minimal absolute shadow depth visible even accounting for solar elevation, and the broad, relatively flat appearance of the tarp-draped roof in plan view, both push the estimate toward the lower end of moderate. Snapping to the nearest enum, 4:12 is chosen, reflecting a shallow-to-moderate hip roof. Confidence is reduced to 0.42 because the blue tarp obscures the true ridge line and eave detail, introducing measurement uncertainty in both the ridge length and the shadow geometry."
+}

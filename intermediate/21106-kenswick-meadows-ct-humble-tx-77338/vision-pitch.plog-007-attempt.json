@@ -1,0 +1,6 @@
+{
+  "pitch": "5:12",
+  "pitch_multiplier": 1.083,
+  "confidence": 0.45,
+  "rationale": "The subject home's hip-roofed wing has a measurable short axis of approximately 32 ft. The shadow cast from the south-facing eave onto the ground spans roughly 6 ft, yielding a shadow_ratio of 0.375 (6 ÷ 16), which falls between the 4:12 marker (0.33) and the 5:12 marker (0.42). The ridge-to-eave ratio of 0.47 — derived from a ridge of ~14.8 ft and long-side eave of ~31.8 ft — is consistent with a moderate pitch in the 5:12–6:12 band. Since shadow_ratio is closer to 0.42 (5:12) than 0.33 (4:12), and the ridge-to-eave ratio of 0.47 also points to the moderate-pitch zone, 5:12 is the best-supported enum value. Confidence is held at 0.45 because the building appears to be partially under construction (large exposed flat section), the structure is rotated ~35° from north making clean shadow measurement difficult, and the short overall shadow extent limits measurement precision."
+}

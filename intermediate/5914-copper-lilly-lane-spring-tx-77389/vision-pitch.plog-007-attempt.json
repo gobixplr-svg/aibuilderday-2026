@@ -1,0 +1,6 @@
+{
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
+  "confidence": 0.52,
+  "rationale": "The subject home has a complex multi-hip roof oriented N–S. The E–W building width (perpendicular to the ridge) measures approximately 48 ft (half-run = 24 ft). Ground shadows across all structures in this image are notably short, indicating a near-midday high-sun-angle acquisition; the measurable shadow from the north eave extends roughly 8 ft, yielding shadow_ratio ≈ 0.33, which nominally maps to 4:12 but is almost certainly compressed by the solar geometry. The ridge-to-eave ratio of ~0.43 (prominent triangular hip faces at each gable end, ridge ≈ 43% of the full eave span) is a geometrically more stable indicator under these lighting conditions and falls in the 6:12 bracket (0.40 ≈ 6:12). Weighting the ridge_to_eave_ratio over the shadow_ratio (given the unreliable high-sun shadow), 6:12 is the best-supported pitch estimate, though confidence is moderated by the ambiguity between the two cues."
+}

@@ -29,7 +29,7 @@
     "solar_roof_area_sqft": 5566,
     "fence_triggered": false,
     "fence_reason": null,
-    "computed_at": "2026-05-09T00:36:40.143Z"
+    "computed_at": "2026-05-09T00:50:37.077Z"
   },
   "tiers": [
     {
@@ -77,7 +77,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:36:40.146Z",
+          "generated_at": "2026-05-09T00:50:37.078Z",
           "currency": "USD"
         },
         "inputs": {
@@ -218,7 +218,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:36:40.147Z",
+          "generated_at": "2026-05-09T00:50:37.079Z",
           "currency": "USD"
         },
         "inputs": {
@@ -359,7 +359,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:36:40.147Z",
+          "generated_at": "2026-05-09T00:50:37.079Z",
           "currency": "USD"
         },
         "inputs": {
@@ -456,7 +456,7 @@
       }
     }
   ],
-  "generated_at": "2026-05-09T00:36:40.147Z",
+  "generated_at": "2026-05-09T00:50:37.079Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"
