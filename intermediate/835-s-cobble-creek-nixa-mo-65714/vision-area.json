@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2080,
+  "footprint_sqft": 2940,
   "line_items": {
-    "ridge": 38,
-    "hip": 94,
-    "valley": 22,
+    "ridge": 35,
+    "hip": 133,
+    "valley": 51,
     "rake": 0,
-    "eave": 174
+    "eave": 264
   },
-  "confidence": 0.42,
-  "rationale": "Target identified as the centrally-located gray-shingle hip-roofed house in the image (lat/lng 37.0290, -93.2833, Nixa MO). The roof is oriented with its long axis running roughly NW–SE at ~30° off north. Bounding box estimated as follows: Main body from approximately pixel (395,450) to (635,660) → 240 px wide × 210 px deep; a southwest-facing front wing/addition from approx (390,635) to (558,722) → 168 px wide × 87 px deep. Main body footprint (trapezoidal hip, ~85% of bounding box): 240×210×0.85 = 42,840 sq px. Wing footprint: 168×87×0.85 = 12,407 sq px. Combined minus small interior seam (~1,200 sq px): ≈54,047 sq px × 0.038225 sq ft/sq px ≈ 2,066 sq ft → rounded to 2,080 sq ft. This falls comfortably within the 1,500–4,000 sq ft sanity range. The roof appears to be a fully hipped configuration (no exposed gable rakes visible), so Rake = 0. Ridge lines are short due to near-square proportions: main ridge ≈120 px = 23 ft; wing ridge ≈80 px = 15 ft → total 38 ft. Hip lines: 4 hips on main body each ≈92 px = 18 ft (×4 = 72 ft); 2–3 hips on wing each ≈65 px = 12.7 ft (×2 = 22 ft) → total 94 ft. Valleys occur at the two re-entrant junctions where the wing meets the main body: 2 valleys × ~56 px = 22 ft. Eave equals the outer perimeter of the combined T-shaped footprint: back (N) 240 px, sides 2×210 px, wing steps 2×36 px, wing sides 2×87 px, wing front 168 px ≈ 1,074 px − minor interior connection 180 px = 894 px × 0.1955 ft/px ≈ 174 ft. Confidence is moderate-low due to tree occlusion of roof edges and uncertainty in precisely which structure corresponds to the given address."
+  "confidence": 0.53,
+  "rationale": "Subject home identified via orange bounding box and reticle. Bounding box measured at ~278 px (W) × ~337 px (H) = 54.3 ft × 65.9 ft = 3,578 sq ft bounding area. Roof is a complex multi-section all-hip design with a main central body, several projecting wings, and an attached garage/addition at the south. No gable ends visible, so rake = 0. Applied an 82% fill factor (dense hip coverage in plan view) to get ~2,940 sq ft footprint. Three ridge segments identified at peak of each major section totaling ~35 ft. Approximately 11 hip lines (sloped corner edges) averaging ~62 px each = ~133 ft. Five valley lines at inward intersections of roof planes = ~51 ft. Eave perimeter traced around all lower roof edges including wing projections = ~264 ft. Confidence reduced to 0.53 due to tree canopy obscuring portions of the south and west eave lines, and complexity of distinguishing individual hip vs. valley lines in the multi-section design."
 }

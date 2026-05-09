@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2900,
+  "footprint_sqft": 2300,
   "line_items": {
-    "ridge": 35,
-    "hip": 112,
-    "valley": 37,
+    "ridge": 38,
+    "hip": 68,
+    "valley": 30,
     "rake": 0,
-    "eave": 210
+    "eave": 185
   },
-  "confidence": 0.4,
-  "rationale": "The target structure is the blue-tarped house in the upper-center of the image (122 NW 13th Ave). Blue tarps indicate post-hurricane storm damage. Bounding box traced from approximately x:422–680, y:385–645 pixels (258 px E-W × 260 px N-S = 67,080 sq px). A setback/notch in the upper-right quadrant (tree shadow and roof step visible) was subtracted (~7,000 sq px), yielding ~60,080 sq px × 0.047905 = ~2,878 sq ft, rounded to 2,900 sq ft. The roof is a complex hip style (typical for SW Florida hurricane zones) — no rake edges visible. Two joined hip-roof sections produce a main E-W ridge (~95 px) over the north body, a shorter secondary ridge (~65 px) over the south wing, and an internal valley (~2 lines × ~85 px each) where the two sections meet. Six exterior hip lines (~85 px avg each) run from ridge ends to all perimeter corners. Eave measured around the full perimeter (~960 px total). Confidence limited to 0.40 because the blue tarps obscure actual ridge/hip/valley line locations and the irregular L-shape boundary is difficult to trace precisely from this resolution."
+  "confidence": 0.42,
+  "rationale": "The subject roof is fully covered with blue tarps, which clearly delineate the roof boundary. The orange bounding box measures approximately 260 px × 245 px (56.9 ft × 53.6 ft). The roof is L-shaped with a main section (~42.7 ft × 25.2 ft) in the upper-left and an attached wing/garage (~51.4 ft × 28.4 ft) in the lower-right, with a rectangular notch (~14.2 ft × 25.2 ft) cut from the upper-right corner. L-shape fill factor ~75% of the 3,050 sq ft bounding rectangle yields ~2,290 sq ft, confirmed by direct polygon summation at ~2,330 sq ft; settled on 2,300 sq ft. The roof is a fully-hipped style (no visible gable ends or rake edges). Two interior valley lines form at the L-junction where the two hip sections meet. Ridge segments estimated from visible tarp ridge lines. Eave perimeter traced around the full outer L-shape boundary. Confidence is moderate-low (0.42) due to the tarp obscuring fine structural details and the complex L-shaped geometry making precise corner locations difficult to pin down."
 }

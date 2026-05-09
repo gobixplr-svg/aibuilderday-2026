@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2207,
+  "footprint_sqft": 2640,
   "line_items": {
-    "ridge": 51,
-    "hip": 229,
-    "valley": 88,
-    "rake": 0,
-    "eave": 163
+    "ridge": 36,
+    "hip": 161,
+    "valley": 74,
+    "rake": 12,
+    "eave": 112
   },
-  "confidence": 0.37,
-  "rationale": "Target home identified as the large, complex hip-roofed structure in the center of the image at approximately x:435–650, y:375–680 px. Bounding box measured at ~215 px wide × ~305 px deep (45.6 ft × 64.6 ft), giving a raw bounding area of ~2,943 sq ft. Applied a 75% fill factor to account for the numerous hip bays, valleys, and cutouts yielding ~2,207 sq ft footprint. The roof is entirely hip-style (no gable ends, so rakes = 0). Ridge lines are short horizontal peaks atop each hip section (~5 segments). Hip lines are numerous, running diagonally from each ridge end to each corner (~18 total). Valley lines are deep inward intersections between projecting wings and the main body (~8 total). Eaves run along the lower horizontal edges of each hip section (~14 segments). Confidence is moderate-low due to image complexity, multiple overlapping structures in dense development, and difficulty in precisely delineating individual unit boundaries."
+  "confidence": 0.45,
+  "rationale": "The subject home is identified by the orange dashed bounding box centered approximately at pixel (540, 530). The orange box spans roughly 227 px wide (≈48.1 ft) × 336 px tall (≈71.2 ft), giving a bounding-box area of ~3,424 sq ft. The roof is a complex multi-section hip structure with 3–4 distinct hip sections separated by valley lines, oriented predominantly N–S. The roof fills an estimated 77% of the bounding box (lower corners have visible open ground and a tree is clipped at the southern base), yielding a footprint of ~2,640 sq ft. Ridge lines are short horizontal peaks atop each hip section (~5 segments, ~36 ft total). Hip lines are numerous given the multi-section geometry (~11 hips, ~161 ft total). Valley lines are prominent darker diagonal lines between sections (~6 valleys, ~74 ft total). Rake lines are minimal as this is predominantly a hip roof with one small possible gable (~12 ft). Eave lines trace the horizontal lower perimeters of each section (~112 ft total). Confidence is moderate (0.45) due to the roof's complexity, overlapping sections, and partial shadow obscuring some edges."
 }

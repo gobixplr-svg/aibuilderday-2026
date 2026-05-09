@@ -9,17 +9,24 @@
   "pitch_confidence": 0.72,
   "pitch_rationale": "The homes at this Spring, TX property display classic Texas suburban hip-roof construction. Shadow lengths cast from eave edges onto the ground are moderate — neither the short stubs of a 4:12 nor the elongated projections of an 8:12+ roof — pointing to a mid-range slope. The ratio of visible roof surface (nadir eave-to-ridge distance) to overall building footprint is consistent with a 6:12 pitch: the ridge lines are clearly defined but occupy a meaningful fraction of the plan width, ruling out very shallow (4:12) or steep (8:12+) slopes. Valley and hip intersection shadows show well-defined but not dramatic depth, further corroborating a 6:12 estimate. The southern Texas climate and architectural style of the neighborhood (multi-plane hip roofs on large suburban homes) are also strongly associated with 6:12 as the dominant pitch in this region.",
   "pitch_stub": false,
-  "footprint_sqft": 2207,
-  "footprint_confidence": 0.37,
-  "footprint_rationale": "Target home identified as the large, complex hip-roofed structure in the center of the image at approximately x:435–650, y:375–680 px. Bounding box measured at ~215 px wide × ~305 px deep (45.6 ft × 64.6 ft), giving a raw bounding area of ~2,943 sq ft. Applied a 75% fill factor to account for the numerous hip bays, valleys, and cutouts yielding ~2,207 sq ft footprint. The roof is entirely hip-style (no gable ends, so rakes = 0). Ridge lines are short horizontal peaks atop each hip section (~5 segments). Hip lines are numerous, running diagonally from each ridge end to each corner (~18 total). Valley lines are deep inward intersections between projecting wings and the main body (~8 total). Eaves run along the lower horizontal edges of each hip section (~14 segments). Confidence is moderate-low due to image complexity, multiple overlapping structures in dense development, and difficulty in precisely delineating individual unit boundaries.",
+  "footprint_sqft": 4643,
+  "footprint_confidence": 0.52,
+  "footprint_rationale": "The orange bounding box measures approximately 228 px wide × 338 px tall (48.3 ft × 71.6 ft), giving a raw bounding-box area of ~3,459 sq ft. The subject home displays a complex multi-section hip roof with multiple pyramidal peaks, numerous hip diagonals, and several interior valleys where sections intersect. No prominent gable rakes are visible (hip-dominant construction). A fill factor of 0.84 was applied to account for the hip corners, yielding a footprint of ~2,906 sq ft. Ridge lines consist of 3 horizontal peak segments spanning the upper, middle, and lower sections (~51 ft total). Hip edges account for ~10 diagonal corner runs (~121 ft). Valley lines trace ~5 inward angles between intersecting roof planes (~60 ft). Rake edges are minimal with only 1–2 small gable tips (~14 ft). Eave lines run along the outer lower perimeter (~162 ft). Confidence is moderate (0.52) due to the complex, overlapping roof geometry making precise edge tracing difficult from plan view.",
   "footprint_stub": false,
   "line_items": {
     "ridge": 51,
-    "hip": 229,
-    "valley": 88,
-    "rake": 0,
-    "eave": 163
+    "hip": 121,
+    "valley": 60,
+    "rake": 14,
+    "eave": 162
   },
-  "roof_area_sqft": 2467,
-  "computed_at": "2026-05-08T23:05:56.861Z"
+  "roof_area_sqft": 4369,
+  "roof_area_source": "solar-fence",
+  "vision_footprint_sqft": 2906,
+  "vision_roof_area_sqft": 3249,
+  "solar_footprint_sqft": 4643,
+  "solar_roof_area_sqft": 4369,
+  "fence_triggered": true,
+  "fence_reason": "vision roof area 3249 differs from solar 4369 by 25.6% (>20%)",
+  "computed_at": "2026-05-09T00:20:49.432Z"
 }
