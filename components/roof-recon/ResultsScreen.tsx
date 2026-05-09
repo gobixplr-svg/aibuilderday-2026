@@ -185,10 +185,17 @@ export function ResultsScreen({ t, result, onReset }: Props) {
             </div>
           </div>
 
-          {/* Satellite panel */}
+          {/* Satellite panel — render the same cached aerial that the
+              processing screen polled in, not the SVG placeholder. URL is
+              constructed from address; /api/aerial serves the cached
+              intermediate/<slug>/aerial.jpg the pipeline already wrote. */}
           <div className="relative aspect-square w-full max-w-sm justify-self-center lg:justify-self-end">
             <div className="absolute inset-0 border-2" style={{ borderColor: t.accent }} />
-            <SatelliteFrame locked accent={t.accent} />
+            <SatelliteFrame
+              locked
+              accent={t.accent}
+              imageUrl={`/api/aerial?address=${encodeURIComponent(address)}`}
+            />
             <div className="absolute inset-0 grid place-items-center pointer-events-none">
               <Reticle size={220} locked color={t.accent} />
             </div>
@@ -197,7 +204,7 @@ export function ResultsScreen({ t, result, onReset }: Props) {
               style={{ color: t.textSoft }}
             >
               <span>● TARGET&nbsp;LOCKED</span>
-              <span>0.3m/px</span>
+              <span>0.06m/px</span>
             </div>
           </div>
         </div>
