@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 3082,
+  "line_items": {
+    "ridge": 31.7,
+    "hip": 84,
+    "valley": 20.5,
+    "rake": 0,
+    "eave": 142
+  },
+  "confidence": 0.52,
+  "rationale": "The orange bounding box measures approximately 320 × 333 pixels (59.7 ft × 62.2 ft), giving a bounding area of ~3,713 sq ft. The subject roof is a multi-section hip roof with a dominant main wing and an attached secondary section (garage/addition). No open gable ends are visible, so the structure is treated as predominantly hip construction. A fill factor of 83% was applied to the bounding box, yielding a footprint of ~3,082 sq ft. Ridge lines include a primary ridge (~105 px) and a shorter secondary ridge (~65 px). Six hip corner lines averaging ~75 px each total ~450 px (84 ft). Two interior valley lines (~55 px each) mark where the roof sections meet. No rake edges were identified. Eave perimeter lines were estimated from the lower edges of both roof masses totaling ~760 px (142 ft). Confidence is moderate (0.52) due to tree shadowing on portions of the left section and the moderate viewing angle making precise hip/valley tracing somewhat uncertain."
+}

@@ -5,43 +5,36 @@
     "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA",
     "lat": 30.1116839,
     "lng": -95.50907149999999,
-    "pitch": "10:12",
-    "pitch_multiplier": 1.302,
-    "pitch_confidence": 0.9,
-    "pitch_rationale": "Area-weighted across 20 roof segments from Google Solar API (imageryQuality=HIGH): 38.93° → 10:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
+    "pitch": "6:12",
+    "pitch_multiplier": 1.118,
+    "pitch_confidence": 0.68,
+    "pitch_rationale": "The subject property (orange dashed outline) in Spring, TX displays a complex multi-hip roof with several intersecting hip planes and what appear to be small hip-dormer protrusions near the front. Key visual cues: (1) Shadow depth — the dark shadow valleys between intersecting hip planes are moderately prominent, consistent with a mid-range pitch rather than a shallow 4:12 or steep 9:12+; (2) Roof-to-eave geometry — the roof planes are clearly visible from overhead and occupy a notable portion of the plan footprint, but the hip returns are not razor-thin, pointing to a moderate slope; (3) Ridge prominence — multiple ridgelines are visible with clear directional shading on opposing faces, suggesting enough vertical rise to differentiate illuminated vs. shadowed planes; (4) Regional context — this is a suburban Houston/Spring, TX neighborhood where 6:12 is the dominant architectural pitch for this style of multi-hip luxury home; neighboring homes exhibit nearly identical roof profiles reinforcing this estimate. Taken together, the evidence best supports a 6:12 pitch, with 7:12 as a plausible alternative if the home leans toward the upper end of the local norm.",
     "pitch_stub": false,
-    "pitch_source": "solar",
-    "vision_pitch": "6:12",
-    "vision_pitch_confidence": 0.78,
-    "solar_pitch": "10:12",
-    "solar_pitch_avg_degrees": 38.92992039591072,
-    "solar_pitch_segment_count": 20,
-    "solar_pitch_imagery_quality": "HIGH",
     "footprint_sqft": 4643,
-    "footprint_confidence": 0.42,
-    "footprint_rationale": "The orange bounding box spans approximately 228 × 332 px (48.3 × 70.4 ft), giving a bounding area of ~3,400 sq ft. The subject home is a complex multi-section hip roof; the upper ~85% of the bounding box is covered by interconnected hip roof sections, while the lower ~15% is open driveway/yard. A fill factor of ~78% was applied, yielding a footprint of ~2,650 sq ft. Ridge lines are short (3–4 horizontal peaks across sub-masses). Hip lines are numerous (~10 runs) as the dominant roof style. Valleys are visible as dark inward-angle lines where sub-roofs intersect (~4–5 valleys). Rake edges are minimal since this is primarily a hip-style roof. Eave lines wrap the full outer perimeter of each hip section. Confidence is moderate due to roof complexity and partial overlap with adjacent structures near the left edge of the bounding box.",
+    "footprint_confidence": 0.4,
+    "footprint_rationale": "The orange bounding box spans approximately 228 px wide × 340 px tall (48.3 ft × 72.1 ft). The bottom ~25% of the box contains visible yard/entry pavement, so the effective roof bounding rectangle is 48.3 ft × 54 ft ≈ 2,608 sq ft. Applied an 83% fill factor for the complex, multi-section hip roof with projecting bays and turret/octagonal front elements, yielding ~2,165 sq ft, rounded to 2,200 sq ft. Ridge lines traced along the central N–S spine and secondary wing ridges (~46 ft total). Hip lines are the dominant feature with multiple sloped corner edges across all projecting sections (~112 ft). Valley lines counted at each wing-to-main-body junction, visible as darker inward angles (~50 ft). Rake edges attributed to the triangular gable/turret faces at the south front (~25 ft). Eave lines estimated along horizontal lower perimeter segments (~100 ft). Confidence is moderate due to the high roof complexity and partial occlusion of edges by roof overhangs and shadows.",
     "footprint_stub": false,
     "line_items": {
-      "ridge": 31,
-      "hip": 104,
-      "valley": 56,
-      "rake": 8,
-      "eave": 161
+      "ridge": 46,
+      "hip": 112,
+      "valley": 50,
+      "rake": 25,
+      "eave": 100
     },
     "condition": {
       "overall": "good",
       "findings": [],
-      "rationale": "The subject home at 5914 Copper Lilly Lane features a complex multi-gable/hip roof clad in dark charcoal asphalt shingles. Across all visible roof planes — including the upper northern section, central intersecting gables, and lower southern slopes — the shingle color and texture are consistent and uniform with no discernible color breaks, patching, or mismatched material. Ridge lines are geometrically straight with no visible sag or deflection. There are no tarps, coverings, or large debris present. No green/dark biological growth patches are visible on any slope. No areas of exposed decking or obvious missing material are present. No rust streaking or water-staining tracks are observable. Image resolution and lighting are sufficient for a reliable surface-level assessment. No findings meet the confidence threshold for reporting."
+      "rationale": "The subject roof within the orange bounding box is a large, complex multi-gabled/hip-style home with what appears to be dark charcoal asphalt shingles. Across all visible roof planes — including the multiple hip sections, valleys, and dormers — the shingle coloration is consistent and uniform with no large-scale discoloration, staining streaks, or color-mismatched patches visible. There are no tarps, blue or brown coverings, or foreign debris present. No biological growth (moss or algae) is detectable on any slope. Ridge lines appear geometrically straight without visible sag, consistent with neighboring homes of similar construction. Lighter tonal variations in some areas are attributable to sunlight angle differences across the varied roof faces rather than any surface damage. No findings met the confidence threshold to warrant inclusion. The roof presents as visually intact at this resolution and image quality is sufficient for a reliable assessment."
     },
     "roof_area_sqft": 4369,
     "roof_area_source": "solar-fence",
-    "vision_footprint_sqft": 2650,
-    "vision_roof_area_sqft": 3450,
+    "vision_footprint_sqft": 2200,
+    "vision_roof_area_sqft": 2460,
     "solar_footprint_sqft": 4643,
     "solar_roof_area_sqft": 4369,
     "fence_triggered": true,
-    "fence_reason": "vision roof area 3450 differs from solar 4369 by 21.0% (>12%)",
-    "computed_at": "2026-05-09T12:32:53.371Z"
+    "fence_reason": "vision roof area 2460 differs from solar 4369 by 43.7% (>12%)",
+    "computed_at": "2026-05-09T03:15:53.937Z"
   },
   "tiers": [
     {
@@ -61,8 +54,8 @@
           "amount": 1146.86
         },
         {
-          "label": "Trim & flashing (drip edge 161 lf, ridge 31 lf, valley 56 lf)",
-          "amount": 1489.5
+          "label": "Trim & flashing (drip edge 100 lf, ridge 46 lf, valley 50 lf)",
+          "amount": 1452.5
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
@@ -73,23 +66,23 @@
           "amount": 525.65
         },
         {
-          "label": "Labor (43.69 sq @ 2.34 h/sq)",
-          "amount": 8696.13
+          "label": "Labor (43.69 sq @ 2.12 h/sq)",
+          "amount": 7865.45
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2332.79
+          "amount": 2228.67
         },
         {
           "label": "Profit (15%)",
-          "amount": 3265.9
+          "amount": 3120.13
         }
       ],
-      "subtotal": 25038.58,
+      "subtotal": 23921.02,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T12:32:53.373Z",
+          "generated_at": "2026-05-09T03:15:53.957Z",
           "currency": "USD"
         },
         "inputs": {
@@ -99,11 +92,11 @@
           },
           "geometry": {
             "roof_area_sqft": 4369,
-            "ridge_lf": 31,
-            "hip_lf": 104,
-            "valley_lf": 56,
-            "eave_lf": 161,
-            "rake_lf": 8,
+            "ridge_lf": 46,
+            "hip_lf": 112,
+            "valley_lf": 50,
+            "eave_lf": 100,
+            "rake_lf": 25,
             "sidewall_lf": 0
           },
           "counts": {
@@ -115,7 +108,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "10:12",
+            "pitch": "6:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -130,11 +123,11 @@
           "underlayment_squares": 45.87,
           "ice_water_squares": 0,
           "decking_sheets": 9.56,
-          "ridge_lf": 31,
-          "hip_lf": 104,
-          "valley_lf": 56,
-          "eave_lf": 161,
-          "rake_lf": 8,
+          "ridge_lf": 46,
+          "hip_lf": 112,
+          "valley_lf": 50,
+          "eave_lf": 100,
+          "rake_lf": 25,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
           "penetrations": 5,
@@ -145,11 +138,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.22,
+          "pitch": 1.1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.342,
+          "labor_difficulty_total": 1.21,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -159,11 +152,11 @@
             "underlayment": 1146.86,
             "ice_water": 0,
             "tearoff": 1529.15,
-            "ridge_cap": 155,
-            "hip_cap": 520,
-            "valley_metal": 392,
-            "drip_edge_eave": 402.5,
-            "rake_trim": 20,
+            "ridge_cap": 230,
+            "hip_cap": 560,
+            "valley_metal": 350,
+            "drip_edge_eave": 250,
+            "rake_trim": 62.5,
             "sidewall_flashing": 0,
             "step_flashing": 0,
             "penetration_boots": 140,
@@ -174,14 +167,14 @@
             "access_hatches": 0,
             "decking_sheets": 525.65
           },
-          "direct_material_cost": 10743.77,
-          "labor_hours_base": 76.24,
-          "labor_hours_adjusted": 102.31,
-          "direct_labor_cost": 8696.13,
-          "direct_cost": 19439.89,
-          "overhead": 2332.79,
-          "profit": 3265.9,
-          "grand_total": 25038.58
+          "direct_material_cost": 10706.77,
+          "labor_hours_base": 76.48,
+          "labor_hours_adjusted": 92.53,
+          "direct_labor_cost": 7865.45,
+          "direct_cost": 18572.22,
+          "overhead": 2228.67,
+          "profit": 3120.13,
+          "grand_total": 23921.02
         }
       }
     },
@@ -202,8 +195,8 @@
           "amount": 1146.86
         },
         {
-          "label": "Trim & flashing (drip edge 161 lf, ridge 31 lf, valley 56 lf)",
-          "amount": 1489.5
+          "label": "Trim & flashing (drip edge 100 lf, ridge 46 lf, valley 50 lf)",
+          "amount": 1452.5
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
@@ -214,23 +207,23 @@
           "amount": 525.65
         },
         {
-          "label": "Labor (43.69 sq @ 3.01 h/sq)",
-          "amount": 11187.99
+          "label": "Labor (43.69 sq @ 2.72 h/sq)",
+          "amount": 10112.21
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2837.33
+          "amount": 2703.8
         },
         {
           "label": "Profit (15%)",
-          "amount": 3972.26
+          "amount": 3785.31
         }
       ],
-      "subtotal": 30453.99,
+      "subtotal": 29020.73,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T12:32:53.373Z",
+          "generated_at": "2026-05-09T03:15:53.961Z",
           "currency": "USD"
         },
         "inputs": {
@@ -240,11 +233,11 @@
           },
           "geometry": {
             "roof_area_sqft": 4369,
-            "ridge_lf": 31,
-            "hip_lf": 104,
-            "valley_lf": 56,
-            "eave_lf": 161,
-            "rake_lf": 8,
+            "ridge_lf": 46,
+            "hip_lf": 112,
+            "valley_lf": 50,
+            "eave_lf": 100,
+            "rake_lf": 25,
             "sidewall_lf": 0
           },
           "counts": {
@@ -256,7 +249,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "10:12",
+            "pitch": "6:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -271,11 +264,11 @@
           "underlayment_squares": 45.87,
           "ice_water_squares": 0,
           "decking_sheets": 9.56,
-          "ridge_lf": 31,
-          "hip_lf": 104,
-          "valley_lf": 56,
-          "eave_lf": 161,
-          "rake_lf": 8,
+          "ridge_lf": 46,
+          "hip_lf": 112,
+          "valley_lf": 50,
+          "eave_lf": 100,
+          "rake_lf": 25,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
           "penetrations": 5,
@@ -286,11 +279,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.22,
+          "pitch": 1.1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.342,
+          "labor_difficulty_total": 1.21,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -300,11 +293,11 @@
             "underlayment": 1146.86,
             "ice_water": 0,
             "tearoff": 1529.15,
-            "ridge_cap": 155,
-            "hip_cap": 520,
-            "valley_metal": 392,
-            "drip_edge_eave": 402.5,
-            "rake_trim": 20,
+            "ridge_cap": 230,
+            "hip_cap": 560,
+            "valley_metal": 350,
+            "drip_edge_eave": 250,
+            "rake_trim": 62.5,
             "sidewall_flashing": 0,
             "step_flashing": 0,
             "penetration_boots": 140,
@@ -315,14 +308,14 @@
             "access_hatches": 0,
             "decking_sheets": 525.65
           },
-          "direct_material_cost": 12456.41,
-          "labor_hours_base": 98.08,
-          "labor_hours_adjusted": 131.62,
-          "direct_labor_cost": 11187.99,
-          "direct_cost": 23644.4,
-          "overhead": 2837.33,
-          "profit": 3972.26,
-          "grand_total": 30453.99
+          "direct_material_cost": 12419.41,
+          "labor_hours_base": 98.32,
+          "labor_hours_adjusted": 118.97,
+          "direct_labor_cost": 10112.21,
+          "direct_cost": 22531.63,
+          "overhead": 2703.8,
+          "profit": 3785.31,
+          "grand_total": 29020.73
         }
       }
     },
@@ -343,8 +336,8 @@
           "amount": 1146.86
         },
         {
-          "label": "Trim & flashing (drip edge 161 lf, ridge 31 lf, valley 56 lf)",
-          "amount": 1489.5
+          "label": "Trim & flashing (drip edge 100 lf, ridge 46 lf, valley 50 lf)",
+          "amount": 1452.5
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
@@ -355,23 +348,23 @@
           "amount": 525.65
         },
         {
-          "label": "Labor (43.69 sq @ 3.68 h/sq)",
-          "amount": 13679.84
+          "label": "Labor (43.69 sq @ 3.33 h/sq)",
+          "amount": 12358.97
         },
         {
           "label": "Overhead (12%)",
-          "amount": 3576.75
+          "amount": 3413.8
         },
         {
           "label": "Profit (15%)",
-          "amount": 5007.44
+          "amount": 4779.32
         }
       ],
-      "subtotal": 38390.41,
+      "subtotal": 36641.47,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T12:32:53.373Z",
+          "generated_at": "2026-05-09T03:15:53.961Z",
           "currency": "USD"
         },
         "inputs": {
@@ -381,11 +374,11 @@
           },
           "geometry": {
             "roof_area_sqft": 4369,
-            "ridge_lf": 31,
-            "hip_lf": 104,
-            "valley_lf": 56,
-            "eave_lf": 161,
-            "rake_lf": 8,
+            "ridge_lf": 46,
+            "hip_lf": 112,
+            "valley_lf": 50,
+            "eave_lf": 100,
+            "rake_lf": 25,
             "sidewall_lf": 0
           },
           "counts": {
@@ -397,7 +390,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "10:12",
+            "pitch": "6:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -412,11 +405,11 @@
           "underlayment_squares": 45.87,
           "ice_water_squares": 0,
           "decking_sheets": 9.56,
-          "ridge_lf": 31,
-          "hip_lf": 104,
-          "valley_lf": 56,
-          "eave_lf": 161,
-          "rake_lf": 8,
+          "ridge_lf": 46,
+          "hip_lf": 112,
+          "valley_lf": 50,
+          "eave_lf": 100,
+          "rake_lf": 25,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
           "penetrations": 5,
@@ -427,11 +420,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.22,
+          "pitch": 1.1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.342,
+          "labor_difficulty_total": 1.21,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -441,11 +434,11 @@
             "underlayment": 1146.86,
             "ice_water": 0,
             "tearoff": 1529.15,
-            "ridge_cap": 155,
-            "hip_cap": 520,
-            "valley_metal": 392,
-            "drip_edge_eave": 402.5,
-            "rake_trim": 20,
+            "ridge_cap": 230,
+            "hip_cap": 560,
+            "valley_metal": 350,
+            "drip_edge_eave": 250,
+            "rake_trim": 62.5,
             "sidewall_flashing": 0,
             "step_flashing": 0,
             "penetration_boots": 140,
@@ -456,19 +449,19 @@
             "access_hatches": 0,
             "decking_sheets": 525.65
           },
-          "direct_material_cost": 16126.37,
-          "labor_hours_base": 119.93,
-          "labor_hours_adjusted": 160.94,
-          "direct_labor_cost": 13679.84,
-          "direct_cost": 29806.22,
-          "overhead": 3576.75,
-          "profit": 5007.44,
-          "grand_total": 38390.41
+          "direct_material_cost": 16089.37,
+          "labor_hours_base": 120.17,
+          "labor_hours_adjusted": 145.4,
+          "direct_labor_cost": 12358.97,
+          "direct_cost": 28448.34,
+          "overhead": 3413.8,
+          "profit": 4779.32,
+          "grand_total": 36641.47
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T12:32:53.373Z",
+  "generated_at": "2026-05-09T03:15:53.961Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

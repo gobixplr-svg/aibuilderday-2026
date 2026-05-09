@@ -1,0 +1,37 @@
+{
+  "slug": "1457-garden-view-ct-saratoga-springs-ut-84045",
+  "address": "1457 Garden View Ct, Saratoga Springs, UT 84045",
+  "formatted_address": "1457 Garden View Ct, Saratoga Springs, UT 84045, USA",
+  "lat": 40.3354075,
+  "lng": -111.9187365,
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
+  "pitch_confidence": 0.72,
+  "pitch_rationale": "The primary residence at this Saratoga Springs, UT address shows a complex multi-gable/hip roof whose ridge is noticeably narrower than the overall building footprint, indicating a meaningful rise-to-run ratio. Eave shadows cast onto the ground below confirm meaningful roof elevation, ruling out shallow pitches (3:12–4:12). Multiple intersecting gable planes are distinctly visible from overhead with clear light-shadow contrast, consistent with moderate-to-steep slopes. The northern Utah climate (snow load requirements) and typical 2000s–2010s suburban construction style both support a 6:12 pitch. A 5:12 or 7:12 cannot be fully ruled out, but 6:12 best reconciles the ridge-to-footprint ratio, shadow length, and regional building norms.",
+  "pitch_stub": false,
+  "footprint_sqft": 4914,
+  "footprint_confidence": 0.52,
+  "footprint_rationale": "The orange bounding box measures approximately 320 × 333 pixels (59.7 ft × 62.2 ft), giving a bounding area of ~3,713 sq ft. The subject roof is a multi-section hip roof with a dominant main wing and an attached secondary section (garage/addition). No open gable ends are visible, so the structure is treated as predominantly hip construction. A fill factor of 83% was applied to the bounding box, yielding a footprint of ~3,082 sq ft. Ridge lines include a primary ridge (~105 px) and a shorter secondary ridge (~65 px). Six hip corner lines averaging ~75 px each total ~450 px (84 ft). Two interior valley lines (~55 px each) mark where the roof sections meet. No rake edges were identified. Eave perimeter lines were estimated from the lower edges of both roof masses totaling ~760 px (142 ft). Confidence is moderate (0.52) due to tree shadowing on portions of the left section and the moderate viewing angle making precise hip/valley tracing somewhat uncertain.",
+  "footprint_stub": false,
+  "line_items": {
+    "ridge": 31.7,
+    "hip": 84,
+    "valley": 20.5,
+    "rake": 0,
+    "eave": 142
+  },
+  "condition": {
+    "overall": "good",
+    "findings": [],
+    "rationale": "The subject home within the orange bounding box presents a multi-slope hip-style roof with what appears to be standard asphalt shingles in a consistent medium-to-dark gray tone. Across the visible roof sections — the main upper slopes and the lower garage/entry slopes — the surface color is uniform with no color breaks, mismatched patches, or tarp-like coverings. No dark gaps indicative of missing material in bulk are present. The ridge lines appear geometrically straight with no visible sagging. No green/dark biological growth patches are detected on any slope. A portion of the northwest roof area is partially shadowed by adjacent mature trees, which limits assessment of that small zone, but the shadow pattern matches the tree canopy geometry rather than any surface anomaly. No debris or foreign objects are visible on the roof surface. Overall, no actionable findings were identified at this resolution."
+  },
+  "roof_area_sqft": 4090,
+  "roof_area_source": "solar-fence",
+  "vision_footprint_sqft": 3082,
+  "vision_roof_area_sqft": 3446,
+  "solar_footprint_sqft": 4914,
+  "solar_roof_area_sqft": 4090,
+  "fence_triggered": true,
+  "fence_reason": "vision roof area 3446 differs from solar 4090 by 15.7% (>12%)",
+  "computed_at": "2026-05-09T03:25:18.576Z"
+}

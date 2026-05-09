@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2650,
+  "footprint_sqft": 2200,
   "line_items": {
-    "ridge": 31,
-    "hip": 104,
-    "valley": 56,
-    "rake": 8,
-    "eave": 161
+    "ridge": 46,
+    "hip": 112,
+    "valley": 50,
+    "rake": 25,
+    "eave": 100
   },
-  "confidence": 0.42,
-  "rationale": "The orange bounding box spans approximately 228 × 332 px (48.3 × 70.4 ft), giving a bounding area of ~3,400 sq ft. The subject home is a complex multi-section hip roof; the upper ~85% of the bounding box is covered by interconnected hip roof sections, while the lower ~15% is open driveway/yard. A fill factor of ~78% was applied, yielding a footprint of ~2,650 sq ft. Ridge lines are short (3–4 horizontal peaks across sub-masses). Hip lines are numerous (~10 runs) as the dominant roof style. Valleys are visible as dark inward-angle lines where sub-roofs intersect (~4–5 valleys). Rake edges are minimal since this is primarily a hip-style roof. Eave lines wrap the full outer perimeter of each hip section. Confidence is moderate due to roof complexity and partial overlap with adjacent structures near the left edge of the bounding box."
+  "confidence": 0.4,
+  "rationale": "The orange bounding box spans approximately 228 px wide × 340 px tall (48.3 ft × 72.1 ft). The bottom ~25% of the box contains visible yard/entry pavement, so the effective roof bounding rectangle is 48.3 ft × 54 ft ≈ 2,608 sq ft. Applied an 83% fill factor for the complex, multi-section hip roof with projecting bays and turret/octagonal front elements, yielding ~2,165 sq ft, rounded to 2,200 sq ft. Ridge lines traced along the central N–S spine and secondary wing ridges (~46 ft total). Hip lines are the dominant feature with multiple sloped corner edges across all projecting sections (~112 ft). Valley lines counted at each wing-to-main-body junction, visible as darker inward angles (~50 ft). Rake edges attributed to the triangular gable/turret faces at the south front (~25 ft). Eave lines estimated along horizontal lower perimeter segments (~100 ft). Confidence is moderate due to the high roof complexity and partial occlusion of edges by roof overhangs and shadows."
 }
