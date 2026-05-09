@@ -37,3 +37,12 @@ body {
 .fade-msg {
   animation: fadeMsg 0.4s ease both;
 }
+
+/* Slow horizontal drift on the pitch-page grid backdrop — one full 120px tile
+   per ~30s. Subtle enough that judges won't consciously notice it but the
+   page never feels frozen. The mask in GridBackdrop fades the edges so the
+   drift doesn't create visible seams. */
+@keyframes gridDrift {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 120px 0, 120px 0, 24px 0, 24px 0; }
+}

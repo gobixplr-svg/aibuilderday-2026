@@ -38,3 +38,6 @@ Thumbs.db
 
 # Scratch / preview output
 tmp/
+
+# Agent worktrees (created locally by Claude Code; never committed)
+.claude/worktrees/

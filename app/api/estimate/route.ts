@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server"
-import { spawn } from "child_process"
 import { readFile, access } from "fs/promises"
 import { join } from "path"
 import { slugify } from "@/app/lib/slug"
@@ -16,10 +15,15 @@ async function fileExists(p: string): Promise<boolean> {
   }
 }
 
-function runPipeline(address: string): Promise<void> {
+async function runPipeline(address: string): Promise<void> {
+  // See app/api/measure/route.ts for why this is dynamically imported.
+  const cp = await import(/* webpackIgnore: true */ "node:child_process")
+  const cwd = process.cwd()
+  const scriptPath = process.env.ROOF_RECON_SCRIPT_PATH ?? join(cwd, "scripts", "estimate.mjs")
+
   return new Promise((resolve, reject) => {
-    const proc = spawn("node", ["scripts/estimate.mjs", address, "--no-cache"], {
-      cwd: process.cwd(),
+    const proc = cp.spawn(process.execPath, [scriptPath, address, "--no-cache"], {
+      cwd,
       env: { ...process.env },
     })
     proc.on("close", (code) => {
