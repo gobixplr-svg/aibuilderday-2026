@@ -25,6 +25,7 @@ import { mkdir, writeFile, readFile, copyFile, access } from "fs/promises"
 import { join } from "path"
 import { fetchAerialPipeline } from "./lib/aerial-pipeline.mjs"
 import { estimatePitch, pitchMultiplier } from "./lib/pitch.mjs"
+import { solarPitch } from "./lib/solar-pitch.mjs"
 import { estimateFootprint } from "./lib/footprint.mjs"
 import { loadMaterials, buildEstimate } from "./lib/estimate.mjs"
 import { slugify } from "./lib/slug.mjs"
@@ -79,12 +80,12 @@ async function predict(address) {
   const { slug, dir, geo, meta, aerialPath } = await fetchAerialPipeline({ address, noCache })
 
   const pitchPath = join(dir, "vision-pitch.json")
-  let pitch
+  let visionPitch
   if (!noCache && (await exists(pitchPath))) {
-    pitch = JSON.parse(await readFile(pitchPath, "utf-8"))
+    visionPitch = JSON.parse(await readFile(pitchPath, "utf-8"))
   } else {
-    pitch = await estimatePitch({ aerialPath, lat: geo.lat, lng: geo.lng, slug, scale: meta.feet_per_pixel })
-    await writeFile(pitchPath, JSON.stringify(pitch, null, 2))
+    visionPitch = await estimatePitch({ aerialPath, lat: geo.lat, lng: geo.lng, slug, scale: meta.feet_per_pixel })
+    await writeFile(pitchPath, JSON.stringify(visionPitch, null, 2))
   }
 
   const areaPath = join(dir, "vision-area.json")
@@ -95,6 +96,11 @@ async function predict(address) {
     area = await estimateFootprint({ aerialPath, lat: geo.lat, lng: geo.lng, slug, scale: meta.feet_per_pixel })
     await writeFile(areaPath, JSON.stringify(area, null, 2))
   }
+
+  // PLOG-009: Solar pitch primary, vision pitch fallback (mirrors estimate.mjs)
+  const solarInsightsPath = join(dir, "solar-insights.json")
+  const solarPitchData = await solarPitch({ insightsPath: solarInsightsPath })
+  const pitch = solarPitchData ?? visionPitch
 
   const mult = pitch.pitch_multiplier ?? pitchMultiplier(pitch.pitch)
   if (!mult) {

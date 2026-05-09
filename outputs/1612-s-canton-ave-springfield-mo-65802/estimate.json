@@ -5,12 +5,19 @@
     "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA",
     "lat": 37.1860933,
     "lng": -93.36959139999999,
-    "pitch": "5:12",
-    "pitch_multiplier": 1.083,
-    "pitch_confidence": 0.65,
-    "pitch_rationale": "All three homes display multi-faceted hip roofs with ridge lines set approximately 30–40% inward from the eave perimeter, consistent with a 5:12 pitch. Ground shadows cast from the eave edges extend roughly 8–12 feet (estimated via the 50 ft scale bar), which aligns with a moderate pitch at Springfield, MO's latitude (~37°N) in summer sun. Differential shading between north- and south-facing roof planes confirms meaningful slope but not a steep one. The regional context (mid-southern US climate, suburban ranch-style construction) further supports a 5:12 estimate, with 6:12 being a plausible alternate if the shadow projection is slightly underestimated.",
+    "pitch": "7:12",
+    "pitch_multiplier": 1.158,
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 10 roof segments from Google Solar API (imageryQuality=HIGH): 30.89° → 7:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
-    "footprint_sqft": 2828,
+    "pitch_source": "solar",
+    "vision_pitch": "5:12",
+    "vision_pitch_confidence": 0.65,
+    "solar_pitch": "7:12",
+    "solar_pitch_avg_degrees": 30.891628900593524,
+    "solar_pitch_segment_count": 10,
+    "solar_pitch_imagery_quality": "HIGH",
+    "footprint_sqft": 2100,
     "footprint_confidence": 0.44,
     "footprint_rationale": "The subject home is identified within the orange bounding box at approximately x=415–680, y=415–668 in the image. The bounding box measures roughly 265 × 253 pixels, equating to approximately 51.7 × 49.4 ft. The roof is a complex hip roof with no visible gable ends (rake = 0), appearing to form an L- or T-shaped footprint. A fill factor of 82% was applied to the 2,554 sq ft bounding rectangle, yielding ~2,100 sq ft. The small detached outbuilding to the east was excluded as it is separated by open ground. Ridge consists of a main E-W run (~110 px) and a perpendicular secondary ridge (~90 px). Approximately 6–7 hip lines connect the ridges to the lower corners. One to two valley lines are visible at the junction of the L-wing and main body. Eave perimeter was traced around the full L-shaped lower edge. No rake edges were identified.",
     "footprint_stub": false,
@@ -26,15 +33,15 @@
       "findings": [],
       "rationale": "The subject home within the orange bounding box features a complex hip-style roof surfaced with what appears to be dark gray asphalt shingles. The shingle field is visually uniform in color and texture across all visible slopes — no large-scale color breaks, mismatched patches, tarp coverings, or exposed decking are detectable. The ridge lines and hip lines appear geometrically straight with no visible sag or deflection compared to neighboring structures. Several small white/light-colored points visible on the roof surface are consistent with standard roof penetrations (pipe boots, vents) rather than damage. Tree shadows fall partially on the north/west slopes but enough of the surface remains visible to rule out major anomalies underneath. No moss or biological growth, debris, or structural distortion is observed. Overall the roof presents no flagged conditions at this resolution and imagery quality."
     },
-    "roof_area_sqft": 2757,
-    "roof_area_source": "solar-fence",
+    "roof_area_sqft": 2432,
+    "roof_area_source": "vision",
     "vision_footprint_sqft": 2100,
-    "vision_roof_area_sqft": 2274,
+    "vision_roof_area_sqft": 2432,
     "solar_footprint_sqft": 2828,
     "solar_roof_area_sqft": 2757,
-    "fence_triggered": true,
-    "fence_reason": "vision roof area 2274 differs from solar 2757 by 17.5% (>12%)",
-    "computed_at": "2026-05-09T02:46:50.753Z"
+    "fence_triggered": false,
+    "fence_reason": null,
+    "computed_at": "2026-05-09T12:31:56.219Z"
   },
   "tiers": [
     {
@@ -42,16 +49,16 @@
       "tier_name": "3-Tab Asphalt Shingle",
       "lines": [
         {
-          "label": "3-Tab Asphalt Shingle (30.88 sq, includes 12% waste)",
-          "amount": 3396.62
+          "label": "3-Tab Asphalt Shingle (27.24 sq, includes 12% waste)",
+          "amount": 2996.22
         },
         {
-          "label": "Tear-off (27.57 sq, 1 layer)",
-          "amount": 964.95
+          "label": "Tear-off (24.32 sq, 1 layer)",
+          "amount": 851.2
         },
         {
-          "label": "Underlayment (28.95 sq)",
-          "amount": 723.71
+          "label": "Underlayment (25.54 sq)",
+          "amount": 638.4
         },
         {
           "label": "Trim & flashing (drip edge 154 lf, ridge 39 lf, valley 28 lf)",
@@ -62,27 +69,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (6.03 sheets, contingency)",
-          "amount": 331.7
+          "label": "Decking allowance (5.32 sheets, contingency)",
+          "amount": 292.6
         },
         {
-          "label": "Labor (27.57 sq @ 2.22 h/sq)",
-          "amount": 5213.98
+          "label": "Labor (24.32 sq @ 2.28 h/sq)",
+          "amount": 4712.59
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1514.64
+          "amount": 1377.84
         },
         {
           "label": "Profit (15%)",
-          "amount": 2120.49
+          "amount": 1928.98
         }
       ],
-      "subtotal": 16257.1,
+      "subtotal": 14788.83,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:50.755Z",
+          "generated_at": "2026-05-09T12:31:56.221Z",
           "currency": "USD"
         },
         "inputs": {
@@ -91,7 +98,7 @@
             "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2757,
+            "roof_area_sqft": 2432,
             "ridge_lf": 39,
             "hip_lf": 109,
             "valley_lf": 28,
@@ -108,7 +115,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "7:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -117,12 +124,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2757,
-          "roof_squares": 27.57,
-          "field_squares": 30.88,
-          "underlayment_squares": 28.95,
+          "roof_area_sqft": 2432,
+          "roof_squares": 24.32,
+          "field_squares": 27.24,
+          "underlayment_squares": 25.54,
           "ice_water_squares": 0,
-          "decking_sheets": 6.03,
+          "decking_sheets": 5.32,
           "ridge_lf": 39,
           "hip_lf": 109,
           "valley_lf": 28,
@@ -148,10 +155,10 @@
         },
         "costs": {
           "materials": {
-            "field": 3396.62,
-            "underlayment": 723.71,
+            "field": 2996.22,
+            "underlayment": 638.4,
             "ice_water": 0,
-            "tearoff": 964.95,
+            "tearoff": 851.2,
             "ridge_cap": 195,
             "hip_cap": 545,
             "valley_metal": 196,
@@ -165,16 +172,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 331.7
+            "decking_sheets": 292.6
           },
-          "direct_material_cost": 7407.99,
-          "labor_hours_base": 50.7,
-          "labor_hours_adjusted": 61.34,
-          "direct_labor_cost": 5213.98,
-          "direct_cost": 12621.97,
-          "overhead": 1514.64,
-          "profit": 2120.49,
-          "grand_total": 16257.1
+          "direct_material_cost": 6769.42,
+          "labor_hours_base": 45.82,
+          "labor_hours_adjusted": 55.44,
+          "direct_labor_cost": 4712.59,
+          "direct_cost": 11482.01,
+          "overhead": 1377.84,
+          "profit": 1928.98,
+          "grand_total": 14788.83
         }
       }
     },
@@ -183,16 +190,16 @@
       "tier_name": "Architectural Laminate",
       "lines": [
         {
-          "label": "Architectural Laminate (30.88 sq, includes 12% waste)",
-          "amount": 4477.37
+          "label": "Architectural Laminate (27.24 sq, includes 12% waste)",
+          "amount": 3949.57
         },
         {
-          "label": "Tear-off (27.57 sq, 1 layer)",
-          "amount": 964.95
+          "label": "Tear-off (24.32 sq, 1 layer)",
+          "amount": 851.2
         },
         {
-          "label": "Underlayment (28.95 sq)",
-          "amount": 723.71
+          "label": "Underlayment (25.54 sq)",
+          "amount": 638.4
         },
         {
           "label": "Trim & flashing (drip edge 154 lf, ridge 39 lf, valley 28 lf)",
@@ -203,27 +210,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (6.03 sheets, contingency)",
-          "amount": 331.7
+          "label": "Decking allowance (5.32 sheets, contingency)",
+          "amount": 292.6
         },
         {
-          "label": "Labor (27.57 sq @ 2.83 h/sq)",
-          "amount": 6631.77
+          "label": "Labor (24.32 sq @ 2.88 h/sq)",
+          "amount": 5963.24
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1814.46
+          "amount": 1642.32
         },
         {
           "label": "Profit (15%)",
-          "amount": 2540.24
+          "amount": 2299.25
         }
       ],
-      "subtotal": 19475.2,
+      "subtotal": 17627.58,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:50.756Z",
+          "generated_at": "2026-05-09T12:31:56.221Z",
           "currency": "USD"
         },
         "inputs": {
@@ -232,7 +239,7 @@
             "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2757,
+            "roof_area_sqft": 2432,
             "ridge_lf": 39,
             "hip_lf": 109,
             "valley_lf": 28,
@@ -249,7 +256,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "7:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -258,12 +265,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2757,
-          "roof_squares": 27.57,
-          "field_squares": 30.88,
-          "underlayment_squares": 28.95,
+          "roof_area_sqft": 2432,
+          "roof_squares": 24.32,
+          "field_squares": 27.24,
+          "underlayment_squares": 25.54,
           "ice_water_squares": 0,
-          "decking_sheets": 6.03,
+          "decking_sheets": 5.32,
           "ridge_lf": 39,
           "hip_lf": 109,
           "valley_lf": 28,
@@ -289,10 +296,10 @@
         },
         "costs": {
           "materials": {
-            "field": 4477.37,
-            "underlayment": 723.71,
+            "field": 3949.57,
+            "underlayment": 638.4,
             "ice_water": 0,
-            "tearoff": 964.95,
+            "tearoff": 851.2,
             "ridge_cap": 195,
             "hip_cap": 545,
             "valley_metal": 196,
@@ -306,16 +313,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 331.7
+            "decking_sheets": 292.6
           },
-          "direct_material_cost": 8488.73,
-          "labor_hours_base": 64.48,
-          "labor_hours_adjusted": 78.02,
-          "direct_labor_cost": 6631.77,
-          "direct_cost": 15120.5,
-          "overhead": 1814.46,
-          "profit": 2540.24,
-          "grand_total": 19475.2
+          "direct_material_cost": 7722.77,
+          "labor_hours_base": 57.98,
+          "labor_hours_adjusted": 70.16,
+          "direct_labor_cost": 5963.24,
+          "direct_cost": 13686.01,
+          "overhead": 1642.32,
+          "profit": 2299.25,
+          "grand_total": 17627.58
         }
       }
     },
@@ -324,16 +331,16 @@
       "tier_name": "Designer / Impact-Resistant",
       "lines": [
         {
-          "label": "Designer / Impact-Resistant (30.88 sq, includes 12% waste)",
-          "amount": 6793.25
+          "label": "Designer / Impact-Resistant (27.24 sq, includes 12% waste)",
+          "amount": 5992.45
         },
         {
-          "label": "Tear-off (27.57 sq, 1 layer)",
-          "amount": 964.95
+          "label": "Tear-off (24.32 sq, 1 layer)",
+          "amount": 851.2
         },
         {
-          "label": "Underlayment (28.95 sq)",
-          "amount": 723.71
+          "label": "Underlayment (25.54 sq)",
+          "amount": 638.4
         },
         {
           "label": "Trim & flashing (drip edge 154 lf, ridge 39 lf, valley 28 lf)",
@@ -344,27 +351,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (6.03 sheets, contingency)",
-          "amount": 331.7
+          "label": "Decking allowance (5.32 sheets, contingency)",
+          "amount": 292.6
         },
         {
-          "label": "Labor (27.57 sq @ 3.43 h/sq)",
-          "amount": 8049.56
+          "label": "Labor (24.32 sq @ 3.49 h/sq)",
+          "amount": 7213.9
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2262.5
+          "amount": 2037.55
         },
         {
           "label": "Profit (15%)",
-          "amount": 3167.5
+          "amount": 2852.56
         }
       ],
-      "subtotal": 24284.17,
+      "subtotal": 21869.66,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:50.756Z",
+          "generated_at": "2026-05-09T12:31:56.221Z",
           "currency": "USD"
         },
         "inputs": {
@@ -373,7 +380,7 @@
             "formatted_address": "1612 S Canton Ave, Springfield, MO 65802, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2757,
+            "roof_area_sqft": 2432,
             "ridge_lf": 39,
             "hip_lf": 109,
             "valley_lf": 28,
@@ -390,7 +397,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "7:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -399,12 +406,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2757,
-          "roof_squares": 27.57,
-          "field_squares": 30.88,
-          "underlayment_squares": 28.95,
+          "roof_area_sqft": 2432,
+          "roof_squares": 24.32,
+          "field_squares": 27.24,
+          "underlayment_squares": 25.54,
           "ice_water_squares": 0,
-          "decking_sheets": 6.03,
+          "decking_sheets": 5.32,
           "ridge_lf": 39,
           "hip_lf": 109,
           "valley_lf": 28,
@@ -430,10 +437,10 @@
         },
         "costs": {
           "materials": {
-            "field": 6793.25,
-            "underlayment": 723.71,
+            "field": 5992.45,
+            "underlayment": 638.4,
             "ice_water": 0,
-            "tearoff": 964.95,
+            "tearoff": 851.2,
             "ridge_cap": 195,
             "hip_cap": 545,
             "valley_metal": 196,
@@ -447,21 +454,21 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 331.7
+            "decking_sheets": 292.6
           },
-          "direct_material_cost": 10804.61,
-          "labor_hours_base": 78.27,
-          "labor_hours_adjusted": 94.7,
-          "direct_labor_cost": 8049.56,
-          "direct_cost": 18854.17,
-          "overhead": 2262.5,
-          "profit": 3167.5,
-          "grand_total": 24284.17
+          "direct_material_cost": 9765.65,
+          "labor_hours_base": 70.14,
+          "labor_hours_adjusted": 84.87,
+          "direct_labor_cost": 7213.9,
+          "direct_cost": 16979.55,
+          "overhead": 2037.55,
+          "profit": 2852.56,
+          "grand_total": 21869.66
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T02:46:50.756Z",
+  "generated_at": "2026-05-09T12:31:56.221Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

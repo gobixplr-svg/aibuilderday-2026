@@ -5,12 +5,19 @@
     "formatted_address": "6310 Laguna Bay Ct, Houston, TX 77041, USA",
     "lat": 29.8603157,
     "lng": -95.59039589999999,
-    "pitch": "5:12",
-    "pitch_multiplier": 1.083,
-    "pitch_confidence": 0.72,
-    "pitch_rationale": "The homes at this Houston, TX location feature multi-faceted hip roofs with no prominent gables or dormers. Shadow lengths cast from the eaves onto surrounding hardscape measure approximately 8–12 feet using the 50-ft scale bar, consistent with a moderate ~5:12 pitch given estimated eave heights of 12–14 ft. The visible roof planes are broad relative to the overall footprint but show clear tonal gradation between faces, ruling out a very shallow 3:12–4:12 or a steep 7:12+ pitch. The southern Houston climate strongly favors 4:12–6:12 pitches, and the roof-to-eave geometry with ridges sitting moderately inward from the eave perimeter best matches a 5:12 estimate.",
+    "pitch": "8:12",
+    "pitch_multiplier": 1.202,
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 20 roof segments from Google Solar API (imageryQuality=HIGH): 35.21° → 8:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
-    "footprint_sqft": 3984,
+    "pitch_source": "solar",
+    "vision_pitch": "5:12",
+    "vision_pitch_confidence": 0.72,
+    "solar_pitch": "8:12",
+    "solar_pitch_avg_degrees": 35.213271922564644,
+    "solar_pitch_segment_count": 20,
+    "solar_pitch_imagery_quality": "HIGH",
+    "footprint_sqft": 4359,
     "footprint_confidence": 0.45,
     "footprint_rationale": "The orange bounding box spans approximately 380 px (wide) × 342 px (tall), equating to 80.7 ft × 72.6 ft = 5,859 sq ft bounding area. The subject is a large, complex multi-section hip roof with no visible gable ends (fully hipped). The pool in the upper-right of the bounding box and paved patio/driveway areas in the lower-left and lower portions are excluded from the roof footprint. A fill factor of ~0.68 was applied to account for these non-roof areas, yielding ~3,984 sq ft. Roof edges were traced section by section: numerous short ridge lines sit atop each hip section (~39 ft total); hip lines are abundant at every corner and section intersection (~144 ft); valleys appear at the re-entrant angles where sections join (~28 ft); rake edges are minimal given the fully hipped design (~12 ft); eave lines run along the full perimeter of all sections (~212 ft). Confidence is moderate (0.45) due to the complex multi-plane geometry, oblique view angle, and partial shadowing making individual edge identification challenging.",
     "footprint_stub": false,
@@ -34,15 +41,15 @@
       ],
       "rationale": "The subject roof at 6310 Laguna Bay Court is a large, complex multi-hip residential roof with dark gray/charcoal shingles across its primary slopes. At this resolution and image quality, the shingle field is largely uniform in color with no visible tarps, moss/biological growth, obvious missing material, or structural sag along the ridgelines. The one clearly notable feature is a lighter-colored flat or low-slope section centrally located between the two main hip-roof volumes — its tan/gray color and smooth texture are distinctly different from the surrounding dark shingle planes, indicating a different roofing material (likely a membrane system). This is not necessarily a defect, but flat/low-slope transitions are higher-risk areas for water intrusion and warrant a close in-person look at seams, drains, and membrane condition. No other actionable findings were identified at this resolution."
     },
-    "roof_area_sqft": 4315,
-    "roof_area_source": "vision",
+    "roof_area_sqft": 4186,
+    "roof_area_source": "solar-fence",
     "vision_footprint_sqft": 3984,
-    "vision_roof_area_sqft": 4315,
+    "vision_roof_area_sqft": 4789,
     "solar_footprint_sqft": 4359,
     "solar_roof_area_sqft": 4186,
-    "fence_triggered": false,
-    "fence_reason": null,
-    "computed_at": "2026-05-09T02:47:15.284Z"
+    "fence_triggered": true,
+    "fence_reason": "vision roof area 4789 differs from solar 4186 by 14.4% (>12%)",
+    "computed_at": "2026-05-09T12:32:02.281Z"
   },
   "tiers": [
     {
@@ -50,16 +57,16 @@
       "tier_name": "3-Tab Asphalt Shingle",
       "lines": [
         {
-          "label": "3-Tab Asphalt Shingle (48.33 sq, includes 12% waste)",
-          "amount": 5316.08
+          "label": "3-Tab Asphalt Shingle (46.88 sq, includes 12% waste)",
+          "amount": 5157.15
         },
         {
-          "label": "Tear-off (43.15 sq, 1 layer)",
-          "amount": 1510.25
+          "label": "Tear-off (41.86 sq, 1 layer)",
+          "amount": 1465.1
         },
         {
-          "label": "Underlayment (45.31 sq)",
-          "amount": 1132.69
+          "label": "Underlayment (43.95 sq)",
+          "amount": 1098.83
         },
         {
           "label": "Trim & flashing (drip edge 212 lf, ridge 39 lf, valley 28 lf)",
@@ -70,27 +77,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (9.44 sheets, contingency)",
-          "amount": 519.15
+          "label": "Decking allowance (9.16 sheets, contingency)",
+          "amount": 503.63
         },
         {
-          "label": "Labor (43.15 sq @ 2.08 h/sq)",
-          "amount": 7617.59
+          "label": "Labor (41.86 sq @ 2.31 h/sq)",
+          "amount": 8227.87
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2212.41
+          "amount": 2255.23
         },
         {
           "label": "Profit (15%)",
-          "amount": 3097.37
+          "amount": 3157.32
         }
       ],
-      "subtotal": 23746.54,
+      "subtotal": 24206.12,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:47:15.286Z",
+          "generated_at": "2026-05-09T12:32:02.282Z",
           "currency": "USD"
         },
         "inputs": {
@@ -99,7 +106,7 @@
             "formatted_address": "6310 Laguna Bay Ct, Houston, TX 77041, USA"
           },
           "geometry": {
-            "roof_area_sqft": 4315,
+            "roof_area_sqft": 4186,
             "ridge_lf": 39,
             "hip_lf": 144,
             "valley_lf": 28,
@@ -116,7 +123,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "8:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -125,12 +132,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 4315,
-          "roof_squares": 43.15,
-          "field_squares": 48.33,
-          "underlayment_squares": 45.31,
+          "roof_area_sqft": 4186,
+          "roof_squares": 41.86,
+          "field_squares": 46.88,
+          "underlayment_squares": 43.95,
           "ice_water_squares": 0,
-          "decking_sheets": 9.44,
+          "decking_sheets": 9.16,
           "ridge_lf": 39,
           "hip_lf": 144,
           "valley_lf": 28,
@@ -146,20 +153,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 5316.08,
-            "underlayment": 1132.69,
+            "field": 5157.15,
+            "underlayment": 1098.83,
             "ice_water": 0,
-            "tearoff": 1510.25,
+            "tearoff": 1465.1,
             "ridge_cap": 195,
             "hip_cap": 720,
             "valley_metal": 196,
@@ -173,16 +180,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 519.15
+            "decking_sheets": 503.63
           },
-          "direct_material_cost": 10819.17,
-          "labor_hours_base": 74.07,
-          "labor_hours_adjusted": 89.62,
-          "direct_labor_cost": 7617.59,
-          "direct_cost": 18436.75,
-          "overhead": 2212.41,
-          "profit": 3097.37,
-          "grand_total": 23746.54
+          "direct_material_cost": 10565.71,
+          "labor_hours_base": 72.13,
+          "labor_hours_adjusted": 96.8,
+          "direct_labor_cost": 8227.87,
+          "direct_cost": 18793.57,
+          "overhead": 2255.23,
+          "profit": 3157.32,
+          "grand_total": 24206.12
         }
       }
     },
@@ -191,16 +198,16 @@
       "tier_name": "Architectural Laminate",
       "lines": [
         {
-          "label": "Architectural Laminate (48.33 sq, includes 12% waste)",
-          "amount": 7007.56
+          "label": "Architectural Laminate (46.88 sq, includes 12% waste)",
+          "amount": 6798.06
         },
         {
-          "label": "Tear-off (43.15 sq, 1 layer)",
-          "amount": 1510.25
+          "label": "Tear-off (41.86 sq, 1 layer)",
+          "amount": 1465.1
         },
         {
-          "label": "Underlayment (45.31 sq)",
-          "amount": 1132.69
+          "label": "Underlayment (43.95 sq)",
+          "amount": 1098.83
         },
         {
           "label": "Trim & flashing (drip edge 212 lf, ridge 39 lf, valley 28 lf)",
@@ -211,27 +218,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (9.44 sheets, contingency)",
-          "amount": 519.15
+          "label": "Decking allowance (9.16 sheets, contingency)",
+          "amount": 503.63
         },
         {
-          "label": "Labor (43.15 sq @ 2.68 h/sq)",
-          "amount": 9836.57
+          "label": "Labor (41.86 sq @ 2.98 h/sq)",
+          "amount": 10615.35
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2681.67
+          "amount": 2738.64
         },
         {
           "label": "Profit (15%)",
-          "amount": 3754.33
+          "amount": 3834.09
         }
       ],
-      "subtotal": 28783.22,
+      "subtotal": 29394.7,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:47:15.286Z",
+          "generated_at": "2026-05-09T12:32:02.283Z",
           "currency": "USD"
         },
         "inputs": {
@@ -240,7 +247,7 @@
             "formatted_address": "6310 Laguna Bay Ct, Houston, TX 77041, USA"
           },
           "geometry": {
-            "roof_area_sqft": 4315,
+            "roof_area_sqft": 4186,
             "ridge_lf": 39,
             "hip_lf": 144,
             "valley_lf": 28,
@@ -257,7 +264,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "8:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -266,12 +273,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 4315,
-          "roof_squares": 43.15,
-          "field_squares": 48.33,
-          "underlayment_squares": 45.31,
+          "roof_area_sqft": 4186,
+          "roof_squares": 41.86,
+          "field_squares": 46.88,
+          "underlayment_squares": 43.95,
           "ice_water_squares": 0,
-          "decking_sheets": 9.44,
+          "decking_sheets": 9.16,
           "ridge_lf": 39,
           "hip_lf": 144,
           "valley_lf": 28,
@@ -287,20 +294,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 7007.56,
-            "underlayment": 1132.69,
+            "field": 6798.06,
+            "underlayment": 1098.83,
             "ice_water": 0,
-            "tearoff": 1510.25,
+            "tearoff": 1465.1,
             "ridge_cap": 195,
             "hip_cap": 720,
             "valley_metal": 196,
@@ -314,16 +321,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 519.15
+            "decking_sheets": 503.63
           },
-          "direct_material_cost": 12510.65,
-          "labor_hours_base": 95.64,
-          "labor_hours_adjusted": 115.72,
-          "direct_labor_cost": 9836.57,
-          "direct_cost": 22347.22,
-          "overhead": 2681.67,
-          "profit": 3754.33,
-          "grand_total": 28783.22
+          "direct_material_cost": 12206.62,
+          "labor_hours_base": 93.06,
+          "labor_hours_adjusted": 124.89,
+          "direct_labor_cost": 10615.35,
+          "direct_cost": 22821.97,
+          "overhead": 2738.64,
+          "profit": 3834.09,
+          "grand_total": 29394.7
         }
       }
     },
@@ -332,16 +339,16 @@
       "tier_name": "Designer / Impact-Resistant",
       "lines": [
         {
-          "label": "Designer / Impact-Resistant (48.33 sq, includes 12% waste)",
-          "amount": 10632.16
+          "label": "Designer / Impact-Resistant (46.88 sq, includes 12% waste)",
+          "amount": 10314.3
         },
         {
-          "label": "Tear-off (43.15 sq, 1 layer)",
-          "amount": 1510.25
+          "label": "Tear-off (41.86 sq, 1 layer)",
+          "amount": 1465.1
         },
         {
-          "label": "Underlayment (45.31 sq)",
-          "amount": 1132.69
+          "label": "Underlayment (43.95 sq)",
+          "amount": 1098.83
         },
         {
           "label": "Trim & flashing (drip edge 212 lf, ridge 39 lf, valley 28 lf)",
@@ -352,27 +359,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (9.44 sheets, contingency)",
-          "amount": 519.15
+          "label": "Decking allowance (9.16 sheets, contingency)",
+          "amount": 503.63
         },
         {
-          "label": "Labor (43.15 sq @ 3.29 h/sq)",
-          "amount": 12055.56
+          "label": "Labor (41.86 sq @ 3.65 h/sq)",
+          "amount": 13002.84
         },
         {
           "label": "Overhead (12%)",
-          "amount": 3382.9
+          "amount": 3447.08
         },
         {
           "label": "Profit (15%)",
-          "amount": 4736.06
+          "amount": 4825.92
         }
       ],
-      "subtotal": 36309.76,
+      "subtotal": 36998.7,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:47:15.286Z",
+          "generated_at": "2026-05-09T12:32:02.283Z",
           "currency": "USD"
         },
         "inputs": {
@@ -381,7 +388,7 @@
             "formatted_address": "6310 Laguna Bay Ct, Houston, TX 77041, USA"
           },
           "geometry": {
-            "roof_area_sqft": 4315,
+            "roof_area_sqft": 4186,
             "ridge_lf": 39,
             "hip_lf": 144,
             "valley_lf": 28,
@@ -398,7 +405,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "8:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -407,12 +414,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 4315,
-          "roof_squares": 43.15,
-          "field_squares": 48.33,
-          "underlayment_squares": 45.31,
+          "roof_area_sqft": 4186,
+          "roof_squares": 41.86,
+          "field_squares": 46.88,
+          "underlayment_squares": 43.95,
           "ice_water_squares": 0,
-          "decking_sheets": 9.44,
+          "decking_sheets": 9.16,
           "ridge_lf": 39,
           "hip_lf": 144,
           "valley_lf": 28,
@@ -428,20 +435,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 10632.16,
-            "underlayment": 1132.69,
+            "field": 10314.3,
+            "underlayment": 1098.83,
             "ice_water": 0,
-            "tearoff": 1510.25,
+            "tearoff": 1465.1,
             "ridge_cap": 195,
             "hip_cap": 720,
             "valley_metal": 196,
@@ -455,21 +462,21 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 519.15
+            "decking_sheets": 503.63
           },
-          "direct_material_cost": 16135.25,
-          "labor_hours_base": 117.22,
-          "labor_hours_adjusted": 141.83,
-          "direct_labor_cost": 12055.56,
-          "direct_cost": 28190.81,
-          "overhead": 3382.9,
-          "profit": 4736.06,
-          "grand_total": 36309.76
+          "direct_material_cost": 15722.86,
+          "labor_hours_base": 113.99,
+          "labor_hours_adjusted": 152.97,
+          "direct_labor_cost": 13002.84,
+          "direct_cost": 28725.7,
+          "overhead": 3447.08,
+          "profit": 4825.92,
+          "grand_total": 36998.7
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T02:47:15.286Z",
+  "generated_at": "2026-05-09T12:32:02.283Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

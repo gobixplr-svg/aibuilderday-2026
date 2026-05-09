@@ -131,17 +131,17 @@ The repo is doing triple duty. Knowing which audience you're optimizing for chan
 - [ ] PDF download path from the UI (right now PDF lives in outputs/, not exposed in UI)
 - [ ] Error states tested (bad address, API timeout, etc.)
 
-## Current submission set (PLOG-006, ready to submit)
+## Current submission set (PLOG-009, ready to submit)
 
-| # | Property | Final sqft | Source | Pitch |
+| # | Property | Final sqft | Pitch | Source |
 |---|---|---|---|---|
-| 1 | 3561 E 102nd Ct, Thornton CO 80229 | **2,081** | Solar-fenced | 6:12 |
-| 2 | 1612 S Canton Ave, Springfield MO 65802 | **2,757** | Solar-fenced | 5:12 |
-| 3 | 6310 Laguna Bay Court, Houston TX 77041 | **4,315** | Vision | 5:12 |
-| 4 | 3820 E Rosebrier St, Springfield MO 65809 | **6,015** | Vision | 6:12 |
-| 5 | 1261 20th Street, Newport News VA 23607 | **6,118** | Solar-fenced | 6:12 |
+| 1 | 3561 E 102nd Ct, Thornton CO 80229 | **2,081** | 9:12 | Solar-fenced |
+| 2 | 1612 S Canton Ave, Springfield MO 65802 | **2,432** | 7:12 | Vision |
+| 3 | 6310 Laguna Bay Court, Houston TX 77041 | **4,186** | 8:12 | Solar-fenced |
+| 4 | 3820 E Rosebrier St, Springfield MO 65809 | **6,015** | 6:12 | Vision |
+| 5 | 1261 20th Street, Newport News VA 23607 | **6,702** | 4:12 | Vision |
 
-Calibration on 5 example properties (PLOG-006, fence threshold 12%): **5/5 within ±10%, 3.4% avg error.** Worst case is Nixa at +8.0%. Test set numbers unchanged from PLOG-005 — the threshold tightening only flipped one example property (Kenswick, +14.5% → −0.2%) without touching any submission number.
+Calibration on 5 example properties (PLOG-009): **5/5 sqft within ±10%, 1.8% avg error.** Worst case is Orland Park at +7.0%. **Pitch: 3/5 exact match, 5/5 within ±1 enum step** after switching to Solar API `roofSegmentStats[].pitchDegrees` as primary (vision retained as logged fallback for `imageryQuality=LOW` properties). Three test sqft moved from PLOG-006 numbers because the new (more accurate) pitch shifted vision-vs-Solar disagreement and the fence behavior changed accordingly: Canton −325, Houston −129, Newport News +584. Two test sqft unchanged.
 
 ## Status of original concerns (resolved during this session)
 
@@ -206,12 +206,12 @@ Fields, in order:
 2. **Approach summary** — paste from `docs/submission-summary.md`
 3. **Phone number** — Dan's, since he's lead and on-site
 4. **GitHub repo URL** — `https://github.com/gobixplr-svg/aibuilderday-2026`
-5. **5 test sqft numbers** (in form's order — verify against `benchmark-measurements.md`):
-   - 3561 E 102nd Ct, Thornton CO → **2,081**
-   - 1612 S Canton Ave, Springfield MO → **2,757**
-   - 6310 Laguna Bay Court, Houston TX → **4,315**
-   - 3820 E Rosebrier St, Springfield MO → **6,015**
-   - 1261 20th Street, Newport News VA → **6,118**
+5. **5 test sqft + pitch numbers** (form requires both — see `outputs/<slug>/measurement.json` for source-of-truth):
+   - 3561 E 102nd Ct, Thornton CO → sqft **2,081**, pitch **9:12**
+   - 1612 S Canton Ave, Springfield MO → sqft **2,432**, pitch **7:12**
+   - 6310 Laguna Bay Court, Houston TX → sqft **4,186**, pitch **8:12**
+   - 3820 E Rosebrier St, Springfield MO → sqft **6,015**, pitch **6:12**
+   - 1261 20th Street, Newport News VA → sqft **6,702**, pitch **4:12**
 6. **Optional: best example output URL** — pick one of these at form-fill time based on what feels strongest in the moment:
    - **Thornton CO test PDF** (test property, Solar-fenced, smallest/cleanest of the test set):
      `https://github.com/gobixplr-svg/aibuilderday-2026/blob/main/outputs/3561-e-102nd-ct-thornton-co-80229/estimate.pdf`

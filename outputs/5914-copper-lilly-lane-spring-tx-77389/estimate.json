@@ -5,11 +5,18 @@
     "formatted_address": "5914 Copper Lily, Spring, TX 77389, USA",
     "lat": 30.1116839,
     "lng": -95.50907149999999,
-    "pitch": "6:12",
-    "pitch_multiplier": 1.118,
-    "pitch_confidence": 0.78,
-    "pitch_rationale": "The subject property displays a complex multi-hip/pyramid roofline with ridges visibly inset from the eave footprint but retaining substantial visible roof-plane width, consistent with a moderate 6:12 pitch rather than a shallow 4:12 or steep 8:12+. Shadow depth in the interior valleys and along the leeward hip faces is well-defined but not exaggerated, placing the slope in the 6:12–7:12 range. Shingle texture is clearly legible from nadir without significant foreshortening. The surrounding neighborhood homes — sharing identical architectural style and shadow patterns — further corroborate a 6:12 estimate, which is the dominant pitch for estate-style hip-roof construction in the Houston/Spring, TX region, where builders balance curb appeal with wind-load considerations.",
+    "pitch": "10:12",
+    "pitch_multiplier": 1.302,
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 20 roof segments from Google Solar API (imageryQuality=HIGH): 38.93° → 10:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
+    "pitch_source": "solar",
+    "vision_pitch": "6:12",
+    "vision_pitch_confidence": 0.78,
+    "solar_pitch": "10:12",
+    "solar_pitch_avg_degrees": 38.92992039591072,
+    "solar_pitch_segment_count": 20,
+    "solar_pitch_imagery_quality": "HIGH",
     "footprint_sqft": 4643,
     "footprint_confidence": 0.42,
     "footprint_rationale": "The orange bounding box spans approximately 228 × 332 px (48.3 × 70.4 ft), giving a bounding area of ~3,400 sq ft. The subject home is a complex multi-section hip roof; the upper ~85% of the bounding box is covered by interconnected hip roof sections, while the lower ~15% is open driveway/yard. A fill factor of ~78% was applied, yielding a footprint of ~2,650 sq ft. Ridge lines are short (3–4 horizontal peaks across sub-masses). Hip lines are numerous (~10 runs) as the dominant roof style. Valleys are visible as dark inward-angle lines where sub-roofs intersect (~4–5 valleys). Rake edges are minimal since this is primarily a hip-style roof. Eave lines wrap the full outer perimeter of each hip section. Confidence is moderate due to roof complexity and partial overlap with adjacent structures near the left edge of the bounding box.",
@@ -29,12 +36,12 @@
     "roof_area_sqft": 4369,
     "roof_area_source": "solar-fence",
     "vision_footprint_sqft": 2650,
-    "vision_roof_area_sqft": 2963,
+    "vision_roof_area_sqft": 3450,
     "solar_footprint_sqft": 4643,
     "solar_roof_area_sqft": 4369,
     "fence_triggered": true,
-    "fence_reason": "vision roof area 2963 differs from solar 4369 by 32.2% (>12%)",
-    "computed_at": "2026-05-09T02:45:17.803Z"
+    "fence_reason": "vision roof area 3450 differs from solar 4369 by 21.0% (>12%)",
+    "computed_at": "2026-05-09T12:32:53.371Z"
   },
   "tiers": [
     {
@@ -66,23 +73,23 @@
           "amount": 525.65
         },
         {
-          "label": "Labor (43.69 sq @ 2.11 h/sq)",
-          "amount": 7840.77
+          "label": "Labor (43.69 sq @ 2.34 h/sq)",
+          "amount": 8696.13
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2230.14
+          "amount": 2332.79
         },
         {
           "label": "Profit (15%)",
-          "amount": 3122.2
+          "amount": 3265.9
         }
       ],
-      "subtotal": 23936.88,
+      "subtotal": 25038.58,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:45:17.805Z",
+          "generated_at": "2026-05-09T12:32:53.373Z",
           "currency": "USD"
         },
         "inputs": {
@@ -108,7 +115,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "10:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -138,11 +145,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -169,12 +176,12 @@
           },
           "direct_material_cost": 10743.77,
           "labor_hours_base": 76.24,
-          "labor_hours_adjusted": 92.24,
-          "direct_labor_cost": 7840.77,
-          "direct_cost": 18584.54,
-          "overhead": 2230.14,
-          "profit": 3122.2,
-          "grand_total": 23936.88
+          "labor_hours_adjusted": 102.31,
+          "direct_labor_cost": 8696.13,
+          "direct_cost": 19439.89,
+          "overhead": 2332.79,
+          "profit": 3265.9,
+          "grand_total": 25038.58
         }
       }
     },
@@ -207,23 +214,23 @@
           "amount": 525.65
         },
         {
-          "label": "Labor (43.69 sq @ 2.72 h/sq)",
-          "amount": 10087.53
+          "label": "Labor (43.69 sq @ 3.01 h/sq)",
+          "amount": 11187.99
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2705.27
+          "amount": 2837.33
         },
         {
           "label": "Profit (15%)",
-          "amount": 3787.38
+          "amount": 3972.26
         }
       ],
-      "subtotal": 29036.6,
+      "subtotal": 30453.99,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:45:17.806Z",
+          "generated_at": "2026-05-09T12:32:53.373Z",
           "currency": "USD"
         },
         "inputs": {
@@ -249,7 +256,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "10:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -279,11 +286,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -310,12 +317,12 @@
           },
           "direct_material_cost": 12456.41,
           "labor_hours_base": 98.08,
-          "labor_hours_adjusted": 118.68,
-          "direct_labor_cost": 10087.53,
-          "direct_cost": 22543.94,
-          "overhead": 2705.27,
-          "profit": 3787.38,
-          "grand_total": 29036.6
+          "labor_hours_adjusted": 131.62,
+          "direct_labor_cost": 11187.99,
+          "direct_cost": 23644.4,
+          "overhead": 2837.33,
+          "profit": 3972.26,
+          "grand_total": 30453.99
         }
       }
     },
@@ -348,23 +355,23 @@
           "amount": 525.65
         },
         {
-          "label": "Labor (43.69 sq @ 3.32 h/sq)",
-          "amount": 12334.29
+          "label": "Labor (43.69 sq @ 3.68 h/sq)",
+          "amount": 13679.84
         },
         {
           "label": "Overhead (12%)",
-          "amount": 3415.28
+          "amount": 3576.75
         },
         {
           "label": "Profit (15%)",
-          "amount": 4781.39
+          "amount": 5007.44
         }
       ],
-      "subtotal": 36657.33,
+      "subtotal": 38390.41,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:45:17.806Z",
+          "generated_at": "2026-05-09T12:32:53.373Z",
           "currency": "USD"
         },
         "inputs": {
@@ -390,7 +397,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "10:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -420,11 +427,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -451,17 +458,17 @@
           },
           "direct_material_cost": 16126.37,
           "labor_hours_base": 119.93,
-          "labor_hours_adjusted": 145.11,
-          "direct_labor_cost": 12334.29,
-          "direct_cost": 28460.66,
-          "overhead": 3415.28,
-          "profit": 4781.39,
-          "grand_total": 36657.33
+          "labor_hours_adjusted": 160.94,
+          "direct_labor_cost": 13679.84,
+          "direct_cost": 29806.22,
+          "overhead": 3576.75,
+          "profit": 5007.44,
+          "grand_total": 38390.41
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T02:45:17.806Z",
+  "generated_at": "2026-05-09T12:32:53.373Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

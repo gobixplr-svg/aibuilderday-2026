@@ -5,12 +5,19 @@
     "formatted_address": "835 S Cobble Creek Blvd, Nixa, MO 65714, USA",
     "lat": 37.028963,
     "lng": -93.2833319,
-    "pitch": "6:12",
-    "pitch_multiplier": 1.118,
-    "pitch_confidence": 0.58,
-    "pitch_rationale": "Shadow lengths cast from the eave edges extend approximately 30–40% of the building's plan width, consistent with a moderate 6:12 pitch rather than a shallow (4:12) or steep (8:12+) roof. The visible ridge line is clearly distinguishable and noticeably narrower than the eave footprint, but not dramatically so, placing it in the mid-range slope category. No prominent dormers or sharply elevated peaks are visible in plan view. Regional context supports this estimate: Nixa, MO (southwest Missouri, Ozarks region) overwhelmingly features suburban tract homes built to 6:12–8:12 standards. Combining shadow geometry, ridge-to-eave ratio, and regional norms, 6:12 is the most probable dominant pitch, though 7:12 cannot be ruled out given modest shadow ambiguity.",
+    "pitch": "8:12",
+    "pitch_multiplier": 1.202,
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 13 roof segments from Google Solar API (imageryQuality=HIGH): 32.80° → 8:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
-    "footprint_sqft": 2940,
+    "pitch_source": "solar",
+    "vision_pitch": "6:12",
+    "vision_pitch_confidence": 0.58,
+    "solar_pitch": "8:12",
+    "solar_pitch_avg_degrees": 32.800067365807834,
+    "solar_pitch_segment_count": 13,
+    "solar_pitch_imagery_quality": "HIGH",
+    "footprint_sqft": 3254,
     "footprint_confidence": 0.53,
     "footprint_rationale": "Subject home identified via orange bounding box and reticle. Bounding box measured at ~278 px (W) × ~337 px (H) = 54.3 ft × 65.9 ft = 3,578 sq ft bounding area. Roof is a complex multi-section all-hip design with a main central body, several projecting wings, and an attached garage/addition at the south. No gable ends visible, so rake = 0. Applied an 82% fill factor (dense hip coverage in plan view) to get ~2,940 sq ft footprint. Three ridge segments identified at peak of each major section totaling ~35 ft. Approximately 11 hip lines (sloped corner edges) averaging ~62 px each = ~133 ft. Five valley lines at inward intersections of roof planes = ~51 ft. Eave perimeter traced around all lower roof edges including wing projections = ~264 ft. Confidence reduced to 0.53 due to tree canopy obscuring portions of the south and west eave lines, and complexity of distinguishing individual hip vs. valley lines in the multi-section design.",
     "footprint_stub": false,
@@ -26,15 +33,15 @@
       "findings": [],
       "rationale": "The subject home at 835 S Cobble Creek, Nixa, MO features a complex multi-plane hip and gable roof clad in what appears to be asphalt shingles in a uniform medium gray/taupe tone. Across all visible roof slopes — upper north-facing planes, lower south-facing planes, and the multiple hip returns — shingle color and texture are consistent with no visible gaps, dark patches, or exposed decking. No tarps, mismatched repair patches, or biological growth (moss/algae) are present. Ridge lines appear geometrically straight with no visible sag or distortion. A small rooftop protrusion near the upper center is consistent with a standard plumbing vent and is not a condition concern. No debris or staining patterns were identified on any slope. Tree canopy partially borders the roof perimeter but does not obstruct assessment of the primary roof surfaces. Based on what is clearly visible at this resolution, no condition findings meet the confidence threshold for reporting."
     },
-    "roof_area_sqft": 3287,
-    "roof_area_source": "vision",
+    "roof_area_sqft": 3070,
+    "roof_area_source": "solar-fence",
     "vision_footprint_sqft": 2940,
-    "vision_roof_area_sqft": 3287,
+    "vision_roof_area_sqft": 3534,
     "solar_footprint_sqft": 3254,
     "solar_roof_area_sqft": 3070,
-    "fence_triggered": false,
-    "fence_reason": null,
-    "computed_at": "2026-05-09T02:46:18.891Z"
+    "fence_triggered": true,
+    "fence_reason": "vision roof area 3534 differs from solar 3070 by 15.1% (>12%)",
+    "computed_at": "2026-05-09T12:33:11.848Z"
   },
   "tiers": [
     {
@@ -42,16 +49,16 @@
       "tier_name": "3-Tab Asphalt Shingle",
       "lines": [
         {
-          "label": "3-Tab Asphalt Shingle (36.81 sq, includes 12% waste)",
-          "amount": 4049.58
+          "label": "3-Tab Asphalt Shingle (34.38 sq, includes 12% waste)",
+          "amount": 3782.24
         },
         {
-          "label": "Tear-off (32.87 sq, 1 layer)",
-          "amount": 1150.45
+          "label": "Tear-off (30.7 sq, 1 layer)",
+          "amount": 1074.5
         },
         {
-          "label": "Underlayment (34.51 sq)",
-          "amount": 862.84
+          "label": "Underlayment (32.24 sq)",
+          "amount": 805.88
         },
         {
           "label": "Trim & flashing (drip edge 264 lf, ridge 35 lf, valley 51 lf)",
@@ -62,27 +69,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (7.19 sheets, contingency)",
-          "amount": 395.47
+          "label": "Decking allowance (6.72 sheets, contingency)",
+          "amount": 369.36
         },
         {
-          "label": "Labor (32.87 sq @ 2.20 h/sq)",
-          "amount": 6157.12
+          "label": "Labor (30.7 sq @ 2.47 h/sq)",
+          "amount": 6457.5
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1817.09
+          "amount": 1801.98
         },
         {
           "label": "Profit (15%)",
-          "amount": 2543.93
+          "amount": 2522.77
         }
       ],
-      "subtotal": 19503.48,
+      "subtotal": 19341.22,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:18.894Z",
+          "generated_at": "2026-05-09T12:33:11.850Z",
           "currency": "USD"
         },
         "inputs": {
@@ -91,7 +98,7 @@
             "formatted_address": "835 S Cobble Creek Blvd, Nixa, MO 65714, USA"
           },
           "geometry": {
-            "roof_area_sqft": 3287,
+            "roof_area_sqft": 3070,
             "ridge_lf": 35,
             "hip_lf": 133,
             "valley_lf": 51,
@@ -108,7 +115,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "8:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -117,12 +124,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 3287,
-          "roof_squares": 32.87,
-          "field_squares": 36.81,
-          "underlayment_squares": 34.51,
+          "roof_area_sqft": 3070,
+          "roof_squares": 30.7,
+          "field_squares": 34.38,
+          "underlayment_squares": 32.24,
           "ice_water_squares": 0,
-          "decking_sheets": 7.19,
+          "decking_sheets": 6.72,
           "ridge_lf": 35,
           "hip_lf": 133,
           "valley_lf": 51,
@@ -138,20 +145,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 4049.58,
-            "underlayment": 862.84,
+            "field": 3782.24,
+            "underlayment": 805.88,
             "ice_water": 0,
-            "tearoff": 1150.45,
+            "tearoff": 1074.5,
             "ridge_cap": 175,
             "hip_cap": 665,
             "valley_metal": 357,
@@ -165,16 +172,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 395.47
+            "decking_sheets": 369.36
           },
-          "direct_material_cost": 8985.34,
-          "labor_hours_base": 59.86,
-          "labor_hours_adjusted": 72.44,
-          "direct_labor_cost": 6157.12,
-          "direct_cost": 15142.45,
-          "overhead": 1817.09,
-          "profit": 2543.93,
-          "grand_total": 19503.48
+          "direct_material_cost": 8558.97,
+          "labor_hours_base": 56.61,
+          "labor_hours_adjusted": 75.97,
+          "direct_labor_cost": 6457.5,
+          "direct_cost": 15016.48,
+          "overhead": 1801.98,
+          "profit": 2522.77,
+          "grand_total": 19341.22
         }
       }
     },
@@ -183,16 +190,16 @@
       "tier_name": "Architectural Laminate",
       "lines": [
         {
-          "label": "Architectural Laminate (36.81 sq, includes 12% waste)",
-          "amount": 5338.09
+          "label": "Architectural Laminate (34.38 sq, includes 12% waste)",
+          "amount": 4985.68
         },
         {
-          "label": "Tear-off (32.87 sq, 1 layer)",
-          "amount": 1150.45
+          "label": "Tear-off (30.7 sq, 1 layer)",
+          "amount": 1074.5
         },
         {
-          "label": "Underlayment (34.51 sq)",
-          "amount": 862.84
+          "label": "Underlayment (32.24 sq)",
+          "amount": 805.88
         },
         {
           "label": "Trim & flashing (drip edge 264 lf, ridge 35 lf, valley 51 lf)",
@@ -203,27 +210,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (7.19 sheets, contingency)",
-          "amount": 395.47
+          "label": "Decking allowance (6.72 sheets, contingency)",
+          "amount": 369.36
         },
         {
-          "label": "Labor (32.87 sq @ 2.81 h/sq)",
-          "amount": 7847.46
+          "label": "Labor (30.7 sq @ 3.15 h/sq)",
+          "amount": 8208.48
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2174.56
+          "amount": 2156.51
         },
         {
           "label": "Profit (15%)",
-          "amount": 3044.38
+          "amount": 3019.11
         }
       ],
-      "subtotal": 23340.23,
+      "subtotal": 23146.51,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:18.894Z",
+          "generated_at": "2026-05-09T12:33:11.850Z",
           "currency": "USD"
         },
         "inputs": {
@@ -232,7 +239,7 @@
             "formatted_address": "835 S Cobble Creek Blvd, Nixa, MO 65714, USA"
           },
           "geometry": {
-            "roof_area_sqft": 3287,
+            "roof_area_sqft": 3070,
             "ridge_lf": 35,
             "hip_lf": 133,
             "valley_lf": 51,
@@ -249,7 +256,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "8:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -258,12 +265,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 3287,
-          "roof_squares": 32.87,
-          "field_squares": 36.81,
-          "underlayment_squares": 34.51,
+          "roof_area_sqft": 3070,
+          "roof_squares": 30.7,
+          "field_squares": 34.38,
+          "underlayment_squares": 32.24,
           "ice_water_squares": 0,
-          "decking_sheets": 7.19,
+          "decking_sheets": 6.72,
           "ridge_lf": 35,
           "hip_lf": 133,
           "valley_lf": 51,
@@ -279,20 +286,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 5338.09,
-            "underlayment": 862.84,
+            "field": 4985.68,
+            "underlayment": 805.88,
             "ice_water": 0,
-            "tearoff": 1150.45,
+            "tearoff": 1074.5,
             "ridge_cap": 175,
             "hip_cap": 665,
             "valley_metal": 357,
@@ -306,16 +313,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 395.47
+            "decking_sheets": 369.36
           },
-          "direct_material_cost": 10273.84,
-          "labor_hours_base": 76.3,
-          "labor_hours_adjusted": 92.32,
-          "direct_labor_cost": 7847.46,
-          "direct_cost": 18121.3,
-          "overhead": 2174.56,
-          "profit": 3044.38,
-          "grand_total": 23340.23
+          "direct_material_cost": 9762.41,
+          "labor_hours_base": 71.96,
+          "labor_hours_adjusted": 96.57,
+          "direct_labor_cost": 8208.48,
+          "direct_cost": 17970.89,
+          "overhead": 2156.51,
+          "profit": 3019.11,
+          "grand_total": 23146.51
         }
       }
     },
@@ -324,16 +331,16 @@
       "tier_name": "Designer / Impact-Resistant",
       "lines": [
         {
-          "label": "Designer / Impact-Resistant (36.81 sq, includes 12% waste)",
-          "amount": 8099.17
+          "label": "Designer / Impact-Resistant (34.38 sq, includes 12% waste)",
+          "amount": 7564.48
         },
         {
-          "label": "Tear-off (32.87 sq, 1 layer)",
-          "amount": 1150.45
+          "label": "Tear-off (30.7 sq, 1 layer)",
+          "amount": 1074.5
         },
         {
-          "label": "Underlayment (34.51 sq)",
-          "amount": 862.84
+          "label": "Underlayment (32.24 sq)",
+          "amount": 805.88
         },
         {
           "label": "Trim & flashing (drip edge 264 lf, ridge 35 lf, valley 51 lf)",
@@ -344,27 +351,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (7.19 sheets, contingency)",
-          "amount": 395.47
+          "label": "Decking allowance (6.72 sheets, contingency)",
+          "amount": 369.36
         },
         {
-          "label": "Labor (32.87 sq @ 3.41 h/sq)",
-          "amount": 9537.79
+          "label": "Labor (30.7 sq @ 3.82 h/sq)",
+          "amount": 9959.45
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2708.73
+          "amount": 2676.08
         },
         {
           "label": "Profit (15%)",
-          "amount": 3792.22
+          "amount": 3746.51
         }
       ],
-      "subtotal": 29073.66,
+      "subtotal": 28723.26,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:18.894Z",
+          "generated_at": "2026-05-09T12:33:11.850Z",
           "currency": "USD"
         },
         "inputs": {
@@ -373,7 +380,7 @@
             "formatted_address": "835 S Cobble Creek Blvd, Nixa, MO 65714, USA"
           },
           "geometry": {
-            "roof_area_sqft": 3287,
+            "roof_area_sqft": 3070,
             "ridge_lf": 35,
             "hip_lf": 133,
             "valley_lf": 51,
@@ -390,7 +397,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "8:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -399,12 +406,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 3287,
-          "roof_squares": 32.87,
-          "field_squares": 36.81,
-          "underlayment_squares": 34.51,
+          "roof_area_sqft": 3070,
+          "roof_squares": 30.7,
+          "field_squares": 34.38,
+          "underlayment_squares": 32.24,
           "ice_water_squares": 0,
-          "decking_sheets": 7.19,
+          "decking_sheets": 6.72,
           "ridge_lf": 35,
           "hip_lf": 133,
           "valley_lf": 51,
@@ -420,20 +427,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1.22,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.342,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 8099.17,
-            "underlayment": 862.84,
+            "field": 7564.48,
+            "underlayment": 805.88,
             "ice_water": 0,
-            "tearoff": 1150.45,
+            "tearoff": 1074.5,
             "ridge_cap": 175,
             "hip_cap": 665,
             "valley_metal": 357,
@@ -447,21 +454,21 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 395.47
+            "decking_sheets": 369.36
           },
-          "direct_material_cost": 13034.92,
-          "labor_hours_base": 92.74,
-          "labor_hours_adjusted": 112.21,
-          "direct_labor_cost": 9537.79,
-          "direct_cost": 22572.72,
-          "overhead": 2708.73,
-          "profit": 3792.22,
-          "grand_total": 29073.66
+          "direct_material_cost": 12341.21,
+          "labor_hours_base": 87.31,
+          "labor_hours_adjusted": 117.17,
+          "direct_labor_cost": 9959.45,
+          "direct_cost": 22300.67,
+          "overhead": 2676.08,
+          "profit": 3746.51,
+          "grand_total": 28723.26
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T02:46:18.894Z",
+  "generated_at": "2026-05-09T12:33:11.850Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

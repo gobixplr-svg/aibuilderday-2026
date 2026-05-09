@@ -5,12 +5,19 @@
     "formatted_address": "1261 20th St, Newport News, VA 23607, USA",
     "lat": 36.9845554,
     "lng": -76.4016532,
-    "pitch": "6:12",
-    "pitch_multiplier": 1.118,
-    "pitch_confidence": 0.62,
-    "pitch_rationale": "The dominant structure is a large, complex hip-roofed home with multiple intersecting roof planes. Several cues inform the estimate: (1) Shadow length — ground shadows cast from the eastern and southern eaves are moderate in extent relative to the building footprint (roughly 15–20 ft as measured against the 50-ft scale bar), consistent with a mid-range pitch rather than a shallow ranch or a steep colonial. (2) Roof-to-eave geometry — the diagonal hip lines converge to ridges that are noticeably inset from the perimeter eaves, indicating meaningful vertical rise, but the ridges are still broad relative to the plan area, ruling out steep pitches above 8:12. (3) Plane shading contrast — the lighter (sun-facing) and darker (shadowed) roof panels show moderate tonal differentiation, consistent with a 5:12–7:12 slope. (4) Regional context — Newport News, VA is a mid-Atlantic/coastal-plain climate where 5:12–6:12 is the most common residential pitch. Taken together, a 6:12 pitch best reconciles the moderate shadow projection and visible hip geometry.",
+    "pitch": "4:12",
+    "pitch_multiplier": 1.054,
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 6 roof segments from Google Solar API (imageryQuality=HIGH): 18.08° → 4:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
-    "footprint_sqft": 6668,
+    "pitch_source": "solar",
+    "vision_pitch": "6:12",
+    "vision_pitch_confidence": 0.62,
+    "solar_pitch": "4:12",
+    "solar_pitch_avg_degrees": 18.080798853149304,
+    "solar_pitch_segment_count": 6,
+    "solar_pitch_imagery_quality": "HIGH",
+    "footprint_sqft": 6359,
     "footprint_confidence": 0.47,
     "footprint_rationale": "The subject home is the large multi-section gray hip-roofed structure inside the orange bounding box. The neighboring terra-cotta roof to the north is excluded. Bounding box estimated at ~510 px (99.8 ft) wide × ~440 px (86.1 ft) tall = 8,593 sq ft. The roof is a complex cross/L-shaped multi-section hip roof; yard is visible in the NE and SW corners of the box, so a 74% fill factor was applied → ~6,359 sq ft footprint. Ridge total (~95 ft) accounts for 3–4 ridge segments across the main body and sub-sections. Hips (~220 ft) are numerous given the all-hip construction across ~10–12 diagonal corner lines. Valleys (~65 ft) occur at 3–4 inward junctions between roof sections. Rakes (~25 ft) are minimal as the roof is primarily hip-style. Eaves (~290 ft) represent the lower perimeter of the notched footprint. Confidence is moderate due to roof complexity and satellite obliquity making precise pixel tracing challenging.",
     "footprint_stub": false,
@@ -41,15 +48,15 @@
       ],
       "rationale": "The subject home within the orange bounding box is a large, multi-section residential structure with what appears to be gray asphalt shingles across several intersecting roof planes. The majority of the roof surface is uniformly gray with straight, intact ridge lines and no visible structural sag or large-scale missing material. Two items warranted flagging: (1) A teal/green colored element at the southeast roof edge that is visually distinct from all surrounding gray shingle material — its color and shape are inconsistent with standard roofing and merits a closer look to determine if it is a tarp, temporary covering, or non-roof structure. (2) A darker gray patch near the center of the upper roof plane that differs in tone from the surrounding shingle field — this could reflect moisture staining, an older repair, or simply a shadow artifact, but it is visible enough to note for in-person follow-up. No moss/growth, debris, or obvious large-scale missing shingles were observed. Overall condition is rated fair due to these two localized items that warrant ground-truth verification."
     },
-    "roof_area_sqft": 6118,
-    "roof_area_source": "solar-fence",
+    "roof_area_sqft": 6702,
+    "roof_area_source": "vision",
     "vision_footprint_sqft": 6359,
-    "vision_roof_area_sqft": 7109,
+    "vision_roof_area_sqft": 6702,
     "solar_footprint_sqft": 6668,
     "solar_roof_area_sqft": 6118,
-    "fence_triggered": true,
-    "fence_reason": "vision roof area 7109 differs from solar 6118 by 16.2% (>12%)",
-    "computed_at": "2026-05-09T02:48:06.388Z"
+    "fence_triggered": false,
+    "fence_reason": null,
+    "computed_at": "2026-05-09T12:32:13.323Z"
   },
   "tiers": [
     {
@@ -57,16 +64,16 @@
       "tier_name": "3-Tab Asphalt Shingle",
       "lines": [
         {
-          "label": "3-Tab Asphalt Shingle (68.52 sq, includes 12% waste)",
-          "amount": 7537.38
+          "label": "3-Tab Asphalt Shingle (75.06 sq, includes 12% waste)",
+          "amount": 8256.86
         },
         {
-          "label": "Tear-off (61.18 sq, 1 layer)",
-          "amount": 2141.3
+          "label": "Tear-off (67.02 sq, 1 layer)",
+          "amount": 2345.7
         },
         {
-          "label": "Underlayment (64.24 sq)",
-          "amount": 1605.98
+          "label": "Underlayment (70.37 sq)",
+          "amount": 1759.28
         },
         {
           "label": "Trim & flashing (drip edge 290 lf, ridge 95 lf, valley 65 lf)",
@@ -77,27 +84,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (13.38 sheets, contingency)",
-          "amount": 736.07
+          "label": "Decking allowance (14.66 sheets, contingency)",
+          "amount": 806.33
         },
         {
-          "label": "Labor (61.18 sq @ 2.09 h/sq)",
-          "amount": 10857.87
+          "label": "Labor (67.02 sq @ 1.88 h/sq)",
+          "amount": 10689.86
         },
         {
           "label": "Overhead (12%)",
-          "amount": 3163.93
+          "amount": 3281.46
         },
         {
           "label": "Profit (15%)",
-          "amount": 4429.5
+          "amount": 4594.05
         }
       ],
-      "subtotal": 33959.53,
+      "subtotal": 35221.04,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:48:06.390Z",
+          "generated_at": "2026-05-09T12:32:13.324Z",
           "currency": "USD"
         },
         "inputs": {
@@ -106,7 +113,7 @@
             "formatted_address": "1261 20th St, Newport News, VA 23607, USA"
           },
           "geometry": {
-            "roof_area_sqft": 6118,
+            "roof_area_sqft": 6702,
             "ridge_lf": 95,
             "hip_lf": 220,
             "valley_lf": 65,
@@ -123,7 +130,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "4:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -132,12 +139,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 6118,
-          "roof_squares": 61.18,
-          "field_squares": 68.52,
-          "underlayment_squares": 64.24,
+          "roof_area_sqft": 6702,
+          "roof_squares": 67.02,
+          "field_squares": 75.06,
+          "underlayment_squares": 70.37,
           "ice_water_squares": 0,
-          "decking_sheets": 13.38,
+          "decking_sheets": 14.66,
           "ridge_lf": 95,
           "hip_lf": 220,
           "valley_lf": 65,
@@ -153,20 +160,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.1,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 7537.38,
-            "underlayment": 1605.98,
+            "field": 8256.86,
+            "underlayment": 1759.28,
             "ice_water": 0,
-            "tearoff": 2141.3,
+            "tearoff": 2345.7,
             "ridge_cap": 475,
             "hip_cap": 1100,
             "valley_metal": 455,
@@ -180,16 +187,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 736.07
+            "decking_sheets": 806.33
           },
-          "direct_material_cost": 15508.22,
-          "labor_hours_base": 105.57,
-          "labor_hours_adjusted": 127.74,
-          "direct_labor_cost": 10857.87,
-          "direct_cost": 26366.1,
-          "overhead": 3163.93,
-          "profit": 4429.5,
-          "grand_total": 33959.53
+          "direct_material_cost": 16655.67,
+          "labor_hours_base": 114.33,
+          "labor_hours_adjusted": 125.76,
+          "direct_labor_cost": 10689.86,
+          "direct_cost": 27345.53,
+          "overhead": 3281.46,
+          "profit": 4594.05,
+          "grand_total": 35221.04
         }
       }
     },
@@ -198,16 +205,16 @@
       "tier_name": "Architectural Laminate",
       "lines": [
         {
-          "label": "Architectural Laminate (68.52 sq, includes 12% waste)",
-          "amount": 9935.63
+          "label": "Architectural Laminate (75.06 sq, includes 12% waste)",
+          "amount": 10884.05
         },
         {
-          "label": "Tear-off (61.18 sq, 1 layer)",
-          "amount": 2141.3
+          "label": "Tear-off (67.02 sq, 1 layer)",
+          "amount": 2345.7
         },
         {
-          "label": "Underlayment (64.24 sq)",
-          "amount": 1605.98
+          "label": "Underlayment (70.37 sq)",
+          "amount": 1759.28
         },
         {
           "label": "Trim & flashing (drip edge 290 lf, ridge 95 lf, valley 65 lf)",
@@ -218,27 +225,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (13.38 sheets, contingency)",
-          "amount": 736.07
+          "label": "Decking allowance (14.66 sheets, contingency)",
+          "amount": 806.33
         },
         {
-          "label": "Labor (61.18 sq @ 2.69 h/sq)",
-          "amount": 14004.06
+          "label": "Labor (67.02 sq @ 2.43 h/sq)",
+          "amount": 13823.04
         },
         {
           "label": "Overhead (12%)",
-          "amount": 3829.26
+          "amount": 3972.71
         },
         {
           "label": "Profit (15%)",
-          "amount": 5360.97
+          "amount": 5561.79
         }
       ],
-      "subtotal": 41100.77,
+      "subtotal": 42640.4,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:48:06.391Z",
+          "generated_at": "2026-05-09T12:32:13.324Z",
           "currency": "USD"
         },
         "inputs": {
@@ -247,7 +254,7 @@
             "formatted_address": "1261 20th St, Newport News, VA 23607, USA"
           },
           "geometry": {
-            "roof_area_sqft": 6118,
+            "roof_area_sqft": 6702,
             "ridge_lf": 95,
             "hip_lf": 220,
             "valley_lf": 65,
@@ -264,7 +271,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "4:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -273,12 +280,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 6118,
-          "roof_squares": 61.18,
-          "field_squares": 68.52,
-          "underlayment_squares": 64.24,
+          "roof_area_sqft": 6702,
+          "roof_squares": 67.02,
+          "field_squares": 75.06,
+          "underlayment_squares": 70.37,
           "ice_water_squares": 0,
-          "decking_sheets": 13.38,
+          "decking_sheets": 14.66,
           "ridge_lf": 95,
           "hip_lf": 220,
           "valley_lf": 65,
@@ -294,20 +301,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.1,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 9935.63,
-            "underlayment": 1605.98,
+            "field": 10884.05,
+            "underlayment": 1759.28,
             "ice_water": 0,
-            "tearoff": 2141.3,
+            "tearoff": 2345.7,
             "ridge_cap": 475,
             "hip_cap": 1100,
             "valley_metal": 455,
@@ -321,16 +328,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 736.07
+            "decking_sheets": 806.33
           },
-          "direct_material_cost": 17906.48,
-          "labor_hours_base": 136.16,
-          "labor_hours_adjusted": 164.75,
-          "direct_labor_cost": 14004.06,
-          "direct_cost": 31910.53,
-          "overhead": 3829.26,
-          "profit": 5360.97,
-          "grand_total": 41100.77
+          "direct_material_cost": 19282.86,
+          "labor_hours_base": 147.84,
+          "labor_hours_adjusted": 162.62,
+          "direct_labor_cost": 13823.04,
+          "direct_cost": 33105.9,
+          "overhead": 3972.71,
+          "profit": 5561.79,
+          "grand_total": 42640.4
         }
       }
     },
@@ -339,16 +346,16 @@
       "tier_name": "Designer / Impact-Resistant",
       "lines": [
         {
-          "label": "Designer / Impact-Resistant (68.52 sq, includes 12% waste)",
-          "amount": 15074.75
+          "label": "Designer / Impact-Resistant (75.06 sq, includes 12% waste)",
+          "amount": 16513.73
         },
         {
-          "label": "Tear-off (61.18 sq, 1 layer)",
-          "amount": 2141.3
+          "label": "Tear-off (67.02 sq, 1 layer)",
+          "amount": 2345.7
         },
         {
-          "label": "Underlayment (64.24 sq)",
-          "amount": 1605.98
+          "label": "Underlayment (70.37 sq)",
+          "amount": 1759.28
         },
         {
           "label": "Trim & flashing (drip edge 290 lf, ridge 95 lf, valley 65 lf)",
@@ -359,27 +366,27 @@
           "amount": 670
         },
         {
-          "label": "Decking allowance (13.38 sheets, contingency)",
-          "amount": 736.07
+          "label": "Decking allowance (14.66 sheets, contingency)",
+          "amount": 806.33
         },
         {
-          "label": "Labor (61.18 sq @ 3.30 h/sq)",
-          "amount": 17150.24
+          "label": "Labor (67.02 sq @ 2.98 h/sq)",
+          "amount": 16956.23
         },
         {
           "label": "Overhead (12%)",
-          "amount": 4823.5
+          "amount": 5024.25
         },
         {
           "label": "Profit (15%)",
-          "amount": 6752.9
+          "amount": 7033.95
         }
       ],
-      "subtotal": 51772.24,
+      "subtotal": 53926.97,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:48:06.391Z",
+          "generated_at": "2026-05-09T12:32:13.324Z",
           "currency": "USD"
         },
         "inputs": {
@@ -388,7 +395,7 @@
             "formatted_address": "1261 20th St, Newport News, VA 23607, USA"
           },
           "geometry": {
-            "roof_area_sqft": 6118,
+            "roof_area_sqft": 6702,
             "ridge_lf": 95,
             "hip_lf": 220,
             "valley_lf": 65,
@@ -405,7 +412,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "6:12",
+            "pitch": "4:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -414,12 +421,12 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 6118,
-          "roof_squares": 61.18,
-          "field_squares": 68.52,
-          "underlayment_squares": 64.24,
+          "roof_area_sqft": 6702,
+          "roof_squares": 67.02,
+          "field_squares": 75.06,
+          "underlayment_squares": 70.37,
           "ice_water_squares": 0,
-          "decking_sheets": 13.38,
+          "decking_sheets": 14.66,
           "ridge_lf": 95,
           "hip_lf": 220,
           "valley_lf": 65,
@@ -435,20 +442,20 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.1,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
         "costs": {
           "materials": {
-            "field": 15074.75,
-            "underlayment": 1605.98,
+            "field": 16513.73,
+            "underlayment": 1759.28,
             "ice_water": 0,
-            "tearoff": 2141.3,
+            "tearoff": 2345.7,
             "ridge_cap": 475,
             "hip_cap": 1100,
             "valley_metal": 455,
@@ -462,21 +469,21 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 736.07
+            "decking_sheets": 806.33
           },
-          "direct_material_cost": 23045.6,
-          "labor_hours_base": 166.75,
-          "labor_hours_adjusted": 201.77,
-          "direct_labor_cost": 17150.24,
-          "direct_cost": 40195.84,
-          "overhead": 4823.5,
-          "profit": 6752.9,
-          "grand_total": 51772.24
+          "direct_material_cost": 24912.54,
+          "labor_hours_base": 181.35,
+          "labor_hours_adjusted": 199.49,
+          "direct_labor_cost": 16956.23,
+          "direct_cost": 41868.76,
+          "overhead": 5024.25,
+          "profit": 7033.95,
+          "grand_total": 53926.97
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T02:48:06.391Z",
+  "generated_at": "2026-05-09T12:32:13.324Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

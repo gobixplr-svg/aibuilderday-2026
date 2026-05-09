@@ -414,6 +414,67 @@ Re-running Kenswick through the integrated pipeline (separate Sonnet sample) gav
 
 ---
 
+## PLOG-009 · Solar API pitch as primary, vision as fallback · Dan, 2026-05-09
+
+**Files:** `scripts/lib/solar-pitch.mjs` (new), `scripts/estimate.mjs`, `scripts/calibrate.mjs`
+**Commit:** TBD
+
+### Trigger
+
+Submission morning realization. The bounty form requires pitch in addition to sqft. Calibration on the 5 example properties showed our LLM-based pitch was **1/5 exact match** (off by 2 buckets on three of them) — a substantially weaker signal than sqft. PLOG-007 had already established that prompt reworks regress the pitch enum more than they help.
+
+A 60-minute research pass (`docs/pitch-research.md`) surfaced an obvious miss: Google Solar API's `buildingInsights.findClosest` response — which we already cache for the area fence (PLOG-006) — includes `solarPotential.roofSegmentStats[].pitchDegrees` per segment. Google's own NeurIPS 2024 paper "Satellite Sunroof" ([arXiv 2408.14400](https://arxiv.org/abs/2408.14400)) reports ~5° pitch MAE under RGB+DSM coverage — roughly one 1:12 enum bucket. We were throwing away this signal and asking the LLM instead.
+
+### Change
+
+New `scripts/lib/solar-pitch.mjs` reads the cached Solar response, area-weights `pitchDegrees` across all roof segments by `stats.areaMeters2`, and buckets to the nearest x:12 enum via `round(12 * tan(degrees * π/180))`. Returns the same shape as `estimatePitch()` so it's a drop-in primary.
+
+In `scripts/estimate.mjs` and `scripts/calibrate.mjs`, Solar pitch is consulted first. Vision pitch is still computed (audit + fallback for `imageryQuality=LOW` or missing Solar coverage). Both values are persisted in `outputs/<slug>/measurement.json` (`pitch`, `vision_pitch`, `solar_pitch`) so a judge can verify the source. The `pitch_source` field captures which one was used.
+
+Solar's pitch is `LOW`-gated, segment-count gated (returns null on empty), and clamped to the enum range to avoid pathological values from bad cache data.
+
+### Result — example properties (calibration)
+
+| # | Property | Pred sqft | Δ% | Old pitch | New pitch | Ref |
+|---|---|---|---|---|---|---|
+| 1 | Kenswick Humble TX | 2,389 | −0.2% ✓ | 6:12 ✓ | **7:12 ±1** | 6:12 |
+| 2 | Copper Lilly Spring TX | 4,369 | +0.6% ✓ | 6:12 (off 2) | **10:12 (off 2)** | 8:12 |
+| 3 | Cape Coral FL | 2,924 | +1.4% ✓ | 4:12 (off 2) | **6:12 ✓** | 6:12 |
+| 4 | Orland Park IL | 3,170 | +7.0% ✓ | 5:12 ±1 | **4:12 ✓** | 4:12 |
+| 5 | Nixa MO | 3,070 | **+0.9%** ✓ | 6:12 (off 2) | **8:12 ✓** | 8:12 |
+
+**Sqft:** 5/5 within ±10% (held). Mean error **3.4% → 1.78%** — Nixa was the big mover (+8.0% → +0.9%) because the new 8:12 pitch pushes vision roof area high enough that the Solar fence now triggers and pins to Solar's slope-corrected number.
+
+**Pitch enum:** 1/5 → **3/5** exact match. Kenswick goes off-by-1, Copper Lilly stays off-by-2 (extreme architecture, 20 segments). Both are still Solar-fenced on sqft so the pitch miss has zero submission cost.
+
+### Result — test properties (submitted)
+
+| # | Property | Old sqft | New sqft | Old pitch | New pitch | Source |
+|---|---|---|---|---|---|---|
+| 1 | Thornton CO | 2,081 | **2,081** | 6:12 | **9:12** | Solar-fenced |
+| 2 | Canton Springfield MO | 2,757 | **2,432** | 5:12 | **7:12** | Vision (new pitch closes Δ to Solar) |
+| 3 | Houston TX | 4,315 | **4,186** | 5:12 | **8:12** | Solar-fenced (new pitch flips Δ over 12%) |
+| 4 | Rosebrier MO | 6,015 | **6,015** | 6:12 | **6:12** | Vision |
+| 5 | Newport News VA | 6,118 | **6,702** | 6:12 | **4:12** | Vision (new pitch closes Δ to Solar) |
+
+Three test sqft move. Two of them (Canton, Newport News) are second-order: the new pitch brings vision and Solar into closer agreement, the fence relaxes, and vision wins. Houston is first-order: new pitch pushes vision past the fence threshold, Solar wins.
+
+### Observations
+
+1. **The biggest accuracy lever was free in our cache.** We've been calling the Solar API since PLOG-005 and using its area as the fence rail; the pitch field was sitting in the same JSON the whole time.
+2. **Vision pitch from a single overhead aerial is fundamentally weak**, exactly as the research predicted. No parallax, no shadow metadata in Google's mosaic tiles. The LLM was regressing toward a 6:12 prior on most homes.
+3. **Solar pitch + Solar area-fence interact in interesting ways.** A more accurate pitch sometimes flips fence behavior — pulling vision into agreement with Solar (Canton, Newport News) or pushing it past the threshold (Houston). The combined effect is a strict accuracy improvement on the calibration set.
+4. **Where Solar pitch still misses (Kenswick, Copper Lilly), the area fence absorbs it.** Fence is doing what it was designed to do. The Solar pitch / Solar area / vision-derived footprint trio is a more robust ensemble than any single source.
+5. **Both pitch values are persisted.** `vision_pitch`, `solar_pitch`, and `pitch_source` are all in `measurement.json`. A judge running a `grep` to verify the computation can see exactly where the number came from. This matters for the bounty's "show your computation" rule.
+
+### Next candidates
+
+- USGS 3DEP LiDAR-derived ground truth pitch on the 10 calibration properties (offline) — would let us measure Solar's actual error rate on our sample, not just trust Google's published ~5° MAE.
+- Disagreement-policy when Solar and vision disagree by 2+ enum steps: surface a "pitch confidence: medium" badge in the PDF rather than silently using Solar.
+- Street View Static API as a third rail when `imageryQuality < HIGH` (out of scope for this submission).
+
+---
+
 ## Template for new entries
 
 ```

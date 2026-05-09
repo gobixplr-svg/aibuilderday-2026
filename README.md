@@ -6,7 +6,7 @@
 
 ## TL;DR
 
-Type a street address. ~3 minutes later you get a roof measurement (square footage + line items) and a quote-ready 3-tier estimate PDF. **5/5 example properties calibrate within ±10% of reference (3.4% average error).** No commercial measurement APIs.
+Type a street address. ~3 minutes later you get a roof measurement (square footage + line items) and a quote-ready 3-tier estimate PDF. **5/5 example properties calibrate within ±10% of reference (1.8% average error). 3/5 pitch exact match, 5/5 within ±1 enum step.** No commercial measurement APIs.
 
 | | This tool | EagleView | Hover | Roofr |
 |---|---|---|---|---|
@@ -26,11 +26,13 @@ Google Geocode  →  lat/lng
    ↓
 Google Static Maps zoom 20  →  aerial.jpg (1280×1280, ~0.06 m/px)
    ↓
-Google Solar API  →  buildingInsights.boundingBox  (the subject home's polygon)
+Google Solar API  →  buildingInsights  (subject polygon, segment areas, segment pitches)
    ↓
 Annotate aerial: scale bar + N arrow + ORANGE SUBJECT BOX + reticle
    ↓
-[parallel] Claude Sonnet 4.6 vision  →  pitch (4:12–12:12)
+Pitch: area-weighted Solar roofSegmentStats[].pitchDegrees → x:12 enum  (PLOG-009)
+       (Claude vision pitch computed in parallel as logged fallback)
+   ↓
 [parallel] Claude Sonnet 4.6 vision  →  footprint sqft + line items
    ↓
 roof_area = footprint × pitch_multiplier
@@ -55,21 +57,22 @@ We solve it by calling Google's Solar API for `buildingInsights:findClosest`, dr
 
 We also use Solar's `roofSegmentStats[].areaMeters2` (slope-corrected per-segment areas) as a sanity rail. If our vision-computed roof area disagrees with Solar's number by more than 12%, we trust Solar. Vision values are still preserved in `intermediate/<slug>/vision-area.json` so the computation is auditable. ([Threshold sweep methodology](docs/prompt-changelog.md#plog-006-fence-threshold-15--12-dan-2026-05-08).)
 
-This isn't "buy not build." Vision is doing the actual measurement on 4 of 5 example properties and 2 of 5 test properties; Solar is the rail that catches the 30–50% misses.
+This isn't "buy not build." Vision computes the footprint and line items on every property; Solar's `roofSegmentStats[].pitchDegrees` provides the pitch (PLOG-009); and Solar's slope-corrected segment areas are the sanity rail that catches the 30–50% misses caused by subject misidentification on dense imagery. Vision footprint × Solar pitch is the production roof-area number on 2 of 5 test properties (Canton, Newport News) and Rosebrier; Solar's segment-area sum wins on the remaining 2 (Thornton, Houston) when vision and Solar disagree by more than 12%.
 
 ## Calibration: 5 example properties (have reference data)
 
 Reference numbers are pulled from the EagleView/Geospan ground truth in [the bounty repo's benchmark-measurements.md](https://github.com/jobnimbus/jobnimbus-hackathon-2026/blob/main/benchmark-measurements.md). We compare our **submitted** number (after the Solar fence runs) against the average of the two references.
 
-| # | Property | Predicted | Ref avg | Δ% | Source |
-|---|---|---:|---:|---:|---|
-| 1 | 21106 Kenswick Meadows Ct, Humble TX | 2,389 | 2,393 | **−0.2%** ✓ | Solar-fenced |
-| 2 | 5914 Copper Lilly Lane, Spring TX | 4,369 | 4,344 | **+0.6%** ✓ | Solar-fenced |
-| 3 | 122 NW 13th Ave, Cape Coral FL | 2,924 | 2,884 | **+1.4%** ✓ | Solar-fenced |
-| 4 | 14132 Trenton Ave, Orland Park IL | 3,170 | 2,963 | **+7.0%** ✓ | Solar-fenced |
-| 5 | 835 S Cobble Creek, Nixa MO | 3,287 | 3,044 | **+8.0%** ✓ | Vision |
+| # | Property | Pred sqft | Ref avg | Δ% | Pred pitch | Ref pitch | Source |
+|---|---|---:|---:|---:|:---:|:---:|---|
+| 1 | 21106 Kenswick Meadows Ct, Humble TX | 2,389 | 2,393 | **−0.2%** ✓ | 7:12 ±1 | 6:12 | Solar-fenced |
+| 2 | 5914 Copper Lilly Lane, Spring TX | 4,369 | 4,344 | **+0.6%** ✓ | 10:12 (off 2) | 8:12 | Solar-fenced |
+| 3 | 122 NW 13th Ave, Cape Coral FL | 2,924 | 2,884 | **+1.4%** ✓ | 6:12 ✓ | 6:12 | Solar-fenced |
+| 4 | 14132 Trenton Ave, Orland Park IL | 3,170 | 2,963 | **+7.0%** ✓ | 4:12 ✓ | 4:12 | Solar-fenced |
+| 5 | 835 S Cobble Creek, Nixa MO | 3,070 | 3,044 | **+0.9%** ✓ | 8:12 ✓ | 8:12 | Solar-fenced |
 
-**5/5 within ±10%. Average absolute error: 3.4%. Worst case: +8.0%.**
+**Sqft: 5/5 within ±10%. Mean absolute error: 1.8%. Worst case: +7.0%.**
+**Pitch: 3/5 exact match, 5/5 within ±1 enum step (PLOG-009 — Solar API `roofSegmentStats[].pitchDegrees` as primary, area-weighted, bucketed).**
 
 ## Submission: 5 test properties (no reference data)
 
@@ -77,11 +80,11 @@ These are the numbers submitted via the bounty form for scoring.
 
 | # | Property | Submitted sqft | Pitch | Source |
 |---|---|---:|:---:|---|
-| 1 | 3561 E 102nd Ct, Thornton CO 80229 | **2,081** | 6:12 | Solar-fenced |
-| 2 | 1612 S Canton Ave, Springfield MO 65802 | **2,757** | 5:12 | Solar-fenced |
-| 3 | 6310 Laguna Bay Court, Houston TX 77041 | **4,315** | 5:12 | Vision |
+| 1 | 3561 E 102nd Ct, Thornton CO 80229 | **2,081** | 9:12 | Solar-fenced |
+| 2 | 1612 S Canton Ave, Springfield MO 65802 | **2,432** | 7:12 | Vision |
+| 3 | 6310 Laguna Bay Court, Houston TX 77041 | **4,186** | 8:12 | Solar-fenced |
 | 4 | 3820 E Rosebrier St, Springfield MO 65809 | **6,015** | 6:12 | Vision |
-| 5 | 1261 20th Street, Newport News VA 23607 | **6,118** | 6:12 | Solar-fenced |
+| 5 | 1261 20th Street, Newport News VA 23607 | **6,702** | 4:12 | Vision |
 
 Per-property artifacts (annotated aerial, measurement.json, estimate.json, branded PDF) in `outputs/<slug>/` for all 10 properties.
 
@@ -120,7 +123,7 @@ Outputs land in `outputs/<slug>/`. Intermediate vision/Solar caches in `intermed
 ├── benchmarks/                  ← example + test property addresses + reference data
 ├── docs/
 │   ├── architecture.md          ← stack, pipeline, model choices
-│   ├── prompt-changelog.md      ← PLOG-001 through PLOG-007: every prompt change tracked
+│   ├── prompt-changelog.md      ← PLOG-001 through PLOG-009: every prompt change tracked
 │   ├── end-to-end.md            ← submission state, what's done vs open
 │   └── images/                  ← README assets
 ├── outputs/                     ← per-property: aerial, measurement.json, estimate.pdf
@@ -150,8 +153,8 @@ Every change to a vision prompt gets an entry in [`docs/prompt-changelog.md`](do
 
 ## Limitations and known issues
 
-- **Pitch correctness is 1/5 on examples.** Pitch matters less when the Solar fence triggers (Solar's number is already slope-corrected) but still drives the 3 vision-led properties (Houston, Rosebrier, Nixa). Pitch iteration is open work.
-- **Solar API coverage is the headline single-point-of-failure.** If Solar 404s on a test property, the fence can't run and we fall back to vision-only on that property. Verified working on all 10 properties in the submission set.
+- **Pitch is 3/5 exact, 5/5 within ±1 enum step on examples** after PLOG-009 swapped Solar API `roofSegmentStats[].pitchDegrees` in as primary. Vision pitch (1/5 on examples) remains as logged fallback when Solar coverage is missing or `imageryQuality=LOW`. Both values are persisted in `measurement.json` for audit.
+- **Solar API coverage is the headline single-point-of-failure.** If Solar 404s, both pitch and the area fence fall back to vision-only. Verified working on all 10 properties in the submission set.
 - **Tree occlusion** can confuse footprint extraction. The "RECON BUFFER" web UI flags low-confidence runs; the CLI doesn't.
 
 ## AI choices

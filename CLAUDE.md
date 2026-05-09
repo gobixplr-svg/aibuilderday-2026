@@ -6,19 +6,20 @@
 
 A measurement-and-estimate pipeline for residential pitched roofs. Address in → roof measurement (total sqft + line items) + quote-ready estimate PDF out. Five test addresses to submit total sqft for, by Saturday May 9 at 1:30 PM.
 
-**Current pipeline (PLOG-008):**
+**Current pipeline (PLOG-009):**
 1. Geocode (Google) → lat/lng
 2. Fetch aerial (Google Static Maps zoom 20, 1280px)
-3. **Solar API `buildingInsights`** — gets the subject building's polygon
+3. **Solar API `buildingInsights`** — gets the subject building's polygon, per-segment `pitchDegrees`, and per-segment slope-corrected `areaMeters2`
 4. Annotate aerial: scale bar + N arrow + **orange bounding box + reticle** at the subject home
-5. Parallel Claude Sonnet vision calls: pitch (4:12–12:12 enum) + footprint (sqft + line items)
-6. Compute roof area = footprint × pitch_multiplier
-7. **Solar fence:** if vision roof area differs from Solar's slope-corrected segment area by >12%, use Solar's number (PLOG-006)
-8. **Roof condition assessment:** third Sonnet vision call against the same SUBJECT-annotated aerial → structured pre-inspection observations (PLOG-008)
-9. Eric's estimate engine produces 3 priced tiers
-10. Puppeteer renders branded PDF (now includes a "Pre-inspection observations" section)
+5. **Pitch:** area-weighted Solar `roofSegmentStats[].pitchDegrees` → x:12 enum (PLOG-009). Vision pitch computed in parallel as logged fallback (used when Solar coverage missing or `imageryQuality=LOW`).
+6. **Footprint:** Claude Sonnet vision call → footprint sqft + line items
+7. Compute roof area = footprint × pitch_multiplier
+8. **Solar fence:** if vision roof area differs from Solar's slope-corrected segment-area sum by >12%, use Solar's number (PLOG-006)
+9. **Roof condition assessment:** third Sonnet vision call against the same SUBJECT-annotated aerial → structured pre-inspection observations (PLOG-008)
+10. Eric's estimate engine produces 3 priced tiers
+11. Puppeteer renders branded PDF (now includes a "Pre-inspection observations" section)
 
-**Calibration result (5 example properties):** 5/5 within ±10%, avg error 3.4%, worst case +8.0%.
+**Calibration result (5 example properties, PLOG-009):** sqft 5/5 within ±10%, avg error 1.8%, worst case +7.0%. Pitch 3/5 exact, 5/5 within ±1 enum step.
 
 **Team:** Dan (lead), Will (vision prompts), Eric (estimate engine). Ethan built the frontend + materials catalog but won't be on-site Saturday.
 

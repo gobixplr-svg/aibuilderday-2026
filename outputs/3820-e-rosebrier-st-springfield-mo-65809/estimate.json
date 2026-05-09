@@ -7,9 +7,16 @@
     "lng": -93.21594809999999,
     "pitch": "6:12",
     "pitch_multiplier": 1.118,
-    "pitch_confidence": 0.72,
-    "pitch_rationale": "The central home features a complex multi-hip roof with numerous intersecting planes. Ground shadows cast by the eaves extend approximately 10–15 feet (estimated via the 50 ft scale bar), indicating a moderate pitch. The ridgelines on each hip section sit noticeably inward from their respective eave footprints — the roof-to-eave ratio suggests meaningful elevation without being extremely steep. Roof plane surfaces are broadly visible from this near-nadir view, ruling out pitches above ~8:12, while the well-defined shadow articulation between planes and the inward ridge placement rule out pitches below ~5:12. Springfield, MO's Midwest climate and the architectural character of the home are consistent with a 6:12 estimate.",
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 18 roof segments from Google Solar API (imageryQuality=HIGH): 27.04° → 6:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
+    "pitch_source": "solar",
+    "vision_pitch": "6:12",
+    "vision_pitch_confidence": 0.72,
+    "solar_pitch": "6:12",
+    "solar_pitch_avg_degrees": 27.04186972149021,
+    "solar_pitch_segment_count": 18,
+    "solar_pitch_imagery_quality": "HIGH",
     "footprint_sqft": 5380,
     "footprint_confidence": 0.52,
     "footprint_rationale": "The orange bounding box measures approximately 380 × 470 pixels (74.2 × 91.7 ft = 6,804 sq ft bounding area). The subject home features a very large, complex multi-section hip roof with numerous bump-outs and additions. A northwestern notch (motor court/driveway cutout visible at top of bounding box) reduces the fill factor to approximately 79%, yielding a footprint of ~5,380 sq ft. The roof is predominantly hip construction with 4–5 ridge segments spread across independently hipped sections, 10–14 hip lines, 5–6 inward valleys at section intersections, minimal rake (few gable ends), and a highly articulated eave perimeter around the complex plan shape. Confidence is moderate (0.52) due to the extreme complexity of the multi-hip roof geometry and difficulty precisely tracing each edge from the satellite oblique-nadir view.",
@@ -49,7 +56,7 @@
     "solar_roof_area_sqft": 5566,
     "fence_triggered": false,
     "fence_reason": null,
-    "computed_at": "2026-05-09T02:47:44.203Z"
+    "computed_at": "2026-05-09T12:32:08.073Z"
   },
   "tiers": [
     {
@@ -97,7 +104,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:47:44.205Z",
+          "generated_at": "2026-05-09T12:32:08.074Z",
           "currency": "USD"
         },
         "inputs": {
@@ -238,7 +245,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:47:44.205Z",
+          "generated_at": "2026-05-09T12:32:08.074Z",
           "currency": "USD"
         },
         "inputs": {
@@ -379,7 +386,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:47:44.205Z",
+          "generated_at": "2026-05-09T12:32:08.074Z",
           "currency": "USD"
         },
         "inputs": {
@@ -476,7 +483,7 @@
       }
     }
   ],
-  "generated_at": "2026-05-09T02:47:44.205Z",
+  "generated_at": "2026-05-09T12:32:08.075Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

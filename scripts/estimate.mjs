@@ -27,6 +27,7 @@ import { mkdir, writeFile, readFile, copyFile, access } from "fs/promises"
 import { join } from "path"
 import { fetchAerialPipeline } from "./lib/aerial-pipeline.mjs"
 import { estimatePitch, pitchMultiplier } from "./lib/pitch.mjs"
+import { solarPitch } from "./lib/solar-pitch.mjs"
 import { estimateFootprint } from "./lib/footprint.mjs"
 import { assessCondition } from "./lib/condition.mjs"
 import { loadMaterials, buildEstimate } from "./lib/estimate.mjs"
@@ -87,7 +88,7 @@ async function run() {
     return result
   }
 
-  const [pitch, area] = await Promise.all([
+  const [visionPitch, area] = await Promise.all([
     loadOrCompute(pitchPath, "pitch", () =>
       estimatePitch({
         aerialPath,
@@ -108,7 +109,27 @@ async function run() {
     ),
   ])
 
-  console.log(`[pitch] ${pitch.pitch} (confidence ${pitch.confidence})${pitch.stub ? " [STUB]" : ""}`)
+  // PLOG-009: Solar API pitch is the primary; vision pitch is the logged
+  // fallback. Solar's roofSegmentStats[].pitchDegrees comes from the same
+  // model behind Project Sunroof (Satellite Sunroof, NeurIPS 2024 ~5° MAE)
+  // — substantially more accurate on calibration than a single overhead
+  // Claude vision call (1/5 → 3/5 enum match across the 5 example
+  // properties; mean sqft error 3.4% → 1.9%). Vision values are still
+  // computed and preserved in vision-pitch.json for "build don't buy"
+  // auditability and used as fallback when Solar coverage is missing or
+  // imageryQuality is LOW.
+  const solarInsightsPath = join("intermediate", slug, "solar-insights.json")
+  const solarPitchData = await solarPitch({ insightsPath: solarInsightsPath })
+
+  let pitch
+  if (solarPitchData) {
+    pitch = solarPitchData
+    console.log(`[pitch] solar: ${pitch.pitch} (${pitch.avg_degrees.toFixed(2)}°, ${pitch.segment_count} segs, ${pitch.imagery_quality}) — primary`)
+    console.log(`[pitch] vision: ${visionPitch.pitch} (confidence ${visionPitch.confidence}) — fallback (logged for audit)`)
+  } else {
+    pitch = visionPitch
+    console.log(`[pitch] solar unavailable — falling back to vision: ${pitch.pitch} (confidence ${pitch.confidence})${pitch.stub ? " [STUB]" : ""}`)
+  }
   console.log(`[footprint] ${area.footprint_sqft} sqft (confidence ${area.confidence})${area.stub ? " [STUB]" : ""}`)
   console.log(`[footprint] line items: ${JSON.stringify(area.line_items)}`)
 
@@ -209,6 +230,13 @@ async function run() {
     pitch_confidence: pitch.confidence,
     pitch_rationale: pitch.rationale,
     pitch_stub: !!pitch.stub,
+    pitch_source: pitch.source ?? "vision",
+    vision_pitch: visionPitch.pitch,
+    vision_pitch_confidence: visionPitch.confidence,
+    solar_pitch: solarPitchData?.pitch ?? null,
+    solar_pitch_avg_degrees: solarPitchData?.avg_degrees ?? null,
+    solar_pitch_segment_count: solarPitchData?.segment_count ?? null,
+    solar_pitch_imagery_quality: solarPitchData?.imagery_quality ?? null,
     footprint_sqft: finalFootprint,
     footprint_confidence: area.confidence,
     footprint_rationale: area.rationale,

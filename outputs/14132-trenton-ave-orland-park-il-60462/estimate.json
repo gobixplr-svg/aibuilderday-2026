@@ -5,11 +5,18 @@
     "formatted_address": "14132 Trenton Ave, Orland Park, IL 60462, USA",
     "lat": 41.63322670000001,
     "lng": -87.8431279,
-    "pitch": "5:12",
-    "pitch_multiplier": 1.083,
-    "pitch_confidence": 0.62,
-    "pitch_rationale": "The Orland Park, IL suburban context (northern climate, 1970s–1990s tract development) strongly suggests a mid-range pitch. Ground shadow lengths cast northward from the eaves measure approximately 6–9 feet at the image scale (1 px = 0.732 ft, calibrated to the 50-ft scale bar), consistent with a 5:12 rise-to-run for typical 8–9 ft eave heights. The roof-to-eave geometry shows ridgelines that are noticeably inset from the eave perimeter but not dramatically so, ruling out very shallow (3:12–4:12) or steep (8:12+) profiles. Hip-roof construction with asphalt shingles is apparent across multiple homes in the neighborhood, further consistent with a standard 5:12 suburban build. Moderate confidence reflects the lack of oblique imagery to directly measure vertical rise.",
+    "pitch": "4:12",
+    "pitch_multiplier": 1.054,
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 12 roof segments from Google Solar API (imageryQuality=HIGH): 17.68° → 4:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
+    "pitch_source": "solar",
+    "vision_pitch": "5:12",
+    "vision_pitch_confidence": 0.62,
+    "solar_pitch": "4:12",
+    "solar_pitch_avg_degrees": 17.677204124031103,
+    "solar_pitch_segment_count": 12,
+    "solar_pitch_imagery_quality": "HIGH",
     "footprint_sqft": 3349,
     "footprint_confidence": 0.44,
     "footprint_rationale": "Subject home is a single-story ranch with a full hip roof (no gable ends, rake = 0). The plan is L-shaped: a main rectangular body (~280 px E-W × 205 px N-S = ~51 × 38 ft) plus a NE-projecting section (~185 px × 140 px = ~34 × 26 ft), likely an attached garage. Eave polygon traced at 8 vertices using the orange bounding box as reference (box spans ~347 × 275 px = 63.5 × 50.3 ft). Shoelace formula on the pixel polygon yields ~73,100 sq px × 0.033504 = 2,449 sq ft (~77% of bounding box, consistent with L-shape hip fill). Eaves summed around the full exterior perimeter (~222 ft). Ridges estimated from visible centerline peaks: ~15 ft main body + ~10 ft NE section. Hip lines estimated from 45° plan geometry: 4 corners on main body (~26.5 ft each) + 2 exposed corners on NE section (~18 ft each) = ~106 + 36 ft, rounded to 105 ft total. Valley where NE section meets main body estimated at ~26 ft. White vehicle visible at north end is parked in driveway and excluded. Confidence is moderate due to tree shadow and oblique view partially obscuring some eave corners.",
@@ -37,12 +44,12 @@
     "roof_area_sqft": 3170,
     "roof_area_source": "solar-fence",
     "vision_footprint_sqft": 2450,
-    "vision_roof_area_sqft": 2653,
+    "vision_roof_area_sqft": 2582,
     "solar_footprint_sqft": 3349,
     "solar_roof_area_sqft": 3170,
     "fence_triggered": true,
-    "fence_reason": "vision roof area 2653 differs from solar 3170 by 16.3% (>12%)",
-    "computed_at": "2026-05-09T02:46:02.074Z"
+    "fence_reason": "vision roof area 2582 differs from solar 3170 by 18.5% (>12%)",
+    "computed_at": "2026-05-09T12:33:06.600Z"
   },
   "tiers": [
     {
@@ -74,23 +81,23 @@
           "amount": 381.39
         },
         {
-          "label": "Labor (31.7 sq @ 2.15 h/sq)",
-          "amount": 5781.2
+          "label": "Labor (31.7 sq @ 1.95 h/sq)",
+          "amount": 5255.64
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1688
+          "amount": 1624.93
         },
         {
           "label": "Profit (15%)",
-          "amount": 2363.2
+          "amount": 2274.9
         }
       ],
-      "subtotal": 18117.85,
+      "subtotal": 17440.92,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:02.075Z",
+          "generated_at": "2026-05-09T12:33:06.602Z",
           "currency": "USD"
         },
         "inputs": {
@@ -116,7 +123,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "4:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -146,11 +153,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.1,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -177,12 +184,12 @@
           },
           "direct_material_cost": 8285.46,
           "labor_hours_base": 56.21,
-          "labor_hours_adjusted": 68.01,
-          "direct_labor_cost": 5781.2,
-          "direct_cost": 14066.65,
-          "overhead": 1688,
-          "profit": 2363.2,
-          "grand_total": 18117.85
+          "labor_hours_adjusted": 61.83,
+          "direct_labor_cost": 5255.64,
+          "direct_cost": 13541.09,
+          "overhead": 1624.93,
+          "profit": 2274.9,
+          "grand_total": 17440.92
         }
       }
     },
@@ -215,23 +222,23 @@
           "amount": 381.39
         },
         {
-          "label": "Labor (31.7 sq @ 2.75 h/sq)",
-          "amount": 7411.37
+          "label": "Labor (31.7 sq @ 2.50 h/sq)",
+          "amount": 6737.61
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2032.74
+          "amount": 1951.88
         },
         {
           "label": "Profit (15%)",
-          "amount": 2845.83
+          "amount": 2732.64
         }
       ],
-      "subtotal": 21818.03,
+      "subtotal": 20950.23,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:02.076Z",
+          "generated_at": "2026-05-09T12:33:06.602Z",
           "currency": "USD"
         },
         "inputs": {
@@ -257,7 +264,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "4:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -287,11 +294,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.1,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -318,12 +325,12 @@
           },
           "direct_material_cost": 9528.1,
           "labor_hours_base": 72.06,
-          "labor_hours_adjusted": 87.19,
-          "direct_labor_cost": 7411.37,
-          "direct_cost": 16939.47,
-          "overhead": 2032.74,
-          "profit": 2845.83,
-          "grand_total": 21818.03
+          "labor_hours_adjusted": 79.27,
+          "direct_labor_cost": 6737.61,
+          "direct_cost": 16265.71,
+          "overhead": 1951.88,
+          "profit": 2732.64,
+          "grand_total": 20950.23
         }
       }
     },
@@ -356,23 +363,23 @@
           "amount": 381.39
         },
         {
-          "label": "Labor (31.7 sq @ 3.36 h/sq)",
-          "amount": 9041.54
+          "label": "Labor (31.7 sq @ 3.05 h/sq)",
+          "amount": 8219.59
         },
         {
           "label": "Overhead (12%)",
-          "amount": 2547.89
+          "amount": 2449.26
         },
         {
           "label": "Profit (15%)",
-          "amount": 3567.05
+          "amount": 3428.96
         }
       ],
-      "subtotal": 27347.38,
+      "subtotal": 26288.7,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T02:46:02.076Z",
+          "generated_at": "2026-05-09T12:33:06.602Z",
           "currency": "USD"
         },
         "inputs": {
@@ -398,7 +405,7 @@
             "access_hatches": 0
           },
           "conditions": {
-            "pitch": "5:12",
+            "pitch": "4:12",
             "stories": 1,
             "tearoff_layers": 1,
             "access_difficulty": "easy",
@@ -428,11 +435,11 @@
           "access_hatches": 0
         },
         "multipliers": {
-          "pitch": 1.1,
+          "pitch": 1,
           "stories": 1,
           "access": 1,
           "complexity": 1.1,
-          "labor_difficulty_total": 1.21,
+          "labor_difficulty_total": 1.1,
           "overhead_pct": 0.12,
           "profit_pct": 0.15
         },
@@ -459,17 +466,17 @@
           },
           "direct_material_cost": 12190.9,
           "labor_hours_base": 87.91,
-          "labor_hours_adjusted": 106.37,
-          "direct_labor_cost": 9041.54,
-          "direct_cost": 21232.44,
-          "overhead": 2547.89,
-          "profit": 3567.05,
-          "grand_total": 27347.38
+          "labor_hours_adjusted": 96.7,
+          "direct_labor_cost": 8219.59,
+          "direct_cost": 20410.48,
+          "overhead": 2449.26,
+          "profit": 3428.96,
+          "grand_total": 26288.7
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T02:46:02.076Z",
+  "generated_at": "2026-05-09T12:33:06.602Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"
