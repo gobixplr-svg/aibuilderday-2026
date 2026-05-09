@@ -17,7 +17,9 @@
     "estimate": "node scripts/estimate.mjs",
     "calibrate": "node scripts/calibrate.mjs",
     "preview-pdf": "node scripts/preview-pdf.mjs",
-    "test:geocode": "node scripts/test-geocode-invalid-address.mjs"
+    "test:geocode": "node scripts/test-geocode-invalid-address.mjs",
+    "test:geocode:unit": "node scripts/test-geocode-quality-unit.mjs",
+    "validate:geocode": "npm run test:geocode:unit && npm run test:geocode"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.65.0",

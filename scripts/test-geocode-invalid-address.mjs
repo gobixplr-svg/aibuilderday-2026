@@ -10,14 +10,25 @@ import { MAX_GEOCODE_INPUT_LENGTH } from "./lib/geocode-quality.mjs"
 
 const REAL_HUMBLE = "21106 Kenswick Meadows Ct, Humble, TX 77338"
 const REAL_THORNTON = "3561 E 102nd Ct, Thornton, CO 80229"
+const REAL_SPRING = "5914 Copper Lilly Lane, Spring, TX 77389"
+const REAL_CAPE = "122 NW 13th Ave, Cape Coral, FL 33993"
+const REAL_NIXA = "835 S Cobble Creek, Nixa, MO 65714"
+const REAL_ORLAND = "14132 Trenton Ave, Orland Park, IL 60462"
 
 /** @type {Array<{ label: string; address: string; expect: "reject" | "ok" }>} */
 const CASES = [
   { label: "fake street in real city", address: "10000 Hello World Blvd. Lehi, UT", expect: "reject" },
   { label: "city only", address: "Lehi, UT", expect: "reject" },
+  { label: "state only", address: "Utah", expect: "reject" },
   { label: "ZIP only (Lehi area)", address: "84043", expect: "reject" },
+  { label: "whitespace-only input", address: "   \t\n", expect: "reject" },
+  { label: "emoji / garbage", address: "🏠🔥💀 invalid xyz abc", expect: "reject" },
   { label: "oversized input", address: "x".repeat(MAX_GEOCODE_INPUT_LENGTH + 1), expect: "reject" },
   { label: "calibration Humble", address: REAL_HUMBLE, expect: "ok" },
+  { label: "calibration Spring", address: REAL_SPRING, expect: "ok" },
+  { label: "calibration Cape Coral", address: REAL_CAPE, expect: "ok" },
+  { label: "calibration Nixa", address: REAL_NIXA, expect: "ok" },
+  { label: "calibration Orland Park", address: REAL_ORLAND, expect: "ok" },
   { label: "test Thornton", address: REAL_THORNTON, expect: "ok" },
 ]
 
