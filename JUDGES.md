@@ -73,12 +73,18 @@ Each PDF includes:
 
 Customer intake question taxonomy — what a roofer would ask before quoting — tracked in [`docs/customer-intake-questions.md`](docs/customer-intake-questions.md) and [`data/intake-question-types.json`](data/intake-question-types.json).
 
+### Hail-driven lead generation (`/hail-leads`)
+
+A separate, isolated growth feature: cheap measurements only matter if you can find roofs that need them. The tool ingests live NWS alerts (filters to hail ≥ 1″ or wind > 60 mph), surfaces impacted localities, and pulls scored contractor leads from Yelp Fusion + OpenStreetMap Overpass (`craft=roofer`, `shop=roof`) + Nominatim + optional JSON seeds. Results export to CSV (selected rows) or PDF (full top-10 with the NOAA event text as issued). Feature lives entirely under [`src/hail-leads/`](src/hail-leads/), [`app/(hail-leads)/hail-leads/`](app/(hail-leads)/hail-leads/), and [`app/api/hail-leads/`](app/api/hail-leads/) — zero coupling to the measurement pipeline. See [`docs/hail-leads.md`](docs/hail-leads.md).
+
 ---
 
 ## Experience
 
 - **Single command:** `node scripts/estimate.mjs "<address>"` → `outputs/<slug>/{aerial.jpg, measurement.json, estimate.json, estimate.pdf}`. ~90–220s end-to-end.
 - **Web UI:** `npm run dev` → http://localhost:3000. Dark satellite-recon aesthetic. Polls `/api/aerial` so the actual fetched satellite tile drops into the processing screen at ~5s. Asymptotic progress curve (`1 - exp(-elapsed/70)`) — no lying linear bar. Honest "no residential roof at this address" error path when geocoding lands on a parking lot.
+- **Pitch artifact:** http://localhost:3000/pitch. One-page sister artifact for projector use during the live demo: cost wedge, Solar fence story, calibration leaderboard, animated. Plays the disambiguation reveal (raw → resolving → locked) on scroll.
+- **Hail leads:** http://localhost:3000/hail-leads. Live NWS alert ingest + scored contractor list + CSV/PDF export. Standalone feature, see Product section above.
 - **Caching:** Re-runs on the same address are free unless `--no-cache` is passed. Caches committed in [`intermediate/`](intermediate/) for "build don't buy" auditability.
 
 ---

@@ -88,6 +88,14 @@ These are the numbers submitted via the bounty form for scoring.
 
 Per-property artifacts (annotated aerial, measurement.json, estimate.json, branded PDF) in `outputs/<slug>/` for all 10 properties.
 
+## Hail-driven lead generation
+
+A separate, isolated growth feature at [`/hail-leads`](app/(hail-leads)/) shows the natural extension of the cost wedge: cheap measurements only matter if you can find roofs that need them. The tool ingests live NWS alerts (hail ≥ 1″ or wind > 60 mph), surfaces impacted localities, and pulls scored contractor leads (Yelp Fusion + OpenStreetMap Overpass + Nominatim + optional JSON seeds). Results export to CSV (selected rows) or PDF (full top-10 with the NOAA event text).
+
+This is deliberately decoupled from the measurement pipeline — own directory under [`src/hail-leads/`](src/hail-leads/), own routes under [`app/(hail-leads)/hail-leads/`](app/(hail-leads)/hail-leads/), own API routes under [`app/api/hail-leads/`](app/api/hail-leads/). The calibration floor is unaffected.
+
+See [`docs/hail-leads.md`](docs/hail-leads.md) for the full feature spec, env vars, and contractor-source policy.
+
 ## How to run
 
 ```bash
@@ -109,8 +117,9 @@ npm run calibrate
 node scripts/fence-sweep.mjs
 
 # launch the web UI (Next.js, optional)
-npm run dev                          # → http://localhost:3000
-                                     # → http://localhost:3000/pitch (one-page pitch artifact)
+npm run dev                          # → http://localhost:3000             (Roof Recon tool)
+                                     # → http://localhost:3000/pitch       (one-page pitch artifact)
+                                     # → http://localhost:3000/hail-leads  (storm-driven lead generation)
 ```
 
 Outputs land in `outputs/<slug>/`. Intermediate vision/Solar caches in `intermediate/<slug>/` (committed for "build don't buy" auditability).
