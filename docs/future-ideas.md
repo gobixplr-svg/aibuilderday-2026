@@ -5,6 +5,10 @@ Use this file to track stretch work that is not on the critical path.
 ## Finding leads
 - Find storms in an area to identify homes that an agent could automatically create quotes for that area and send postcards with estimates for root repairs OR for full roof replacement
 - Send quotes in the language of the contractor (eg. Spanish)
+- Storm detector using NOAA hail data. Automatically recommend to contractors which areas could need a new roof and alert them when an area gets hit.
+
+## Integrations
+- JobNimbus playground account integration. Showing up with a working system that already connects to their app would make the submission stand out — quotes/estimates flow directly into JN.
 
 ## Product / UX
 
@@ -34,15 +38,19 @@ Use this file to track stretch work that is not on the critical path.
 - Add batch run report generator (CSV + markdown scoreboard for example/test properties).
 - Add automated benchmark regression check in CI (warn when accuracy drifts).
 - Add command to regenerate all outputs with one run for demo day.
+- Separate the estimator from the measurement calculator so the contractor can re-price/iterate without re-running the slow vision pipeline.
 
 ## Demo / Submission Polish
 
 - Add branded PDF theme options and stronger visual hierarchy.
 - Add short GIF/video capture script for README/demo assets.
 - Add one-click "submission package" export (outputs + summary + key numbers).
+- Google Street View on the proposal cover (~20 min of work). PDF cover shows the customer's actual house with the new roof color rendered in. Every other team's PDF will have a stock photo — ours makes the customer cry. Judges will not forget this.
 
 ## Operational
 
 - Add lightweight telemetry logs for each pipeline stage duration.
 - Add retry/backoff wrappers for external API calls.
 - Add explicit rate-limit guardrails for bulk runs.
+
+
