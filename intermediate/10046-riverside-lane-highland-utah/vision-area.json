@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 2670,
+  "line_items": {
+    "ridge": 96,
+    "hip": 117,
+    "valley": 63,
+    "rake": 76,
+    "eave": 155
+  },
+  "confidence": 0.47,
+  "rationale": "The orange bounding box spans approximately 272 px (E-W, ~50.7 ft) × 395 px (N-S, ~73.7 ft), giving a raw bounding-box area of ~3,736 sq ft. The subject home has a complex multi-plane hip/gable roof: a large main body in the north/center, 3–4 step-gable projections along the west elevation, and a lower attached garage/addition at the south end. On the east/interior side, an open courtyard and hardscape are clearly visible and excluded from roof area. I applied a fill factor of ~72% to account for the courtyard cutout and irregular west-side projections, yielding a footprint of ~2,670 sq ft (confirmed by direct polygon tracing within ~1.5%). Ridge lines traced on the main N-S body, middle section, south garage, and gable projection tops. Hip lines identified at all convex roof corners on the main body and south addition. Valleys traced where each west-side gable projection intersects the main roof slope. Rake edges identified on the exposed gable end faces of the western projections. Eaves traced around the full perimeter lower edges (north, east, south, and west projection soffits). Confidence is moderate-low (0.47) due to the complexity of the multi-plane roof and partial shadow/tree occlusion making precise edge tracing difficult."
+}

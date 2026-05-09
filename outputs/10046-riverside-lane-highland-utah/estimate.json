@@ -1,0 +1,469 @@
+{
+  "measurement": {
+    "slug": "10046-riverside-lane-highland-utah",
+    "address": "10046 riverside lane highland utah",
+    "formatted_address": "10046 Riverside Ln, Highland, UT 84003, USA",
+    "lat": 40.41440960000001,
+    "lng": -111.7927701,
+    "pitch": "7:12",
+    "pitch_multiplier": 1.158,
+    "pitch_confidence": 0.68,
+    "pitch_rationale": "Several visual cues point to a moderately steep pitch in the 7:12 range. First, shadow casting: the home casts very prominent, elongated shadows extending well to the west-northwest of every roof plane — using the 50 ft scale bar (≈270 px), the ground shadows from the main eaves appear to extend roughly 18–25 feet beyond the building footprint, consistent with a ridge height and slope indicating ~7:12. Second, roof-to-eave geometry: the visible ridge lines across the complex hip-and-valley roof system appear notably narrow relative to the overall building footprint, suggesting significant elevation gain from eave to ridge — characteristic of pitches above 6:12. Third, the home's multiple intersecting hip roofs, valley intersections, and prominent peaks protrude visibly in plan view, indicative of a steeper architectural roof. Fourth, geographic/climate context strongly supports this estimate: Highland, Utah is an upscale foothill community with a northern continental climate and a strong tradition of steep-pitched architectural homes (7:12–9:12). The roof complexity and shadow prominence together point to 7:12 as the dominant pitch, though 6:12 or 8:12 cannot be entirely ruled out given the oblique overhead view.",
+    "pitch_stub": false,
+    "footprint_sqft": 4289,
+    "footprint_confidence": 0.47,
+    "footprint_rationale": "The orange bounding box spans approximately 272 px (E-W, ~50.7 ft) × 395 px (N-S, ~73.7 ft), giving a raw bounding-box area of ~3,736 sq ft. The subject home has a complex multi-plane hip/gable roof: a large main body in the north/center, 3–4 step-gable projections along the west elevation, and a lower attached garage/addition at the south end. On the east/interior side, an open courtyard and hardscape are clearly visible and excluded from roof area. I applied a fill factor of ~72% to account for the courtyard cutout and irregular west-side projections, yielding a footprint of ~2,670 sq ft (confirmed by direct polygon tracing within ~1.5%). Ridge lines traced on the main N-S body, middle section, south garage, and gable projection tops. Hip lines identified at all convex roof corners on the main body and south addition. Valleys traced where each west-side gable projection intersects the main roof slope. Rake edges identified on the exposed gable end faces of the western projections. Eaves traced around the full perimeter lower edges (north, east, south, and west projection soffits). Confidence is moderate-low (0.47) due to the complexity of the multi-plane roof and partial shadow/tree occlusion making precise edge tracing difficult.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 96,
+      "hip": 117,
+      "valley": 63,
+      "rake": 76,
+      "eave": 155
+    },
+    "condition": {
+      "overall": "good",
+      "findings": [],
+      "rationale": "The subject home features a complex multi-gabled and hipped roofline with dark charcoal/gray shingles across all visible sloped sections. Examining each roof plane carefully: the color is consistent and uniform throughout with no patches, mismatched material, or tarps visible. No green or dark biological growth patches are present on any slope. Ridge lines appear geometrically straight with no visible sag or distortion compared to neighboring homes. No large debris items or foreign objects are visible on any roof plane. The lower east section within the bounding box resolves as a patio/hardscape area with HVAC equipment at ground level, not a roof surface in distress. Tree shadow falls on the west-facing slopes, but the shadowed areas that are still visible show no abnormal texture breaks or color anomalies. No findings met the confidence threshold for inclusion; the roof presents no noteworthy visible concerns at this resolution."
+    },
+    "roof_area_sqft": 3793,
+    "roof_area_source": "solar-fence",
+    "vision_footprint_sqft": 2670,
+    "vision_roof_area_sqft": 3092,
+    "solar_footprint_sqft": 4289,
+    "solar_roof_area_sqft": 3793,
+    "fence_triggered": true,
+    "fence_reason": "vision roof area 3092 differs from solar 3793 by 18.5% (>12%)",
+    "computed_at": "2026-05-09T03:50:05.395Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (42.48 sq, includes 12% waste)",
+          "amount": 4672.98
+        },
+        {
+          "label": "Tear-off (37.93 sq, 1 layer)",
+          "amount": 1327.55
+        },
+        {
+          "label": "Underlayment (39.83 sq)",
+          "amount": 995.66
+        },
+        {
+          "label": "Trim & flashing (drip edge 155 lf, ridge 96 lf, valley 63 lf)",
+          "amount": 2083.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.3 sheets, contingency)",
+          "amount": 456.35
+        },
+        {
+          "label": "Labor (37.93 sq @ 2.25 h/sq)",
+          "amount": 7262.75
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2096.25
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2934.76
+        }
+      ],
+      "subtotal": 22499.8,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T03:50:05.396Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "10046 riverside lane highland utah",
+            "formatted_address": "10046 Riverside Ln, Highland, UT 84003, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3793,
+            "ridge_lf": 96,
+            "hip_lf": 117,
+            "valley_lf": 63,
+            "eave_lf": 155,
+            "rake_lf": 76,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "7:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3793,
+          "roof_squares": 37.93,
+          "field_squares": 42.48,
+          "underlayment_squares": 39.83,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.3,
+          "ridge_lf": 96,
+          "hip_lf": 117,
+          "valley_lf": 63,
+          "eave_lf": 155,
+          "rake_lf": 76,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 4672.98,
+            "underlayment": 995.66,
+            "ice_water": 0,
+            "tearoff": 1327.55,
+            "ridge_cap": 480,
+            "hip_cap": 585,
+            "valley_metal": 441,
+            "drip_edge_eave": 387.5,
+            "rake_trim": 190,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 456.35
+          },
+          "direct_material_cost": 10206.03,
+          "labor_hours_base": 70.62,
+          "labor_hours_adjusted": 85.44,
+          "direct_labor_cost": 7262.75,
+          "direct_cost": 17468.79,
+          "overhead": 2096.25,
+          "profit": 2934.76,
+          "grand_total": 22499.8
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (42.48 sq, includes 12% waste)",
+          "amount": 6159.83
+        },
+        {
+          "label": "Tear-off (37.93 sq, 1 layer)",
+          "amount": 1327.55
+        },
+        {
+          "label": "Underlayment (39.83 sq)",
+          "amount": 995.66
+        },
+        {
+          "label": "Trim & flashing (drip edge 155 lf, ridge 96 lf, valley 63 lf)",
+          "amount": 2083.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.3 sheets, contingency)",
+          "amount": 456.35
+        },
+        {
+          "label": "Labor (37.93 sq @ 2.86 h/sq)",
+          "amount": 9213.3
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2508.74
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3512.24
+        }
+      ],
+      "subtotal": 26927.18,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T03:50:05.397Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "10046 riverside lane highland utah",
+            "formatted_address": "10046 Riverside Ln, Highland, UT 84003, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3793,
+            "ridge_lf": 96,
+            "hip_lf": 117,
+            "valley_lf": 63,
+            "eave_lf": 155,
+            "rake_lf": 76,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "7:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3793,
+          "roof_squares": 37.93,
+          "field_squares": 42.48,
+          "underlayment_squares": 39.83,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.3,
+          "ridge_lf": 96,
+          "hip_lf": 117,
+          "valley_lf": 63,
+          "eave_lf": 155,
+          "rake_lf": 76,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 6159.83,
+            "underlayment": 995.66,
+            "ice_water": 0,
+            "tearoff": 1327.55,
+            "ridge_cap": 480,
+            "hip_cap": 585,
+            "valley_metal": 441,
+            "drip_edge_eave": 387.5,
+            "rake_trim": 190,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 456.35
+          },
+          "direct_material_cost": 11692.89,
+          "labor_hours_base": 89.58,
+          "labor_hours_adjusted": 108.39,
+          "direct_labor_cost": 9213.3,
+          "direct_cost": 20906.19,
+          "overhead": 2508.74,
+          "profit": 3512.24,
+          "grand_total": 26927.18
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (42.48 sq, includes 12% waste)",
+          "amount": 9345.95
+        },
+        {
+          "label": "Tear-off (37.93 sq, 1 layer)",
+          "amount": 1327.55
+        },
+        {
+          "label": "Underlayment (39.83 sq)",
+          "amount": 995.66
+        },
+        {
+          "label": "Trim & flashing (drip edge 155 lf, ridge 96 lf, valley 63 lf)",
+          "amount": 2083.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8.3 sheets, contingency)",
+          "amount": 456.35
+        },
+        {
+          "label": "Labor (37.93 sq @ 3.46 h/sq)",
+          "amount": 11163.85
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 3125.14
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 4375.2
+        }
+      ],
+      "subtotal": 33543.21,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T03:50:05.397Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "10046 riverside lane highland utah",
+            "formatted_address": "10046 Riverside Ln, Highland, UT 84003, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3793,
+            "ridge_lf": 96,
+            "hip_lf": 117,
+            "valley_lf": 63,
+            "eave_lf": 155,
+            "rake_lf": 76,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "7:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3793,
+          "roof_squares": 37.93,
+          "field_squares": 42.48,
+          "underlayment_squares": 39.83,
+          "ice_water_squares": 0,
+          "decking_sheets": 8.3,
+          "ridge_lf": 96,
+          "hip_lf": 117,
+          "valley_lf": 63,
+          "eave_lf": 155,
+          "rake_lf": 76,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 9345.95,
+            "underlayment": 995.66,
+            "ice_water": 0,
+            "tearoff": 1327.55,
+            "ridge_cap": 480,
+            "hip_cap": 585,
+            "valley_metal": 441,
+            "drip_edge_eave": 387.5,
+            "rake_trim": 190,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 456.35
+          },
+          "direct_material_cost": 14879.01,
+          "labor_hours_base": 108.55,
+          "labor_hours_adjusted": 131.34,
+          "direct_labor_cost": 11163.85,
+          "direct_cost": 26042.86,
+          "overhead": 3125.14,
+          "profit": 4375.2,
+          "grand_total": 33543.21
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-09T03:50:05.397Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}
