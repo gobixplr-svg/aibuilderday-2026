@@ -96,6 +96,10 @@ This is deliberately decoupled from the measurement pipeline — own directory u
 
 See [`docs/hail-leads.md`](docs/hail-leads.md) for the full feature spec, env vars, and contractor-source policy.
 
+## Hype reel
+
+A 36-second Remotion-rendered product reveal: [`reference/ReconHypeVideo.mp4`](reference/ReconHypeVideo.mp4) (6.3 MB compressed). Every shot composes the same React components the live UI uses — no screen recording, no editing artifacts. Source code under [`video/`](video/). Walks idle → address entry → processing montage → results hero → observations card → PDF download → outro.
+
 ## How to run
 
 ```bash

@@ -10,7 +10,7 @@
 | **Product** | 3-tier estimate PDF rendered for all 10 properties (5 example + 5 test). Real materials catalog with cited prices. | [Product evidence](#product) |
 | **Experience** | Address-in → estimate-PDF-out in ~3 minutes via CLI or web UI. Solar API subject disambiguation. Honest progress UI. | [Experience evidence](#experience) |
 | **Craft** | Full PLOG (PLOG-001 → PLOG-009) tracking every prompt change with measured deltas, including reverts. Pure-function estimate engine. Single shared FENCE_THRESHOLD_PCT after a documented dedup pass. AI vision **roof condition** assessment with refuse-to-fabricate framing (PLOG-008). **Solar API pitch as primary** with vision as logged fallback (PLOG-009). | [Craft evidence](#craft) |
-| **Demo** | Roof Recon web UI: dark satellite-recon aesthetic, real polled aerial, asymptotic progress. (Top 5 only.) | [Demo evidence](#demo) |
+| **Demo** | Roof Recon web UI: dark satellite-recon aesthetic, real polled aerial, asymptotic progress. 36-second Remotion-rendered hype reel ([`reference/ReconHypeVideo.mp4`](reference/ReconHypeVideo.mp4)) cut from live UI components. (Top 5 only.) | [Demo evidence](#demo) |
 
 ---
 
@@ -123,6 +123,15 @@ A third Sonnet 4.6 vision call against the same SUBJECT-annotated aerial. Return
 The Roof Recon web UI is built around the satellite-recon aesthetic — corner brackets, mono microtype, orange accent on navy, scanline sweep on the satellite frame, locked reticle on the result. Three states (idle / processing / results), all in voice. The processing screen polls the cached aerial and swaps the SVG placeholder for the real Static Maps tile at ~5s.
 
 Run on a fresh address (90–220s) or a cached property (20–60s).
+
+### Hype reel (Remotion-rendered)
+
+A 36-second product reveal cut from the running tool, rendered with [Remotion](https://www.remotion.dev/) so every shot composes the same React components the live UI uses (no screen recording, no editing artifacts). Shot list and source code live under [`video/`](video/). Two artifacts in [`reference/`](reference/):
+
+- [`reference/ReconHypeVideo.mp4`](reference/ReconHypeVideo.mp4) — **6.3 MB compressed** version, browser-playable on GitHub.
+- [`reference/JNRoofRecon.mp4`](reference/JNRoofRecon.mp4) — 55 MB original render, retained for archival.
+
+Walks through: idle screen → address entry → processing montage → results hero with hero number → observations card reveal → PDF download → outro. The same satellite-recon visual system as the live tool and [`/pitch`](app/pitch/page.tsx).
 
 ---
 
