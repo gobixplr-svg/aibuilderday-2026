@@ -184,13 +184,13 @@ Why before submission: Google Forms doesn't reliably let you edit after submit. 
 - [ ] Open http://localhost:3000 (run `npm run dev` first if needed)
 - [ ] One 10-second test recording to check audio level
 
-**Demo script (~75–90 seconds, narrated live):**
+**Demo script (~75–90 seconds, narrated live, updated for PLOG-009):**
 
 1. (0:00–0:10) Idle screen visible. *"Roof Recon. Address in, roof measurement and a priced estimate out, in about three minutes. Built for the JobNimbus AI Builder Day bounty."*
 2. (0:10–0:20) Click into address field, paste `3561 E 102nd Ct, Thornton, CO 80229`, click Scan roof. *"This is one of the five test properties. We'll watch it run end to end."*
-3. (0:20–0:50) Processing screen shows. Aerial swaps in at ~5s. *"That orange box is the Google Solar API telling us which house is the subject — without it, the model picks one of nine visible roofs and gets it wrong."* Progress bar moves. *"While we wait, two parallel Claude vision calls compute pitch and footprint."*
-4. (0:50–1:15) Results appear. *"2,081 square feet, fenced by Solar because vision and Solar disagreed by more than twelve percent. Three priced tiers — Standard, Premium, Luxury — pulled from a real materials catalog with cited prices."*
-5. (1:15–1:30) Click PDF download. *"And the contractor-ready PDF. The whole repo is public. Five out of five example properties calibrate within ten percent. Code, prompt changelog, and per-property output are all in the repo."*
+3. (0:20–0:50) Processing screen shows. Aerial swaps in at ~5s. *"That orange box is the Google Solar API telling us which house is the subject — without it, the model picks one of nine visible roofs and gets it wrong."* Progress bar moves. *"Solar API also gives us per-segment pitch, while a Claude Sonnet vision call traces the footprint."*
+4. (0:50–1:15) Results appear. *"2,081 square feet at a 9:12 pitch. Vision and Solar disagreed on roof area by nineteen percent, so a sanity fence kicks in and uses Solar's slope-corrected number. Three priced tiers — Standard, Premium, Luxury — from a real materials catalog with cited prices."*
+5. (1:15–1:30) Click PDF download. *"Contractor-ready PDF. Repo is public. Five out of five example properties within ten percent of reference, mean error one-point-eight percent. Three of five pitch exact, all within one enum step. Code, prompt changelog, per-property output all in the repo."*
 
 If the live run takes too long, do two takes: idle → submit (cut), processing → results (cut), splice with Loom's trim. Aim for one continuous take if possible.
 
