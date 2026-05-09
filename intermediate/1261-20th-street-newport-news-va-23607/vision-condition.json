@@ -1,0 +1,20 @@
+{
+  "overall_condition": "fair",
+  "findings": [
+    {
+      "category": "tarp_or_covering",
+      "description": "A distinctly teal/green colored rectangular element is visible at the roof edge, clearly contrasting with the surrounding gray asphalt shingle material. It is not consistent with standard roofing material color or texture.",
+      "location_description": "South slope, southeast corner of the main structure, near the lower roof edge",
+      "severity": "medium",
+      "confidence": 0.72
+    },
+    {
+      "category": "discoloration_staining",
+      "description": "A noticeably darker gray patch roughly 8–12 ft in diameter on the central upper roof plane, distinct in tone from the surrounding uniform gray shingles.",
+      "location_description": "Upper main roof section, near the center ridge area",
+      "severity": "low",
+      "confidence": 0.6
+    }
+  ],
+  "rationale": "The subject home within the orange bounding box is a large, multi-section residential structure with what appears to be gray asphalt shingles across several intersecting roof planes. The majority of the roof surface is uniformly gray with straight, intact ridge lines and no visible structural sag or large-scale missing material. Two items warranted flagging: (1) A teal/green colored element at the southeast roof edge that is visually distinct from all surrounding gray shingle material — its color and shape are inconsistent with standard roofing and merits a closer look to determine if it is a tarp, temporary covering, or non-roof structure. (2) A darker gray patch near the center of the upper roof plane that differs in tone from the surrounding shingle field — this could reflect moisture staining, an older repair, or simply a shadow artifact, but it is visible enough to note for in-person follow-up. No moss/growth, debris, or obvious large-scale missing shingles were observed. Overall condition is rated fair due to these two localized items that warrant ground-truth verification."
+}

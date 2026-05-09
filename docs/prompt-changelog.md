@@ -354,6 +354,66 @@ The damage: Kenswick fell out of tolerance because vision's pitch dropped from 6
 
 ---
 
+## PLOG-008 · roof condition assessment · Dan, 2026-05-09
+
+**Files:** `scripts/lib/condition.mjs` (new), `scripts/estimate.mjs`, `components/roof-recon/ResultsScreen.tsx`, `components/roof-recon/index.tsx`, `app/api/measure/route.ts`, `app/(internal)/roof-recon-test/page.tsx`, `scripts/lib/pdf-template.mjs`
+**Commit:** _this commit_
+
+### Trigger
+
+The pipeline produces a measurement and three priced tiers, but the deliverable feels thin against what a roofing contractor actually walks into a quote conversation with. The annotated aerial is right there — Sonnet has already looked at it twice for pitch and footprint — and there is real signal in that image about whether the roof has visible tarps, patches, growth, debris, or staining. The question was whether the model would call out only what it could literally see, or hallucinate findings to look thorough. CLAUDE.md hard rule #2 ("don't fabricate measurements") is load-bearing here: a condition list that invents damage is worse than no condition list at all.
+
+Spiked it before committing — `tmp/spike-condition.mjs` (deleted post-spike) — against two cached properties: Highland UT (complex multi-hip, where the user has visual ground truth on the actual roof) and Kenswick TX (the calibration hero with clean imagery). Wanted to see the "no findings" path exercised before trusting the "findings present" path.
+
+### Change
+
+New `scripts/lib/condition.mjs` runs a third Sonnet 4.6 vision call against the same `aerial-annotated.jpg` already used by pitch + footprint. Wired into `scripts/estimate.mjs` as a serial step AFTER the pitch+footprint Promise.all (footprint is the call that fetches Solar insights and re-annotates with the SUBJECT box; condition needs to read the SUBJECT-annotated version, so it has to come later — added wall clock is `+condition` not `+max(pitch, footprint, condition)`, ~15-40s). Cached to `intermediate/<slug>/vision-condition.json`.
+
+Tool schema requires three top-level fields: `overall_condition` (enum: good / fair / concerning / unable_to_assess), `findings` (array, **empty array is the correct answer when nothing is visible**), and `rationale`. Per-finding: `category` (enum), `description` (must cite a literal visible cue), `location_description`, `severity`, `confidence` ≥ 0.5. System prompt enumerates what zoom-20 imagery can and cannot reliably show, forbids hedging language ("appears to", "might be", "possibly"), and caps findings at 5.
+
+`measurement.json` gains a top-level `condition` field with the structured output. `/api/measure` surfaces `condition` to the React payload. `ResultsScreen.tsx` renders a condition tile under the existing PITCH / CONFIDENCE / FOOTPRINT row with the findings list color-coded by severity. PDF template (`scripts/lib/pdf-template.mjs`) gets a "Pre-inspection observations" section between the tier comparison and the terms block. Framing throughout is "Pre-inspection observations" / "AI vision condition assessment" — not "damage detection."
+
+### Result — spike (2 properties, pre-build)
+
+| Property | Overall | Findings | Wall-clock | Out tokens |
+|---|---|---|---|---|
+| Highland UT (multi-hip) | good | **0** | 15.1s | 689 |
+| Kenswick TX (calibration hero) | fair | **3** | 37.5s | 1798 |
+
+**Highland UT — empty findings, correctly.** Rationale called out uniform charcoal/gray shingles across all visible planes, geometrically straight ridges and hip lines, small white objects consistent with skylights/vents (not damage), tree shadows on the left edge but not enough to block assessment. The model declined to invent anything.
+
+**Kenswick TX — three findings:**
+
+1. `discoloration_staining`, low severity, conf 0.75 — south-facing slope is markedly paler gray/white than every neighboring roof in the frame; uniform across the slope rather than patchy. Model explicitly declined to attribute cause (recent reroof, different material, or oxidation) — flagged as "warrants a closer look."
+2. `debris`, medium severity, conf 0.85 — multiple stacks of lumber/building materials on east and south perimeters, partly overlapping the roof edge.
+3. `other`, low severity, conf 0.55 — scattered dark objects on the roof; model explicitly stated it could not determine whether damage or HVAC/vents.
+
+### Result — production run on Kenswick (post-build, different sample)
+
+Re-running Kenswick through the integrated pipeline (separate Sonnet sample) gave `concerning` with 3 findings — sharper than the spike. Same three categories surfaced (discoloration, debris on perimeter, scattered debris on roof) but the model jumped to "this is likely a roof under active construction" — pale central roof section consistent with TPO membrane OR exposed decking, plus the lumber piles, plus debris on the surface. High-confidence (0.92) on the lumber finding; reasonable noise across reruns on overall_condition (`fair` vs `concerning`). Production run committed as the current `outputs/21106-kenswick-meadows-ct-humble-tx-77338/measurement.json`.
+
+### Observations
+
+- **The "empty array is correct" rule held.** Highland's complex roof gave the model maximum surface area to invent things on — and it didn't. The forbidden-hedging-language rule (HARD RULE 3) is doing real work here; once "appears to be" is off the table, the model has to either describe a literal visible feature or stay silent.
+- **The findings are genuinely useful as quote-prep.** A lumber pile on the perimeter is a real access constraint. A pale slope that doesn't match the neighborhood is a real "what's the story here" question for the homeowner. Neither is a measurement claim — both are observations a contractor would make standing in the driveway.
+- **Framing decision: "pre-inspection observations," not "damage detection."** The vision call produces findings worth a closer look. It does not diagnose damage. Calling it damage detection would imply a confidence we don't have and would put us closer to the line on hard rule #2 than we want to be. The UI copy and PDF section header both use the softer framing, with a literal "NOT A DIAGNOSIS" footer disclaimer.
+- **Sample variance on overall_condition is real.** Two Kenswick runs returned `fair` and `concerning` for the same image — both defensible (the construction context is genuinely on the boundary). For UI purposes this means we should not over-rotate on the overall_condition word; the findings list is more stable across reruns.
+
+### Limitations
+
+- No coordinate-aligned overlays on the locked aerial. Vision LLMs are unreliable at returning pixel coordinates at this resolution; a misaligned badge over a clean part of the roof would be worse than a text list.
+- Image age varies per property (Solar `imageryDate` ranges 2021–2024 across the test set). The condition assessment is only as fresh as the tile — for example, the Highland house has known recent shingle loss that the 2023 imagery does not show, so "good" is correct *for the imagery* but not for the current physical roof.
+- Individual shingle-tab loss is not reliably visible at zoom 20. The system prompt says so explicitly.
+- The "what you can / cannot reliably see" list in the system prompt is the entire vision spec — there is no model card or empirical study behind those bullets, just what the spike showed.
+
+### Next iterations
+
+- **Coordinate-aligned overlays** if Sonnet's pixel-coordinate accuracy improves, or if we pre-segment the roof into named planes and let the model reference plane IDs instead of pixels.
+- **Multi-temporal change detection** — pull aerials from multiple `imageryDate` sources (Solar gives historical) and ask the model what changed between dates. The stale-imagery limitation becomes a feature.
+- **Integration with homeowner intake** — surface findings as conversation-starters in the quote flow ("we noticed building materials on the east side — is there active work happening?") rather than as standalone bullets.
+
+---
+
 ## Template for new entries
 
 ```

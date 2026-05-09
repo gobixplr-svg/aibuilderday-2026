@@ -7,6 +7,20 @@ import { ProcessingScreen } from "./ProcessingScreen"
 import { ResultsScreen } from "./ResultsScreen"
 import { DebugPanel } from "./DebugPanel"
 
+export type ConditionFinding = {
+  category: "missing_shingles" | "patching_repair" | "moss_or_growth" | "tarp_or_covering" | "structural_sag" | "discoloration_staining" | "debris" | "other"
+  description: string
+  location_description: string
+  severity: "low" | "medium" | "high"
+  confidence: number
+}
+
+export type ConditionAssessment = {
+  overall: "good" | "fair" | "concerning" | "unable_to_assess"
+  findings: ConditionFinding[]
+  rationale: string
+}
+
 type ResultData = {
   address: string
   sqft: number
@@ -15,6 +29,7 @@ type ResultData = {
   pitch: string
   pitch_confidence: number
   tiers: { name: string; total: number; per_sqft?: number }[]
+  condition?: ConditionAssessment | null
   stub?: boolean
 }
 

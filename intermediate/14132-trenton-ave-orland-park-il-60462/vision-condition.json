@@ -1,0 +1,13 @@
+{
+  "overall_condition": "fair",
+  "findings": [
+    {
+      "category": "other",
+      "description": "A bright white rectangular object, approximately 4–6 ft in its longest dimension, is visible on the north-facing slope near the peak. It is clearly distinct in color and texture from the surrounding tan/beige shingles and does not match any other rooftop element on this roof.",
+      "location_description": "North slope, near the ridge, center of the roof.",
+      "severity": "medium",
+      "confidence": 0.7
+    }
+  ],
+  "rationale": "The subject home has a hip-style roof covered in tan/beige shingles. Overall shingle color is uniform across all visible slopes, all ridge lines are geometrically straight with no detectable sag, and no moss, debris, tarps, or obvious missing shingle sections are visible. The one notable finding is a bright white rectangular object on the north slope near the ridge. It is clearly differentiated from the surrounding shingle field and does not match the tone or texture of the rest of the roof. At this resolution it cannot be positively identified as a skylight, HVAC curb unit, or a patching/covering material — it warrants a closer look during in-person inspection. The scattered small dark dots across the field are consistent with standard pipe penetrations/vents and are not flagged as concerns."
+}

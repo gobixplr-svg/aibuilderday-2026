@@ -20,6 +20,11 @@
     "rake": 8,
     "eave": 161
   },
+  "condition": {
+    "overall": "good",
+    "findings": [],
+    "rationale": "The subject home at 5914 Copper Lilly Lane features a complex multi-gable/hip roof clad in dark charcoal asphalt shingles. Across all visible roof planes — including the upper northern section, central intersecting gables, and lower southern slopes — the shingle color and texture are consistent and uniform with no discernible color breaks, patching, or mismatched material. Ridge lines are geometrically straight with no visible sag or deflection. There are no tarps, coverings, or large debris present. No green/dark biological growth patches are visible on any slope. No areas of exposed decking or obvious missing material are present. No rust streaking or water-staining tracks are observable. Image resolution and lighting are sufficient for a reliable surface-level assessment. No findings meet the confidence threshold for reporting."
+  },
   "roof_area_sqft": 4369,
   "roof_area_source": "solar-fence",
   "vision_footprint_sqft": 2650,
@@ -28,5 +33,5 @@
   "solar_roof_area_sqft": 4369,
   "fence_triggered": true,
   "fence_reason": "vision roof area 2963 differs from solar 4369 by 32.2% (>12%)",
-  "computed_at": "2026-05-09T00:49:57.462Z"
+  "computed_at": "2026-05-09T02:45:17.803Z"
 }

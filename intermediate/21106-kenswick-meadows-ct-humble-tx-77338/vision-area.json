@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2400,
+  "footprint_sqft": 2500,
   "line_items": {
     "ridge": 35,
-    "hip": 95,
-    "valley": 18,
-    "rake": 0,
-    "eave": 155
+    "hip": 75,
+    "valley": 19,
+    "rake": 10,
+    "eave": 124
   },
-  "confidence": 0.42,
-  "rationale": "The subject home (centered on the orange reticle, bounded by the orange dashed box) appears to be under active construction. The bounding box measures approximately 255 × 268 pixels (54.1 ft × 56.8 ft), yielding a plan-view bounding area of ~3,074 sq ft. The roof is a complex hip style with multiple planes visible; the upper-left portion shows a completed darker hip section with discernible ridge/hip lines, while the lower-central area shows lighter exposed decking consistent with active framing. A fill factor of ~78% was applied to account for the hip corners tapering inward. No attached garage or separate structure is clearly connected within the box. Ridge (~2 segments, ~35 ft), hip lines (~6 edges from peaks to corners, ~95 ft total), valleys (~2 inward junctions, ~18 ft), no rakes (hip roof), and perimeter eaves (~155 ft) were estimated by tracing visible roof-plane edges in pixel coordinates and converting at 0.212 ft/px. Confidence is reduced due to the construction state partially obscuring roof structure and the unusual orientation of the home relative to north."
+  "confidence": 0.32,
+  "rationale": "The subject home (21106 Kenswick Meadows Ct, Humble TX) is clearly under active construction. The large light-gray plan-view area is exposed OSB roof sheathing with no shingles installed. A partially completed dark-shingled hip-roof section is visible at the upper portion of the orange bounding box. Bounding box measured at approximately 268 × 270 pixels = 56.8 ft × 57.2 ft = ~3,250 sq ft bounding area. Applied a 0.77 fill factor for the irregular L-shaped/complex footprint to yield ~2,500 sq ft. Edge types extrapolated from the visible completed hip-roof section at the top of the structure and the general structural form of the main body. Confidence is low (0.32) due to the under-construction state: shingle edges, hip lines, valleys, and eave terminations are not yet clearly defined from the satellite view, and construction debris partially obscures the perimeter."
 }

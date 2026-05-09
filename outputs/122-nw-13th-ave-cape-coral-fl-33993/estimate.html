@@ -75,6 +75,26 @@
     .measure-item .k { font-size: 8px; letter-spacing: 1.4px; color: #6b7280; text-transform: uppercase; }
     .measure-item .v { font-size: 14px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
 
+    /* Pre-inspection observations (PLOG-008) */
+    .observations { margin-top: 18px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+    .observations .obs-head { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: baseline; background: #fafbfc; }
+    .observations .obs-h { font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; color: #6b7280; }
+    .observations .obs-overall { font-size: 12px; font-weight: 700; color: #14213d; margin-left: 8px; }
+    .observations .obs-overall.is-good { color: #16a34a; }
+    .observations .obs-overall.is-concerning { color: #fca311; }
+    .observations .obs-count { font-size: 9px; letter-spacing: 1.2px; color: #6b7280; text-transform: uppercase; }
+    .observations .obs-empty { padding: 12px 14px; font-size: 10px; color: #6b7280; }
+    .observations .obs-list { list-style: none; padding: 0; margin: 0; }
+    .observations .obs-item { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; }
+    .observations .obs-item:last-child { border-bottom: none; }
+    .observations .obs-item .obs-row1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+    .observations .obs-item .obs-cat { font-size: 11px; font-weight: 700; color: #14213d; }
+    .observations .obs-item .obs-cat.is-high { color: #fca311; }
+    .observations .obs-item .obs-meta { font-size: 8px; letter-spacing: 1.2px; color: #9ca3af; text-transform: uppercase; white-space: nowrap; }
+    .observations .obs-item .obs-desc { font-size: 10px; color: #4b5563; line-height: 1.45; margin-bottom: 2px; }
+    .observations .obs-item .obs-loc { font-size: 8px; letter-spacing: 1px; color: #9ca3af; text-transform: uppercase; }
+    .observations .obs-foot { padding: 6px 14px; font-size: 8px; letter-spacing: 1.2px; color: #9ca3af; text-transform: uppercase; background: #fafbfc; border-top: 1px solid #f3f4f6; }
+
     /* Terms */
     .terms { margin-top: 22px; padding: 14px 16px; background: #f9fafb; border-radius: 8px; font-size: 10px; color: #4b5563; line-height: 1.55; }
     .terms strong { color: #14213d; }
@@ -236,6 +256,41 @@
         <div class="meta">Lifetime · designer / impact-resistant</div>
       </div>
     </div>
+  </div>
+
+  
+  <div class="observations">
+    <div class="obs-head">
+      <div>
+        <span class="obs-h">Pre-inspection observations</span>
+        <span class="obs-overall is-concerning">Concerning</span>
+      </div>
+      <span class="obs-count">2 observations</span>
+    </div>
+    
+      <ul class="obs-list">
+        
+          <li class="obs-item">
+            <div class="obs-row1">
+              <span class="obs-cat is-high">Tarp / covering</span>
+              <span class="obs-meta">HIGH · 100%</span>
+            </div>
+            <div class="obs-desc">Bright blue tarps cover the entire main roof surface — both the primary hip roof section and the lower secondary roof section (likely garage or addition). The tarps are large, uniform blue in color, and span all visible slopes with no underlying shingle material visible beneath them.</div>
+            <div class="obs-loc">Whole roof — all slopes of both the main structure and the lower attached section</div>
+          </li>
+        
+          <li class="obs-item">
+            <div class="obs-row1">
+              <span class="obs-cat is-high">Tarp / covering</span>
+              <span class="obs-meta">HIGH · 90%</span>
+            </div>
+            <div class="obs-desc">A lighter blue-white section of tarp on the lower-front (south-facing) slope is visually distinct from the darker blue tarps on the upper sections, indicating a separate, overlapping tarp layer or partial underlayment exposure.</div>
+            <div class="obs-loc">South slope of the lower attached roof section, center to right half</div>
+          </li>
+        
+      </ul>
+    
+    <div class="obs-foot">AI vision condition assessment · pre-inspection only · not a diagnosis</div>
   </div>
 
   <!-- Terms -->

@@ -21,6 +21,26 @@
       "rake": 13,
       "eave": 223
     },
+    "condition": {
+      "overall": "fair",
+      "findings": [
+        {
+          "category": "discoloration_staining",
+          "description": "A large, distinctly lighter tan/beige roof section occupies the north and northwest portions of the roof, contrasting sharply with the darker brown shingle sections on the south and southwest slopes. The color boundary is abrupt and consistent across a broad area, not attributable to shadow.",
+          "location_description": "North and northwest roof sections, upper/front portion of the home",
+          "severity": "low",
+          "confidence": 0.75
+        },
+        {
+          "category": "patching_repair",
+          "description": "The lighter-colored northern section exhibits a flat or very low-slope profile compared to the clearly pitched darker sections. The material texture visible differs from the surrounding steep-slope shingle areas, indicating a different roofing material on this section (consistent with modified bitumen or TPO on a low-slope area).",
+          "location_description": "North-facing low-slope section, central-north portion of roof",
+          "severity": "low",
+          "confidence": 0.7
+        }
+      ],
+      "rationale": "The subject home is a large, architecturally complex residence with multiple roof planes at varying pitches. The most notable visible feature is a stark color and texture contrast between the northern/upper roof section (light tan/beige, flat or near-flat profile) and the southern/lower sections (medium-dark brown, clearly pitched asphalt shingles). This contrast is clearly visible and not attributable to shadow or sun angle — the boundary is sharp and consistent. This likely reflects a different roofing material on the low-slope section (e.g., TPO, mod-bit) versus asphalt shingles on the steep slopes, which is architecturally common but worth verifying for flashing integrity at the transition seam during an in-person inspection. No tarps, moss/algae growth, obvious missing shingle sections, structural sagging at ridges, or large debris are visible across any roof plane. Several small dots visible on the surface are consistent with roof vents/penetrations, which are normal. Overall condition is rated fair due to the material transition zone warranting a closer look, but no urgent or high-severity damage is evident from this imagery."
+    },
     "roof_area_sqft": 6015,
     "roof_area_source": "vision",
     "vision_footprint_sqft": 5380,
@@ -29,7 +49,7 @@
     "solar_roof_area_sqft": 5566,
     "fence_triggered": false,
     "fence_reason": null,
-    "computed_at": "2026-05-09T00:50:37.077Z"
+    "computed_at": "2026-05-09T02:47:44.203Z"
   },
   "tiers": [
     {
@@ -77,7 +97,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:37.078Z",
+          "generated_at": "2026-05-09T02:47:44.205Z",
           "currency": "USD"
         },
         "inputs": {
@@ -218,7 +238,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:37.079Z",
+          "generated_at": "2026-05-09T02:47:44.205Z",
           "currency": "USD"
         },
         "inputs": {
@@ -359,7 +379,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:37.079Z",
+          "generated_at": "2026-05-09T02:47:44.205Z",
           "currency": "USD"
         },
         "inputs": {
@@ -456,7 +476,7 @@
       }
     }
   ],
-  "generated_at": "2026-05-09T00:50:37.079Z",
+  "generated_at": "2026-05-09T02:47:44.205Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

@@ -1,0 +1,27 @@
+{
+  "overall_condition": "concerning",
+  "findings": [
+    {
+      "category": "other",
+      "description": "Large flat-roof section with a bright white/light gray surface that is distinctly different in material and color from every neighboring home's dark gray shingle roofing, consistent with a flat-roof membrane (TPO/EPDM) or exposed roof decking during active construction.",
+      "location_description": "Central and lower portions of the subject roof, encompassing the majority of the area within the bounding box.",
+      "severity": "medium",
+      "confidence": 0.85
+    },
+    {
+      "category": "debris",
+      "description": "Multiple small scattered dark objects (approximately 8–12 distinct spots) distributed across the light-colored flat roof surface, irregular spacing, inconsistent with rooftop mechanical equipment.",
+      "location_description": "Across the flat central roof section, distributed from mid-roof toward the south slope.",
+      "severity": "medium",
+      "confidence": 0.72
+    },
+    {
+      "category": "debris",
+      "description": "Large piles of dimensional lumber and construction materials (tan/yellow in color) stacked directly adjacent to the east and southeast roof edges, with some material appearing to lean against or rest at the roof perimeter.",
+      "location_description": "East and southeast perimeter of the subject roof/structure.",
+      "severity": "high",
+      "confidence": 0.92
+    }
+  ],
+  "rationale": "The subject roof within the orange bounding box stands out markedly from all neighboring homes in this satellite image. While surrounding homes uniformly display dark gray asphalt shingles, the large central and lower section of the subject roof displays a bright white/light gray surface, indicating either a flat-roof membrane product (TPO/PVC) or, more likely given the surrounding context, exposed decking or underlayment associated with active construction or a full roof replacement in progress. Compounding this, extensive piles of dimensional lumber and construction materials are clearly visible stacked along the east and southeast perimeter of the home — a strong indicator of an active work site. Additionally, multiple small dark scattered objects are visible directly on the white roof deck surface that are inconsistent with HVAC equipment placement and are consistent with construction debris. The combination of non-standard roof surface material/color, visible scattered debris on the deck, and large adjacent construction material piles results in a \"concerning\" overall assessment warranting an in-person inspection to determine the current construction stage and whether the roof assembly is complete and weathertight."
+}

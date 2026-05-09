@@ -21,6 +21,19 @@
       "rake": 12,
       "eave": 212
     },
+    "condition": {
+      "overall": "fair",
+      "findings": [
+        {
+          "category": "other",
+          "description": "A distinctly lighter tan/gray flat or low-slope roof section is visible in the center of the roof complex, clearly contrasting in both color and texture from the surrounding dark gray hip-roof shingle sections. This section spans approximately 15–20 ft and uses a visibly different roofing material (consistent with modified bitumen or TPO).",
+          "location_description": "Center of subject roof, between the northern and southern hip-roof volumes",
+          "severity": "low",
+          "confidence": 0.82
+        }
+      ],
+      "rationale": "The subject roof at 6310 Laguna Bay Court is a large, complex multi-hip residential roof with dark gray/charcoal shingles across its primary slopes. At this resolution and image quality, the shingle field is largely uniform in color with no visible tarps, moss/biological growth, obvious missing material, or structural sag along the ridgelines. The one clearly notable feature is a lighter-colored flat or low-slope section centrally located between the two main hip-roof volumes — its tan/gray color and smooth texture are distinctly different from the surrounding dark shingle planes, indicating a different roofing material (likely a membrane system). This is not necessarily a defect, but flat/low-slope transitions are higher-risk areas for water intrusion and warrant a close in-person look at seams, drains, and membrane condition. No other actionable findings were identified at this resolution."
+    },
     "roof_area_sqft": 4315,
     "roof_area_source": "vision",
     "vision_footprint_sqft": 3984,
@@ -29,7 +42,7 @@
     "solar_roof_area_sqft": 4186,
     "fence_triggered": false,
     "fence_reason": null,
-    "computed_at": "2026-05-09T00:50:35.366Z"
+    "computed_at": "2026-05-09T02:47:15.284Z"
   },
   "tiers": [
     {
@@ -77,7 +90,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:35.367Z",
+          "generated_at": "2026-05-09T02:47:15.286Z",
           "currency": "USD"
         },
         "inputs": {
@@ -218,7 +231,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:35.367Z",
+          "generated_at": "2026-05-09T02:47:15.286Z",
           "currency": "USD"
         },
         "inputs": {
@@ -359,7 +372,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:35.367Z",
+          "generated_at": "2026-05-09T02:47:15.286Z",
           "currency": "USD"
         },
         "inputs": {
@@ -456,7 +469,7 @@
       }
     }
   ],
-  "generated_at": "2026-05-09T00:50:35.367Z",
+  "generated_at": "2026-05-09T02:47:15.286Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

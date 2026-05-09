@@ -111,6 +111,7 @@ export async function POST(req: NextRequest) {
     pitch:                normalizePitch(measurement.pitch ?? ""),
     pitch_confidence:     measurement.pitch_confidence ?? 0,
     tiers,
+    condition:            measurement.condition ?? null,
     stub:                 !!(measurement.pitch_stub || measurement.footprint_stub),
   })
 }

@@ -75,6 +75,26 @@
     .measure-item .k { font-size: 8px; letter-spacing: 1.4px; color: #6b7280; text-transform: uppercase; }
     .measure-item .v { font-size: 14px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
 
+    /* Pre-inspection observations (PLOG-008) */
+    .observations { margin-top: 18px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+    .observations .obs-head { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: baseline; background: #fafbfc; }
+    .observations .obs-h { font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; color: #6b7280; }
+    .observations .obs-overall { font-size: 12px; font-weight: 700; color: #14213d; margin-left: 8px; }
+    .observations .obs-overall.is-good { color: #16a34a; }
+    .observations .obs-overall.is-concerning { color: #fca311; }
+    .observations .obs-count { font-size: 9px; letter-spacing: 1.2px; color: #6b7280; text-transform: uppercase; }
+    .observations .obs-empty { padding: 12px 14px; font-size: 10px; color: #6b7280; }
+    .observations .obs-list { list-style: none; padding: 0; margin: 0; }
+    .observations .obs-item { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; }
+    .observations .obs-item:last-child { border-bottom: none; }
+    .observations .obs-item .obs-row1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+    .observations .obs-item .obs-cat { font-size: 11px; font-weight: 700; color: #14213d; }
+    .observations .obs-item .obs-cat.is-high { color: #fca311; }
+    .observations .obs-item .obs-meta { font-size: 8px; letter-spacing: 1.2px; color: #9ca3af; text-transform: uppercase; white-space: nowrap; }
+    .observations .obs-item .obs-desc { font-size: 10px; color: #4b5563; line-height: 1.45; margin-bottom: 2px; }
+    .observations .obs-item .obs-loc { font-size: 8px; letter-spacing: 1px; color: #9ca3af; text-transform: uppercase; }
+    .observations .obs-foot { padding: 6px 14px; font-size: 8px; letter-spacing: 1.2px; color: #9ca3af; text-transform: uppercase; background: #fafbfc; border-top: 1px solid #f3f4f6; }
+
     /* Terms */
     .terms { margin-top: 22px; padding: 14px 16px; background: #f9fafb; border-radius: 8px; font-size: 10px; color: #4b5563; line-height: 1.55; }
     .terms strong { color: #14213d; }
@@ -142,10 +162,10 @@
   <div class="measure">
     <div class="measure-item"><div class="k">Footprint</div><div class="v">2,539</div></div>
     <div class="measure-item"><div class="k">Ridge</div><div class="v">35 lf</div></div>
-    <div class="measure-item"><div class="k">Hip</div><div class="v">95 lf</div></div>
-    <div class="measure-item"><div class="k">Valley</div><div class="v">18 lf</div></div>
-    <div class="measure-item"><div class="k">Rake</div><div class="v">0 lf</div></div>
-    <div class="measure-item"><div class="k">Eave</div><div class="v">155 lf</div></div>
+    <div class="measure-item"><div class="k">Hip</div><div class="v">75 lf</div></div>
+    <div class="measure-item"><div class="k">Valley</div><div class="v">19 lf</div></div>
+    <div class="measure-item"><div class="k">Rake</div><div class="v">10 lf</div></div>
+    <div class="measure-item"><div class="k">Eave</div><div class="v">124 lf</div></div>
   </div>
 
   <!-- Featured tier -->
@@ -157,7 +177,7 @@
       </div>
       <div class="rhs">
         <div class="label">Total</div>
-        <div class="total">$17,080</div>
+        <div class="total">$16,900</div>
       </div>
     </div>
     <div class="featured-body">
@@ -183,8 +203,8 @@
             <td class="amount">$627</td>
           </tr>
           <tr>
-            <td>Trim & flashing (drip edge 155 lf, ridge 35 lf, valley 18 lf)</td>
-            <td class="amount">$1,164</td>
+            <td>Trim & flashing (drip edge 124 lf, ridge 35 lf, valley 19 lf)</td>
+            <td class="amount">$1,018</td>
           </tr>
           <tr>
             <td>Penetrations & vents (boots, chimney, ridge vents)</td>
@@ -195,20 +215,20 @@
             <td class="amount">$287</td>
           </tr>
           <tr>
-            <td>Labor (23.89 sq @ 2.85 h/sq)</td>
-            <td class="amount">$5,797</td>
+            <td>Labor (23.89 sq @ 2.86 h/sq)</td>
+            <td class="amount">$5,803</td>
           </tr>
           <tr>
             <td>Overhead (12%)</td>
-            <td class="amount">$1,591</td>
+            <td class="amount">$1,575</td>
           </tr>
           <tr>
             <td>Profit (15%)</td>
-            <td class="amount">$2,228</td>
+            <td class="amount">$2,204</td>
           </tr>
           <tr class="totals-row">
             <td>Total</td>
-            <td class="amount">$17,080</td>
+            <td class="amount">$16,900</td>
           </tr>
         </tbody>
       </table>
@@ -222,20 +242,64 @@
       
       <div class="tier-card">
         <div class="name">3-Tab Asphalt Shingle</div>
-        <div class="total">$14,291</div>
+        <div class="total">$14,112</div>
         <div class="meta">25-yr · 3-tab asphalt</div>
       </div>
       <div class="tier-card is-featured">
         <div class="name">Architectural Laminate</div>
-        <div class="total">$17,080</div>
+        <div class="total">$16,900</div>
         <div class="meta">30-yr · architectural laminate</div>
       </div>
       <div class="tier-card">
         <div class="name">Designer / Impact-Resistant</div>
-        <div class="total">$21,247</div>
+        <div class="total">$21,067</div>
         <div class="meta">Lifetime · designer / impact-resistant</div>
       </div>
     </div>
+  </div>
+
+  
+  <div class="observations">
+    <div class="obs-head">
+      <div>
+        <span class="obs-h">Pre-inspection observations</span>
+        <span class="obs-overall is-concerning">Concerning</span>
+      </div>
+      <span class="obs-count">3 observations</span>
+    </div>
+    
+      <ul class="obs-list">
+        
+          <li class="obs-item">
+            <div class="obs-row1">
+              <span class="obs-cat ">Other</span>
+              <span class="obs-meta">MEDIUM · 85%</span>
+            </div>
+            <div class="obs-desc">Large flat-roof section with a bright white/light gray surface that is distinctly different in material and color from every neighboring home's dark gray shingle roofing, consistent with a flat-roof membrane (TPO/EPDM) or exposed roof decking during active construction.</div>
+            <div class="obs-loc">Central and lower portions of the subject roof, encompassing the majority of the area within the bounding box.</div>
+          </li>
+        
+          <li class="obs-item">
+            <div class="obs-row1">
+              <span class="obs-cat ">Debris</span>
+              <span class="obs-meta">MEDIUM · 72%</span>
+            </div>
+            <div class="obs-desc">Multiple small scattered dark objects (approximately 8–12 distinct spots) distributed across the light-colored flat roof surface, irregular spacing, inconsistent with rooftop mechanical equipment.</div>
+            <div class="obs-loc">Across the flat central roof section, distributed from mid-roof toward the south slope.</div>
+          </li>
+        
+          <li class="obs-item">
+            <div class="obs-row1">
+              <span class="obs-cat is-high">Debris</span>
+              <span class="obs-meta">HIGH · 92%</span>
+            </div>
+            <div class="obs-desc">Large piles of dimensional lumber and construction materials (tan/yellow in color) stacked directly adjacent to the east and southeast roof edges, with some material appearing to lean against or rest at the roof perimeter.</div>
+            <div class="obs-loc">East and southeast perimeter of the subject roof/structure.</div>
+          </li>
+        
+      </ul>
+    
+    <div class="obs-foot">AI vision condition assessment · pre-inspection only · not a diagnosis</div>
   </div>
 
   <!-- Terms -->

@@ -28,6 +28,7 @@ import { join } from "path"
 import { fetchAerialPipeline } from "./lib/aerial-pipeline.mjs"
 import { estimatePitch, pitchMultiplier } from "./lib/pitch.mjs"
 import { estimateFootprint } from "./lib/footprint.mjs"
+import { assessCondition } from "./lib/condition.mjs"
 import { loadMaterials, buildEstimate } from "./lib/estimate.mjs"
 import { renderEstimatePdf } from "./lib/pdf.mjs"
 import { annotateAerial } from "./lib/scale-bar.mjs"
@@ -110,6 +111,21 @@ async function run() {
   console.log(`[pitch] ${pitch.pitch} (confidence ${pitch.confidence})${pitch.stub ? " [STUB]" : ""}`)
   console.log(`[footprint] ${area.footprint_sqft} sqft (confidence ${area.confidence})${area.stub ? " [STUB]" : ""}`)
   console.log(`[footprint] line items: ${JSON.stringify(area.line_items)}`)
+
+  // 3b. Roof condition assessment (PLOG-008).
+  //
+  // Runs AFTER pitch + footprint rather than in parallel because footprint
+  // is the call that fetches Solar insights and re-annotates the aerial
+  // with the SUBJECT bounding box. Condition needs to read the
+  // SUBJECT-annotated version, so it has to come later. Cost: ~15-40s
+  // wall-clock added serially instead of running in parallel. Acceptable
+  // tradeoff vs the riskier refactor of hoisting annotation to the top.
+  console.log(`\n--- Step 3b/6: Condition assessment ---`)
+  const conditionPath = join(dir, "vision-condition.json")
+  const condition = await loadOrCompute(conditionPath, "condition", () =>
+    assessCondition({ annotatedPath, slug }),
+  )
+  console.log(`[condition] ${condition.overall_condition} (${condition.findings.length} findings)`)
 
   // 4. Compute roof_area_sqft, then apply Solar API sanity fence.
   //
@@ -198,6 +214,11 @@ async function run() {
     footprint_rationale: area.rationale,
     footprint_stub: !!area.stub,
     line_items: area.line_items,
+    condition: {
+      overall: condition.overall_condition,
+      findings: condition.findings,
+      rationale: condition.rationale,
+    },
     roof_area_sqft,
     roof_area_source: solarFenceTriggered ? "solar-fence" : "vision",
     vision_footprint_sqft: visionFootprint,

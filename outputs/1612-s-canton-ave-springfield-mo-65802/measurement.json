@@ -20,6 +20,11 @@
     "rake": 0,
     "eave": 154
   },
+  "condition": {
+    "overall": "good",
+    "findings": [],
+    "rationale": "The subject home within the orange bounding box features a complex hip-style roof surfaced with what appears to be dark gray asphalt shingles. The shingle field is visually uniform in color and texture across all visible slopes — no large-scale color breaks, mismatched patches, tarp coverings, or exposed decking are detectable. The ridge lines and hip lines appear geometrically straight with no visible sag or deflection compared to neighboring structures. Several small white/light-colored points visible on the roof surface are consistent with standard roof penetrations (pipe boots, vents) rather than damage. Tree shadows fall partially on the north/west slopes but enough of the surface remains visible to rule out major anomalies underneath. No moss or biological growth, debris, or structural distortion is observed. Overall the roof presents no flagged conditions at this resolution and imagery quality."
+  },
   "roof_area_sqft": 2757,
   "roof_area_source": "solar-fence",
   "vision_footprint_sqft": 2100,
@@ -28,5 +33,5 @@
   "solar_roof_area_sqft": 2757,
   "fence_triggered": true,
   "fence_reason": "vision roof area 2274 differs from solar 2757 by 17.5% (>12%)",
-  "computed_at": "2026-05-09T00:50:33.658Z"
+  "computed_at": "2026-05-09T02:46:50.753Z"
 }

@@ -20,6 +20,26 @@
     "rake": 0,
     "eave": 185
   },
+  "condition": {
+    "overall": "concerning",
+    "findings": [
+      {
+        "category": "tarp_or_covering",
+        "description": "Bright blue tarps cover the entire main roof surface — both the primary hip roof section and the lower secondary roof section (likely garage or addition). The tarps are large, uniform blue in color, and span all visible slopes with no underlying shingle material visible beneath them.",
+        "location_description": "Whole roof — all slopes of both the main structure and the lower attached section",
+        "severity": "high",
+        "confidence": 1
+      },
+      {
+        "category": "tarp_or_covering",
+        "description": "A lighter blue-white section of tarp on the lower-front (south-facing) slope is visually distinct from the darker blue tarps on the upper sections, indicating a separate, overlapping tarp layer or partial underlayment exposure.",
+        "location_description": "South slope of the lower attached roof section, center to right half",
+        "severity": "high",
+        "confidence": 0.9
+      }
+    ],
+    "rationale": "The subject roof at 122 NW 13th Ave, Cape Coral, FL 33993 is almost entirely covered by blue tarps across all visible roof slopes — both the main hip roof and the lower attached section (likely a garage or addition). Blue tarping of this scale and completeness is a strong indicator of significant prior storm damage (consistent with hurricane activity in the Cape Coral/Lee County area) or an active roof replacement in progress. No underlying shingle material is visible on any slope. A second, lighter-colored tarp layer is visually distinct on the south slope of the lower section, suggesting layered emergency coverings. This roof warrants immediate in-person inspection to assess the extent of underlying deck or structural damage before any replacement quote can be finalized."
+  },
   "roof_area_sqft": 2924,
   "roof_area_source": "solar-fence",
   "vision_footprint_sqft": 2300,
@@ -28,5 +48,5 @@
   "solar_roof_area_sqft": 2924,
   "fence_triggered": true,
   "fence_reason": "vision roof area 2424 differs from solar 2924 by 17.1% (>12%)",
-  "computed_at": "2026-05-09T00:49:59.186Z"
+  "computed_at": "2026-05-09T02:45:36.670Z"
 }

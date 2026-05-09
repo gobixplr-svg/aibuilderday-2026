@@ -132,6 +132,26 @@ export function renderEstimateHtml({ estimate, aerialBuffer, customer = {} }) {
     .measure-item .k { font-size: 8px; letter-spacing: 1.4px; color: #6b7280; text-transform: uppercase; }
     .measure-item .v { font-size: 14px; font-weight: 700; margin-top: 2px; font-variant-numeric: tabular-nums; }
 
+    /* Pre-inspection observations (PLOG-008) */
+    .observations { margin-top: 18px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+    .observations .obs-head { padding: 10px 14px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: baseline; background: #fafbfc; }
+    .observations .obs-h { font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; color: #6b7280; }
+    .observations .obs-overall { font-size: 12px; font-weight: 700; color: #14213d; margin-left: 8px; }
+    .observations .obs-overall.is-good { color: #16a34a; }
+    .observations .obs-overall.is-concerning { color: #fca311; }
+    .observations .obs-count { font-size: 9px; letter-spacing: 1.2px; color: #6b7280; text-transform: uppercase; }
+    .observations .obs-empty { padding: 12px 14px; font-size: 10px; color: #6b7280; }
+    .observations .obs-list { list-style: none; padding: 0; margin: 0; }
+    .observations .obs-item { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; }
+    .observations .obs-item:last-child { border-bottom: none; }
+    .observations .obs-item .obs-row1 { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+    .observations .obs-item .obs-cat { font-size: 11px; font-weight: 700; color: #14213d; }
+    .observations .obs-item .obs-cat.is-high { color: #fca311; }
+    .observations .obs-item .obs-meta { font-size: 8px; letter-spacing: 1.2px; color: #9ca3af; text-transform: uppercase; white-space: nowrap; }
+    .observations .obs-item .obs-desc { font-size: 10px; color: #4b5563; line-height: 1.45; margin-bottom: 2px; }
+    .observations .obs-item .obs-loc { font-size: 8px; letter-spacing: 1px; color: #9ca3af; text-transform: uppercase; }
+    .observations .obs-foot { padding: 6px 14px; font-size: 8px; letter-spacing: 1.2px; color: #9ca3af; text-transform: uppercase; background: #fafbfc; border-top: 1px solid #f3f4f6; }
+
     /* Terms */
     .terms { margin-top: 22px; padding: 14px 16px; background: #f9fafb; border-radius: 8px; font-size: 10px; color: #4b5563; line-height: 1.55; }
     .terms strong { color: #14213d; }
@@ -253,6 +273,8 @@ export function renderEstimateHtml({ estimate, aerialBuffer, customer = {} }) {
     </div>
   </div>
 
+  ${m.condition ? renderObservationsSection(m.condition) : ""}
+
   <!-- Terms -->
   <div class="terms">
     <strong>Estimate notes.</strong> Pricing reflects ${m.roof_area_sqft.toLocaleString()} sqft of roof area at ${m.pitch} pitch (${squares} squares). Estimate valid for 30 days from the date issued. Final pricing subject to inspection at framing if any unforeseen conditions are discovered. Permits, dumpster, and disposal included where required by local code. <strong>Warranty:</strong> tier-dependent (see manufacturer documentation). <strong>Payment:</strong> 30% on contract signing, 60% at material delivery, 10% at completion.
@@ -290,4 +312,72 @@ function tierMeta(tier) {
   if (tier.tier_id === "premium") return "30-yr · architectural laminate"
   if (tier.tier_id === "luxury") return "Lifetime · designer / impact-resistant"
   return ""
+}
+
+const CONDITION_LABEL = {
+  good: "Good",
+  fair: "Fair",
+  concerning: "Concerning",
+  unable_to_assess: "Inconclusive",
+}
+
+const OBSERVATION_CATEGORY_LABEL = {
+  missing_shingles: "Missing material",
+  patching_repair: "Visible patching",
+  moss_or_growth: "Biological growth",
+  tarp_or_covering: "Tarp / covering",
+  structural_sag: "Structural sag",
+  discoloration_staining: "Discoloration / staining",
+  debris: "Debris",
+  other: "Other",
+}
+
+// Pre-inspection observations section (PLOG-008). Frames as observations
+// the contractor should look at on the in-person visit, NOT as a damage
+// diagnosis. Section omitted entirely when there's no condition data.
+function renderObservationsSection(condition) {
+  const label = CONDITION_LABEL[condition.overall] || condition.overall
+  const overallClass = condition.overall === "good"
+    ? "is-good"
+    : condition.overall === "concerning"
+      ? "is-concerning"
+      : ""
+  const findings = Array.isArray(condition.findings) ? condition.findings : []
+  const countLabel = `${findings.length} ${findings.length === 1 ? "observation" : "observations"}`
+
+  return `
+  <div class="observations">
+    <div class="obs-head">
+      <div>
+        <span class="obs-h">Pre-inspection observations</span>
+        <span class="obs-overall ${overallClass}">${label}</span>
+      </div>
+      <span class="obs-count">${countLabel}</span>
+    </div>
+    ${findings.length === 0 ? `
+      <div class="obs-empty">No notable issues visible from satellite imagery. An in-person inspection will confirm.</div>
+    ` : `
+      <ul class="obs-list">
+        ${findings.map((f) => `
+          <li class="obs-item">
+            <div class="obs-row1">
+              <span class="obs-cat ${f.severity === "high" ? "is-high" : ""}">${OBSERVATION_CATEGORY_LABEL[f.category] || f.category}</span>
+              <span class="obs-meta">${(f.severity || "").toUpperCase()} · ${Math.round((f.confidence || 0) * 100)}%</span>
+            </div>
+            <div class="obs-desc">${escapeHtml(f.description || "")}</div>
+            <div class="obs-loc">${escapeHtml(f.location_description || "")}</div>
+          </li>
+        `).join("")}
+      </ul>
+    `}
+    <div class="obs-foot">AI vision condition assessment · pre-inspection only · not a diagnosis</div>
+  </div>`
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
 }

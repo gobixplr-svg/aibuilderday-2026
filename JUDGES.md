@@ -9,7 +9,7 @@
 | **Accuracy** | 5/5 example properties **in range** (within ±10% of reference avg). 3.4% mean absolute error. Worst case +8.0%. | [Calibration table](#accuracy) |
 | **Product** | 3-tier estimate PDF rendered for all 10 properties (5 example + 5 test). Real materials catalog with cited prices. | [Product evidence](#product) |
 | **Experience** | Address-in → estimate-PDF-out in ~3 minutes via CLI or web UI. Solar API subject disambiguation. Honest progress UI. | [Experience evidence](#experience) |
-| **Craft** | Full PLOG (PLOG-001 → PLOG-007) tracking every prompt change with measured deltas, including reverts. Pure-function estimate engine. Single shared FENCE_THRESHOLD_PCT after a documented dedup pass. | [Craft evidence](#craft) |
+| **Craft** | Full PLOG (PLOG-001 → PLOG-008) tracking every prompt change with measured deltas, including reverts. Pure-function estimate engine. Single shared FENCE_THRESHOLD_PCT after a documented dedup pass. AI vision **roof condition** assessment with refuse-to-fabricate framing (PLOG-008). | [Craft evidence](#craft) |
 | **Demo** | Roof Recon web UI: dark satellite-recon aesthetic, real polled aerial, asymptotic progress. (Top 5 only.) | [Demo evidence](#demo) |
 
 ---
@@ -94,7 +94,11 @@ This is **not "buy not build."** Vision is doing the actual measurement on 4 of 
 
 ### The PLOG (Prompt Changelog)
 
-Every prompt change to the vision pipeline gets an entry in [`docs/prompt-changelog.md`](docs/prompt-changelog.md): trigger → change → measured result → observations → next candidates. **Append-only, numbered sequentially, includes failed attempts and reverts** (PLOG-004 over-corrected on a footprint prompt and was reverted; PLOG-007 attempted a pitch prompt rework that regressed examples 5/5 → 4/5 and was reverted in the same commit). 7 entries total covering ~24 hours of iteration.
+Every prompt change to the vision pipeline gets an entry in [`docs/prompt-changelog.md`](docs/prompt-changelog.md): trigger → change → measured result → observations → next candidates. **Append-only, numbered sequentially, includes failed attempts and reverts** (PLOG-004 over-corrected on a footprint prompt and was reverted; PLOG-007 attempted a pitch prompt rework that regressed examples 5/5 → 4/5 and was reverted in the same commit). 8 entries covering ~36 hours of iteration.
+
+### Roof condition assessment (PLOG-008)
+
+A third Sonnet 4.6 vision call against the same SUBJECT-annotated aerial. Returns a structured condition assessment (`good` / `fair` / `concerning` / `unable_to_assess`) plus a list of specific findings with severity + confidence, OR an empty findings array — explicitly the correct output when nothing notable is visible. Per [CLAUDE.md hard rule #2](CLAUDE.md), the prompt makes "no findings" the path of least resistance and forbids hedging language ("appears to", "might be", "possibly") so the model has to either describe a literal visible cue or stay silent. Spiked on two properties before commit: Highland UT returned 0 findings (correctly — clean roof), Kenswick TX returned 3 findings (lumber piles on perimeter, pale roof slope distinct from neighbors, scattered debris on the deck). Surfaced in the web UI and the PDF as **"pre-inspection observations"** — explicitly framed as worth-a-closer-look notes for the in-person inspection, not a damage diagnosis. See [`scripts/lib/condition.mjs`](scripts/lib/condition.mjs).
 
 ### Engineering judgment
 

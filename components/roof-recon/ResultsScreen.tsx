@@ -4,6 +4,7 @@ import type { Theme } from "./theme"
 import { GridBG } from "./GridBG"
 import { Reticle } from "./Reticle"
 import { SatelliteFrame } from "./SatelliteFrame"
+import type { ConditionAssessment } from "./index"
 import { slugify } from "@/app/lib/slug"
 
 type TierData = {
@@ -69,7 +70,26 @@ type Result = {
   pitch: string
   pitch_confidence: number
   tiers: ApiTier[]
+  condition?: ConditionAssessment | null
   stub?: boolean
+}
+
+const CONDITION_LABEL: Record<string, string> = {
+  good:               "GOOD",
+  fair:               "FAIR",
+  concerning:         "CONCERNING",
+  unable_to_assess:   "INCONCLUSIVE",
+}
+
+const CATEGORY_LABEL: Record<string, string> = {
+  missing_shingles:        "Missing material",
+  patching_repair:         "Visible patching",
+  moss_or_growth:          "Biological growth",
+  tarp_or_covering:        "Tarp / covering",
+  structural_sag:          "Structural sag",
+  discoloration_staining:  "Discoloration / staining",
+  debris:                  "Debris",
+  other:                   "Other",
 }
 
 type Props = {
@@ -79,7 +99,22 @@ type Props = {
 }
 
 export function ResultsScreen({ t, result, onReset }: Props) {
-  const { address, sqft, footprint_sqft, pitch, pitch_confidence, tiers, stub } = result
+  const { address, sqft, footprint_sqft, pitch, pitch_confidence, tiers, condition, stub } = result
+
+  // Condition assessment color mapping. "good" reads as the success accent;
+  // "concerning" reads as the warning accent; "fair" / "unable_to_assess"
+  // sit in the neutral middle. Color choices respect the theme — no hard-
+  // coded hex outside what the theme already exposes.
+  const conditionTone = (overall?: string) => {
+    if (overall === "good") return t.success
+    if (overall === "concerning") return t.accent
+    return t.textMuted
+  }
+  const severityTone = (sev: string) => {
+    if (sev === "high") return t.accent
+    if (sev === "medium") return t.text
+    return t.textSoft
+  }
   const [revealed, setRevealed] = useState(0)
 
   // Count-up animation
@@ -183,6 +218,56 @@ export function ResultsScreen({ t, result, onReset }: Props) {
                 </div>
               ))}
             </div>
+
+            {/* Pre-inspection observations — third Sonnet vision call (PLOG-008).
+                Findings are surfaced as worth-a-closer-look notes for the
+                roofer's in-person inspection, NOT as damage diagnoses. */}
+            {condition && (
+              <div className="mt-6 max-w-lg border" style={{ borderColor: t.border, background: t.bg }}>
+                <div className="px-4 py-3 flex items-center justify-between border-b" style={{ borderColor: t.border }}>
+                  <div className="flex items-center gap-3">
+                    <span className="text-[9px] font-mono tracking-[0.25em]" style={{ color: t.textSoft }}>
+                      CONDITION
+                    </span>
+                    <span className="text-sm font-semibold tracking-tight" style={{ color: conditionTone(condition.overall) }}>
+                      {CONDITION_LABEL[condition.overall] ?? condition.overall.toUpperCase()}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono tracking-wider" style={{ color: t.textSoft }}>
+                    {condition.findings.length} {condition.findings.length === 1 ? "OBSERVATION" : "OBSERVATIONS"}
+                  </span>
+                </div>
+                {condition.findings.length === 0 ? (
+                  <div className="px-4 py-3 text-sm" style={{ color: t.textMuted }}>
+                    No notable issues visible from satellite imagery. An in-person inspection will confirm.
+                  </div>
+                ) : (
+                  <ul className="divide-y" style={{ borderColor: t.border }}>
+                    {condition.findings.map((f, i) => (
+                      <li key={i} className="px-4 py-3" style={{ borderColor: t.border }}>
+                        <div className="flex items-baseline justify-between gap-3 mb-1">
+                          <span className="text-[12px] font-semibold tracking-tight" style={{ color: severityTone(f.severity) }}>
+                            {CATEGORY_LABEL[f.category] ?? f.category}
+                          </span>
+                          <span className="text-[9px] font-mono tracking-wider whitespace-nowrap" style={{ color: t.textSoft }}>
+                            {f.severity.toUpperCase()} · {Math.round(f.confidence * 100)}%
+                          </span>
+                        </div>
+                        <p className="text-[12px] leading-snug mb-1" style={{ color: t.textMuted }}>
+                          {f.description}
+                        </p>
+                        <p className="text-[10px] font-mono tracking-wider" style={{ color: t.textSoft }}>
+                          {f.location_description}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="px-4 py-2 text-[10px] font-mono tracking-wider border-t" style={{ borderColor: t.border, color: t.textSoft }}>
+                  PRE-INSPECTION OBSERVATIONS · NOT A DIAGNOSIS
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Satellite panel — render the same cached aerial that the

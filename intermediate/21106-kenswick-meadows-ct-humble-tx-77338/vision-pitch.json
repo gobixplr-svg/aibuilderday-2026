@@ -1,6 +1,6 @@
 {
   "pitch": "6:12",
   "pitch_multiplier": 1.118,
-  "confidence": 0.62,
-  "rationale": "The subject property (Humble, TX) is under active construction with lumber and framing materials visible. The completed upper hip-roof section shows moderate shadow depth relative to eave width and a ridge noticeably narrower than the building footprint but not dramatically so, consistent with a 6:12 pitch. All surrounding fully-built homes display near-identical hip roofs with matching shadow lengths and ridge-to-eave ratios, confirming a neighborhood norm of ~6:12. The southern Houston-area climate further supports this mid-range pitch. Confidence is reduced due to the partially unfinished state of the roof obscuring full geometry assessment."
+  "confidence": 0.78,
+  "rationale": "The subject property's hip roof (visible in the upper portion of the orange dashed bounding box) displays moderate eave shadow length and a ridge width noticeably narrower than the eave footprint but not dramatically so, both consistent with a 6:12 pitch. The roof facets are visible from the satellite perspective but do not dominate the plan-view footprint as they would at 8:12+. All neighboring homes in this Humble, TX suburban neighborhood share nearly identical hip-roof geometry, facet exposure, and shadow lengths, reinforcing the regional norm of 6:12. The southern Houston-area climate further supports this mid-range pitch as the most common builder standard, with 5:12 being slightly too shallow and 7:12 slightly too steep given the observed shadow and facet proportions."
 }

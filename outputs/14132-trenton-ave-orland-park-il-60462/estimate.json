@@ -21,6 +21,19 @@
       "rake": 0,
       "eave": 222
     },
+    "condition": {
+      "overall": "fair",
+      "findings": [
+        {
+          "category": "other",
+          "description": "A bright white rectangular object, approximately 4–6 ft in its longest dimension, is visible on the north-facing slope near the peak. It is clearly distinct in color and texture from the surrounding tan/beige shingles and does not match any other rooftop element on this roof.",
+          "location_description": "North slope, near the ridge, center of the roof.",
+          "severity": "medium",
+          "confidence": 0.7
+        }
+      ],
+      "rationale": "The subject home has a hip-style roof covered in tan/beige shingles. Overall shingle color is uniform across all visible slopes, all ridge lines are geometrically straight with no detectable sag, and no moss, debris, tarps, or obvious missing shingle sections are visible. The one notable finding is a bright white rectangular object on the north slope near the ridge. It is clearly differentiated from the surrounding shingle field and does not match the tone or texture of the rest of the roof. At this resolution it cannot be positively identified as a skylight, HVAC curb unit, or a patching/covering material — it warrants a closer look during in-person inspection. The scattered small dark dots across the field are consistent with standard pipe penetrations/vents and are not flagged as concerns."
+    },
     "roof_area_sqft": 3170,
     "roof_area_source": "solar-fence",
     "vision_footprint_sqft": 2450,
@@ -29,7 +42,7 @@
     "solar_roof_area_sqft": 3170,
     "fence_triggered": true,
     "fence_reason": "vision roof area 2653 differs from solar 3170 by 16.3% (>12%)",
-    "computed_at": "2026-05-09T00:50:00.884Z"
+    "computed_at": "2026-05-09T02:46:02.074Z"
   },
   "tiers": [
     {
@@ -77,7 +90,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:00.885Z",
+          "generated_at": "2026-05-09T02:46:02.075Z",
           "currency": "USD"
         },
         "inputs": {
@@ -218,7 +231,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:00.885Z",
+          "generated_at": "2026-05-09T02:46:02.076Z",
           "currency": "USD"
         },
         "inputs": {
@@ -359,7 +372,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:00.885Z",
+          "generated_at": "2026-05-09T02:46:02.076Z",
           "currency": "USD"
         },
         "inputs": {
@@ -456,7 +469,7 @@
       }
     }
   ],
-  "generated_at": "2026-05-09T00:50:00.885Z",
+  "generated_at": "2026-05-09T02:46:02.076Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

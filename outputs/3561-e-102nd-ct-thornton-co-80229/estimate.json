@@ -21,6 +21,11 @@
       "rake": 0,
       "eave": 146
     },
+    "condition": {
+      "overall": "good",
+      "findings": [],
+      "rationale": "The subject roof within the orange bounding box is a hip-style roof with what appears to be dark gray asphalt shingles. The surface color is uniform across all visible slopes — no color breaks, mismatched patches, or discoloration streaks are present. Ridge and hip lines appear geometrically straight with no visible sag. There are no blue or brown tarps, no obvious large-area missing shingle sections exposing decking, no green biological growth, and no foreign debris on the roof surface. Compared to the immediately adjacent identical townhouse units, the subject roof shows the same consistent shingle tone and surface texture, indicating no notable anomalies. Image quality and viewing angle are sufficient to assess the visible slopes reliably. No findings meet the confidence threshold for reporting."
+    },
     "roof_area_sqft": 2081,
     "roof_area_source": "solar-fence",
     "vision_footprint_sqft": 1340,
@@ -29,7 +34,7 @@
     "solar_roof_area_sqft": 2081,
     "fence_triggered": true,
     "fence_reason": "vision roof area 1498 differs from solar 2081 by 28.0% (>12%)",
-    "computed_at": "2026-05-09T00:50:31.597Z"
+    "computed_at": "2026-05-09T02:46:32.994Z"
   },
   "tiers": [
     {
@@ -77,7 +82,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:31.599Z",
+          "generated_at": "2026-05-09T02:46:32.996Z",
           "currency": "USD"
         },
         "inputs": {
@@ -218,7 +223,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:31.599Z",
+          "generated_at": "2026-05-09T02:46:32.997Z",
           "currency": "USD"
         },
         "inputs": {
@@ -359,7 +364,7 @@
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T00:50:31.599Z",
+          "generated_at": "2026-05-09T02:46:32.997Z",
           "currency": "USD"
         },
         "inputs": {
@@ -456,7 +461,7 @@
       }
     }
   ],
-  "generated_at": "2026-05-09T00:50:31.599Z",
+  "generated_at": "2026-05-09T02:46:32.997Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"
