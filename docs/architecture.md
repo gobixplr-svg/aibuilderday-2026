@@ -5,196 +5,132 @@
 A measurement-and-estimate pipeline for residential pitched roofs:
 
 ```
-address → aerial image → footprint + pitch → roof area → priced estimate
+address → geocode → aerial → (Solar subject + sanity data) → vision footprint & line items
+  → Solar pitch (primary) + vision pitch (fallback) → roof area (+ optional Solar fence)
+  → condition assessment → priced 3-tier estimate → PDF
 ```
 
-Five test properties. Submission is total sqft per address + a quote-ready PDF estimate per address.
+Five test properties for submission: total **roof** sqft per address plus a quote-ready PDF. Calibration uses five example properties with published reference measurements.
 
-## Stack (locked)
+## Stack (as implemented)
 
-- **Next.js + Tailwind** — minimal app, mobile-friendly. Single page form: address in, results out.
-- **Anthropic Claude (Sonnet 4.x)** — vision-based footprint and pitch analysis.
-- **Anthropic Claude (Haiku 4.5)** — fast pre-classification (is this a residential pitched roof?).
-- **Google Static Maps API** — aerial image acquisition (or Mapbox; whichever the spike picks).
-- **Puppeteer or react-pdf** — quote PDF generation.
-- **Supabase** *(optional)* — only if we want to persist results between runs. Not required for submission. CLI-only is fine.
+- **Next.js + Tailwind** — Roof Recon UI (`/`), demo pitch page (`/pitch`), hail-leads (`/hail-leads`). API routes under `app/api/`.
+- **Anthropic Claude Sonnet 4.6** — vision calls for footprint + line items, vision pitch (fallback), and roof **condition** (pre-inspection observations). Single model id in [`scripts/lib/claude.mjs`](scripts/lib/claude.mjs).
+- **Google Maps Platform** — **Geocoding**, **Maps Static API** (satellite, zoom 20, `size=640` `scale=2` → **1280×1280** effective px), and **Solar API** `buildingInsights:findClosest` (subject polygon, per-segment pitch and slope-corrected areas). Implementation: [`scripts/lib/geocode.mjs`](scripts/lib/geocode.mjs), [`scripts/lib/aerial.mjs`](scripts/lib/aerial.mjs), [`scripts/lib/solar-api.mjs`](scripts/lib/solar-api.mjs).
+- **Free fallback path** — no Google key: Census/Nominatim geocode + Esri World Imagery, no Solar (subject box + fence + solar pitch unavailable). [`scripts/lib/aerial-free.mjs`](scripts/lib/aerial-free.mjs).
+- **Puppeteer** — branded estimate PDF from HTML template. [`scripts/lib/pdf.mjs`](scripts/lib/pdf.mjs), [`scripts/lib/pdf-template.mjs`](scripts/lib/pdf-template.mjs).
+- **No database** — results are files under `intermediate/` and `outputs/` only.
 
-## Pipeline
+## Pipeline (production path, Google key present)
 
 ```
 1. INPUT: address string
    ↓
-2. GEOCODE: address → lat/lng
-   - Google Geocoding API (or Mapbox Geocoding)
+2. GEOCODE: Google Geocoding → lat/lng (+ formatted address, location type)
+   → intermediate/<slug>/geocode.json
    ↓
-3. AERIAL ACQUISITION: lat/lng → high-res overhead image
-   - Google Static Maps (zoom 20, satellite, ~640×640 or 2048×2048 with scale=2)
-   - Cache the image locally per address
+3. AERIAL: Google Static Maps satellite, zoom 20, 1280 px effective
+   → intermediate/<slug>/aerial.jpg, meta.json (feet_per_pixel, etc.)
    ↓
-4. PITCH ESTIMATION: image → pitch (e.g. 6:12)
-   - Claude vision call: "What is the dominant roof pitch?"
-   - Heuristics: shadow length / direction, edge sharpness, visible elevation cues
-   - Default to 6:12 if low confidence (most common residential)
+4. ANNOTATE (scale bar + north arrow): first pass may run before vision;
+   footprint step re-annotates with Solar subject marker when insights exist
+   → intermediate/<slug>/aerial-annotated.jpg
    ↓
-5. FOOTPRINT EXTRACTION: image + (optional) parcel polygon → footprint sqft
-   - Claude vision call: "Outline the roof. Estimate footprint area in sqft using the scale bar."
-   - Cross-check with parcel data when available
+5. SOLAR API: buildingInsights for lat/lng (cached)
+   → intermediate/<slug>/solar-insights.json
+   Footprint step ensures fetch + overlay: orange SUBJECT box + reticle on the subject building
+   (see scripts/lib/scale-bar.mjs + scripts/lib/footprint.mjs).
    ↓
-6. ROOF AREA: footprint × pitch_multiplier
-   - 4:12 → 1.054, 6:12 → 1.118, 8:12 → 1.202, etc.
+6. VISION (parallel where safe):
+   - Footprint + line items (ridge/hip/valley/rake/eave LF) on SUBJECT-annotated image
+     → intermediate/<slug>/vision-area.json
+   - Vision pitch on annotated image (logged; used when Solar pitch unavailable)
+     → intermediate/<slug>/vision-pitch.json
    ↓
-7. LINE ITEMS (best-effort): image → ridge/hip/valley/rake/eave linear-feet
-   - Claude vision call: "Trace each ridge line. Estimate length in feet."
-   - These are extras; total sqft is the primary signal.
+7. SOLAR PITCH (primary): area-weighted roofSegmentStats[].pitchDegrees → x:12 enum
+   → merged in scripts/estimate.mjs; fallback to vision when no/low-quality Solar coverage
+   (scripts/lib/solar-pitch.mjs)
    ↓
-8. ESTIMATE: measurements + materials catalog → priced bid
-   - Three material tiers (3-tab / architectural / premium)
-   - Per-square material cost × roof area / 100
-   - Labor hours × labor rate
-   - Underlayment, drip edge, ridge cap as line items based on linear-feet measurements
+8. CONDITION (serial after footprint): third Sonnet call on same annotated image
+   → intermediate/<slug>/vision-condition.json (PLOG-008)
    ↓
-9. PDF: estimate → branded customer-ready PDF
-   - Puppeteer renders an HTML template
-   - Output to outputs/<slug>/estimate.pdf
+9. ROOF AREA:
+   - Default: vision_footprint_sqft × pitch_multiplier (from primary pitch)
+   - Solar fence: if |vision_roof_area − solar_slope_corrected_sum| / solar > 12%,
+     adopt Solar’s slope-corrected segment-area sum (shared threshold in scripts/lib/fence.mjs)
+   ↓
+10. ESTIMATE: materials catalog + pure-function engine
+    → outputs/<slug>/estimate.json (scripts/lib/estimate-engine.mjs via scripts/lib/estimate.mjs)
+   ↓
+11. PDF: Puppeteer render (includes aerial, tiers, pre-inspection observations)
+    → outputs/<slug>/estimate.pdf
 ```
+
+**Entry points:** `node scripts/estimate.mjs "<address>"` and the web UI (`/api/measure` spawns the same pipeline). **`npm run calibrate`** replays cached intermediates for the five example properties.
 
 ## Why this shape
 
-**Vision-first, not photogrammetry-first.** We don't have time to build a real photogrammetric pipeline (segment polygon, project to ground plane, integrate area). Claude vision can give us a credible estimate with a clear prompt. We're betting that "Claude looks at a satellite image and reasons about pitch + outline + scale" lands within ±10-15% of the references on most properties.
+**Solar API for subject + sanity, not “buy measurement.”** Dense suburbs break naive “one tile → one LLM”: many roofs per image. Solar returns the **subject building** geometry; we draw that on the tile and instruct vision to measure only inside the orange box. Separately, summed **slope-corrected** segment areas give an independent roof-area check. Vision still computes footprint and line items; composition (vision × pitch, fence when disagreement exceeds threshold) is implemented in-repo.
 
-**Calibration loop is the real engineering work.** The 5 example properties have references. We run our pipeline against them, see how far off we are, iterate the prompt until we're consistently in range, then run the test set. That iteration loop is the meaningful engineering.
+**Calibration loop.** The five example properties anchor prompt and threshold choices; changes are logged in [`docs/prompt-changelog.md`](docs/prompt-changelog.md) (PLOG-001 onward, including reverts).
 
-**No commercial measurement APIs.** Build, don't buy. The repo must show how we compute. EagleView's API is off-limits even if we had access.
-
-**Single command line entry point.** `npm run estimate -- "address"` runs the whole pipeline and writes outputs. Judges can clone, run, see results.
+**No commercial roof measurement APIs** (EagleView, Hover, Roofr instant products, etc.). See repo grep / [`JUDGES.md`](../JUDGES.md) hard-rules table.
 
 ## Data flow per property
 
 ```
-inputs/
-  (just the address string)
-  ↓
-intermediate/
-  geocode.json      — lat/lng + formatted address
-  aerial.jpg        — the satellite image we analyzed
-  vision-pitch.json — Claude's pitch reasoning + final value
-  vision-area.json  — Claude's footprint + line item reasoning
-  ↓
+intermediate/<slug>/
+  geocode.json           — lat/lng + formatted address
+  meta.json              — zoom, feet_per_pixel, imagery metadata
+  aerial.jpg             — raw Static Maps (or Esri) tile
+  solar-insights.json    — full Solar buildingInsights payload (cached)
+  aerial-annotated.jpg   — scale bar + north (+ SUBJECT overlay when Solar succeeded)
+  vision-pitch.json      — vision pitch (always produced when path runs)
+  vision-area.json       — footprint + line items + rationale
+  vision-condition.json  — structured condition + findings (PLOG-008)
+
 outputs/<slug>/
-  aerial.jpg        — copy of the analyzed image
-  measurement.json  — final total_sqft, pitch, line items
-  estimate.pdf      — branded customer-ready PDF
-  notes.md          — anything notable (low confidence, tree cover, etc.)
+  measurement.json       — final sqft, pitch, sources (vision vs solar-fence, pitch_source)
+  estimate.json          — three priced tiers + line math
+  estimate.pdf           — customer-facing PDF
+  aerial.jpg             — copy of raw aerial for self-contained bundle
 ```
 
-## Vision prompts (sketch)
+`notes.md` in outputs is not written by the current CLI; optional manual notes only.
 
-**Pitch prompt:**
-```
-SYSTEM: You are estimating the roof pitch of a residential
-home from a satellite image. Pitch is expressed as rise:run
-(e.g. 6:12, 8:12). Most US residential roofs are 4:12-12:12.
+## Vision prompts
 
-Look for: shadow length relative to building width, visible
-elevation changes at the eaves, peak prominence in the image.
+Authoritative prompts live next to the tools:
 
-Return JSON: { "pitch": "6:12", "confidence": 0.0-1.0,
-"rationale": "..." }
-```
-
-**Footprint + line items prompt:**
-```
-SYSTEM: You are estimating the roof footprint and line items
-of a residential home from a satellite image.
-
-The image is from Google Static Maps at zoom 20, scale=2.
-At zoom 20, 1 pixel ≈ 0.15m at the equator (adjust for latitude).
-
-Tasks:
-1. Outline the roof footprint. Estimate area in square feet.
-2. Trace the ridge lines. Sum their length in feet.
-3. Trace the hip lines. Sum their length in feet.
-4. Trace the valley lines. Sum their length in feet.
-5. Trace the rake lines (gable edges). Sum their length in feet.
-6. Trace the eave lines. Sum their length in feet.
-
-Return JSON: {
-  "footprint_sqft": number,
-  "line_items": {
-    "ridge": number,
-    "hip": number,
-    "valley": number,
-    "rake": number,
-    "eave": number
-  },
-  "confidence": 0.0-1.0,
-  "rationale": "..."
-}
-```
-
-These are starting points. We iterate against the example properties until calibrated.
+- **Footprint + line items:** [`scripts/lib/footprint.mjs`](scripts/lib/footprint.mjs) — system template includes optional SUBJECT-marker instructions when `buildingInsights` is present.
+- **Vision pitch:** [`scripts/lib/pitch.mjs`](scripts/lib/pitch.mjs) — fallback path; primary pitch is Solar in [`scripts/lib/solar-pitch.mjs`](scripts/lib/solar-pitch.mjs).
+- **Condition:** [`scripts/lib/condition.mjs`](scripts/lib/condition.mjs) — structured assessment, empty findings allowed, no hedging / no fabrication framing.
 
 ## Materials catalog
 
-Three tiers, real-ish prices. Stored as `data/materials.json`:
+Real per-tier and accessory numbers in [`data/materials.json`](../data/materials.json) (Standard / Premium / Luxury tiers; labor rate and line-item drivers for drip edge, ridge cap, underlayment, etc.).
 
-```json
-{
-  "tiers": [
-    {
-      "id": "standard",
-      "name": "3-Tab Asphalt Shingle",
-      "manufacturer_examples": ["GAF Royal Sovereign", "CertainTeed XT 25"],
-      "warranty_years": 25,
-      "cost_per_square": 110,
-      "labor_hours_per_square": 1.5
-    },
-    {
-      "id": "premium",
-      "name": "Architectural Laminate",
-      "manufacturer_examples": ["GAF Timberline HDZ", "CertainTeed Landmark", "Owens Corning Duration"],
-      "warranty_years": 30,
-      "cost_per_square": 145,
-      "labor_hours_per_square": 2.0
-    },
-    {
-      "id": "luxury",
-      "name": "Designer / Impact-Resistant",
-      "manufacturer_examples": ["GAF Camelot II", "CertainTeed Grand Manor", "Malarkey Vista"],
-      "warranty_years": 50,
-      "cost_per_square": 220,
-      "labor_hours_per_square": 2.5
-    }
-  ],
-  "accessories": {
-    "underlayment_per_square": 25,
-    "drip_edge_per_lf": 2.50,
-    "ridge_cap_per_lf": 5.00,
-    "ice_water_per_square": 65,
-    "labor_rate_per_hour": 75
-  }
-}
-```
+## Adjacent product: hail-driven leads (`/hail-leads`)
+
+**Not part of the measurement math.** A separate Next.js feature: NWS alerts, contractor discovery (e.g. Yelp + OSM), CSV/PDF export. Lives under `src/hail-leads/`, `app/(hail-leads)/`, `app/api/hail-leads/`. See [`docs/hail-leads.md`](hail-leads.md).
 
 ## Submission shape
 
-The repo at submission time:
-- Public, working `npm run estimate` for any address
-- `outputs/` populated for all 5 test properties
-- README with stack notes and how-to-run
-- Notes on AI choices and known limitations
+- Public repo with working `npm run estimate` (and documented env: `ANTHROPIC_API_KEY`, `GOOGLE_MAPS_API_KEY` with Geocoding + Static + Solar).
+- `outputs/` populated for test (and example) properties as submitted.
+- Evidence-oriented summary for judges: [`JUDGES.md`](../JUDGES.md).
+- Same-day operational detail: [`docs/end-to-end.md`](end-to-end.md).
 
-The five sqft numbers go into the bounty form. PDFs go in `outputs/`.
+## What we're NOT building (core bounty scope)
 
-## What we're NOT building
+- Field photo capture, voice intake, or multi-trade estimates in the main pipeline.
+- Commercial measurement APIs as the source of truth.
+- **Live hail “damage detection”** on the aerial — condition output is **pre-inspection observations** only, not a storm-damage diagnosis.
 
-- Field photo capture
-- Voice description
-- Sales upsell agent
-- Multi-trade support (windows etc. — drop entirely)
-- Three-input fusion as a primary feature
-- Permit / storm / parcel data fetching (parcel as cross-check is fine; permits and storms are out)
-- Live phone-to-PDF demo flow
-- Agent orchestra framing as the primary story
+Storm **alerting** and contractor lead lists are intentionally **out of the measurement path** but exist as the optional hail-leads module above.
 
-These were design directions before the bounty repo clarified the actual brief. They're now out of scope. If anything, we mention some of them as "future" in the README, but they don't get built.
+## Related documentation
+
+- [`CLAUDE.md`](../CLAUDE.md) — team rules, env vars, how to run.
+- [`docs/prompt-changelog.md`](prompt-changelog.md) — PLOG iteration history.
+- [`docs/end-to-end.md`](end-to-end.md) — submission checklist and playbook.

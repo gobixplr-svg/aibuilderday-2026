@@ -169,6 +169,20 @@ Listed honestly because that's the engineering judgment Tyler Folkman writes abo
 
 ---
 
+## Roadmap (future work)
+
+Salient next steps relative to accurate measurements, visible computation, and roofer-ready outputs. Full backlog: [`docs/future-ideas.md`](docs/future-ideas.md).
+
+- **JobNimbus integration** — push measurements + PDFs (or structured line items) into a JN job/estimate so the product lives inside their workflow, not as a parallel toy app.
+- **Measurement robustness** — multi-tile / multi-heading aerial ensemble and occlusion / tree-cover warnings so large errors surface with an explicit low-confidence flag instead of a silent point estimate.
+- **Honest confidence** — recalibrate the UI confidence signal against benchmark error so contractors trust it when it’s high and respect it when it degrades.
+- **Independent geometry checks** — parcel-footprint or other public plan-footprint cross-checks where data is cheap, plus ridge/eave sanity guards, staying inside “build don’t buy.”
+- **Estimator depth** — regional labor/material presets, optional permit / tear-off / disposal line items, and bundle-level quantities (squares, rolls, bundles) so outputs match how roofers order and talk.
+- **Pipeline ergonomics** — split “re-price from catalog changes” from “re-run slow vision,” plus batch/regression reports and CI drift checks on the example properties so accuracy doesn’t regress quietly.
+- **Workflow polish** — structured JSON export / API for downstream tools, and clearer customer vs internal report variants without changing core measurement code.
+
+---
+
 **Submission summary:**
 - 5 sqft numbers in the form: 2,081 / 2,432 / 4,186 / 6,015 / 6,702
 - 5 pitch numbers in the form: 9:12 / 7:12 / 8:12 / 6:12 / 4:12
