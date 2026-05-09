@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 6359,
+  "line_items": {
+    "ridge": 95,
+    "hip": 220,
+    "valley": 65,
+    "rake": 25,
+    "eave": 290
+  },
+  "confidence": 0.47,
+  "rationale": "The subject home is the large multi-section gray hip-roofed structure inside the orange bounding box. The neighboring terra-cotta roof to the north is excluded. Bounding box estimated at ~510 px (99.8 ft) wide × ~440 px (86.1 ft) tall = 8,593 sq ft. The roof is a complex cross/L-shaped multi-section hip roof; yard is visible in the NE and SW corners of the box, so a 74% fill factor was applied → ~6,359 sq ft footprint. Ridge total (~95 ft) accounts for 3–4 ridge segments across the main body and sub-sections. Hips (~220 ft) are numerous given the all-hip construction across ~10–12 diagonal corner lines. Valleys (~65 ft) occur at 3–4 inward junctions between roof sections. Rakes (~25 ft) are minimal as the roof is primarily hip-style. Eaves (~290 ft) represent the lower perimeter of the notched footprint. Confidence is moderate due to roof complexity and satellite obliquity making precise pixel tracing challenging."
+}

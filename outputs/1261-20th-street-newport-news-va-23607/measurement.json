@@ -9,17 +9,24 @@
   "pitch_confidence": 0.62,
   "pitch_rationale": "The dominant structure is a large, complex hip-roofed home with multiple intersecting roof planes. Several cues inform the estimate: (1) Shadow length — ground shadows cast from the eastern and southern eaves are moderate in extent relative to the building footprint (roughly 15–20 ft as measured against the 50-ft scale bar), consistent with a mid-range pitch rather than a shallow ranch or a steep colonial. (2) Roof-to-eave geometry — the diagonal hip lines converge to ridges that are noticeably inset from the perimeter eaves, indicating meaningful vertical rise, but the ridges are still broad relative to the plan area, ruling out steep pitches above 8:12. (3) Plane shading contrast — the lighter (sun-facing) and darker (shadowed) roof panels show moderate tonal differentiation, consistent with a 5:12–7:12 slope. (4) Regional context — Newport News, VA is a mid-Atlantic/coastal-plain climate where 5:12–6:12 is the most common residential pitch. Taken together, a 6:12 pitch best reconciles the moderate shadow projection and visible hip geometry.",
   "pitch_stub": false,
-  "footprint_sqft": 3600,
-  "footprint_confidence": 0.4,
-  "footprint_rationale": "The main residential roof is a large, complex hip-roof structure with two primary volumes forming an L/cross-shaped plan. Bounding box for the NE body was ~285×215 px and the SW wing ~255×235 px, with ~140×75 px of overlap subtracted, yielding ~110,700 sq px total. Converted at 0.038269 sq ft/sq px gives ~4,237 sq ft; trimmed ~15% for edge irregularities to arrive at ~3,600 sq ft. The roof is predominantly hip-style with no visible gable/rake edges. Ridge lines were traced along the two main peaks (~210 px NE + ~135 px SW). Approximately 10 hip lines were identified at corners/ends, averaging ~130 px each. Three valley junctions were identified where the two volumes intersect. Eave perimeter was estimated from all lower horizontal edges around both sections. Confidence is moderate (0.4) due to roof complexity, oblique shadows, and difficulty precisely delineating volume boundaries from overhead imagery.",
+  "footprint_sqft": 6668,
+  "footprint_confidence": 0.47,
+  "footprint_rationale": "The subject home is the large multi-section gray hip-roofed structure inside the orange bounding box. The neighboring terra-cotta roof to the north is excluded. Bounding box estimated at ~510 px (99.8 ft) wide × ~440 px (86.1 ft) tall = 8,593 sq ft. The roof is a complex cross/L-shaped multi-section hip roof; yard is visible in the NE and SW corners of the box, so a 74% fill factor was applied → ~6,359 sq ft footprint. Ridge total (~95 ft) accounts for 3–4 ridge segments across the main body and sub-sections. Hips (~220 ft) are numerous given the all-hip construction across ~10–12 diagonal corner lines. Valleys (~65 ft) occur at 3–4 inward junctions between roof sections. Rakes (~25 ft) are minimal as the roof is primarily hip-style. Eaves (~290 ft) represent the lower perimeter of the notched footprint. Confidence is moderate due to roof complexity and satellite obliquity making precise pixel tracing challenging.",
   "footprint_stub": false,
   "line_items": {
-    "ridge": 67,
-    "hip": 254,
-    "valley": 50,
-    "rake": 0,
-    "eave": 176
+    "ridge": 95,
+    "hip": 220,
+    "valley": 65,
+    "rake": 25,
+    "eave": 290
   },
-  "roof_area_sqft": 4025,
-  "computed_at": "2026-05-08T23:54:55.398Z"
+  "roof_area_sqft": 6118,
+  "roof_area_source": "solar-fence",
+  "vision_footprint_sqft": 6359,
+  "vision_roof_area_sqft": 7109,
+  "solar_footprint_sqft": 6668,
+  "solar_roof_area_sqft": 6118,
+  "fence_triggered": true,
+  "fence_reason": "vision roof area 7109 differs from solar 6118 by 16.2% (>15%)",
+  "computed_at": "2026-05-09T00:36:45.848Z"
 }

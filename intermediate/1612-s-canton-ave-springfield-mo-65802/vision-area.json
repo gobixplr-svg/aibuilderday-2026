@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 2100,
+  "line_items": {
+    "ridge": 39,
+    "hip": 109,
+    "valley": 28,
+    "rake": 0,
+    "eave": 154
+  },
+  "confidence": 0.44,
+  "rationale": "The subject home is identified within the orange bounding box at approximately x=415–680, y=415–668 in the image. The bounding box measures roughly 265 × 253 pixels, equating to approximately 51.7 × 49.4 ft. The roof is a complex hip roof with no visible gable ends (rake = 0), appearing to form an L- or T-shaped footprint. A fill factor of 82% was applied to the 2,554 sq ft bounding rectangle, yielding ~2,100 sq ft. The small detached outbuilding to the east was excluded as it is separated by open ground. Ridge consists of a main E-W run (~110 px) and a perpendicular secondary ridge (~90 px). Approximately 6–7 hip lines connect the ridges to the lower corners. One to two valley lines are visible at the junction of the L-wing and main body. Eave perimeter was traced around the full L-shaped lower edge. No rake edges were identified."
+}

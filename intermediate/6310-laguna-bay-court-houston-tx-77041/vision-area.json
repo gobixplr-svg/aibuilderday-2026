@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 3984,
+  "line_items": {
+    "ridge": 39,
+    "hip": 144,
+    "valley": 28,
+    "rake": 12,
+    "eave": 212
+  },
+  "confidence": 0.45,
+  "rationale": "The orange bounding box spans approximately 380 px (wide) × 342 px (tall), equating to 80.7 ft × 72.6 ft = 5,859 sq ft bounding area. The subject is a large, complex multi-section hip roof with no visible gable ends (fully hipped). The pool in the upper-right of the bounding box and paved patio/driveway areas in the lower-left and lower portions are excluded from the roof footprint. A fill factor of ~0.68 was applied to account for these non-roof areas, yielding ~3,984 sq ft. Roof edges were traced section by section: numerous short ridge lines sit atop each hip section (~39 ft total); hip lines are abundant at every corner and section intersection (~144 ft); valleys appear at the re-entrant angles where sections join (~28 ft); rake edges are minimal given the fully hipped design (~12 ft); eave lines run along the full perimeter of all sections (~212 ft). Confidence is moderate (0.45) due to the complex multi-plane geometry, oblique view angle, and partial shadowing making individual edge identification challenging."
+}

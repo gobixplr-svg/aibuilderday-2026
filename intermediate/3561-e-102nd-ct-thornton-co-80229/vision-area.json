@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 1340,
+  "line_items": {
+    "ridge": 19,
+    "hip": 75,
+    "valley": 16,
+    "rake": 0,
+    "eave": 146
+  },
+  "confidence": 0.48,
+  "rationale": "The subject home is identified by the orange bounding box and reticle, centering on a cluster-style townhouse unit. The orange box spans approximately 194 px (E-W) × 248 px (N-S). The actual roof terminates roughly 50 px above the bottom of the box (yard/landscaping below), yielding a roof pixel area of ~195 × 195 px. At 0.035318 sq ft per sq px, this produces ~1,343 sq ft, rounded to 1,340 sq ft. The roof is a near-square hip structure (~36.5 ft × 36.6 ft) consistent with the identical neighboring units, each displaying a characteristic X/hip-roof pattern from above. One valley (~16 ft) is estimated where a front bump-out section meets the main roof plane. There are no rake edges (fully hipped). The ridge is short (~19 ft) due to the near-square plan. Four hip lines total ~75 ft. The eave runs the full perimeter at ~146 ft. Confidence is moderate-low (0.48) due to image resolution, shadow overlap from surrounding trees, and the difficulty distinguishing valleys from shadows at this scale."
+}

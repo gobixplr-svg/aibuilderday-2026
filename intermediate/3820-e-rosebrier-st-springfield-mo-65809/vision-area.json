@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 5380,
+  "line_items": {
+    "ridge": 103,
+    "hip": 189,
+    "valley": 59,
+    "rake": 13,
+    "eave": 223
+  },
+  "confidence": 0.52,
+  "rationale": "The orange bounding box measures approximately 380 × 470 pixels (74.2 × 91.7 ft = 6,804 sq ft bounding area). The subject home features a very large, complex multi-section hip roof with numerous bump-outs and additions. A northwestern notch (motor court/driveway cutout visible at top of bounding box) reduces the fill factor to approximately 79%, yielding a footprint of ~5,380 sq ft. The roof is predominantly hip construction with 4–5 ridge segments spread across independently hipped sections, 10–14 hip lines, 5–6 inward valleys at section intersections, minimal rake (few gable ends), and a highly articulated eave perimeter around the complex plan shape. Confidence is moderate (0.52) due to the extreme complexity of the multi-hip roof geometry and difficulty precisely tracing each edge from the satellite oblique-nadir view."
+}

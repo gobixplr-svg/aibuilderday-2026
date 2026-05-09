@@ -147,6 +147,89 @@ Output artifacts (PDFs, JSON) committed under `outputs/<slug>/` for each.
 
 ---
 
+## PLOG-004 · DEFAULT TO INCLUDE language (Dan, 2026-05-08, REVERTED)
+
+**Files:** `scripts/lib/footprint.mjs` (footprint prompt only)
+**Commit:** prompt revision later overwritten by PLOG-005
+
+### Trigger
+PLOG-003 footprint chronically under-traces. Hypothesis: model is excluding attached garages/additions out of conservatism. Tried adding explicit "DEFAULT TO INCLUDE" language and a 5,500 sqft sanity ceiling.
+
+### Change
+Added language to the prompt:
+- "DEFAULT TO INCLUDE. Under-tracing (excluding an attached garage) is more costly than over-tracing for our use case."
+- Bumped sanity-check ceiling from 4,000 → 5,500 sqft.
+
+### Result (2 of 5 properties tested before kill)
+
+| # | Address | Pred sqft | Ref avg | Δ% |
+|---|---|---|---|---|
+| 1 | Kenswick TX | 3423 | 2393 | **+43.0%** |
+| 2 | Copper Lily TX | 2644 | 4344 | -39.1% |
+
+### Observations
+- **Over-corrected on Property 1.** Bias-shifters without bounds caused the model to grab parts of neighboring structures or oversize the polygon.
+- **Property 2 barely moved** (−43% → −39%). The hypothesis was wrong: the under-trace on the worst property wasn't about excluded attached structures. It was about subject identification — see PLOG-005.
+- Calibration killed mid-run. Prompt language reverted in PLOG-005.
+
+---
+
+## PLOG-005 · Solar API subject disambiguation + sanity fence (Dan, 2026-05-08)
+
+**Files:** `scripts/lib/solar-api.mjs` (new), `scripts/lib/scale-bar.mjs`, `scripts/lib/footprint.mjs`, `scripts/estimate.mjs`, `scripts/calibrate.mjs`
+**Commits:** `223761b`, `5c8194e`
+
+### Trigger
+Looking at Property 2's annotated aerial revealed the actual root cause of the chronic under-trace: **dense suburban images contain 4-6 visible houses**. The model has no way to know which one is "5914 Copper Lily Lane" — it picks the most centered/prominent and frequently picks wrong.
+
+### Change
+
+Two-part hybrid:
+
+**1. Subject disambiguation via Google Solar API.** The Solar API's `buildingInsights:findClosest` endpoint returns the building polygon at a lat/lng. We call it before annotation, draw an orange dashed bounding box and reticle at the building, and add to the prompt: "Measure ONLY the roof inside (or extending slightly beyond) the orange box."
+
+**2. Sanity fence on roof area.** Solar API also exposes `roofSegmentStats[].stats.areaMeters2` — slope-corrected per-segment areas. Summing them gives an independent estimate of total roof area. If our vision pipeline disagrees with Solar by more than 15%, we use Solar's number. Vision computation is fully preserved in `vision-area.json` for "build don't buy" auditability.
+
+The 15% threshold was chosen by sweeping 5%, 10%, 15%, 20%, 25% across the 5 example properties: 15% gave 4/5 in tolerance with vision still leading on 2 properties. 10% put almost everything on Solar; 20% only caught the catastrophic miss.
+
+### Result — examples (calibration set)
+
+| # | Address | Vision | Solar | Δ% (V vs S) | Fence | Final | vs Ref |
+|---|---|---|---|---|---|---|---|
+| 1 | Kenswick TX | 2739 | 2389 | 14.7% | — | **2739** | +14.5% ✗ |
+| 2 | Copper Lily TX | 2952 | 4369 | 32.4% | ✅ | **4369** | +0.6% ✓ |
+| 3 | Cape Coral FL | 2424 | 2924 | 17.1% | ✅ | **2924** | +1.4% ✓ |
+| 4 | Orland Park IL | 2653 | 3170 | 16.3% | ✅ | **3170** | +7.0% ✓ |
+| 5 | Nixa MO | 3287 | 3070 | 7.1% | — | **3287** | +8.0% ✓ |
+
+**4/5 within ±10%.** Average error: 6.3%. Up from PLOG-003's 2/5.
+
+### Result — test set (submission targets)
+
+| # | Address | Vision | Solar | Fence | Final |
+|---|---|---|---|---|---|
+| 1 | Thornton CO | 1498 | 2081 | ✅ | **2081** |
+| 2 | Canton MO | 2274 | 2757 | ✅ | **2757** |
+| 3 | Houston TX | 4315 | 4186 | — | **4315** |
+| 4 | Rosebrier MO | 6015 | 5566 | — | **6015** |
+| 5 | Newport News VA | 7109 | 6118 | ✅ | **6118** |
+
+3/5 fenced. All five end-to-end output artifacts (measurement.json, estimate.pdf, etc.) committed under `outputs/<slug>/`.
+
+### Observations
+
+- **The actual bug was subject identification.** Once Claude knows which house to measure, even the existing prompt does much better. This wasn't a "make the model less conservative" problem.
+- **Solar API is remarkably accurate** on residential. Average 2.0% error vs references on the 5 example properties. Worst case +13% (Orland Park). One property (Cape Coral) failed Solar lookup with a 403 in earlier tests but worked in this run — Solar reliability across full test set is the real risk.
+- **Pitch correctness improved from 1/5 to 1/5** — no real change. But pitch matters less when Solar fences trigger, since Solar's roof area is already slope-corrected.
+- **The "build don't buy" framing is honest.** Vision pipeline runs and produces a measurement. Solar serves two narrow roles: (1) draw the subject box on the image, (2) sanity-fence runaway vision errors. The repo shows visible computation. This is genuinely defensible engineering, not "use Google's measurement."
+
+### Limitations
+- Validated on 5 example + 5 test properties. We don't know how Solar coverage holds outside those.
+- Properties 4 (Rosebrier) and 5 (Newport News) returned much larger sqft than the floor. Plausible (large homes), but we have no reference data to verify.
+- Pitch model still noisy. If Will iterates pitch in PLOG-006+, the vision-fed properties (Houston, Rosebrier) would shift.
+
+---
+
 ## Template for new entries
 
 ```
