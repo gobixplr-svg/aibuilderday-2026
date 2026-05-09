@@ -6,25 +6,27 @@
 
 A measurement-and-estimate pipeline for residential pitched roofs. Address in → roof measurement (total sqft + line items) + quote-ready estimate PDF out. Five test addresses to submit total sqft for, by Saturday May 9 at 1:30 PM.
 
-**Current pipeline (PLOG-005):**
+**Current pipeline (PLOG-008):**
 1. Geocode (Google) → lat/lng
 2. Fetch aerial (Google Static Maps zoom 20, 1280px)
 3. **Solar API `buildingInsights`** — gets the subject building's polygon
 4. Annotate aerial: scale bar + N arrow + **orange bounding box + reticle** at the subject home
 5. Parallel Claude Sonnet vision calls: pitch (4:12–12:12 enum) + footprint (sqft + line items)
 6. Compute roof area = footprint × pitch_multiplier
-7. **Solar fence:** if vision roof area differs from Solar's slope-corrected segment area by >15%, use Solar's number
-8. Eric's estimate engine produces 3 priced tiers
-9. Puppeteer renders branded PDF
+7. **Solar fence:** if vision roof area differs from Solar's slope-corrected segment area by >12%, use Solar's number (PLOG-006)
+8. **Roof condition assessment:** third Sonnet vision call against the same SUBJECT-annotated aerial → structured pre-inspection observations (PLOG-008)
+9. Eric's estimate engine produces 3 priced tiers
+10. Puppeteer renders branded PDF (now includes a "Pre-inspection observations" section)
 
-**Calibration result (5 example properties):** 4/5 within ±10%, avg error 6.3%.
+**Calibration result (5 example properties):** 5/5 within ±10%, avg error 3.4%, worst case +8.0%.
 
 **Team:** Dan (lead), Will (vision prompts), Eric (estimate engine). Ethan built the frontend + materials catalog but won't be on-site Saturday.
 
 Brief: [jobnimbus/jobnimbus-hackathon-2026](https://github.com/jobnimbus/jobnimbus-hackathon-2026)
 Full architecture: [docs/architecture.md](docs/architecture.md)
-End-to-end + submission state: [docs/end-to-end.md](docs/end-to-end.md)
-Prompt iteration log: [docs/prompt-changelog.md](docs/prompt-changelog.md)
+End-to-end + Saturday morning submission playbook: [docs/end-to-end.md](docs/end-to-end.md)
+Prompt iteration log (PLOG-001 → PLOG-008): [docs/prompt-changelog.md](docs/prompt-changelog.md)
+Evidence file for the AI scoring agent: [JUDGES.md](JUDGES.md)
 Active task list: [docs/work-queue.md](docs/work-queue.md)
 
 ## Hard rules (no exceptions)
