@@ -1,0 +1,59 @@
+{
+  "slug": "9381-north-avanyu-drive-cedar-hills-ut-84062",
+  "address": "9381 north avanyu drive. cedar hills, ut 84062",
+  "formatted_address": "9381 N Avanyu Dr, Cedar Hills, UT 84062, USA",
+  "lat": 40.4025365,
+  "lng": -111.7459917,
+  "pitch": "6:12",
+  "pitch_multiplier": 1.118,
+  "pitch_confidence": 0.9,
+  "pitch_rationale": "Area-weighted across 13 roof segments from Google Solar API (imageryQuality=HIGH): 25.25° → 6:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
+  "pitch_stub": false,
+  "pitch_source": "solar",
+  "vision_pitch": "6:12",
+  "vision_pitch_confidence": 0.65,
+  "solar_pitch": "6:12",
+  "solar_pitch_avg_degrees": 25.254320870793332,
+  "solar_pitch_segment_count": 13,
+  "solar_pitch_imagery_quality": "HIGH",
+  "footprint_sqft": 3879,
+  "footprint_confidence": 0.42,
+  "footprint_rationale": "The orange bounding box spans approximately 290 × 395 px (54.1 × 73.7 ft = ~3,985 sq ft bounding area). The subject home has a complex multi-section hip roof (no visible gable ends, so rake = 0). Three attached sections are identified: (1) a large central tan/brown hip roof with solar panels (~220 × 255 px, 80% hip fill = ~1,562 sq ft), (2) an upper-right darker attached structure likely a garage (~130 × 90 px, 80% fill = ~325 sq ft), and (3) a front/lower projecting hip section (~110 × 105 px, 75% fill = ~301 sq ft). Direct polygon sum ≈ 2,188 sq ft; bounding-box × 0.58 fill = ~2,311 sq ft; averaged to ~2,250 sq ft. Ridge lines estimated on all three sections; hip lines counted along outer corners and stepped roof intersections; valleys placed at the internal junctions between sections. Eave runs the full outer perimeter of the combined footprint, estimated ~215 ft for the complex L/T shape. Confidence is moderate due to oblique satellite view and partial tree occlusion of some roof edges.",
+  "footprint_stub": false,
+  "line_items": {
+    "ridge": 34,
+    "hip": 105,
+    "valley": 28,
+    "rake": 0,
+    "eave": 215
+  },
+  "condition": {
+    "overall": "fair",
+    "findings": [
+      {
+        "category": "discoloration_staining",
+        "description": "The north-facing roof slopes are visibly darker in tone compared to the warm brown/tan south-facing slopes. The color differential is stark and consistent across the entire north-facing surface, distinct from shadowing effects.",
+        "location_description": "North-facing slopes, upper portion of the main hip roof",
+        "severity": "low",
+        "confidence": 0.72
+      },
+      {
+        "category": "other",
+        "description": "A cluster of dark blue/black solar panel arrays is clearly visible, covering a substantial portion of the west-facing slope. Solar panels penetrate the roof membrane with mounting hardware and require flashing at each anchor point — a known potential leak source.",
+        "location_description": "West-facing slope, center of the main roof body",
+        "severity": "low",
+        "confidence": 0.98
+      }
+    ],
+    "rationale": "The subject home at 9381 N Avanyu Drive features a multi-hip asphalt shingle roof in a warm brown/tan color on the south- and west-facing slopes. Image quality and zoom level are sufficient for macro-level assessment. Two notable visible items were identified. First, the north-facing slopes display a distinctly darker coloration compared to all other slopes — this differential is consistent and well-defined, not attributable to shadow patterns (which would fall more uniformly). At this latitude and orientation, north-facing slope darkening is commonly associated with biological growth (moss or algae), though a definitive material identification is not possible from this altitude. Second, a large solar panel array is clearly visible on the west-facing slope; while solar panels are not a defect, the mounting penetrations represent a known flashing risk that warrants close physical inspection. No tarps, structural sag, exposed decking, patching, or debris were observed. The flat/low-pitch section visible on the south side (light gray) appears intact with no visible pooling or membrane damage at this resolution."
+  },
+  "roof_area_sqft": 3658,
+  "roof_area_source": "solar-fence",
+  "vision_footprint_sqft": 2250,
+  "vision_roof_area_sqft": 2516,
+  "solar_footprint_sqft": 3879,
+  "solar_roof_area_sqft": 3658,
+  "fence_triggered": true,
+  "fence_reason": "vision roof area 2516 differs from solar 3658 by 31.2% (>12%)",
+  "computed_at": "2026-05-09T20:29:40.238Z"
+}

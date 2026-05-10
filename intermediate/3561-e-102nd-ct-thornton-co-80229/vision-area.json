@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 1410,
+  "footprint_sqft": 1205,
   "line_items": {
-    "ridge": 19,
-    "hip": 88,
+    "ridge": 15,
+    "hip": 45,
     "valley": 0,
     "rake": 0,
-    "eave": 166
+    "eave": 139
   },
-  "confidence": 0.57,
-  "rationale": "Subject is a single townhome unit enclosed by the orange dashed bounding box (~192 × 250 px). At 0.1879 ft/px this yields a bounding box of ~36.1 ft × 47.0 ft = 1,697 sq ft. A hip-roof fill factor of ~83% gives a plan-view footprint of ~1,410 sq ft. The roof is a classic four-plane hip with no gable ends or valleys; all four sides terminate in eaves. Ridge runs east–west estimated at ~19 ft; four hip lines totaling ~88 ft; perimeter eaves ~166 ft. Confidence is moderate (0.57) due to partial tree canopy overlap at the south end of the subject roof and uncertainty about any small front-porch overhang."
+  "confidence": 0.5,
+  "rationale": "Subject is a single townhouse-style unit within a row of identical semi-attached homes, marked by the orange bounding box (reticle centered on the unit). The roof is a standard 4-sided hip roof. Bounding box measured at ~192 × 250 px, but the actual roof occupies ~175 × 195 px (lower ~55 px of the box is driveway/yard). At 0.1879 ft/px, the roof plan-view rectangle is ~32.9 ft × 36.6 ft ≈ 1,205 sq ft. No valleys or rake edges visible — pure hip roof. Ridge estimated visually at ~80 px (~15 ft) running N–S through the center; 4 hip lines at ~60 px each (~45 ft total); eave perimeter = 2 × (32.9 + 36.6) ≈ 139 ft. Confidence is moderate-low due to partial tree obstruction on the south end and the tight urban townhouse setting making edge delineation somewhat difficult."
 }

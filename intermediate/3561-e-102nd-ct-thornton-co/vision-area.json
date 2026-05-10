@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 1500,
+  "line_items": {
+    "ridge": 6,
+    "hip": 104,
+    "valley": 0,
+    "rake": 0,
+    "eave": 158
+  },
+  "confidence": 0.5,
+  "rationale": "Subject is one unit in a row of attached townhome-style units, each with a simple 4-way hip roof. The orange bounding box spans ~195 px (E–W) × ~263 px (N–S); the roof itself occupies ~195 px wide × ~225 px tall (the bottom ~35 px of the box is yard/landscaping). Converting at 0.1879 ft/px gives a roof bounding rectangle of ~36.6 ft × 42.3 ft ≈ 1,548 sq ft. Hip roofs fill their full plan-view rectangle, so after minor edge adjustments I report ~1,500 sq ft. The ridge runs N–S and equals L − W = 5.7 ft (~6 ft), consistent with the near-square proportions creating a near-pyramid shape. Four equal hips each measure (W/2)×√2 ≈ 25.9 ft in plan view for a total of ~104 ft. All four perimeter edges are eaves totaling ~158 ft. No valleys or rake edges are present on this pure hip roof. Confidence is moderate (0.50) due to partial tree shadow over the roof and difficulty precisely locating eave edges at the shared party walls."
+}

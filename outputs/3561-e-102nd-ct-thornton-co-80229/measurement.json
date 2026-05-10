@@ -11,34 +11,34 @@
   "pitch_stub": false,
   "pitch_source": "solar",
   "vision_pitch": "6:12",
-  "vision_pitch_confidence": 0.72,
+  "vision_pitch_confidence": 0.65,
   "solar_pitch": "9:12",
   "solar_pitch_avg_degrees": 36.008990603744465,
   "solar_pitch_segment_count": 9,
   "solar_pitch_imagery_quality": "HIGH",
   "footprint_sqft": 2214,
-  "footprint_confidence": 0.57,
-  "footprint_rationale": "Subject is a single townhome unit enclosed by the orange dashed bounding box (~192 × 250 px). At 0.1879 ft/px this yields a bounding box of ~36.1 ft × 47.0 ft = 1,697 sq ft. A hip-roof fill factor of ~83% gives a plan-view footprint of ~1,410 sq ft. The roof is a classic four-plane hip with no gable ends or valleys; all four sides terminate in eaves. Ridge runs east–west estimated at ~19 ft; four hip lines totaling ~88 ft; perimeter eaves ~166 ft. Confidence is moderate (0.57) due to partial tree canopy overlap at the south end of the subject roof and uncertainty about any small front-porch overhang.",
+  "footprint_confidence": 0.5,
+  "footprint_rationale": "Subject is a single townhouse-style unit within a row of identical semi-attached homes, marked by the orange bounding box (reticle centered on the unit). The roof is a standard 4-sided hip roof. Bounding box measured at ~192 × 250 px, but the actual roof occupies ~175 × 195 px (lower ~55 px of the box is driveway/yard). At 0.1879 ft/px, the roof plan-view rectangle is ~32.9 ft × 36.6 ft ≈ 1,205 sq ft. No valleys or rake edges visible — pure hip roof. Ridge estimated visually at ~80 px (~15 ft) running N–S through the center; 4 hip lines at ~60 px each (~45 ft total); eave perimeter = 2 × (32.9 + 36.6) ≈ 139 ft. Confidence is moderate-low due to partial tree obstruction on the south end and the tight urban townhouse setting making edge delineation somewhat difficult.",
   "footprint_stub": false,
   "line_items": {
-    "ridge": 19,
-    "hip": 88,
+    "ridge": 15,
+    "hip": 45,
     "valley": 0,
     "rake": 0,
-    "eave": 166
+    "eave": 139
   },
   "condition": {
     "overall": "good",
     "findings": [],
-    "rationale": "The subject roof within the orange bounding box is a hip-style asphalt shingle roof with multiple slopes converging to a central peak. The shingle surface displays a uniform medium gray/charcoal color tone across all visible slopes with no notable color breaks, patches, or discoloration. Ridge lines appear geometrically straight with no visible sagging or distortion when compared to the adjacent identical units in the row. No tarps, coverings, or foreign debris are visible on any slope. No green or dark biological growth patches are detectable on the north-facing or other slopes. No dark gaps or exposed decking areas indicative of missing material in bulk are present. Image resolution and lighting conditions are sufficient to assess the overall surface — no significant tree shadow or obstruction covers the subject roof. Overall, the visible roof surface shows no conditions warranting urgent closer inspection."
+    "rationale": "The subject roof at 3561 E 102nd Ct, Thornton, CO 80229 is a multi-pitch hip-style roof with what appears to be dark gray/charcoal architectural shingles. Examining the full surface within the orange bounding box, the shingle color and texture are uniform across all visible slopes — no discoloration patches, staining streaks, or color mismatches are present. Ridge lines and valley intersections appear geometrically straight with no visible sagging or deflection. There are no tarps, foreign debris, or large-scale missing material exposing decking. No green or dark biological growth patches are detectable on any slope. The roof's appearance is consistent with the immediately neighboring units, which share the same shingle type and color, further confirming the surface has no standout anomalies. No findings meet the confidence threshold for reporting at this resolution."
   },
   "roof_area_sqft": 2081,
   "roof_area_source": "solar-fence",
-  "vision_footprint_sqft": 1410,
-  "vision_roof_area_sqft": 1763,
+  "vision_footprint_sqft": 1205,
+  "vision_roof_area_sqft": 1506,
   "solar_footprint_sqft": 2214,
   "solar_roof_area_sqft": 2081,
   "fence_triggered": true,
-  "fence_reason": "vision roof area 1763 differs from solar 2081 by 15.3% (>12%)",
-  "computed_at": "2026-05-09T14:51:38.300Z"
+  "fence_reason": "vision roof area 1506 differs from solar 2081 by 27.6% (>12%)",
+  "computed_at": "2026-05-09T18:54:09.352Z"
 }

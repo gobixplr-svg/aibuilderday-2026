@@ -11,56 +11,49 @@
   "pitch_stub": false,
   "pitch_source": "solar",
   "vision_pitch": "6:12",
-  "vision_pitch_confidence": 0.78,
+  "vision_pitch_confidence": 0.52,
   "solar_pitch": "7:12",
   "solar_pitch_avg_degrees": 30.86386461371974,
   "solar_pitch_segment_count": 8,
   "solar_pitch_imagery_quality": "HIGH",
-  "footprint_sqft": 2539,
-  "footprint_confidence": 0.32,
-  "footprint_rationale": "The subject home (21106 Kenswick Meadows Ct, Humble TX) is clearly under active construction. The large light-gray plan-view area is exposed OSB roof sheathing with no shingles installed. A partially completed dark-shingled hip-roof section is visible at the upper portion of the orange bounding box. Bounding box measured at approximately 268 × 270 pixels = 56.8 ft × 57.2 ft = ~3,250 sq ft bounding area. Applied a 0.77 fill factor for the irregular L-shaped/complex footprint to yield ~2,500 sq ft. Edge types extrapolated from the visible completed hip-roof section at the top of the structure and the general structural form of the main body. Confidence is low (0.32) due to the under-construction state: shingle edges, hip lines, valleys, and eave terminations are not yet clearly defined from the satellite view, and construction debris partially obscures the perimeter.",
+  "footprint_sqft": 1895,
+  "footprint_confidence": 0.42,
+  "footprint_rationale": "The subject home is identified by the orange dashed bounding box and reticle. The box spans approximately 261 × 272 pixels (55.3 ft × 57.7 ft). The visible roof is a hip-style structure with lighter-colored (newer) shingles, consistent with a recently completed build. Construction lumber is visible around the property perimeter, partially obscuring roof edges. The actual hip roof polygon was traced at approximately 210 × 200 pixels (44.5 × 42.4 ft), yielding a plan-view footprint of ~1,895 sq ft with a 92% hip-fill factor applied to the measured rectangle. Cross-check using the bounding box at ~60% fill gives ~1,913 sq ft — agreement within ~1%. No valleys or rake edges present on this simple hip roof. Ridge estimated at 85 px (18 ft). Four hip lines from ridge ends to corners measured at ~118 px each in plan (≈25 ft each, 100 ft total). Eave runs the full perimeter: 2×(44.5+42.4) = 174 ft. No clearly attached garage or addition is visible as a separate roofed mass within the orange box boundary. Confidence is moderate-low due to construction activity obscuring portions of the roof outline.",
   "footprint_stub": false,
   "line_items": {
-    "ridge": 35,
-    "hip": 75,
-    "valley": 19,
-    "rake": 10,
-    "eave": 124
+    "ridge": 18,
+    "hip": 100,
+    "valley": 0,
+    "rake": 0,
+    "eave": 174
   },
   "condition": {
-    "overall": "concerning",
+    "overall": "fair",
     "findings": [
       {
+        "category": "debris",
+        "description": "Multiple small dark objects (at least 4–5 discrete spots) scattered across the flat/low-slope roof surface. While some are consistent with standard roof penetrations or vent boots, several are irregularly distributed and do not align with a typical vent pattern, indicating loose items or debris on the membrane.",
+        "location_description": "Central flat roof section, distributed across the full deck within the orange bounding box",
+        "severity": "low",
+        "confidence": 0.65
+      },
+      {
         "category": "other",
-        "description": "Large flat-roof section with a bright white/light gray surface that is distinctly different in material and color from every neighboring home's dark gray shingle roofing, consistent with a flat-roof membrane (TPO/EPDM) or exposed roof decking during active construction.",
-        "location_description": "Central and lower portions of the subject roof, encompassing the majority of the area within the bounding box.",
-        "severity": "medium",
+        "description": "Roof surface is a bright light gray/white — distinctly different from every surrounding neighbor home, which all show dark gray asphalt shingles. This is consistent with a TPO, EPDM, or coated flat membrane roof, which carries its own maintenance and inspection considerations compared to a pitched shingle roof.",
+        "location_description": "Entire visible flat roof deck within the orange bounding box",
+        "severity": "low",
         "confidence": 0.85
-      },
-      {
-        "category": "debris",
-        "description": "Multiple small scattered dark objects (approximately 8–12 distinct spots) distributed across the light-colored flat roof surface, irregular spacing, inconsistent with rooftop mechanical equipment.",
-        "location_description": "Across the flat central roof section, distributed from mid-roof toward the south slope.",
-        "severity": "medium",
-        "confidence": 0.72
-      },
-      {
-        "category": "debris",
-        "description": "Large piles of dimensional lumber and construction materials (tan/yellow in color) stacked directly adjacent to the east and southeast roof edges, with some material appearing to lean against or rest at the roof perimeter.",
-        "location_description": "East and southeast perimeter of the subject roof/structure.",
-        "severity": "high",
-        "confidence": 0.92
       }
     ],
-    "rationale": "The subject roof within the orange bounding box stands out markedly from all neighboring homes in this satellite image. While surrounding homes uniformly display dark gray asphalt shingles, the large central and lower section of the subject roof displays a bright white/light gray surface, indicating either a flat-roof membrane product (TPO/PVC) or, more likely given the surrounding context, exposed decking or underlayment associated with active construction or a full roof replacement in progress. Compounding this, extensive piles of dimensional lumber and construction materials are clearly visible stacked along the east and southeast perimeter of the home — a strong indicator of an active work site. Additionally, multiple small dark scattered objects are visible directly on the white roof deck surface that are inconsistent with HVAC equipment placement and are consistent with construction debris. The combination of non-standard roof surface material/color, visible scattered debris on the deck, and large adjacent construction material piles results in a \"concerning\" overall assessment warranting an in-person inspection to determine the current construction stage and whether the roof assembly is complete and weathertight."
+    "rationale": "The subject roof within the orange bounding box is a flat or very low-slope section covered in a light-colored membrane (white/light gray), which stands in clear contrast to all adjacent neighboring homes that have dark gray pitched shingle roofs. The surface is largely uniform with no visible tarps, large discoloration patches, structural sag along the roofline, or moss growth. However, several small dark objects are scattered across the membrane deck that do not conform to a standard vent/penetration layout, warranting a closer ground-level look to confirm whether these are equipment, debris, or damage indicators. Notably, construction lumber and materials are visible stacked in the yard immediately adjacent to the home on the east and south sides, suggesting active or recent renovation work that may be relevant to the roof's current state. No missing material, structural deformation, or tarping is visible from this altitude and angle."
   },
-  "roof_area_sqft": 2389,
-  "roof_area_source": "solar-fence",
-  "vision_footprint_sqft": 2500,
-  "vision_roof_area_sqft": 2895,
+  "roof_area_sqft": 2194,
+  "roof_area_source": "vision",
+  "vision_footprint_sqft": 1895,
+  "vision_roof_area_sqft": 2194,
   "solar_footprint_sqft": 2539,
   "solar_roof_area_sqft": 2389,
-  "fence_triggered": true,
-  "fence_reason": "vision roof area 2895 differs from solar 2389 by 21.2% (>12%)",
-  "computed_at": "2026-05-09T12:32:22.890Z"
+  "fence_triggered": false,
+  "fence_reason": null,
+  "computed_at": "2026-05-09T22:42:26.458Z"
 }

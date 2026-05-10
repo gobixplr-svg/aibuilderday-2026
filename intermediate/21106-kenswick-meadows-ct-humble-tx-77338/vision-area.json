@@ -1,12 +1,12 @@
 {
-  "footprint_sqft": 2500,
+  "footprint_sqft": 1895,
   "line_items": {
-    "ridge": 35,
-    "hip": 75,
-    "valley": 19,
-    "rake": 10,
-    "eave": 124
+    "ridge": 18,
+    "hip": 100,
+    "valley": 0,
+    "rake": 0,
+    "eave": 174
   },
-  "confidence": 0.32,
-  "rationale": "The subject home (21106 Kenswick Meadows Ct, Humble TX) is clearly under active construction. The large light-gray plan-view area is exposed OSB roof sheathing with no shingles installed. A partially completed dark-shingled hip-roof section is visible at the upper portion of the orange bounding box. Bounding box measured at approximately 268 × 270 pixels = 56.8 ft × 57.2 ft = ~3,250 sq ft bounding area. Applied a 0.77 fill factor for the irregular L-shaped/complex footprint to yield ~2,500 sq ft. Edge types extrapolated from the visible completed hip-roof section at the top of the structure and the general structural form of the main body. Confidence is low (0.32) due to the under-construction state: shingle edges, hip lines, valleys, and eave terminations are not yet clearly defined from the satellite view, and construction debris partially obscures the perimeter."
+  "confidence": 0.42,
+  "rationale": "The subject home is identified by the orange dashed bounding box and reticle. The box spans approximately 261 × 272 pixels (55.3 ft × 57.7 ft). The visible roof is a hip-style structure with lighter-colored (newer) shingles, consistent with a recently completed build. Construction lumber is visible around the property perimeter, partially obscuring roof edges. The actual hip roof polygon was traced at approximately 210 × 200 pixels (44.5 × 42.4 ft), yielding a plan-view footprint of ~1,895 sq ft with a 92% hip-fill factor applied to the measured rectangle. Cross-check using the bounding box at ~60% fill gives ~1,913 sq ft — agreement within ~1%. No valleys or rake edges present on this simple hip roof. Ridge estimated at 85 px (18 ft). Four hip lines from ridge ends to corners measured at ~118 px each in plan (≈25 ft each, 100 ft total). Eave runs the full perimeter: 2×(44.5+42.4) = 174 ft. No clearly attached garage or addition is visible as a separate roofed mass within the orange box boundary. Confidence is moderate-low due to construction activity obscuring portions of the roof outline."
 }

@@ -1,7 +1,7 @@
 {
   "measurement": {
-    "slug": "3561-e-102nd-ct-thornton-co-80229",
-    "address": "3561 E 102nd Ct, Thornton, CO 80229",
+    "slug": "3561-e-102nd-ct-thornton-co",
+    "address": "3561 E 102nd Ct, Thornton CO",
     "formatted_address": "3561 E 102nd Ct, Thornton, CO 80229, USA",
     "lat": 39.8811632,
     "lng": -104.9453839,
@@ -11,37 +11,37 @@
     "pitch_rationale": "Area-weighted across 9 roof segments from Google Solar API (imageryQuality=HIGH): 36.01° → 9:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
     "pitch_stub": false,
     "pitch_source": "solar",
-    "vision_pitch": "6:12",
-    "vision_pitch_confidence": 0.65,
+    "vision_pitch": "5:12",
+    "vision_pitch_confidence": 0.62,
     "solar_pitch": "9:12",
     "solar_pitch_avg_degrees": 36.008990603744465,
     "solar_pitch_segment_count": 9,
     "solar_pitch_imagery_quality": "HIGH",
-    "footprint_sqft": 2214,
+    "footprint_sqft": 1500,
     "footprint_confidence": 0.5,
-    "footprint_rationale": "Subject is a single townhouse-style unit within a row of identical semi-attached homes, marked by the orange bounding box (reticle centered on the unit). The roof is a standard 4-sided hip roof. Bounding box measured at ~192 × 250 px, but the actual roof occupies ~175 × 195 px (lower ~55 px of the box is driveway/yard). At 0.1879 ft/px, the roof plan-view rectangle is ~32.9 ft × 36.6 ft ≈ 1,205 sq ft. No valleys or rake edges visible — pure hip roof. Ridge estimated visually at ~80 px (~15 ft) running N–S through the center; 4 hip lines at ~60 px each (~45 ft total); eave perimeter = 2 × (32.9 + 36.6) ≈ 139 ft. Confidence is moderate-low due to partial tree obstruction on the south end and the tight urban townhouse setting making edge delineation somewhat difficult.",
+    "footprint_rationale": "Subject is one unit in a row of attached townhome-style units, each with a simple 4-way hip roof. The orange bounding box spans ~195 px (E–W) × ~263 px (N–S); the roof itself occupies ~195 px wide × ~225 px tall (the bottom ~35 px of the box is yard/landscaping). Converting at 0.1879 ft/px gives a roof bounding rectangle of ~36.6 ft × 42.3 ft ≈ 1,548 sq ft. Hip roofs fill their full plan-view rectangle, so after minor edge adjustments I report ~1,500 sq ft. The ridge runs N–S and equals L − W = 5.7 ft (~6 ft), consistent with the near-square proportions creating a near-pyramid shape. Four equal hips each measure (W/2)×√2 ≈ 25.9 ft in plan view for a total of ~104 ft. All four perimeter edges are eaves totaling ~158 ft. No valleys or rake edges are present on this pure hip roof. Confidence is moderate (0.50) due to partial tree shadow over the roof and difficulty precisely locating eave edges at the shared party walls.",
     "footprint_stub": false,
     "line_items": {
-      "ridge": 15,
-      "hip": 45,
+      "ridge": 6,
+      "hip": 104,
       "valley": 0,
       "rake": 0,
-      "eave": 139
+      "eave": 158
     },
     "condition": {
       "overall": "good",
       "findings": [],
-      "rationale": "The subject roof at 3561 E 102nd Ct, Thornton, CO 80229 is a multi-pitch hip-style roof with what appears to be dark gray/charcoal architectural shingles. Examining the full surface within the orange bounding box, the shingle color and texture are uniform across all visible slopes — no discoloration patches, staining streaks, or color mismatches are present. Ridge lines and valley intersections appear geometrically straight with no visible sagging or deflection. There are no tarps, foreign debris, or large-scale missing material exposing decking. No green or dark biological growth patches are detectable on any slope. The roof's appearance is consistent with the immediately neighboring units, which share the same shingle type and color, further confirming the surface has no standout anomalies. No findings meet the confidence threshold for reporting at this resolution."
+      "rationale": "The subject home within the orange bounding box is a multi-gabled townhome-style unit with a dark charcoal/gray asphalt shingle roof. Across all visible roof planes — the main north-facing slope, the central ridge area, and the smaller gable sections — the shingle color is uniform and consistent with no distinct discoloration patches, color mismatches, or staining tracks visible. The ridge lines appear geometrically straight with no visible sag or deviation compared to the neighboring identical units on either side. No tarps, foreign debris, or large missing material sections are detectable. There is partial tree canopy encroachment along the south/southeast lower edge of the bounding box, which slightly limits assessment of that lower eave zone; however, the area visible there shows no anomalies. All visible roof surfaces compare favorably in texture and color to the immediately adjacent units, which appear to be the same age and construction, supporting a no-issue determination. No findings met the confidence threshold for inclusion."
     },
-    "roof_area_sqft": 2081,
-    "roof_area_source": "solar-fence",
-    "vision_footprint_sqft": 1205,
-    "vision_roof_area_sqft": 1506,
+    "roof_area_sqft": 1875,
+    "roof_area_source": "vision",
+    "vision_footprint_sqft": 1500,
+    "vision_roof_area_sqft": 1875,
     "solar_footprint_sqft": 2214,
     "solar_roof_area_sqft": 2081,
-    "fence_triggered": true,
-    "fence_reason": "vision roof area 1506 differs from solar 2081 by 27.6% (>12%)",
-    "computed_at": "2026-05-09T18:54:09.352Z"
+    "fence_triggered": false,
+    "fence_reason": null,
+    "computed_at": "2026-05-09T20:26:55.937Z"
   },
   "tiers": [
     {
@@ -49,60 +49,60 @@
       "tier_name": "3-Tab Asphalt Shingle",
       "lines": [
         {
-          "label": "3-Tab Asphalt Shingle (23.31 sq, includes 12% waste)",
-          "amount": 2563.79
+          "label": "3-Tab Asphalt Shingle (21 sq, includes 12% waste)",
+          "amount": 2310
         },
         {
-          "label": "Tear-off (20.81 sq, 1 layer)",
-          "amount": 728.35
+          "label": "Tear-off (18.75 sq, 1 layer)",
+          "amount": 656.25
         },
         {
-          "label": "Underlayment (21.85 sq)",
-          "amount": 546.26
+          "label": "Underlayment (19.69 sq)",
+          "amount": 492.19
         },
         {
-          "label": "Trim & flashing (drip edge 139 lf, ridge 15 lf, valley 0 lf)",
-          "amount": 647.5
+          "label": "Trim & flashing (drip edge 158 lf, ridge 6 lf, valley 0 lf)",
+          "amount": 945
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (4.55 sheets, contingency)",
-          "amount": 250.37
+          "label": "Decking allowance (4.1 sheets, contingency)",
+          "amount": 225.59
         },
         {
-          "label": "Labor (20.81 sq @ 2.44 h/sq)",
-          "amount": 4324.96
+          "label": "Labor (18.75 sq @ 2.47 h/sq)",
+          "amount": 3931.42
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1167.75
+          "amount": 1107.65
         },
         {
           "label": "Profit (15%)",
-          "amount": 1634.85
+          "amount": 1550.71
         }
       ],
-      "subtotal": 12533.84,
+      "subtotal": 11888.81,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T18:54:09.354Z",
+          "generated_at": "2026-05-09T20:26:55.939Z",
           "currency": "USD"
         },
         "inputs": {
           "property": {
-            "address": "3561 E 102nd Ct, Thornton, CO 80229",
+            "address": "3561 E 102nd Ct, Thornton CO",
             "formatted_address": "3561 E 102nd Ct, Thornton, CO 80229, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2081,
-            "ridge_lf": 15,
-            "hip_lf": 45,
+            "roof_area_sqft": 1875,
+            "ridge_lf": 6,
+            "hip_lf": 104,
             "valley_lf": 0,
-            "eave_lf": 139,
+            "eave_lf": 158,
             "rake_lf": 0,
             "sidewall_lf": 0
           },
@@ -124,16 +124,16 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2081,
-          "roof_squares": 20.81,
-          "field_squares": 23.31,
-          "underlayment_squares": 21.85,
+          "roof_area_sqft": 1875,
+          "roof_squares": 18.75,
+          "field_squares": 21,
+          "underlayment_squares": 19.69,
           "ice_water_squares": 0,
-          "decking_sheets": 4.55,
-          "ridge_lf": 15,
-          "hip_lf": 45,
+          "decking_sheets": 4.1,
+          "ridge_lf": 6,
+          "hip_lf": 104,
           "valley_lf": 0,
-          "eave_lf": 139,
+          "eave_lf": 158,
           "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
@@ -155,14 +155,14 @@
         },
         "costs": {
           "materials": {
-            "field": 2563.79,
-            "underlayment": 546.26,
+            "field": 2310,
+            "underlayment": 492.19,
             "ice_water": 0,
-            "tearoff": 728.35,
-            "ridge_cap": 75,
-            "hip_cap": 225,
+            "tearoff": 656.25,
+            "ridge_cap": 30,
+            "hip_cap": 520,
             "valley_metal": 0,
-            "drip_edge_eave": 347.5,
+            "drip_edge_eave": 395,
             "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
@@ -172,16 +172,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 250.37
+            "decking_sheets": 225.59
           },
-          "direct_material_cost": 5406.27,
-          "labor_hours_base": 37.92,
-          "labor_hours_adjusted": 50.88,
-          "direct_labor_cost": 4324.96,
-          "direct_cost": 9731.24,
-          "overhead": 1167.75,
-          "profit": 1634.85,
-          "grand_total": 12533.84
+          "direct_material_cost": 5299.02,
+          "labor_hours_base": 34.46,
+          "labor_hours_adjusted": 46.25,
+          "direct_labor_cost": 3931.42,
+          "direct_cost": 9230.45,
+          "overhead": 1107.65,
+          "profit": 1550.71,
+          "grand_total": 11888.81
         }
       }
     },
@@ -190,60 +190,60 @@
       "tier_name": "Architectural Laminate",
       "lines": [
         {
-          "label": "Architectural Laminate (23.31 sq, includes 12% waste)",
-          "amount": 3379.54
+          "label": "Architectural Laminate (21 sq, includes 12% waste)",
+          "amount": 3045
         },
         {
-          "label": "Tear-off (20.81 sq, 1 layer)",
-          "amount": 728.35
+          "label": "Tear-off (18.75 sq, 1 layer)",
+          "amount": 656.25
         },
         {
-          "label": "Underlayment (21.85 sq)",
-          "amount": 546.26
+          "label": "Underlayment (19.69 sq)",
+          "amount": 492.19
         },
         {
-          "label": "Trim & flashing (drip edge 139 lf, ridge 15 lf, valley 0 lf)",
-          "amount": 647.5
+          "label": "Trim & flashing (drip edge 158 lf, ridge 6 lf, valley 0 lf)",
+          "amount": 945
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (4.55 sheets, contingency)",
-          "amount": 250.37
+          "label": "Decking allowance (4.1 sheets, contingency)",
+          "amount": 225.59
         },
         {
-          "label": "Labor (20.81 sq @ 3.12 h/sq)",
-          "amount": 5511.86
+          "label": "Labor (18.75 sq @ 3.14 h/sq)",
+          "amount": 5000.83
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1408.07
+          "amount": 1324.18
         },
         {
           "label": "Profit (15%)",
-          "amount": 1971.29
+          "amount": 1853.86
         }
       ],
-      "subtotal": 15113.25,
+      "subtotal": 14212.89,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T18:54:09.354Z",
+          "generated_at": "2026-05-09T20:26:55.939Z",
           "currency": "USD"
         },
         "inputs": {
           "property": {
-            "address": "3561 E 102nd Ct, Thornton, CO 80229",
+            "address": "3561 E 102nd Ct, Thornton CO",
             "formatted_address": "3561 E 102nd Ct, Thornton, CO 80229, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2081,
-            "ridge_lf": 15,
-            "hip_lf": 45,
+            "roof_area_sqft": 1875,
+            "ridge_lf": 6,
+            "hip_lf": 104,
             "valley_lf": 0,
-            "eave_lf": 139,
+            "eave_lf": 158,
             "rake_lf": 0,
             "sidewall_lf": 0
           },
@@ -265,16 +265,16 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2081,
-          "roof_squares": 20.81,
-          "field_squares": 23.31,
-          "underlayment_squares": 21.85,
+          "roof_area_sqft": 1875,
+          "roof_squares": 18.75,
+          "field_squares": 21,
+          "underlayment_squares": 19.69,
           "ice_water_squares": 0,
-          "decking_sheets": 4.55,
-          "ridge_lf": 15,
-          "hip_lf": 45,
+          "decking_sheets": 4.1,
+          "ridge_lf": 6,
+          "hip_lf": 104,
           "valley_lf": 0,
-          "eave_lf": 139,
+          "eave_lf": 158,
           "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
@@ -296,14 +296,14 @@
         },
         "costs": {
           "materials": {
-            "field": 3379.54,
-            "underlayment": 546.26,
+            "field": 3045,
+            "underlayment": 492.19,
             "ice_water": 0,
-            "tearoff": 728.35,
-            "ridge_cap": 75,
-            "hip_cap": 225,
+            "tearoff": 656.25,
+            "ridge_cap": 30,
+            "hip_cap": 520,
             "valley_metal": 0,
-            "drip_edge_eave": 347.5,
+            "drip_edge_eave": 395,
             "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
@@ -313,16 +313,16 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 250.37
+            "decking_sheets": 225.59
           },
-          "direct_material_cost": 6222.03,
-          "labor_hours_base": 48.32,
-          "labor_hours_adjusted": 64.85,
-          "direct_labor_cost": 5511.86,
-          "direct_cost": 11733.89,
-          "overhead": 1408.07,
-          "profit": 1971.29,
-          "grand_total": 15113.25
+          "direct_material_cost": 6034.02,
+          "labor_hours_base": 43.84,
+          "labor_hours_adjusted": 58.83,
+          "direct_labor_cost": 5000.83,
+          "direct_cost": 11034.85,
+          "overhead": 1324.18,
+          "profit": 1853.86,
+          "grand_total": 14212.89
         }
       }
     },
@@ -331,60 +331,60 @@
       "tier_name": "Designer / Impact-Resistant",
       "lines": [
         {
-          "label": "Designer / Impact-Resistant (23.31 sq, includes 12% waste)",
-          "amount": 5127.58
+          "label": "Designer / Impact-Resistant (21 sq, includes 12% waste)",
+          "amount": 4620
         },
         {
-          "label": "Tear-off (20.81 sq, 1 layer)",
-          "amount": 728.35
+          "label": "Tear-off (18.75 sq, 1 layer)",
+          "amount": 656.25
         },
         {
-          "label": "Underlayment (21.85 sq)",
-          "amount": 546.26
+          "label": "Underlayment (19.69 sq)",
+          "amount": 492.19
         },
         {
-          "label": "Trim & flashing (drip edge 139 lf, ridge 15 lf, valley 0 lf)",
-          "amount": 647.5
+          "label": "Trim & flashing (drip edge 158 lf, ridge 6 lf, valley 0 lf)",
+          "amount": 945
         },
         {
           "label": "Penetrations & vents (boots, chimney, ridge vents)",
           "amount": 670
         },
         {
-          "label": "Decking allowance (4.55 sheets, contingency)",
-          "amount": 250.37
+          "label": "Decking allowance (4.1 sheets, contingency)",
+          "amount": 225.59
         },
         {
-          "label": "Labor (20.81 sq @ 3.79 h/sq)",
-          "amount": 6698.76
+          "label": "Labor (18.75 sq @ 3.81 h/sq)",
+          "amount": 6070.24
         },
         {
           "label": "Overhead (12%)",
-          "amount": 1760.26
+          "amount": 1641.51
         },
         {
           "label": "Profit (15%)",
-          "amount": 2464.36
+          "amount": 2298.12
         }
       ],
-      "subtotal": 18893.45,
+      "subtotal": 17618.88,
       "engine_output": {
         "metadata": {
           "version": "0.1.0",
-          "generated_at": "2026-05-09T18:54:09.354Z",
+          "generated_at": "2026-05-09T20:26:55.939Z",
           "currency": "USD"
         },
         "inputs": {
           "property": {
-            "address": "3561 E 102nd Ct, Thornton, CO 80229",
+            "address": "3561 E 102nd Ct, Thornton CO",
             "formatted_address": "3561 E 102nd Ct, Thornton, CO 80229, USA"
           },
           "geometry": {
-            "roof_area_sqft": 2081,
-            "ridge_lf": 15,
-            "hip_lf": 45,
+            "roof_area_sqft": 1875,
+            "ridge_lf": 6,
+            "hip_lf": 104,
             "valley_lf": 0,
-            "eave_lf": 139,
+            "eave_lf": 158,
             "rake_lf": 0,
             "sidewall_lf": 0
           },
@@ -406,16 +406,16 @@
           }
         },
         "quantities": {
-          "roof_area_sqft": 2081,
-          "roof_squares": 20.81,
-          "field_squares": 23.31,
-          "underlayment_squares": 21.85,
+          "roof_area_sqft": 1875,
+          "roof_squares": 18.75,
+          "field_squares": 21,
+          "underlayment_squares": 19.69,
           "ice_water_squares": 0,
-          "decking_sheets": 4.55,
-          "ridge_lf": 15,
-          "hip_lf": 45,
+          "decking_sheets": 4.1,
+          "ridge_lf": 6,
+          "hip_lf": 104,
           "valley_lf": 0,
-          "eave_lf": 139,
+          "eave_lf": 158,
           "rake_lf": 0,
           "sidewall_lf": 0,
           "step_flashing_count": 0,
@@ -437,14 +437,14 @@
         },
         "costs": {
           "materials": {
-            "field": 5127.58,
-            "underlayment": 546.26,
+            "field": 4620,
+            "underlayment": 492.19,
             "ice_water": 0,
-            "tearoff": 728.35,
-            "ridge_cap": 75,
-            "hip_cap": 225,
+            "tearoff": 656.25,
+            "ridge_cap": 30,
+            "hip_cap": 520,
             "valley_metal": 0,
-            "drip_edge_eave": 347.5,
+            "drip_edge_eave": 395,
             "rake_trim": 0,
             "sidewall_flashing": 0,
             "step_flashing": 0,
@@ -454,21 +454,21 @@
             "box_vents": 220,
             "exhaust_vents": 90,
             "access_hatches": 0,
-            "decking_sheets": 250.37
+            "decking_sheets": 225.59
           },
-          "direct_material_cost": 7970.07,
-          "labor_hours_base": 58.73,
-          "labor_hours_adjusted": 78.81,
-          "direct_labor_cost": 6698.76,
-          "direct_cost": 14668.83,
-          "overhead": 1760.26,
-          "profit": 2464.36,
-          "grand_total": 18893.45
+          "direct_material_cost": 7609.02,
+          "labor_hours_base": 53.22,
+          "labor_hours_adjusted": 71.41,
+          "direct_labor_cost": 6070.24,
+          "direct_cost": 13679.26,
+          "overhead": 1641.51,
+          "profit": 2298.12,
+          "grand_total": 17618.88
         }
       }
     }
   ],
-  "generated_at": "2026-05-09T18:54:09.354Z",
+  "generated_at": "2026-05-09T20:26:55.939Z",
   "engine": {
     "name": "estimate-engine",
     "version": "0.1.0"

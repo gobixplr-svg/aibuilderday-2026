@@ -1,0 +1,12 @@
+{
+  "footprint_sqft": 2250,
+  "line_items": {
+    "ridge": 34,
+    "hip": 105,
+    "valley": 28,
+    "rake": 0,
+    "eave": 215
+  },
+  "confidence": 0.42,
+  "rationale": "The orange bounding box spans approximately 290 × 395 px (54.1 × 73.7 ft = ~3,985 sq ft bounding area). The subject home has a complex multi-section hip roof (no visible gable ends, so rake = 0). Three attached sections are identified: (1) a large central tan/brown hip roof with solar panels (~220 × 255 px, 80% hip fill = ~1,562 sq ft), (2) an upper-right darker attached structure likely a garage (~130 × 90 px, 80% fill = ~325 sq ft), and (3) a front/lower projecting hip section (~110 × 105 px, 75% fill = ~301 sq ft). Direct polygon sum ≈ 2,188 sq ft; bounding-box × 0.58 fill = ~2,311 sq ft; averaged to ~2,250 sq ft. Ridge lines estimated on all three sections; hip lines counted along outer corners and stepped roof intersections; valleys placed at the internal junctions between sections. Eave runs the full outer perimeter of the combined footprint, estimated ~215 ft for the complex L/T shape. Confidence is moderate due to oblique satellite view and partial tree occlusion of some roof edges."
+}

@@ -1,0 +1,20 @@
+{
+  "overall_condition": "fair",
+  "findings": [
+    {
+      "category": "discoloration_staining",
+      "description": "The north-facing roof slopes are visibly darker in tone compared to the warm brown/tan south-facing slopes. The color differential is stark and consistent across the entire north-facing surface, distinct from shadowing effects.",
+      "location_description": "North-facing slopes, upper portion of the main hip roof",
+      "severity": "low",
+      "confidence": 0.72
+    },
+    {
+      "category": "other",
+      "description": "A cluster of dark blue/black solar panel arrays is clearly visible, covering a substantial portion of the west-facing slope. Solar panels penetrate the roof membrane with mounting hardware and require flashing at each anchor point — a known potential leak source.",
+      "location_description": "West-facing slope, center of the main roof body",
+      "severity": "low",
+      "confidence": 0.98
+    }
+  ],
+  "rationale": "The subject home at 9381 N Avanyu Drive features a multi-hip asphalt shingle roof in a warm brown/tan color on the south- and west-facing slopes. Image quality and zoom level are sufficient for macro-level assessment. Two notable visible items were identified. First, the north-facing slopes display a distinctly darker coloration compared to all other slopes — this differential is consistent and well-defined, not attributable to shadow patterns (which would fall more uniformly). At this latitude and orientation, north-facing slope darkening is commonly associated with biological growth (moss or algae), though a definitive material identification is not possible from this altitude. Second, a large solar panel array is clearly visible on the west-facing slope; while solar panels are not a defect, the mounting penetrations represent a known flashing risk that warrants close physical inspection. No tarps, structural sag, exposed decking, patching, or debris were observed. The flat/low-pitch section visible on the south side (light gray) appears intact with no visible pooling or membrane damage at this resolution."
+}

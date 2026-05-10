@@ -1,0 +1,491 @@
+{
+  "measurement": {
+    "slug": "9381-north-avanyu-drive-cedar-hills-ut-84062",
+    "address": "9381 north avanyu drive. cedar hills, ut 84062",
+    "formatted_address": "9381 N Avanyu Dr, Cedar Hills, UT 84062, USA",
+    "lat": 40.4025365,
+    "lng": -111.7459917,
+    "pitch": "6:12",
+    "pitch_multiplier": 1.118,
+    "pitch_confidence": 0.9,
+    "pitch_rationale": "Area-weighted across 13 roof segments from Google Solar API (imageryQuality=HIGH): 25.25° → 6:12. Solar's underlying DSM model reports ~5° MAE in published benchmarks (Satellite Sunroof, NeurIPS 2024).",
+    "pitch_stub": false,
+    "pitch_source": "solar",
+    "vision_pitch": "6:12",
+    "vision_pitch_confidence": 0.65,
+    "solar_pitch": "6:12",
+    "solar_pitch_avg_degrees": 25.254320870793332,
+    "solar_pitch_segment_count": 13,
+    "solar_pitch_imagery_quality": "HIGH",
+    "footprint_sqft": 3879,
+    "footprint_confidence": 0.42,
+    "footprint_rationale": "The orange bounding box spans approximately 290 × 395 px (54.1 × 73.7 ft = ~3,985 sq ft bounding area). The subject home has a complex multi-section hip roof (no visible gable ends, so rake = 0). Three attached sections are identified: (1) a large central tan/brown hip roof with solar panels (~220 × 255 px, 80% hip fill = ~1,562 sq ft), (2) an upper-right darker attached structure likely a garage (~130 × 90 px, 80% fill = ~325 sq ft), and (3) a front/lower projecting hip section (~110 × 105 px, 75% fill = ~301 sq ft). Direct polygon sum ≈ 2,188 sq ft; bounding-box × 0.58 fill = ~2,311 sq ft; averaged to ~2,250 sq ft. Ridge lines estimated on all three sections; hip lines counted along outer corners and stepped roof intersections; valleys placed at the internal junctions between sections. Eave runs the full outer perimeter of the combined footprint, estimated ~215 ft for the complex L/T shape. Confidence is moderate due to oblique satellite view and partial tree occlusion of some roof edges.",
+    "footprint_stub": false,
+    "line_items": {
+      "ridge": 34,
+      "hip": 105,
+      "valley": 28,
+      "rake": 0,
+      "eave": 215
+    },
+    "condition": {
+      "overall": "fair",
+      "findings": [
+        {
+          "category": "discoloration_staining",
+          "description": "The north-facing roof slopes are visibly darker in tone compared to the warm brown/tan south-facing slopes. The color differential is stark and consistent across the entire north-facing surface, distinct from shadowing effects.",
+          "location_description": "North-facing slopes, upper portion of the main hip roof",
+          "severity": "low",
+          "confidence": 0.72
+        },
+        {
+          "category": "other",
+          "description": "A cluster of dark blue/black solar panel arrays is clearly visible, covering a substantial portion of the west-facing slope. Solar panels penetrate the roof membrane with mounting hardware and require flashing at each anchor point — a known potential leak source.",
+          "location_description": "West-facing slope, center of the main roof body",
+          "severity": "low",
+          "confidence": 0.98
+        }
+      ],
+      "rationale": "The subject home at 9381 N Avanyu Drive features a multi-hip asphalt shingle roof in a warm brown/tan color on the south- and west-facing slopes. Image quality and zoom level are sufficient for macro-level assessment. Two notable visible items were identified. First, the north-facing slopes display a distinctly darker coloration compared to all other slopes — this differential is consistent and well-defined, not attributable to shadow patterns (which would fall more uniformly). At this latitude and orientation, north-facing slope darkening is commonly associated with biological growth (moss or algae), though a definitive material identification is not possible from this altitude. Second, a large solar panel array is clearly visible on the west-facing slope; while solar panels are not a defect, the mounting penetrations represent a known flashing risk that warrants close physical inspection. No tarps, structural sag, exposed decking, patching, or debris were observed. The flat/low-pitch section visible on the south side (light gray) appears intact with no visible pooling or membrane damage at this resolution."
+    },
+    "roof_area_sqft": 3658,
+    "roof_area_source": "solar-fence",
+    "vision_footprint_sqft": 2250,
+    "vision_roof_area_sqft": 2516,
+    "solar_footprint_sqft": 3879,
+    "solar_roof_area_sqft": 3658,
+    "fence_triggered": true,
+    "fence_reason": "vision roof area 2516 differs from solar 3658 by 31.2% (>12%)",
+    "computed_at": "2026-05-09T20:29:40.238Z"
+  },
+  "tiers": [
+    {
+      "tier_id": "standard",
+      "tier_name": "3-Tab Asphalt Shingle",
+      "lines": [
+        {
+          "label": "3-Tab Asphalt Shingle (40.97 sq, includes 12% waste)",
+          "amount": 4506.66
+        },
+        {
+          "label": "Tear-off (36.58 sq, 1 layer)",
+          "amount": 1280.3
+        },
+        {
+          "label": "Underlayment (38.41 sq)",
+          "amount": 960.23
+        },
+        {
+          "label": "Trim & flashing (drip edge 215 lf, ridge 34 lf, valley 28 lf)",
+          "amount": 1428.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8 sheets, contingency)",
+          "amount": 440.1
+        },
+        {
+          "label": "Labor (36.58 sq @ 2.12 h/sq)",
+          "amount": 6583.43
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 1904.31
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 2666.03
+        }
+      ],
+      "subtotal": 20439.55,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T20:29:40.240Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "9381 north avanyu drive. cedar hills, ut 84062",
+            "formatted_address": "9381 N Avanyu Dr, Cedar Hills, UT 84062, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3658,
+            "ridge_lf": 34,
+            "hip_lf": 105,
+            "valley_lf": 28,
+            "eave_lf": 215,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3658,
+          "roof_squares": 36.58,
+          "field_squares": 40.97,
+          "underlayment_squares": 38.41,
+          "ice_water_squares": 0,
+          "decking_sheets": 8,
+          "ridge_lf": 34,
+          "hip_lf": 105,
+          "valley_lf": 28,
+          "eave_lf": 215,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 4506.66,
+            "underlayment": 960.23,
+            "ice_water": 0,
+            "tearoff": 1280.3,
+            "ridge_cap": 170,
+            "hip_cap": 525,
+            "valley_metal": 196,
+            "drip_edge_eave": 537.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 440.1
+          },
+          "direct_material_cost": 9285.78,
+          "labor_hours_base": 64.01,
+          "labor_hours_adjusted": 77.45,
+          "direct_labor_cost": 6583.43,
+          "direct_cost": 15869.21,
+          "overhead": 1904.31,
+          "profit": 2666.03,
+          "grand_total": 20439.55
+        }
+      }
+    },
+    {
+      "tier_id": "premium",
+      "tier_name": "Architectural Laminate",
+      "lines": [
+        {
+          "label": "Architectural Laminate (40.97 sq, includes 12% waste)",
+          "amount": 5940.59
+        },
+        {
+          "label": "Tear-off (36.58 sq, 1 layer)",
+          "amount": 1280.3
+        },
+        {
+          "label": "Underlayment (38.41 sq)",
+          "amount": 960.23
+        },
+        {
+          "label": "Trim & flashing (drip edge 215 lf, ridge 34 lf, valley 28 lf)",
+          "amount": 1428.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8 sheets, contingency)",
+          "amount": 440.1
+        },
+        {
+          "label": "Labor (36.58 sq @ 2.72 h/sq)",
+          "amount": 8464.56
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2302.11
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 3222.96
+        }
+      ],
+      "subtotal": 24709.35,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T20:29:40.240Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "9381 north avanyu drive. cedar hills, ut 84062",
+            "formatted_address": "9381 N Avanyu Dr, Cedar Hills, UT 84062, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3658,
+            "ridge_lf": 34,
+            "hip_lf": 105,
+            "valley_lf": 28,
+            "eave_lf": 215,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3658,
+          "roof_squares": 36.58,
+          "field_squares": 40.97,
+          "underlayment_squares": 38.41,
+          "ice_water_squares": 0,
+          "decking_sheets": 8,
+          "ridge_lf": 34,
+          "hip_lf": 105,
+          "valley_lf": 28,
+          "eave_lf": 215,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 5940.59,
+            "underlayment": 960.23,
+            "ice_water": 0,
+            "tearoff": 1280.3,
+            "ridge_cap": 170,
+            "hip_cap": 525,
+            "valley_metal": 196,
+            "drip_edge_eave": 537.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 440.1
+          },
+          "direct_material_cost": 10719.72,
+          "labor_hours_base": 82.3,
+          "labor_hours_adjusted": 99.58,
+          "direct_labor_cost": 8464.56,
+          "direct_cost": 19184.28,
+          "overhead": 2302.11,
+          "profit": 3222.96,
+          "grand_total": 24709.35
+        }
+      }
+    },
+    {
+      "tier_id": "luxury",
+      "tier_name": "Designer / Impact-Resistant",
+      "lines": [
+        {
+          "label": "Designer / Impact-Resistant (40.97 sq, includes 12% waste)",
+          "amount": 9013.31
+        },
+        {
+          "label": "Tear-off (36.58 sq, 1 layer)",
+          "amount": 1280.3
+        },
+        {
+          "label": "Underlayment (38.41 sq)",
+          "amount": 960.23
+        },
+        {
+          "label": "Trim & flashing (drip edge 215 lf, ridge 34 lf, valley 28 lf)",
+          "amount": 1428.5
+        },
+        {
+          "label": "Penetrations & vents (boots, chimney, ridge vents)",
+          "amount": 670
+        },
+        {
+          "label": "Decking allowance (8 sheets, contingency)",
+          "amount": 440.1
+        },
+        {
+          "label": "Labor (36.58 sq @ 3.33 h/sq)",
+          "amount": 10345.68
+        },
+        {
+          "label": "Overhead (12%)",
+          "amount": 2896.57
+        },
+        {
+          "label": "Profit (15%)",
+          "amount": 4055.2
+        }
+      ],
+      "subtotal": 31089.9,
+      "engine_output": {
+        "metadata": {
+          "version": "0.1.0",
+          "generated_at": "2026-05-09T20:29:40.240Z",
+          "currency": "USD"
+        },
+        "inputs": {
+          "property": {
+            "address": "9381 north avanyu drive. cedar hills, ut 84062",
+            "formatted_address": "9381 N Avanyu Dr, Cedar Hills, UT 84062, USA"
+          },
+          "geometry": {
+            "roof_area_sqft": 3658,
+            "ridge_lf": 34,
+            "hip_lf": 105,
+            "valley_lf": 28,
+            "eave_lf": 215,
+            "rake_lf": 0,
+            "sidewall_lf": 0
+          },
+          "counts": {
+            "penetrations": 5,
+            "skylights": 0,
+            "chimneys": 1,
+            "box_vents": 4,
+            "exhaust_vents": 2,
+            "access_hatches": 0
+          },
+          "conditions": {
+            "pitch": "6:12",
+            "stories": 1,
+            "tearoff_layers": 1,
+            "access_difficulty": "easy",
+            "complexity": "moderate",
+            "climate_requires_ice_water": false
+          }
+        },
+        "quantities": {
+          "roof_area_sqft": 3658,
+          "roof_squares": 36.58,
+          "field_squares": 40.97,
+          "underlayment_squares": 38.41,
+          "ice_water_squares": 0,
+          "decking_sheets": 8,
+          "ridge_lf": 34,
+          "hip_lf": 105,
+          "valley_lf": 28,
+          "eave_lf": 215,
+          "rake_lf": 0,
+          "sidewall_lf": 0,
+          "step_flashing_count": 0,
+          "penetrations": 5,
+          "skylights": 0,
+          "chimneys": 1,
+          "box_vents": 4,
+          "exhaust_vents": 2,
+          "access_hatches": 0
+        },
+        "multipliers": {
+          "pitch": 1.1,
+          "stories": 1,
+          "access": 1,
+          "complexity": 1.1,
+          "labor_difficulty_total": 1.21,
+          "overhead_pct": 0.12,
+          "profit_pct": 0.15
+        },
+        "costs": {
+          "materials": {
+            "field": 9013.31,
+            "underlayment": 960.23,
+            "ice_water": 0,
+            "tearoff": 1280.3,
+            "ridge_cap": 170,
+            "hip_cap": 525,
+            "valley_metal": 196,
+            "drip_edge_eave": 537.5,
+            "rake_trim": 0,
+            "sidewall_flashing": 0,
+            "step_flashing": 0,
+            "penetration_boots": 140,
+            "skylight_flashing": 0,
+            "chimney_flashing": 220,
+            "box_vents": 220,
+            "exhaust_vents": 90,
+            "access_hatches": 0,
+            "decking_sheets": 440.1
+          },
+          "direct_material_cost": 13792.44,
+          "labor_hours_base": 100.59,
+          "labor_hours_adjusted": 121.71,
+          "direct_labor_cost": 10345.68,
+          "direct_cost": 24138.12,
+          "overhead": 2896.57,
+          "profit": 4055.2,
+          "grand_total": 31089.9
+        }
+      }
+    }
+  ],
+  "generated_at": "2026-05-09T20:29:40.241Z",
+  "engine": {
+    "name": "estimate-engine",
+    "version": "0.1.0"
+  }
+}
